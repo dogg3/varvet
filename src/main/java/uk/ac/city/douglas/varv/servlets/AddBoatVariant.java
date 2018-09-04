@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import uk.ac.city.douglas.varv.dao.VarvRepository;
 import uk.ac.city.douglas.varv.domain.Boat;
+import uk.ac.city.douglas.varv.domain.BoatVariant;
 
 /**
  *
@@ -43,27 +44,36 @@ public class AddBoatVariant extends HttpServlet {
        response.setCharacterEncoding("UTF-8");
      
          
-       String brand =  request.getParameter("brand");
-       String model = request.getParameter("model");
-       float length = Float.parseFloat(request.getParameter("length"));
-       float width = Float.parseFloat(request.getParameter("width"));
-     
-       
-        Boat boat = new Boat();
-        boat.setBrand(brand);
-        boat.setLength(length);
-        boat.setModel(model);
-        boat.setWidth(width);
-        vr.saveBoat(boat);
-        response.sendRedirect("/varv/boatAdd.html?boat="+boat.toString());
+       int customerId = Integer.parseInt(request.getParameter("customerId"));
+       String boatBrand =  request.getParameter("boatBrand");
+       String boatModel = request.getParameter("boatModel");
+       int year = Integer.parseInt(request.getParameter("year"));
+       String engineBrand =  request.getParameter("engineBrand");
+       String engineModel = request.getParameter("engineModel"); 
+       String description = request.getParameter("description"); 
+    
+            
+        BoatVariant boatVariant = new BoatVariant();
+        boatVariant.setCustomerId(customerId);        
+        boatVariant.setBoatBrand(boatBrand);
+        boatVariant.setBoatModel(boatModel);
+        boatVariant.setYear(year);
+        boatVariant.setEngineBrand(engineBrand);
+        boatVariant.setEngineModel(engineModel);
+        boatVariant.setDescription(description);
+        
+        vr.saveBoatVariant(boatVariant);
+        
+        
+        response.sendRedirect("/varv/boatVariantAdd.html?boatVariant="+boatVariant.toString());
  
     
     }
     
  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("boat", request.getParameter("boat"));
+        request.setAttribute("boatVariant", request.getParameter("boatVariant"));
         ServletContext servletContext = getServletContext();
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boatAdded.jsp");
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boatVariantAdded.jsp");
         requestDispatcher.forward(request, response);
     }
     

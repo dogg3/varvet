@@ -34,6 +34,7 @@ public class BoatVariant {
     private int year;
     private String engineBrand;
     private String engineModel;
+    private String description;
 
     @ManyToOne
     @JoinColumns({
@@ -53,9 +54,12 @@ public class BoatVariant {
     @JoinColumn(name = "customerId", insertable = false, updatable = false)
     private Customer customer;
 
-    @OneToMany(mappedBy = "boatVariant")
+    @OneToMany(mappedBy="boatVariant")
     List<BoatVariantStorage> boatVariantStorages;
 
+    
+    
+    
     public int getCustomerId() {
         return customerId;
     }
@@ -128,9 +132,21 @@ public class BoatVariant {
         this.customer = customer;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
-        return "BoatVariant{" + "customerId=" + customerId + ", boatBrand=" + boatBrand + ", boatModel=" + boatModel + ", year=" + year + ", engineBrand=" + engineBrand + ", engineModel=" + engineModel + ", engine=" + engine + ", boat=" + boat + ", customer=" + customer + ", boatVariantStorages=" + boatVariantStorages + '}';
+        return "BoatVariant{" + "customerId=" + customerId + ", boatBrand=" + boatBrand + ", boatModel=" + boatModel + ", year=" + year + ", engineBrand=" + engineBrand + ", engineModel=" + engineModel + ", description=" + description + '}';
     }
+    
+    
+
+   
 
 }

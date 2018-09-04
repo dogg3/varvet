@@ -58,7 +58,7 @@ public class VarvRepositoryJPQL implements VarvRepository {
     @Override
     public void saveBoat(Boat boat) {
         em.persist(boat);
-        System.out.println("done");
+     
     }
 
     @Override
@@ -105,8 +105,9 @@ public class VarvRepositoryJPQL implements VarvRepository {
     }
 
     @Override
-    public void addBoatVariant() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void saveBoatVariant(BoatVariant boatVariant) {
+    em.persist(boatVariant);    
+    
     }
 
     

@@ -25,37 +25,39 @@ import javax.persistence.Table;
 public class BoatVariantStorage {
 
     @Id
-    @Column(name = "Boat_variantcustomerId")
+    @Column(name = "Boat_variant_customerId")
     private int customerId;
     @Id
-    @Column(name = "Boat_variantboatbrand")
+    @Column(name = "Boat_variant_boatbrand")
     private String boatBrand;
     @Id
-    @Column(name = "Boat_variantboatmodel")
+    @Column(name = "Boat_variant_boatmodel")
     private String boatModel;
     @Id
     @Column(name = "Storagename")
     private String storageName;
+    
+      @Column(name = "start_date")
+    private int startDate;
+    @Column(name = "end_date")
+    private int endDate;
 
-    @OneToMany
+    private String status;
+
+    @ManyToOne
     @JoinColumns({
-        @JoinColumn(name = "Boat_variantboatbrand", referencedColumnName = "boatBrand", insertable = false, updatable = false)
+        @JoinColumn(name = "Boat_variant_boatbrand", referencedColumnName = "boatBrand", insertable = false, updatable = false)
         ,
-        @JoinColumn(name = "Boat_variantcustomerId", referencedColumnName = "customerId", insertable = false, updatable = false)
+        @JoinColumn(name = "Boat_variant_customerId", referencedColumnName = "customerId", insertable = false, updatable = false)
         ,
-	@JoinColumn(name = "Boat_variantboatmodel", referencedColumnName = "boatModel", insertable = false, updatable = false)})
+	@JoinColumn(name = "Boat_variant_boatmodel", referencedColumnName = "boatModel", insertable = false, updatable = false)})
     private BoatVariant boatVariant;
 
     @ManyToOne
     @JoinColumn(name = "storageName", referencedColumnName = "name", insertable = false, updatable = false)
     private Storage storage;
 
-    @Column(name = "start_date")
-    private int startDate;
-    @Column(name = "end_date")
-    private int endDate;
-
-    private String status;
+  
 
     public String getStatus() {
         return status;
@@ -131,7 +133,7 @@ public class BoatVariantStorage {
 
     @Override
     public String toString() {
-        return "BoatVariantStorage{" + "customerId=" + customerId + ", boatBrand=" + boatBrand + ", boatModel=" + boatModel + ", storageName=" + storageName + ", boatVariant=" + boatVariant + ", storage=" + storage + ", startDate=" + startDate + ", endDate=" + endDate + ", status=" + status + '}';
+        return "BoatVariantStorage{" + "customerId=" + customerId + ", boatBrand=" + boatBrand + ", boatModel=" + boatModel +  ", startDate=" + startDate + ", endDate=" + endDate + ", status=" + status + '}';
     }
 
 }

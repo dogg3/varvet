@@ -47,7 +47,7 @@ public interface VarvRepository {
     *BoatVariants - kundBåtar
     */
       public List<BoatVariant> getAllBoatVariants();
-    
+     public void saveBoatVariant(BoatVariant boatVariant);
     
     
       /*
@@ -65,7 +65,7 @@ public interface VarvRepository {
     *BoatVariantStorages - kundbåtsVinterplats
     */
     public List<BoatVariantStorage> getAllBoatVariantStorages();
-     public void addBoatVariant();
+    
     
     
     
