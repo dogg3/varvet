@@ -10,13 +10,19 @@
 <!DOCTYPE html>
 <html>
      <jsp:include page="/header.jsp" />
+     <div class="fullWidth">
      <h1>Detta är alla tillgängliga båtar</h1>
         <%
         List <Boat> boats = (List<Boat>) request.getAttribute("boats");
             for(Boat boat: boats){
-              out.println("<li>"+boat+"</li>");
+              out.println("<li><a href=findBoatById.html?id="
+                      + boat.getBoatId()+">"
+                      +boat.getBrand() +
+                      " "+boat.getModel() +
+                      "</a></li>");
             }
         
         %>
+      </div>
       <jsp:include page="/footer.jsp" />
 </html>

@@ -7,6 +7,7 @@
 <%@page import="java.util.List"%>
 <%@page import="uk.ac.city.douglas.varv.domain.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
        <jsp:include page="/header.jsp" />

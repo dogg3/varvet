@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import uk.ac.city.douglas.varv.domain.Boat;
 import uk.ac.city.douglas.varv.domain.BoatVariant;
-import uk.ac.city.douglas.varv.domain.BoatVariantStorage;
+
 import uk.ac.city.douglas.varv.domain.Customer;
 import uk.ac.city.douglas.varv.domain.Engine;
 import uk.ac.city.douglas.varv.domain.Storage;
@@ -40,19 +40,6 @@ public class VarvRepositoryJPQL implements VarvRepository {
     @Override
     public void addEmployee() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-    @Override
-    public void addboat(String brand, String model, float length, float width) {
-    Boat boat = new Boat();
-    boat.setBrand(brand);
-    boat.setModel(model);
-    boat.setLength(length);
-    boat.setWidth(width);
-    
-    em.persist(boat);
-    
     }
 
     @Override
@@ -98,17 +85,53 @@ public class VarvRepositoryJPQL implements VarvRepository {
     
     }
 
-    @Override
-    public List<BoatVariantStorage> getAllBoatVariantStorages() {
-        TypedQuery query = em.createQuery("SELECT bs FROM BoatVariantStorage AS bs",BoatVariantStorage.class);
-        return query.getResultList();   
-    }
+ 
 
     @Override
     public void saveBoatVariant(BoatVariant boatVariant) {
     em.persist(boatVariant);    
     
     }
+
+    @Override
+    public List<Boat> getAllBoatsByBrand(String brand) {
+        TypedQuery query = em.createQuery("SELECT b FROM Boat AS b WHERE b.brand = :brand", Boat.class);
+        query.setParameter("brand", brand);
+        return query.getResultList();
+        
+        
+    }
+
+    @Override
+    public List<Boat> getAllBoatsByModel(String model) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Boat> getAllBoatsById(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<String> getAllBoatBrands() {
+           TypedQuery query = em.createQuery("SELECT DISTINCT b.brand  FROM Boat AS b", String.class);
+        return query.getResultList();   
+        
+    }
+
+    @Override
+    public Boat findBoatById(int id) {
+        return em.find(Boat.class, id);
+    }
+
+    @Override
+    public Customer findCustomerById(int id) {
+         return em.find(Customer.class, id);
+    }
+
+
+
+ 
 
     
 }

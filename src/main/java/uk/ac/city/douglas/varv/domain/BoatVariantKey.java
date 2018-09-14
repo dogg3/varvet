@@ -14,8 +14,7 @@ import java.util.Objects;
 public class BoatVariantKey {
     
     private int customerId;
-    private String boatBrand;
-    private String boatModel;
+   private int boatId;
 
     public int getCustomerId() {
         return customerId;
@@ -25,28 +24,19 @@ public class BoatVariantKey {
         this.customerId = customerId;
     }
 
-    public String getBoatBrand() {
-        return boatBrand;
+    public int getBoatId() {
+        return boatId;
     }
 
-    public void setBoatBrand(String boatBrand) {
-        this.boatBrand = boatBrand;
+    public void setBoatId(int boatId) {
+        this.boatId = boatId;
     }
 
-    public String getBoatModel() {
-        return boatModel;
-    }
-
-    public void setBoatModel(String boatModel) {
-        this.boatModel = boatModel;
-    }
-    
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 31 * hash + this.customerId;
-        hash = 31 * hash + Objects.hashCode(this.boatBrand);
-        hash = 31 * hash + Objects.hashCode(this.boatModel);
+        hash = 67 * hash + this.customerId;
+        hash = 67 * hash + this.boatId;
         return hash;
     }
 
@@ -65,15 +55,18 @@ public class BoatVariantKey {
         if (this.customerId != other.customerId) {
             return false;
         }
-        if (!Objects.equals(this.boatBrand, other.boatBrand)) {
-            return false;
-        }
-        if (!Objects.equals(this.boatModel, other.boatModel)) {
+        if (this.boatId != other.boatId) {
             return false;
         }
         return true;
     }
-    
+
+    @Override
+    public String toString() {
+        return "BoatVariantKey{" + "customerId=" + customerId + ", boatId=" + boatId + '}';
+    }
+
+   
     
     
 }

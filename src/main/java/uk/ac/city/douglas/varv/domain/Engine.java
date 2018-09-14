@@ -25,11 +25,12 @@ public class Engine {
     private String model;
     private int year;
     @Column(name="horse_power")
-    private double horsePower;
+    private float horsePower;
+    private String type;
+    private int cylinder;
+    private String gas;
     
-     @OneToMany(mappedBy="engine")
-    List <BoatVariant> boatVariants;
-    
+
 
     public String getBrand() {
         return brand;
@@ -59,16 +60,37 @@ public class Engine {
         return horsePower;
     }
 
-    public void setHorsePower(double horsePower) {
+    public void setHorsePower(float horsePower) {
         this.horsePower = horsePower;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getCylinder() {
+        return cylinder;
+    }
+
+    public void setCylinder(int cylinder) {
+        this.cylinder = cylinder;
+    }
+
+    public String getGas() {
+        return gas;
+    }
+
+    public void setGas(String gas) {
+        this.gas = gas;
     }
 
     @Override
     public String toString() {
-        return "Engine{" + "brand=" + brand + ", model=" + model + ", year=" + year + ", horsePower=" + horsePower + '}';
+        return "Engine{" + "brand=" + brand + ", model=" + model + ", year=" + year + ", horsePower=" + horsePower + ", type=" + type + ", cylinder=" + cylinder + ", gas=" + gas + '}';
     }
-    
-    
-    
     
 }

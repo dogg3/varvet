@@ -9,7 +9,7 @@ import static java.util.Collections.list;
 import java.util.List;
 import uk.ac.city.douglas.varv.domain.Boat;
 import uk.ac.city.douglas.varv.domain.BoatVariant;
-import uk.ac.city.douglas.varv.domain.BoatVariantStorage;
+
 import uk.ac.city.douglas.varv.domain.Customer;
 import uk.ac.city.douglas.varv.domain.Engine;
 import uk.ac.city.douglas.varv.domain.Storage;
@@ -21,11 +21,19 @@ import uk.ac.city.douglas.varv.domain.Storage;
 public interface VarvRepository {
     
        /*
-    *boat
+    *boatDatabase
     */
-        public List<Boat> getAllBoats();
-    public void addboat(String brand, String model, float length, float width);
+    public List<Boat> getAllBoats();
+    public Boat findBoatById(int id);
     public void saveBoat(Boat boat);
+    
+    public List<Boat> getAllBoatsByBrand(String brand);
+    public List<Boat> getAllBoatsByModel(String model);
+    public List<Boat> getAllBoatsById(int id);
+    public List<String> getAllBoatBrands();
+  
+  
+
     
    
     /*
@@ -35,6 +43,7 @@ public interface VarvRepository {
     public void saveCustomer(Customer customer);
     public void eraseCustomerById(int id);
     public void addEmployee();
+    public Customer findCustomerById(int id);
    
     
        /*
@@ -64,7 +73,7 @@ public interface VarvRepository {
        /*
     *BoatVariantStorages - kundbåtsVinterplats
     */
-    public List<BoatVariantStorage> getAllBoatVariantStorages();
+ 
     
     
     

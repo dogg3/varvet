@@ -29,9 +29,7 @@ public class Storage {
     @Column(name="space_left")
     private float spaceLeft;
     
-    @OneToMany(mappedBy="storage")
-    List <BoatVariantStorage> boatVariantStorages;
-    
+
     
   
 

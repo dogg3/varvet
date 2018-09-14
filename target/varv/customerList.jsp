@@ -11,14 +11,38 @@
 <html>
        <jsp:include page="/header.jsp" />
         <h1>Detta är alla kunder</h1>
+       
+        <table>
+            <thead>
+                <tr>
+                    <th>Namn</th>
+                    <th>Adress</th>
+                    <th>Email</th>
+                    <th>Telefon-nr</th>
+                </tr>
+            </thead>
+        
+        <tbody>  
         <%
             List<Customer> customers = (List<Customer>)request.getAttribute("customers");
             
-for(Customer customer: customers){
-    out.println("<li>"+customer+"</li>");
-}
+   
+               for(Customer customer: customers){
+             
+                out.print("<tr>"); 
+                out.print("<td><a href=findCustomerById.html?id="+customer.getCustomerId()+">"
+                         +customer.getFirstName()+" "+customer.getLastName()+"</td>");
+              
+                out.print("<td>"+customer.getAdress()+" "+ customer.getCity()+"</td>");  
+                out.print("<td>"+customer.getEmail()+"</td>");
+                out.print("<td>"+customer.getPhoneNumber()+"</a></td>");
+                
+             
+               out.print("</tr>");
+            }
             %>
-            
-            
+            </tbody>
+       </table>   
+       
        <jsp:include page="/footer.jsp" />
 </html>

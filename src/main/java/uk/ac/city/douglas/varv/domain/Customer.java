@@ -15,31 +15,34 @@ import javax.persistence.Id;
  *
  * @author douglaslandvik
  */
-
 @Entity
 public class Customer {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="customerId", updatable=false, nullable=false)
+    @Column(name = "customerId", updatable = false, nullable = false)
     private int customerId;
-    @Column(name="first_name")
+    @Column(name = "first_name")
     private String firstName;
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
-    @Column(name="email")
+    @Column(name = "reference")
+    private String reference;
+    @Column(name = "email")
     private String email;
-    @Column(name="phone_number")
+    @Column(name = "phone_number")
     private String phoneNumber;
-   @Column(name="person_nr")
+    @Column(name = "person_nr")
     private Long personNr;
-    @Column(name="adress")
+    @Column(name = "adress")
     private String adress;
-    
-    
-    
-    public Customer(){
-    
+    @Column(name = "city")
+    private String city;
+    @Column(name = "note")
+    private String note;
+
+    public Customer() {
+
     }
 
     public int getCustomerId() {
@@ -98,17 +101,33 @@ public class Customer {
         this.adress = adress;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     @Override
     public String toString() {
-        return "Customer{" + "customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNumber=" + phoneNumber + ", personNr=" + personNr + ", adress=" + adress + '}';
+        return "Customer{" + "customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName + ", reference=" + reference + ", email=" + email + ", phoneNumber=" + phoneNumber + ", personNr=" + personNr + ", adress=" + adress + ", city=" + city + ", note=" + note + '}';
     }
-    
-    
 
-   
-    
-    
-    
-    
-    
 }

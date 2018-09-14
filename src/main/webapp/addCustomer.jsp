@@ -13,10 +13,13 @@
         <form action="addCustomer.html" method="POST">
             <label>Förnamn: <input type="text" name="firstName" /></label><br />
             <label>Efternamn: <input type="text" name="lastName" /></label><br />
-            <label>Person-nr: <input type="text" name="personNr" /></label><br />
+            <label>Person-nr/org-nr: <input type="text" name="personNr" /></label><br />
+            <label>Referens <input type="text" name="referens" /></label><br />
             <label>Adress <input type="text" name="adress" /></label><br />
+            <label>Postnummer<input type="text" name="city" /></label><br />
             <label>Telefon-nr: <input type="text" name="phoneNumber" /></label><br />
             <label>Email: <input type="text" name="email" /></label><br />
+            <label>Note: <input type="text" name="note" /></label><br />
             
   
             <input type="submit" value="Lägg till båt" />

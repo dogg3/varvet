@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
        <jsp:include page="/header.jsp" />
-        <h1>Detta är alla kunder</h1>
+        <h1>Detta är alla motorer</h1>
         <%
         
                      List<Engine> engines = (List<Engine>)request.getAttribute("engines");
