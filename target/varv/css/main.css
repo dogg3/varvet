@@ -365,10 +365,11 @@ iframe {
   border-radius: 21px;
 
   background: #d41872;
-  background: -webkit-linear-gradient(left, #a445b2, #d41872, #fa4299);
-  background: -o-linear-gradient(left, #a445b2, #d41872, #fa4299);
-  background: -moz-linear-gradient(left, #a445b2, #d41872, #fa4299);
-  background: linear-gradient(left, #a445b2, #d41872, #fa4299);
+  background: rgb(109,179,242); /* Old browsers */
+background: -moz-linear-gradient(left, rgba(109,179,242,1) 0%, rgba(84,163,238,1) 34%, rgba(84,163,238,1) 34%, rgba(30,105,222,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, rgba(109,179,242,1) 0%,rgba(84,163,238,1) 34%,rgba(84,163,238,1) 34%,rgba(30,105,222,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, rgba(109,179,242,1) 0%,rgba(84,163,238,1) 34%,rgba(84,163,238,1) 34%,rgba(30,105,222,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', endColorstr='#1e69de',GradientType=1 ); /* IE6-9 */
   position: relative;
   z-index: 1;
 

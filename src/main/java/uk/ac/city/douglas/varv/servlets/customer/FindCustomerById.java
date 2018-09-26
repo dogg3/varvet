@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.city.douglas.varv.servlets.boatDatabase;
+package uk.ac.city.douglas.varv.servlets.customer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,7 +26,8 @@ import uk.ac.city.douglas.varv.domain.Customer;
  * @author douglaslandvik
  */
 
-@WebServlet(value="/findCustomerById.html")
+@WebServlet(value="/customer/findCustomerById.html")
+
 public class FindCustomerById extends HttpServlet {
     
     private VarvRepository vr;
@@ -48,7 +49,7 @@ public class FindCustomerById extends HttpServlet {
     request.setAttribute("customer", customer);
                     
     ServletContext servletContext = getServletContext();
-    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/customerProfile.jsp");
+    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/customer/customerProfile.jsp");
     requestDispatcher.forward(request,response);
     }
     

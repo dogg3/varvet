@@ -22,7 +22,7 @@ import uk.ac.city.douglas.varv.domain.Customer;
  *
  * @author douglaslandvik
  */
-@WebServlet(value="/addCustomer.html")
+@WebServlet(value="/customer/addCustomer.html")
 public class AddCustomer extends HttpServlet {
     
     private VarvRepository vr;
@@ -94,7 +94,7 @@ public class AddCustomer extends HttpServlet {
        
         request.setAttribute("customer", URLEncoder.encode(request.getParameter("customer"),"UTF-8"));
         ServletContext servletContext = getServletContext();
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/customerAdded.jsp");
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/customer/customerAdded.jsp");
         requestDispatcher.forward(request, response);
     }
 }

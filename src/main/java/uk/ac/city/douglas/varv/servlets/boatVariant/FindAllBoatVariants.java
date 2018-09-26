@@ -27,7 +27,7 @@ import uk.ac.city.douglas.varv.domain.BoatVariant;
  * @author douglaslandvik
  */
 
-@WebServlet(value="/findAllBoatVariants.html")
+@WebServlet(value="/boatVariant/findAllBoatVariants.html")
 public class FindAllBoatVariants extends HttpServlet {
     
     private VarvRepository vr;
@@ -47,7 +47,7 @@ public class FindAllBoatVariants extends HttpServlet {
 
     request.setAttribute("boatVariants", boatVariants);
     ServletContext servletContext = getServletContext();
-    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boatVariantList.jsp");
+    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boatVariant/boatVariantList.jsp");
     requestDispatcher.forward(request,response);
     }
     

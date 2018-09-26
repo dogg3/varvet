@@ -24,7 +24,7 @@ import uk.ac.city.douglas.varv.domain.BoatVariant;
  * @author douglaslandvik
  */
 
-@WebServlet(value="/boatVariantAdd.html")
+@WebServlet(value="/boatVariant/boatVariantAdd.html")
 public class AddBoatVariant extends HttpServlet {
     
     private VarvRepository vr;
@@ -90,18 +90,18 @@ public class AddBoatVariant extends HttpServlet {
              catch(Exception e){   
                   errorMessage = "Det gick inte att lägga till i databases, dubbelkolla om kunden inte redan har en sådan båt tillagd";  
                   requestUrl = URLEncoder.encode(errorMessage,"UTF-8");
-                  response.sendRedirect("/varv/boatVariantAdd.html?errorMessage="+requestUrl);
+                  response.sendRedirect("/varv/boatVariant/boatVariantAdd.html?errorMessage="+requestUrl);
                 } 
           
           
             requestUrl = URLEncoder.encode(boatVariant.toString(),"UTF-8");
           
-            response.sendRedirect("/varv/boatVariantAdd.html?boatVariant="+requestUrl);
+            response.sendRedirect("/varv/boatVariant/boatVariantAdd.html?boatVariant="+requestUrl);
             
           }else{
      
            requestUrl = URLEncoder.encode(errorMessage,"UTF-8");
-           response.sendRedirect("/varv/boatVariantAdd.html?errorMessage="+requestUrl);
+           response.sendRedirect("/varv/boatVariant/boatVariantAdd.html?errorMessage="+requestUrl);
         } 
       
     
@@ -120,7 +120,7 @@ public class AddBoatVariant extends HttpServlet {
         }
     
         ServletContext servletContext = getServletContext();
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boatVariantAdded.jsp");
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boatVariant/boatVariantAdded.jsp");
         requestDispatcher.forward(request, response);
     }
     

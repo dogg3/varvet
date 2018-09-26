@@ -22,7 +22,7 @@ import uk.ac.city.douglas.varv.domain.Boat;
  * @author douglaslandvik
  */
 
-@WebServlet(value="/boatAdd.html")
+@WebServlet(value="/varv/boatAdd.html")
 public class AddBoat extends HttpServlet {
     
     private VarvRepository vr;
@@ -63,7 +63,7 @@ public class AddBoat extends HttpServlet {
  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("boat", request.getParameter("boat"));
         ServletContext servletContext = getServletContext();
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boatAdded.jsp");
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boat/boatAdded.jsp");
         requestDispatcher.forward(request, response);
     }
     

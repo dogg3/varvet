@@ -27,7 +27,7 @@ import uk.ac.city.douglas.varv.domain.Engine;
  * @author douglaslandvik
  */
 
-@WebServlet(value="/findAllEngines.html")
+@WebServlet(value="/engine/findAllEngines.html")
 public class FindAllEngines extends HttpServlet {
     
     private VarvRepository vr;
@@ -47,7 +47,7 @@ public class FindAllEngines extends HttpServlet {
 
     request.setAttribute("engines", engines);
     ServletContext servletContext = getServletContext();
-    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/engineList.jsp");
+    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/engine/engineList.jsp");
     requestDispatcher.forward(request,response);
     }
     

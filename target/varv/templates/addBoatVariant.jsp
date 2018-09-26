@@ -10,15 +10,16 @@
 <html>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet">
-        <script src="scripts/ajaxSearchBoat.js"></script>
-         <script src="scripts/ajaxSearchEngine.js"></script>
+        <script src="/varv/scripts/ajaxSearchBoat.js"></script>
+         <script src="/varv/scripts/ajaxSearchEngine.js"></script>
          
   
 
            <script>
                 $(document).ready(function(){
                       var customerId = document.getElementById('profileId').getAttribute('value');
-           
+           var description = $('#description').val();
+            
              $('#form').submit(function (evt) {
             evt.preventDefault();
             addBoatVariant();
@@ -29,7 +30,14 @@
                  var description = $('#description').val();
                   var customerId = document.getElementById('profileId').getAttribute('value');
       
-                
+                //validering av formet, så att båt och år är ifyllt
+                if(boatId == null || year == "" ){
+                     alert("Fyll i båt och år korrekt.\n\
+                    \nOm du inte har året skriv 0.\n\
+                    \nOm du inter har någon beskriving skriv N/A");
+                     
+                     return;
+                 }
                 var param = "boatId="+ boatId + "&engineId="+  engineId + "&year=" + year +"&description=" + description + "&customerId="+customerId    ;
                 
                  var request = new XMLHttpRequest;
@@ -42,7 +50,7 @@
                        console.log("success");
                      } 
                  }
-                request.open("POST", "/varv/boatVariantAdd.html", true);
+                request.open("POST", "/varv/boatVariant/boatVariantAdd.html", true);
                 request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 request.send(param);
                  
@@ -54,6 +62,7 @@
         <form  id="form">
 
             <label>Båt<input type="text" name="boat" /></label><br/>
+            
        
             <div id="result"></div>
        
@@ -72,3 +81,5 @@
       <div id="statusMessage"></div>
 
 </html>
+
+

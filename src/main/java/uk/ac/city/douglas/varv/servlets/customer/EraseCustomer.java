@@ -19,7 +19,7 @@ import uk.ac.city.douglas.varv.domain.Customer;
 
 
 
-@WebServlet(value="/eraseCustomer.html")
+@WebServlet(value="/customer/eraseCustomer.html")
 public class EraseCustomer extends HttpServlet {
     
    private final VarvRepository vr;
@@ -55,7 +55,7 @@ public class EraseCustomer extends HttpServlet {
        
         
         ServletContext servletContext = getServletContext();
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/customerErased.jsp");
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/customer/customerErased.jsp");
         requestDispatcher.forward(request, response);
     }
 

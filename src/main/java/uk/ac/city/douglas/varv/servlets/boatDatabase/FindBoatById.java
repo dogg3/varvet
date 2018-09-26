@@ -58,7 +58,7 @@ public class FindBoatById extends HttpServlet {
     
                     
     ServletContext servletContext = getServletContext();
-    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boatProfile.jsp");
+    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boat/boatProfile.jsp");
     requestDispatcher.forward(request,response);
     }
     

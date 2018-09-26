@@ -162,5 +162,14 @@ public class VarvRepositoryJPQL implements VarvRepository {
         em.remove(engine);
     }
 
+    @Override
+    public List<BoatVariant> findAllBoatVariantByCustomerId(int customerId) {
+    TypedQuery query = em.createQuery("SELECT bv FROM BoatVariant AS bv WHERE bv.customerId = :customerId ", BoatVariant.class);
+        query.setParameter("customerId", customerId);
+     
+        return query.getResultList();
+    
+    }
+
     
 }

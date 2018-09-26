@@ -49,11 +49,11 @@ public class FindAllBoatsByBrand extends HttpServlet {
         ServletContext servletContext = getServletContext();
            RequestDispatcher requestDispatcher;
         if(!shouldUseAjax){
-         requestDispatcher = servletContext.getRequestDispatcher("/allBoatsByBrandResult.jsp");
+         requestDispatcher = servletContext.getRequestDispatcher("/boat/allBoatsByBrandResult.jsp");
         }
         else{
              
-            requestDispatcher = servletContext.getRequestDispatcher("/ajaxSearchBoat.jsp");
+            requestDispatcher = servletContext.getRequestDispatcher("/boat/ajaxSearchBoat.jsp");
         }
         requestDispatcher.forward(request,response);
     }

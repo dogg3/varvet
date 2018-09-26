@@ -57,6 +57,7 @@ public interface VarvRepository {
     */
       public List<BoatVariant> getAllBoatVariants();
      public void saveBoatVariant(BoatVariant boatVariant);
+     public List<BoatVariant> findAllBoatVariantByCustomerId(int customerId);
     
     
       /*

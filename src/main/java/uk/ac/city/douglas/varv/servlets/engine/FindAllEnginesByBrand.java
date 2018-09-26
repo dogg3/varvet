@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.city.douglas.varv.servlets.boatDatabase;
+package uk.ac.city.douglas.varv.servlets.engine;
 
 import java.io.IOException;
 import java.util.List;

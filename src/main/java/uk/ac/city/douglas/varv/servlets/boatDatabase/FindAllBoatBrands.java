@@ -45,7 +45,7 @@ public class FindAllBoatBrands extends HttpServlet {
  
     request.setAttribute("brands", brands);
     ServletContext servletContext = getServletContext();
-    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/allBoatBrands.jsp");
+    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boat/allBoatBrands.jsp");
     requestDispatcher.forward(request,response);
     }
     

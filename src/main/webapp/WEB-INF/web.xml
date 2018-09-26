@@ -23,13 +23,25 @@
     </login-config>
     
     
-    <security-constraint>    
+<security-constraint>    
     <web-resource-collection>
         <web-resource-name>user_pages</web-resource-name>
+     
+       
+        <url-pattern>/customer/*</url-pattern>
+        <url-pattern>/boat/*</url-pattern>
+          <url-pattern>/boatVariant/*</url-pattern>
+        <url-pattern>/engine/*</url-pattern>
+        <url-pattern>/storage/*</url-pattern>
+           <url-pattern>/templates/*</url-pattern>
+        <url-pattern>/templates/*</url-pattern>
+        <url-pattern>/header.jsp</url-pattern>
         <url-pattern>/index.jsp</url-pattern>
-         <url-pattern>/header.jsp</url-pattern>
-         <url-pattern>/findAllEngines.jsp</url-pattern>
-          <url-pattern>/findAllCustomers.html</url-pattern>
+        <url-pattern>/footer.jsp</url-pattern>
+          
+        <url-pattern>/findAllBoatBrands.html</url-pattern>
+        <http-method>POST</http-method>
+          <http-method>GET</http-method>
        </web-resource-collection>
 
     <auth-constraint>
@@ -37,6 +49,6 @@
     </auth-constraint>
 </security-constraint>
                 
-                
+          
                            
 </web-app>

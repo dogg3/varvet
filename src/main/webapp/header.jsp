@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/varv/css/styles.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -26,7 +26,8 @@
         <nav id="sidebar">
             <div class="sidebar-header">
                 <a href="/varv/index.jsp">
-                <h3>Ramsövarvet AB</h3>
+                <h4>Ramsövarvet AB</h4>
+                <h6>Användare: <%=request.getRemoteUser()%></h6>
                 </a>
             </div>
 
@@ -35,13 +36,13 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Båt-databas</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                        <a href="findAllBoats.html">Båtar</a>
+                        <a href="/varv/boat/findAllBoats.html">Båtar</a>
                         </li>
                         <li>
-                           <a  href='findAllEngines.html' class="button">Motorer</a>
+                           <a  href='/varv/engine/findAllEngines.html' class="button">Motorer</a>
                         </li>
                         <li>
-                            <a  href='addEngine.jsp' class="button">Lägg till motor</a>
+                            <a  href='/varv/engine/addEngine.jsp' class="button">Lägg till motor</a>
                         </li>
                     </ul>
                 </li>
@@ -50,17 +51,23 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Kunder</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                          <a href='findAllCustomers.html' class="button">Visa alla kunder</a>
+                          <a href='/varv/customer/findAllCustomers.html' class="button">Visa alla kunder</a>
                         </li>
                         <li>
-                             <a href='addCustomer.jsp' class="button">Lägg till ny kund</a>
+                             <a href='/varv/customer/addCustomer.jsp' class="button">Lägg till ny kund</a>
                         </li>
                         <li>
-                                  <a href='addBoatVariant.jsp' class="button">Lägg till kundbåt</a> 
+                                  <a href='/varv/boatVariant/addBoatVariant.jsp' class="button">Lägg till kundbåt</a> 
                         </li>
                     </ul>
                 </li>
                 
+            </ul>
+ 
+            <ul class="list-unstyled CTAs">
+               <li>
+                    <a href="/varv/logout.html" class="download ">Logga ut</a>
+                </li>
             </ul>
 
            
@@ -96,8 +103,12 @@
                                 <a class="nav-link" href="#">Page</a>
                             </li>
                         </ul>
+                        
                     </div>
+                    
                 </div>
+
             </nav>
             
-       
+
+     

@@ -74,7 +74,7 @@ public class AddEngine extends HttpServlet {
  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("engine", request.getParameter("engine"));
         ServletContext servletContext = getServletContext();
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/engineAdded.jsp");
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/engine/engineAdded.jsp");
         requestDispatcher.forward(request, response);
     }
     
