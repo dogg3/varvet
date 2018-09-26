@@ -35,18 +35,27 @@ public class FindAllBoatsByBrand extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException{
         response.setContentType("text/html");
-      
-           
-       
-       String brand = request.getParameter("brand"); 
         
-      List<Boat> boats = vr.getAllBoatsByBrand(brand);
+       
+           
+        boolean shouldUseAjax = false;
+       String brand = request.getParameter("brand"); 
+       shouldUseAjax = Boolean.parseBoolean(request.getParameter("shouldUseAjax"));
+       List<Boat> boats = vr.getAllBoatsByBrand(brand);
 
-    request.setAttribute("boats", boats);
+        request.setAttribute("boats", boats);
         request.setAttribute("brand", brand);
-   ServletContext servletContext = getServletContext();
-    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/allBoatsByBrandResult.jsp");
-    requestDispatcher.forward(request,response);
+        
+        ServletContext servletContext = getServletContext();
+           RequestDispatcher requestDispatcher;
+        if(!shouldUseAjax){
+         requestDispatcher = servletContext.getRequestDispatcher("/allBoatsByBrandResult.jsp");
+        }
+        else{
+             
+            requestDispatcher = servletContext.getRequestDispatcher("/ajaxSearchBoat.jsp");
+        }
+        requestDispatcher.forward(request,response);
     }
     
 }

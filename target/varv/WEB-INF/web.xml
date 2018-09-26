@@ -9,4 +9,34 @@
             30
         </session-timeout>
     </session-config>
+   
+  
+    
+    
+     <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>varvRealm</realm-name>
+        <form-login-config>
+            <form-login-page>/loginForm.jsp</form-login-page>
+            <form-error-page>/loginError.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    
+    
+    <security-constraint>    
+    <web-resource-collection>
+        <web-resource-name>user_pages</web-resource-name>
+        <url-pattern>/index.jsp</url-pattern>
+         <url-pattern>/header.jsp</url-pattern>
+         <url-pattern>/findAllEngines.jsp</url-pattern>
+          <url-pattern>/findAllCustomers.html</url-pattern>
+       </web-resource-collection>
+
+    <auth-constraint>
+        <role-name>user</role-name>
+    </auth-constraint>
+</security-constraint>
+                
+                
+                           
 </web-app>

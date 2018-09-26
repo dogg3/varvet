@@ -1,40 +1,103 @@
+<!DOCTYPE html>
+<html>
+
 <head>
-	<link rel="stylesheet" type="text/css" href="css/styles.css" />
-        <link rel="stylesheet" type="text/css" href="css/styles.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab" rel="stylesheet">
-        <script src="scripts/script.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Ramsövarvet AB</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
 </head>
 
+<body>
 
-<div class="stickyLeft">
-    <div class="smallLogo">h</div>
-</div>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="/varv/index.jsp">
+                <h3>Ramsövarvet AB</h3>
+                </a>
+            </div>
 
-    <div class="links">
-        <a href='/varv' class="button">Home Page</a>
-        <H4 class="linkRubrik">Båt-databas</h4>
-        <a href='searchAllBoatsByBrand.jsp' class="button">Sök för båt</a>
-        <a href='findAllBoats.html' class="button">Visa alla båtar</a>
-        <a  href='findAllEngines.html' class="button">Engines</a>
-        <a  href='addEngine.jsp' class="button">Lägg till motor</a>
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Båt-databas</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                        <a href="findAllBoats.html">Båtar</a>
+                        </li>
+                        <li>
+                           <a  href='findAllEngines.html' class="button">Motorer</a>
+                        </li>
+                        <li>
+                            <a  href='addEngine.jsp' class="button">Lägg till motor</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                   
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Kunder</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                          <a href='findAllCustomers.html' class="button">Visa alla kunder</a>
+                        </li>
+                        <li>
+                             <a href='addCustomer.jsp' class="button">Lägg till ny kund</a>
+                        </li>
+                        <li>
+                                  <a href='addBoatVariant.jsp' class="button">Lägg till kundbåt</a> 
+                        </li>
+                    </ul>
+                </li>
+                
+            </ul>
 
-        <H4  class="linkRubrik">Kunder</h4>
-        <a href='addCustomer.jsp' class="button">Lägg till ny kund</a>
-        <a href='findAllCustomers.html' class="button">Visa alla kunder</a>
-        <a href='eraseCustomerById.jsp' class="button">Ta bort kund</a>
+           
+        </nav>
 
-        <h5  class="linkRubrik"">Kund-båtar</h5>
-        <a href='addBoatVariant.jsp' class="button">Lägg till kundbåt</a> 
-        <a href='findAllBoatVariants.html' class="button">Kundbåtar</a>
-            <h5 style="margin:4px 15px;">Motorer</h5>
+        <!-- Page Content Holder -->
+        <div id="content">
 
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
 
-        <h4  class="linkRubrik">Förvaring</h4>
-        <a href='findAllStorages.html' class="button">Visa alla förvaringsutrymmen</a>
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
 
-        <a href='findAllBoatVariantStorages.html' class="button">Vinterplats</a>
-
-
-    </div>
-<div class="main">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+       

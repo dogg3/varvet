@@ -64,6 +64,12 @@ public interface VarvRepository {
     */
     
     public List<Engine> getAllEngines();
+    public List<Engine>findEnginesByBrand(String brand);
+    public void addEngine(Engine engine);
+    public void removeEngineById(int id);
+    public Engine findEngineById(int id);
+    
+    
     
        /*
     *engine

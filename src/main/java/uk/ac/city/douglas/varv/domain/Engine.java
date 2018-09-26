@@ -8,6 +8,8 @@ package uk.ac.city.douglas.varv.domain;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.OneToMany;
@@ -16,12 +18,18 @@ import javax.persistence.OneToMany;
  *
  * @author douglaslandvik
  */
-@IdClass(EngineKey.class)
+
 @Entity
 public class Engine {
-    @Id
+    
+    @Id 
+    @Column(name="engine_id",updatable = false, nullable = false)
+    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  
+    private int engineId;
     private String brand;
-    @Id
+ 
     private String model;
     private int year;
     @Column(name="horse_power")
@@ -88,9 +96,18 @@ public class Engine {
         this.gas = gas;
     }
 
+    public int getEngineId() {
+        return engineId;
+    }
+
+    public void setEngineId(int engineId) {
+        this.engineId = engineId;
+    }
+
     @Override
     public String toString() {
-        return "Engine{" + "brand=" + brand + ", model=" + model + ", year=" + year + ", horsePower=" + horsePower + ", type=" + type + ", cylinder=" + cylinder + ", gas=" + gas + '}';
+        return "Engine{" + "engineId=" + engineId + ", brand=" + brand + ", model=" + model + ", year=" + year + ", horsePower=" + horsePower + ", type=" + type + ", cylinder=" + cylinder + ", gas=" + gas + '}';
     }
-    
+
+   
 }

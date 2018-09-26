@@ -29,6 +29,7 @@ public class BoatVariant {
     private int customerId;
     @Id
     private int boatId;
+    
     private int year;
     private String description;
 
@@ -90,8 +91,5 @@ public class BoatVariant {
 
 
   
-
- 
-   
 
 }

@@ -63,6 +63,8 @@ public class AddEngine extends HttpServlet {
 
         engine.setGas(gas);
         
+        vr.addEngine(engine);
+        
         
         response.sendRedirect("/varv/engineAdd.html?engine="+engine.toString());
  

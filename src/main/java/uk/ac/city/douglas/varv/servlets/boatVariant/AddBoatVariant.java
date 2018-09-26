@@ -6,6 +6,7 @@
 package uk.ac.city.douglas.varv.servlets.boatVariant;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -40,35 +41,84 @@ public class AddBoatVariant extends HttpServlet {
             HttpServletResponse response) throws IOException, ServletException {
        
     
-       
-       response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/plain");
+        request.setCharacterEncoding("UTF-8");
+          String requestUrl = null;
+
      
          
-       int customerId = Integer.parseInt(request.getParameter("customerId"));
-       String boatBrand =  request.getParameter("boatBrand");
-       String boatModel = request.getParameter("boatModel");
-       int year = Integer.parseInt(request.getParameter("year"));
+       int engineId = Integer.parseInt(request.getParameter("engineId"));
+       String errorMessage = null;
+      
+       int boatId = 0;
+       int year = 0;
        
-       String description = request.getParameter("description"); 
+     
+        boatId = Integer.parseInt(request.getParameter("boatId"));
+        int customerId = Integer.parseInt(request.getParameter("customerId"));
+    
+        
+        //årtal
+        try {
+        year = Integer.parseInt(request.getParameter("year"));
+        }catch(java.lang.NumberFormatException je){
+           errorMessage="Du skrev in bokstäver i årtal, båten är inte tillagd. Ladda om sidan och försök igen.";
+        }catch(java.lang.NullPointerException e){
+            errorMessage="Fyll i årtal";
+            System.out.println("nullPointer");
+        }catch(Exception e){
+            errorMessage = "Något gick snett, pröva igen";
+        }
+    
+               
+        String description = request.getParameter("description");
     
             
-        BoatVariant boatVariant = new BoatVariant();
-        boatVariant.setCustomerId(customerId);        
+        if(errorMessage==null){
+          BoatVariant boatVariant = new BoatVariant();
+         
+          boatVariant.setBoatId(boatId);
+          boatVariant.setYear(year);
+          boatVariant.setDescription(description);
+          boatVariant.setCustomerId(customerId);
 
-        boatVariant.setYear(year);
     
-        boatVariant.setDescription(description);
-        
-        vr.saveBoatVariant(boatVariant);
-        
-        
-        response.sendRedirect("/varv/boatVariantAdd.html?boatVariant="+boatVariant.toString());
- 
+          try{ 
+              vr.saveBoatVariant(boatVariant);
+            
+              }
+             catch(Exception e){   
+                  errorMessage = "Det gick inte att lägga till i databases, dubbelkolla om kunden inte redan har en sådan båt tillagd";  
+                  requestUrl = URLEncoder.encode(errorMessage,"UTF-8");
+                  response.sendRedirect("/varv/boatVariantAdd.html?errorMessage="+requestUrl);
+                } 
+          
+          
+            requestUrl = URLEncoder.encode(boatVariant.toString(),"UTF-8");
+          
+            response.sendRedirect("/varv/boatVariantAdd.html?boatVariant="+requestUrl);
+            
+          }else{
+     
+           requestUrl = URLEncoder.encode(errorMessage,"UTF-8");
+           response.sendRedirect("/varv/boatVariantAdd.html?errorMessage="+requestUrl);
+        } 
+      
     
     }
     
- public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+ public void doGet(HttpServletRequest request, HttpServletResponse response) 
+         throws ServletException, IOException {
+        
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html");
+     
+        if(request.getParameter("boatVariant")!=null){
         request.setAttribute("boatVariant", request.getParameter("boatVariant"));
+        }else{
+         request.setAttribute("errorMessage", request.getParameter("errorMessage"));
+        }
+    
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boatVariantAdded.jsp");
         requestDispatcher.forward(request, response);

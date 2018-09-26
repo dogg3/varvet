@@ -1,6 +1,5 @@
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/servlets/boatDatabase/FindBoatById.java
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/servlets/customer/EraseCustomer.java
-/Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/domain/EngineKey.java
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/servlets/boatDatabase/FindAllBoatBrands.java
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/domain/BoatVariant.java
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/domain/Customer.java
@@ -16,8 +15,10 @@
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/dao/VarvRepository.java
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/servlets/storage/FindAllStorages.java
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/servlets/boatDatabase/AddBoat.java
+/Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/servlets/engine/FindAllEnginesByBrand.java
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/servlets/customer/AddCustomer.java
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/domain/Boat.java
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/servlets/engine/AddEngine.java
+/Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/servlets/boatDatabase/SearchBoat.java
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/domain/BoatVariantKey.java
 /Users/douglaslandvik/NetBeansProjects/varv/src/main/java/uk/ac/city/douglas/varv/domain/Storage.java

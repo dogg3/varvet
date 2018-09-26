@@ -7,12 +7,11 @@
 <%@page import="java.util.List"%>
 <%@page import="uk.ac.city.douglas.varv.domain.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+
        <jsp:include page="/header.jsp" />
         <h1>Detta är alla kunder</h1>
        
-        <table>
+        <table id="table" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>Namn</th>
@@ -45,4 +44,4 @@
        </table>   
        
        <jsp:include page="/footer.jsp" />
-</html>
+

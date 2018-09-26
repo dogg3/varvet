@@ -31,7 +31,7 @@ public class VarvRepositoryJPQL implements VarvRepository {
 
     @Override
     public List<Boat> getAllBoats() {
-        TypedQuery query = em.createQuery("SELECT b FROM Boat AS b",Boat.class);
+        TypedQuery query = em.createQuery("SELECT b FROM Boat AS b ORDER by b.brand ASC",Boat.class);
         
         return query.getResultList();
         
@@ -50,7 +50,7 @@ public class VarvRepositoryJPQL implements VarvRepository {
 
     @Override
     public List<Customer> getAllCustomers(){ 
-        TypedQuery query = em.createQuery("SELECT c FROM Customer AS c",Customer.class);
+        TypedQuery query = em.createQuery("SELECT c FROM Customer AS c ORDER by c.firstName ASC",Customer.class);
         return query.getResultList();
     }
 
@@ -95,8 +95,9 @@ public class VarvRepositoryJPQL implements VarvRepository {
 
     @Override
     public List<Boat> getAllBoatsByBrand(String brand) {
-        TypedQuery query = em.createQuery("SELECT b FROM Boat AS b WHERE b.brand = :brand", Boat.class);
-        query.setParameter("brand", brand);
+        TypedQuery query = em.createQuery("SELECT b FROM Boat AS b WHERE b.brand LIKE :brand ORDER BY b.brand", Boat.class);
+        query.setParameter("brand", brand+"%");
+     
         return query.getResultList();
         
         
@@ -129,9 +130,37 @@ public class VarvRepositoryJPQL implements VarvRepository {
          return em.find(Customer.class, id);
     }
 
+    @Override
+    public List<Engine> findEnginesByBrand(String brand) {
+         TypedQuery query = em.createQuery("SELECT e FROM Engine AS e WHERE e.brand LIKE :brand ORDER BY e.brand", Engine.class);
+        query.setParameter("brand", brand+"%");
+     
+        return query.getResultList();
+       
+    }
 
+    @Override
+    public void addEngine(Engine engine) {
+            em.persist(engine);
+        
+    }
 
  
+    @Override
+    public Engine findEngineById(int id) {
+          return em.find(Engine.class, id);
+       
+    }
+
+
+
+     
+
+    @Override
+    public void removeEngineById(int id) {
+    Engine engine = em.find(Engine.class, id);
+        em.remove(engine);
+    }
 
     
 }

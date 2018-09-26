@@ -88,8 +88,8 @@ public class AddCustomer extends HttpServlet {
     
  public void doGet(HttpServletRequest request,
         HttpServletResponse response) throws ServletException, IOException {
-       request.setCharacterEncoding("UTF-8");
-       response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html");
         System.out.println(URLEncoder.encode(request.getParameter("customer"),"UTF-8"));
        
         request.setAttribute("customer", URLEncoder.encode(request.getParameter("customer"),"UTF-8"));

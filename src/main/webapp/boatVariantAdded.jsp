@@ -7,12 +7,30 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <jsp:include page="/header.jsp" />
-     <h1>Båt tillagd</h1>
+
+
      <%
+         //Om allt går som det ska
+       if(request.getParameter("boatVariant")!=null){
+        String boat = request.getParameter("boatVariant");
        
-         String boat = request.getParameter("boatVariant");
-         out.println(boat);
-         %>
-      <jsp:include page="/footer.jsp" />
+       %>
+       
+       <h3>Båten är tillagd</h3>
+     
+     
+     <%
+         } //success-end
+
+         //Error
+       if(request.getParameter("errorMessage")!=null){
+        String errorMessage = request.getParameter("errorMessage");
+            out.print("<p>"+errorMessage +"</p>");
+ 
+         } //Error-end
+  
+       
+       %>
+       
+
 </html>
