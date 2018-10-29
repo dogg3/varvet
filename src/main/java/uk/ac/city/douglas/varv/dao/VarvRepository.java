@@ -9,6 +9,7 @@ import static java.util.Collections.list;
 import java.util.List;
 import uk.ac.city.douglas.varv.domain.Boat;
 import uk.ac.city.douglas.varv.domain.BoatVariant;
+import uk.ac.city.douglas.varv.domain.BoatVariantEngine;
 
 import uk.ac.city.douglas.varv.domain.Customer;
 import uk.ac.city.douglas.varv.domain.Engine;
@@ -44,6 +45,7 @@ public interface VarvRepository {
     public void eraseCustomerById(int id);
     public void addEmployee();
     public Customer findCustomerById(int id);
+ 
    
     
        /*
@@ -57,7 +59,9 @@ public interface VarvRepository {
     */
       public List<BoatVariant> getAllBoatVariants();
      public void saveBoatVariant(BoatVariant boatVariant);
+     public void removeBoatVariant(BoatVariant boatVariant);
      public List<BoatVariant> findAllBoatVariantByCustomerId(int customerId);
+     public BoatVariant findAllBoatVariantByCustomerIdAndBoatId(int customerId, int boatId);
     
     
       /*
@@ -73,8 +77,14 @@ public interface VarvRepository {
     
     
        /*
-    *engine
+    *boatVariant engine
     */
+    
+    public void addBoatVariantEngine(BoatVariantEngine boatVariantEngine);
+    public void removeBoatVariantEngineById(BoatVariantEngine boatVariantEngine);
+    public List<BoatVariantEngine> findBoatVariantEngineById(int boatId, int customerId, int engineId);
+    
+   
     
     
        /*

@@ -27,7 +27,7 @@ import uk.ac.city.douglas.varv.domain.BoatVariant;
  * @author douglaslandvik
  */
 
-@WebServlet(value="/findBoatVariantsByCustomerId.html")
+@WebServlet(value="/boatVariants/findBoatVariantsByCustomerId.html")
 public class FindBoatVariantsByCustomerId extends HttpServlet {
     
     private VarvRepository vr;
@@ -41,13 +41,15 @@ public class FindBoatVariantsByCustomerId extends HttpServlet {
             throws IOException, ServletException{
         response.setContentType("text/html");
       
-        int customerId = Integer.parseInt(request.getParameter("customerId"));
+   
+        
+     int customerId = Integer.parseInt(request.getParameter("customerId"));
         
      List<BoatVariant> boatVariants = vr.findAllBoatVariantByCustomerId(customerId);
 
     request.setAttribute("boatVariants", boatVariants);
     ServletContext servletContext = getServletContext();
-    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boatVariant/boatVariantList.jsp");
+    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/templates/customersBoatVariants.jsp");
     requestDispatcher.forward(request,response);
     }
     

@@ -5,7 +5,9 @@
  */
 package uk.ac.city.douglas.varv.servlets.boatVariant;
 
+
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -24,7 +26,7 @@ import uk.ac.city.douglas.varv.domain.BoatVariant;
  * @author douglaslandvik
  */
 
-@WebServlet(value="/boatVariant/boatVariantAdd.html")
+
 public class AddBoatVariant extends HttpServlet {
     
     private VarvRepository vr;
@@ -34,43 +36,30 @@ public class AddBoatVariant extends HttpServlet {
     public AddBoatVariant(VarvRepository vr){
     this.vr = vr;
     
-    }
     
+    }
+
     
     public void doPost(HttpServletRequest request,
             HttpServletResponse response) throws IOException, ServletException {
-       
-    
-        response.setContentType("text/plain");
-        request.setCharacterEncoding("UTF-8");
+   
+            response.setContentType("text/plain");
+          request.setCharacterEncoding("UTF-8");
           String requestUrl = null;
 
      
-         
-       int engineId = Integer.parseInt(request.getParameter("engineId"));
+
+             PrintWriter writer = response.getWriter();
+             
+
+    
        String errorMessage = null;
-      
-       int boatId = 0;
-       int year = 0;
+
        
      
-        boatId = Integer.parseInt(request.getParameter("boatId"));
+        int boatId = Integer.parseInt(request.getParameter("boatId"));
         int customerId = Integer.parseInt(request.getParameter("customerId"));
-    
-        
-        //årtal
-        try {
-        year = Integer.parseInt(request.getParameter("year"));
-        }catch(java.lang.NumberFormatException je){
-           errorMessage="Du skrev in bokstäver i årtal, båten är inte tillagd. Ladda om sidan och försök igen.";
-        }catch(java.lang.NullPointerException e){
-            errorMessage="Fyll i årtal";
-            System.out.println("nullPointer");
-        }catch(Exception e){
-            errorMessage = "Något gick snett, pröva igen";
-        }
-    
-               
+        int year = Integer.parseInt(request.getParameter("year"));
         String description = request.getParameter("description");
     
             
@@ -83,26 +72,26 @@ public class AddBoatVariant extends HttpServlet {
           boatVariant.setCustomerId(customerId);
 
     
-          try{ 
-              vr.saveBoatVariant(boatVariant);
-            
-              }
-             catch(Exception e){   
-                  errorMessage = "Det gick inte att lägga till i databases, dubbelkolla om kunden inte redan har en sådan båt tillagd";  
-                  requestUrl = URLEncoder.encode(errorMessage,"UTF-8");
-                  response.sendRedirect("/varv/boatVariant/boatVariantAdd.html?errorMessage="+requestUrl);
-                } 
+       try{
+         vr.saveBoatVariant(boatVariant);
+         }catch(Exception e){
+            writer.append("A error happend");
+        }
+       
+       
+         requestUrl = URLEncoder.encode(boatVariant.toString(),"UTF-8");
           
-          
-            requestUrl = URLEncoder.encode(boatVariant.toString(),"UTF-8");
-          
-            response.sendRedirect("/varv/boatVariant/boatVariantAdd.html?boatVariant="+requestUrl);
-            
-          }else{
-     
-           requestUrl = URLEncoder.encode(errorMessage,"UTF-8");
-           response.sendRedirect("/varv/boatVariant/boatVariantAdd.html?errorMessage="+requestUrl);
-        } 
+           
+         try{
+        response.sendRedirect("/varv/boatVariant/boatVariantAdd.html?boatVariant="+requestUrl);
+         }catch(Exception e){
+             writer.append(e.toString());
+         }
+        
+         
+         }
+        
+//      
       
     
     }
@@ -112,16 +101,22 @@ public class AddBoatVariant extends HttpServlet {
         
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
+       PrintWriter writer = response.getWriter();
      
-        if(request.getParameter("boatVariant")!=null){
+   
         request.setAttribute("boatVariant", request.getParameter("boatVariant"));
-        }else{
-         request.setAttribute("errorMessage", request.getParameter("errorMessage"));
-        }
+      
     
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/boatVariant/boatVariantAdded.jsp");
+        
+        try{
         requestDispatcher.forward(request, response);
+        }
+        catch(Exception e){
+            System.out.println("An error occyre when trying to forward ");
+            
+        }
     }
     
      

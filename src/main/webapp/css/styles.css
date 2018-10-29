@@ -8,7 +8,7 @@
 
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
     background: #fafafa;
 }
 
@@ -21,7 +21,7 @@ p {
 }
 
 a, a:hover, a:focus {
-    color: inherit;
+    color: inherit !important;
     text-decoration: none;
     transition: all 0.3s;
 }
@@ -147,6 +147,7 @@ a.article, a.article:hover {
 
 
 
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -192,6 +193,27 @@ a.article, a.article:hover {
 }
 
 
+#boatVariants {
+    display: flex;
+    justify-content:space-around;
+    flex-direction: row;
+    max-width: 80vw;
+    flex-wrap: wrap;
+   align-items:center;
+}
+
+#boatVariantCard {
+margin-bottom: 10px;
+
+}
+#boatVariantCard .text-white{
+    background:#607D8B;
+}
+
+#boatVariantHeader{
+    color:white;
+}
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -222,6 +244,10 @@ a.article, a.article:hover {
     }
     #sidebarCollapse.active span:last-of-type {
         transform: rotate(-45deg) translate(1px, -1px);
+    }
+    #boatVariants {
+
+    flex-direction: column;
     }
 
 }

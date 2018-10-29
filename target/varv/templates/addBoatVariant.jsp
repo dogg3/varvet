@@ -16,6 +16,8 @@
   
 
            <script>
+               
+               
                 $(document).ready(function(){
                       var customerId = document.getElementById('profileId').getAttribute('value');
            var description = $('#description').val();
@@ -45,10 +47,15 @@
 
                  request.onreadystatechange = function() {
                      if(this.readyState == 4 && this.status == 200){
+                       console.log(this.readyState);
+                        console.log(this.status);
                        document.getElementById("statusMessage").innerHTML = this.responseText;
                         document.getElementById("form").style.display = "none";
                        console.log("success");
+                       refreshBoatVaraintsListOnProfile();
                      } 
+                      console.log(this.readyState);
+                        console.log(this.status);
                  }
                 request.open("POST", "/varv/boatVariant/boatVariantAdd.html", true);
                 request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');

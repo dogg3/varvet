@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import uk.ac.city.douglas.varv.domain.Boat;
 import uk.ac.city.douglas.varv.domain.BoatVariant;
+import uk.ac.city.douglas.varv.domain.BoatVariantEngine;
 
 import uk.ac.city.douglas.varv.domain.Customer;
 import uk.ac.city.douglas.varv.domain.Engine;
@@ -169,6 +170,46 @@ public class VarvRepositoryJPQL implements VarvRepository {
      
         return query.getResultList();
     
+    }
+    
+    
+    //nya jävlar
+
+    @Override
+    public void addBoatVariantEngine(BoatVariantEngine boatVariantEngine) {
+        em.persist(boatVariantEngine);
+       
+    }
+
+    @Override
+    public void removeBoatVariantEngineById(BoatVariantEngine boatVariantEngine)  {
+       em.remove(boatVariantEngine);
+    }
+
+    @Override
+    public List<BoatVariantEngine> findBoatVariantEngineById(int boatId, int customerId, int engineId) {
+        TypedQuery query = em.createQuery("SELECT bve FROM BoatVariantEngine AS bve WHERE bve.customerId = :customerId AND bve.boatId = :boatId AND bve.engineId = :engineId ", BoatVariantEngine.class);
+        query.setParameter("customerId", customerId);
+        query.setParameter("boatId", boatId);
+        query.setParameter("engineId", engineId);
+     
+        return query.getResultList();
+    
+    }
+
+    @Override
+    public BoatVariant findAllBoatVariantByCustomerIdAndBoatId(int customerId, int boatId) {
+    TypedQuery query = em.createQuery("SELECT bv FROM BoatVariant AS bv WHERE bve.customerId = :customerId AND bve.boatId = :boatId", BoatVariant.class);
+        query.setParameter("customerId", customerId);
+        query.setParameter("boatId", boatId);
+     
+     
+        return (BoatVariant) query.getSingleResult();
+    }
+
+    @Override
+    public void removeBoatVariant(BoatVariant boatVariant) {
+        em.remove(boatVariant);
     }
 
     

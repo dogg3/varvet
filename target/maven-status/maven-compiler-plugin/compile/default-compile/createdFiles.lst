@@ -1,6 +1,8 @@
+uk/ac/city/douglas/varv/domain/BoatVariantEngineKey.class
 uk/ac/city/douglas/varv/servlets/engine/FindAllEnginesByBrand.class
 uk/ac/city/douglas/varv/servlets/boatDatabase/FindAllBoatBrands.class
 uk/ac/city/douglas/varv/servlets/boatDatabase/LogOut.class
+uk/ac/city/douglas/varv/servlets/boatVariantEngine/AddBoatVariantEngine.class
 uk/ac/city/douglas/varv/domain/Engine_.class
 uk/ac/city/douglas/varv/servlets/boatVariant/FindAllBoatVariants.class
 uk/ac/city/douglas/varv/servlets/engine/AddEngine.class
@@ -9,6 +11,7 @@ uk/ac/city/douglas/varv/domain/BoatVariantKey.class
 uk/ac/city/douglas/varv/servlets/boatDatabase/AddBoat.class
 uk/ac/city/douglas/varv/domain/Boat.class
 uk/ac/city/douglas/varv/servlets/engine/FindAllEngines.class
+uk/ac/city/douglas/varv/domain/BoatVariantEngine_.class
 uk/ac/city/douglas/varv/domain/Boat_.class
 uk/ac/city/douglas/varv/domain/Engine.class
 uk/ac/city/douglas/varv/dao/VarvRepository.class
@@ -27,4 +30,5 @@ uk/ac/city/douglas/varv/servlets/boatVariant/FindBoatVariantsByCustomerId.class
 uk/ac/city/douglas/varv/servlets/boatVariant/AddBoatVariant.class
 uk/ac/city/douglas/varv/domain/Storage_.class
 uk/ac/city/douglas/varv/dao/VarvRepositoryJPQL.class
+uk/ac/city/douglas/varv/domain/BoatVariantEngine.class
 uk/ac/city/douglas/varv/domain/Customer.class

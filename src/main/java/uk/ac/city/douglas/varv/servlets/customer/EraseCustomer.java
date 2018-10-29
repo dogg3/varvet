@@ -40,10 +40,7 @@ public class EraseCustomer extends HttpServlet {
          
      
         int id = Integer.parseInt(request.getParameter("id"));
-     vr.eraseCustomerById(id);
-              
-     
-   
+        vr.eraseCustomerById(id);
         response.sendRedirect("/varv/eraseCustomer.html");
  
     

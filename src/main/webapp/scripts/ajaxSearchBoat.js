@@ -27,11 +27,11 @@
              var request=new XMLHttpRequest();
           
             request.onreadystatechange = function() {
-               console.log(this.status);
+       
             if (this.readyState == 4 && this.status == 200) {
-           if( this.responseText){
+        
             document.getElementById("result").innerHTML = this.responseText;
-            }
+      
             }
             };
               request.open("GET", "/varv/findAllBoatsByBrand.html?brand="+boatBrand+"&shouldUseAjax="+shouldUseAjax, true);

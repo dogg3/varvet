@@ -22,7 +22,7 @@
             <label>Note: <input type="text" name="note" /></label><br />
             
   
-            <input type="submit" value="Lägg till båt" />
+            <input type="submit" value="Lägg till kund" />
         </form>
       <jsp:include page="/footer.jsp" />
 </html>
