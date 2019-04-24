@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.util.List"%>
-<%@page import="uk.ac.city.douglas.varv.domain.BoatVariant"%>
+<%@page import="uk.ac.city.douglas.varv.Job.domain.BoatVariant"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
     <%

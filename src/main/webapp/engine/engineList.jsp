@@ -4,7 +4,7 @@
     Author     : douglaslandvik
 --%>
 
-<%@page import="uk.ac.city.douglas.varv.domain.Engine"%>
+<%@page import="uk.ac.city.douglas.varv.Job.domain.Engine"%>
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

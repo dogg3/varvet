@@ -5,8 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 
-    <title>Ramsövarvet AB</title>
+
+
+    <title>Ramsï¿½varvet AB</title>
     
     <!---- jQuery --->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -16,7 +19,7 @@
     
     
     <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     
     <!-- Our Custom CSS -->
@@ -35,23 +38,23 @@
         <nav id="sidebar">
             <div class="sidebar-header">
                 <a href="/varv/index.jsp">
-                <h4>Ramsövarvet AB</h4>
-                <h6>Användare: <%=request.getRemoteUser()%></h6>
+                <h4>Ramsï¿½varvet AB</h4>
+                <h6>Anvï¿½ndare: <%=request.getRemoteUser()%></h6>
                 </a>
             </div>
 
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Båt-databas</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bï¿½t-databas</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                        <a href="/varv/boat/findAllBoats.html">Båtar</a>
+                        <a href="/varv/boat/findAllBoats.html">Bï¿½tar</a>
                         </li>
                         <li>
                            <a  href='/varv/engine/findAllEngines.html' class="button">Motorer</a>
                         </li>
                         <li>
-                            <a  href='/varv/engine/addEngine.jsp' class="button">Lägg till motor</a>
+                            <a  href='/varv/engine/addEngine.jsp' class="button">Lï¿½gg till motor</a>
                         </li>
                     </ul>
                 </li>
@@ -63,10 +66,10 @@
                           <a href='/varv/customer/findAllCustomers.html' class="button">Visa alla kunder</a>
                         </li>
                         <li>
-                             <a href='/varv/customer/addCustomer.jsp' class="button">Lägg till ny kund</a>
+                             <a href='/varv/customer/addCustomer.jsp' class="button">Lï¿½gg till ny kund</a>
                         </li>
                         <li>
-                                  <a href='/varv/boatVariant/addBoatVariant.jsp' class="button">Lägg till kundbåt</a> 
+                                  <a href='/varv/boatVariant/addBoatVariant.jsp' class="button">Lï¿½gg till kundbï¿½t</a> 
                         </li>
                     </ul>
                 </li>

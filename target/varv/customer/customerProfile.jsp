@@ -6,7 +6,7 @@
 
 
 
-<%@page import="uk.ac.city.douglas.varv.domain.Customer"%>
+<%@page import="uk.ac.city.douglas.varv.Account.domain.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/varv/css/customer.css">
 
@@ -53,7 +53,7 @@
                     "<div id='profileId' value='" + customer.getCustomerId() + "' class='col-md-12 profile'>"
                     + "<h2 id='mellanRubrik'>Profil</h2>"
                     + "<li>Namn:  " + customer.getFirstName() + " " + customer.getLastName() + "</li>"
-                    + "<li>Adress:  " + customer.getAdress() + " " + customer.getCity() + "</li>"
+                    + "<li>Address:  " + customer.getAdress() + " " + customer.getCity() + "</li>"
                     + "<li>Email:  " + customer.getEmail() + "</li>"
                     + "<li>Telefon:  " + customer.getPhoneNumber() + "</li>"
                     + "<li>Person/org-nr: " + customer.getPersonNr() + "</li>"
