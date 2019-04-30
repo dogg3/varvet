@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
 import uk.ac.city.douglas.varv.Account.dao.AccountDAO;
 import uk.ac.city.douglas.varv.Account.dao.AccountDAOInterface;
 import uk.ac.city.douglas.varv.Account.domain.Customer;
@@ -40,8 +41,6 @@ public class FindAllCustomers extends HttpServlet {
             throws IOException, ServletException {
 
         List<Customer> customers = vr.getAllCustomers();
-    
-
         request.setAttribute("customers", customers);
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/admin/customer/index.jsp");

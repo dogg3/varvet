@@ -219,6 +219,9 @@
         });
     }
 
+
+
+    //add new customer form
     var form = $("#example-advanced-form").show();
 
 
@@ -309,6 +312,81 @@
             confirm: {
                 equalTo: "#password-2"
             }
+        }
+    });
+
+
+
+    //editForm
+    var editCustomerForm = $("#example-advanced-form-editCustomer").show();
+
+
+
+    editCustomerForm.steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        transitionEffect: "slideLeft",
+        labels: {
+            current: "Aktuellt steg:",
+            pagination: "Pagination",
+            finish: "Submit",
+            next: "Nasta",
+            previous: "Forra",
+            loading: "Laddar ..."
+        },
+        onStepChanging: function (event, currentIndex, newIndex)
+        {
+            // Allways allow previous action even if the current form is not valid!
+            if (currentIndex > newIndex)
+            {
+                return true;
+            }
+            // Needed in some cases if the user went back (clean up)
+            if (currentIndex < newIndex)
+            {
+                // To remove error styles
+                editCustomerForm.find(".body:eq(" + newIndex + ") label.error").remove();
+                editCustomerForm.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+            }
+            editCustomerForm.validate().settings.ignore = ":disabled,:hidden";
+            return editCustomerForm.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex)
+        {
+
+        },
+        onFinishing: function (event, currentIndex)
+        {
+            editCustomerForm.validate().settings.ignore = ":disabled";
+            return editCustomerForm.valid();
+        },
+        onFinished: function (event, currentIndex)
+        {
+            var data = JSON.stringify($(editCustomerForm).serializeArray());
+            console.log(data);
+
+            $.ajax({
+                url:'/varv/admin/customer/editCustomer.html',
+                type:'POST',
+                contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                dataType:'json',
+                data: {formData:data
+                },
+                success: function(data,status,xhr){
+                    var statusMessage;
+                    if(data.status=="success"){
+                        statusMessage = data.customer;
+                    }
+                    $('#modalContent').html(statusMessage + " har andrats");
+                    $('#editEmployeeModal').modal('toggle');
+                    // $('#successAddEmployee').modal('toggle');
+                    $('#example-advanced-form-editCustomer').resetForm();
+                    form.steps("previous");
+                },
+                error: function(jqXhr, textStatus,errorMessage){
+                    console.log(errorMessage);
+                }
+            })
         }
     });
 

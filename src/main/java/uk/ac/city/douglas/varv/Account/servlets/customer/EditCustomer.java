@@ -18,6 +18,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import uk.ac.city.douglas.varv.Account.dao.AccountDAO;
 import uk.ac.city.douglas.varv.Account.dao.AccountDAOInterface;
 import uk.ac.city.douglas.varv.Account.domain.Customer;
@@ -40,20 +44,39 @@ public class EditCustomer extends HttpServlet {
 
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws IOException, ServletException {
-
-        response.setContentType("text/plain");
+        response.setContentType("application/x-www-form-urlencoded");
         request.setCharacterEncoding("UTF-8");
 
+        System.out.println("reeusts"+ request.getParameterNames());
+        Customer customer = new Customer();
         HashMap<String,String> customerData = new HashMap<>();
-        Enumeration<String> parameters = request.getParameterNames();
-        while(parameters.hasMoreElements()){
-            customerData.put(parameters.nextElement(),request.getParameter(parameters.nextElement()));
+        String json = request.getParameter("formData");
+        System.out.println(json);
+        JSONParser jsonParser = new JSONParser();
+        try {
+            JSONArray jsonArray = (JSONArray) jsonParser.parse(json);
+
+            for(Object obj: jsonArray){
+                JSONObject jsonObject = (JSONObject) obj;
+                String name = (String) jsonObject.get("name");
+                String value = (String) jsonObject.get("value");
+                customerData.put(name,value);
+                System.out.println("name is :" +name + " value is "+ value);
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
+
+        //adding the customer
         vr.editCustomer(customerData);
-        Customer customer = vr.findCustomerById(Integer.parseInt(customerData.get("customerId")));
-        String url = URLEncoder.encode(customer.getFirstName(), "UTF-8");
-        response.sendRedirect("/admin/customer/index.html" + url);
+
+        //sending back the status message to the client
+        JSONObject returnMessage = new JSONObject();
+        returnMessage.put("status","success");
+        returnMessage.put("customer", customer.getFirstName() + " " +customer.getLastName() );
+        response.getWriter().print(returnMessage.toJSONString());
     }
 
 }

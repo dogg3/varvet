@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.lang.reflect.Method" %>
 <%@ page import="java.util.LinkedList" %>
+<%@ page import="org.json.simple.JSONObject" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -303,21 +304,33 @@
 
                 for(Customer customer: customers){
 
+                    JSONObject customerJSon = new JSONObject();
+                    customerJSon.put("customerId", customer.getCustomerID());
+                    customerJSon.put("firstName", customer.getFirstName());
+                    customerJSon.put("lastName", customer.getLastName());
+                    customerJSon.put("tel", customer.getTel());
+                    customerJSon.put("email", customer.getEmail());
+                    customerJSon.put("discountPlan", customer.getDiscountPlan());
+                    customerJSon.put("postCode", customer.getPostCode());
+                    customerJSon.put("street", customer.getStreet());
+                    customerJSon.put("identifier", customer.getIdentifier());
+                    customerJSon.put("town", customer.getTown());
 
-                    out.print("<tr id='customer-tr-id' data-value=" +
-                            customer.getCustomerID()+">");
-                    out.print("<td><a href=/varv/customer/findCustomerById.html?id="+customer.getCustomerID()+">"+
-                            customer.getCustomerID()+"</td>");
 
-                    out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");
+                    out.print("<tr id='customer-tr-id' data-value='" + customer.getCustomerID()+"'>");
+                    out.print("<td>"+ customer.getCustomerID()+"</td>");
+                    out.print("<td id=customer-tr-name data-value='"+customer.getFirstName()+" " +customer.getLastName()+"'>" +customer.getFirstName()+" "+ customer.getLastName()+"</td>");
                     out.print("<td>"+customer.getTel()+"</td>");
                     out.print("<td>"+customer.getEmail()+"</td>");
                     out.print("<td>"+customer.getDiscountPlan()+"</td>");
                     out.print("<td>"+customer.getPostCode()
-                            + "<br>"+customer.getStreet() +"</td>");
+                            + "<br>"+customer.getStreet() + "<br>" +
+                           customer.getTown()+ "</td>");
                     out.print("<td>"+customer.getIdentifier()+"</a></td>");
 
-                    out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+                    out.print("<td>" +
+                            "<a data-value='" +customerJSon +"' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                            "<a data-value='" + customer.getCustomerID()+"' data-name='" + customer.getFirstName()+" "+customer.getLastName() +"'id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
 
 
 
@@ -374,41 +387,47 @@
 
             <!-- add Modal HTML -->
 
+                <!--get all info from current customer -->
+
             <!-- Edit Modal HTML -->
-            <div id="editEmployeeModal" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form>
+                <div id="editEmployeeModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Andra kund-data</h4>
+                                <h4 class="modal-title">Andra kund</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
+                            <form id="example-advanced-form-editCustomer" action="#">
+                                <h3>Info</h3>
+                                <fieldset>
+                                    <input id="editCustomerId" name="customerId" style="visibility: hidden" >
+                                    <label>Fornamn</label>
+                                    <input name="firstName" type="text" class="form-control" >
+                                    <label>Efternamn</label>
+                                    <input name="lastName" type="text" class="form-control" >
+                                    <label>Smeknamn</label>
+                                    <input name="identifier" type="text" class="form-control" >
+                                    <label>Telefon</label>
+                                    <input name="tel" type="text" class="form-control" >
                                     <label>Email</label>
-                                    <input type="email" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    <textarea class="form-control" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
-                                <input type="submit" class="btn btn-info" value="Spara">
-                            </div>
-                        </form>
+                                    <input name="email" type="email" class="form-control" >
+                                    <label>Rabatt</label>
+                                    <input name="discountPlan" type="text" class="form-control" >
+                                </fieldset>
+
+                                <h3>Adress</h3>
+                                <fieldset>
+                                    <label>Gata</label>
+                                    <input name="street" type="text" class="form-control" >
+                                    <label>Stad</label>
+                                    <input name="town" type="text" class="form-control" >
+                                    <label>Post-nummer</label>
+                                    <input name="postCode" type="text" class="form-control" >
+                                </fieldset>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
             <!-- Delete Modal HTML -->
             <div id="deleteEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
@@ -419,8 +438,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
-                                <p>Ar du saker att du vill radera denna kund?</p>
-                                <p class="text-warning"><small>Detta gar inte att angra</small></p>
+                                <p id="statusAreSure"></p>
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
@@ -441,6 +459,17 @@
                         </div>
                     </div>
                 </div>
+                <div id="successEraseCustomer" class="modal fade">
+                    <div class="modal-dialog">
+                        <div id="modalContentErase" class="modal-content">
+
+                                <div class="modal-footer">
+
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
         </div>
         <!-- page title area end -->
         </div>
@@ -680,19 +709,61 @@
         });
     });
 
+    //pop up are u sure button and passing the customer ID
+    $('.delete').click(function(e){
+        e.preventDefault();
+        var id = $(this).data('value');
+        var name = $(this).data('name');
+        var deleteModal =  $('#deleteEmployeeModal');
+        deleteModal.find('#eraseCustomer').data("value",id);
+        deleteModal.find('#eraseCustomer').data("name",name);
+        deleteModal.find('#statusAreSure').html("Ar du saker pa add radera <span style='color:black'>" + name + "</span>");
+        deleteModal.modal("toggle");
+        console.log($(this).data('name'));
+    })
 
+    ///erase customer send request to sevlert
 
     $('#eraseCustomer').click(function(e){
         e.preventDefault();
 
-      var id =  $('#customer-tr-id').data('value');
+      var id =  $(this).data('value');
+      var name = $(this).data('name');
         $.ajax({
             url:'/varv/admin/customer/addCustomer.html?id='+id,
             type: 'DELETE',
             success: function (data, status, xhr) {
-                console.log(data);
+
+                $('#deleteEmployeeModal').modal("toggle");
+                $('#modalContentErase').html(name+ " ar raderad.");
+
+                $('#successEraseCustomer').modal("toggle");
             }
         })
+    })
+
+
+
+    //edit toogle and fill placeholder
+    $('.edit').click(function(e){
+        e.preventDefault();
+
+        //Set placeholders
+        var customer = $(this).data('value');
+        var form =$('#editEmployeeModal').find('form');
+        var allInput = form.find('input');
+        $('#editCustomerId').val(customer['customerId']);
+
+        allInput.each(function(index,value){
+            var attr = $(value).attr('name');
+            var placeholder = customer[attr];
+            $(value).attr("placeholder", placeholder);
+
+        });
+
+        //show the form modal
+        $('#editEmployeeModal').modal("toggle");
+
     })
 </script>
 </body>

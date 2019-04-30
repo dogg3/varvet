@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uk.ac.city.douglas.varv.Account.servlets.customer;
 
+package uk.ac.city.douglas.varv.Account.servlets.customer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -21,7 +21,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.asayama.gwt.jsni.client.JSON;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -72,7 +71,7 @@ public class AddCustomer extends HttpServlet {
         }
 
 
-  //adding the customer
+        //adding the customer
        customer.populate(customerData);
        vr.addCustomer(customer);
 
@@ -84,16 +83,6 @@ public class AddCustomer extends HttpServlet {
 
     }
 
-    public void doGet(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html");
-
-        request.setAttribute("customer", URLEncoder.encode(request.getParameter("customer"), "UTF-8"));
-        ServletContext servletContext = getServletContext();
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/varv/customer/customerAdded.jsp");
-        requestDispatcher.forward(request, response);
-    }
 
     public void doDelete(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
         req.setCharacterEncoding("UTF-8");
@@ -104,4 +93,9 @@ public class AddCustomer extends HttpServlet {
     }
 
 
-}
+
+
+    }
+
+
+
