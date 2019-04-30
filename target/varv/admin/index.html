@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>srtdash - ICO Dashboard</title>
+    <title>Ramsovarvet</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon-boat.png">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/themify-icons.css">
@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
+
+
+
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -45,30 +48,43 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li><a href="/varv/admin/customer/index.html"><i class="ti-dashboard"></i> <span>Kunder</span></a></li>
-                            <li><a href="maps.html"><i class="ti-map-alt"></i> <span>Anstallda</span></a></li>
-                            <li><a href="invoice.html"><i class="ti-dashboard"></i> <span>Batar</span></a></li>
-
+                            <li><a href="/varv/admin/customer/index.html"><i class="ti-target"></i> <span>Kunder</span></a></li>
+                            <li><a href="/varv/admin/staff/index.jsp"><i class="ti-user-alt"></i> <span>Anstallda</span></a></li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-receipt"></i>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-anchor"></i>
+                                    <span>Batar</span></a>
+                                <ul class="collapse">
+                                    <li><a href="/varv/admin/boat/index.jsp">Bat-databas</a></li>
+                                    <li><a href="/varv/admin/boat/customerBoats.jsp">Kundbatar</a></li>
+                                    <li><a href="/varv/admin/boat/vinterplats.jsp">Vinterplats</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-money"></i>
                                     <span>Ekonomi</span></a>
                                 <ul class="collapse">
-                                    <li><a href="404.html">Alla fakturor</a></li>
-                                    <li><a href="403.html">Generera faktura</a></li>
-                                    <li><a href="500.html">Generera rapporter</a></li>
+                                    <li><a href="/varv/admin/finance/invoices.jsp">Faktura-vy</a></li>
+                                    <li><a href="/varv/admin/finance/generateInvoice.jsp">Generera faktura</a></li>
+                                    <li><a href="/varv/admin/finance/generateReports.jsp">Generera rapporter</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-receipt"></i>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-hummer"></i>
                                     <span>Jobb</span></a>
                                 <ul class="collapse">
-                                    <li><a href="404.html">Alla jobb</a></li>
-                                    <li><a href="403.html">Arbetsuppgifter</a></li>
+                                    <li><a href="/varv/admin/job/index.jsp">Jobb-vy</a></li>
+                                    <li><a href="/varv/admin/job/task.jsp">Arbetsuppgifter</a></li>
                                 </ul>
                             </li>
-
-                            <li><a href="invoice.html"><i class="ti-dashboard"></i> <span>Lager</span></a></li>
-                            <li><a href="invoice.html"><i class="ti-dashboard"></i> <span>Sakerhet</span></a></li>
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-archive"></i>
+                                    <span>Lager</span></a>
+                                <ul class="collapse">
+                                    <li><a href="/varv/admin/inventory/index.jsp">Lager-vy</a></li>
+                                    <li><a href="/varv/admin/inventory/resellers.jsp">Aterforsaljare</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/varv/admin/secure/index.jsp"><i class="ti-dashboard"></i> <span>Sakerhet</span></a></li>
 
                         </ul>
                     </nav>
@@ -90,7 +106,7 @@
                         </div>
                         <div class="search-box pull-left">
                             <form action="#">
-                                <input type="text" name="search" placeholder="Search..." required>
+                                <input type="text" name="search" placeholder="Sok..." required>
                                 <i class="ti-search"></i>
                             </form>
                         </div>
@@ -812,6 +828,8 @@
     <script src="assets/js/metisMenu.min.js"></script>
     <script src="assets/js/jquery.slimscroll.min.js"></script>
     <script src="assets/js/jquery.slicknav.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>s
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
     <!-- start chart js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>

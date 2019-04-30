@@ -1,18 +1,16 @@
 package uk.ac.city.douglas.varv.Account.domain;
 
 import javax.persistence.*;
+import java.lang.reflect.Field;
+import java.util.HashMap;
 
 @Entity
 public class Customer {
 
     @Id
-    @Column(name = "CustID")
+    @Column(name="CustID",updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int customerID;
-
-    @ManyToOne
-    @JoinColumn(name="AddressPostCode", insertable = false, updatable = false)
-    Address address;
-
     @Column(name = "FirstName")
     private String firstName;
     @Column(name = "LastName")
@@ -23,13 +21,78 @@ public class Customer {
     private String email;
     @Column(name = "DiscountPlan")
     private String discountPlan;
-    @Column(name = "BuildingNo")
-    private String buildingNo;
+    @Column(name="Town")
+    private String town;
+    @Column(name="Street")
+    private String street;
+    @Column(name="PostCode")
+    private String postCode;
     @Column(name="Identifier")
     private String identifier;
 
+
+
     public Customer() {
 
+    }
+
+    public HashMap<String, String> populate(HashMap<String, String> customerData) {
+        HashMap<String, String> error = new HashMap<>();
+        if(customerData.get("firstName") != null) {
+            this.setFirstName(customerData.get("firstName"));
+        }else {
+            this.setFirstName("");
+            error.put("firstName","firstName");
+        }
+        if(customerData.get("lastName") != null) {
+            this.setLastName(customerData.get("lastName"));
+        }else {
+            this.setLastName("");
+            error.put("lastName","lastName");
+        }
+        if(customerData.get("tel") != null) {
+            this.setTel(customerData.get("tel"));
+        }else {
+            this.setTel("");
+            error.put("tel","tel");
+        }
+        if(customerData.get("email") != null) {
+            this.setEmail(customerData.get("email"));
+        }else {
+            this.setEmail("");
+            error.put("email","email");
+        } 
+        if(customerData.get("discountPlan") != null) {
+            this.setDiscountPlan(customerData.get("discountPlan"));
+        }else {
+            this.setDiscountPlan("");
+            error.put("discountPlan", "discountPlan");
+        }
+        if(customerData.get("identifier") != null) {
+            this.setIdentifier(customerData.get("identifier"));
+        }else {
+            this.setIdentifier("");
+            error.put("identifier","identifier");
+        }
+        if(customerData.get("street") != null) {
+            this.setStreet(customerData.get("street"));
+        }else {
+            this.setStreet("");
+            error.put("street","street");
+        }
+        if(customerData.get("town") != null) {
+            this.setTown(customerData.get("town"));
+        }else {
+            this.setTown("");
+            error.put("town","town");
+        } if(customerData.get("postCode") != null) {
+            this.setPostCode(customerData.get("postCode"));
+        }else {
+            this.setPostCode("");
+            error.put("postCode","postCode");
+        }
+
+        return error;
     }
 
     public int getCustomerID() {
@@ -80,12 +143,28 @@ public class Customer {
         this.discountPlan = discountPlan;
     }
 
-    public String getBuildingNo() {
-        return buildingNo;
+    public String getTown() {
+        return town;
     }
 
-    public void setBuildingNo(String buildingNo) {
-        this.buildingNo = buildingNo;
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     public String getIdentifier() {
@@ -96,25 +175,18 @@ public class Customer {
         this.identifier = identifier;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
     @Override
     public String toString() {
         return "Customer{" +
                 "customerID=" + customerID +
-                ", address=" + address +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", tel='" + tel + '\'' +
                 ", email='" + email + '\'' +
                 ", discountPlan='" + discountPlan + '\'' +
-                ", buildingNo='" + buildingNo + '\'' +
+                ", town='" + town + '\'' +
+                ", street='" + street + '\'' +
+                ", postCode='" + postCode + '\'' +
                 ", identifier='" + identifier + '\'' +
                 '}';
     }

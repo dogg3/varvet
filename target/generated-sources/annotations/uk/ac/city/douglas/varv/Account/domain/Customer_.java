@@ -3,20 +3,20 @@ package uk.ac.city.douglas.varv.Account.domain;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-import uk.ac.city.douglas.varv.Account.domain.Address;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-04-24T20:52:39")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-04-30T10:39:15")
 @StaticMetamodel(Customer.class)
 public class Customer_ { 
 
     public static volatile SingularAttribute<Customer, String> firstName;
     public static volatile SingularAttribute<Customer, String> lastName;
     public static volatile SingularAttribute<Customer, String> identifier;
-    public static volatile SingularAttribute<Customer, Address> address;
+    public static volatile SingularAttribute<Customer, String> town;
     public static volatile SingularAttribute<Customer, String> discountPlan;
-    public static volatile SingularAttribute<Customer, String> buildingNo;
+    public static volatile SingularAttribute<Customer, String> street;
     public static volatile SingularAttribute<Customer, Integer> customerID;
     public static volatile SingularAttribute<Customer, String> tel;
+    public static volatile SingularAttribute<Customer, String> postCode;
     public static volatile SingularAttribute<Customer, String> email;
 
 }

@@ -16,8 +16,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import uk.ac.city.douglas.varv.Account.dao.AccountDAO;
+import uk.ac.city.douglas.varv.Account.dao.AccountDAOInterface;
 import uk.ac.city.douglas.varv.Account.domain.Customer;
-import uk.ac.city.douglas.varv.Job.dao.VarvRepository;
+import uk.ac.city.douglas.varv.Job.dao.JobDAO;
 
 /**
  *
@@ -26,10 +28,10 @@ import uk.ac.city.douglas.varv.Job.dao.VarvRepository;
 @WebServlet(value = "/admin/customer/index.html")
 public class FindAllCustomers extends HttpServlet {
 
-    private VarvRepository vr;
+    private AccountDAOInterface vr;
 
     @Inject
-    public FindAllCustomers(VarvRepository vr) {
+    public FindAllCustomers(AccountDAOInterface vr) {
         this.vr = vr;
 
     }
@@ -38,9 +40,7 @@ public class FindAllCustomers extends HttpServlet {
             throws IOException, ServletException {
 
         List<Customer> customers = vr.getAllCustomers();
-        customers.forEach(customer ->
-                System.out.println("this is cusotmer" + customer)
-                );
+    
 
         request.setAttribute("customers", customers);
         ServletContext servletContext = getServletContext();

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import uk.ac.city.douglas.varv.Job.dao.VarvRepository;
+import uk.ac.city.douglas.varv.Job.dao.JobDAO;
 
 /**
  *
@@ -23,10 +23,10 @@ import uk.ac.city.douglas.varv.Job.dao.VarvRepository;
 @WebServlet(value="/logout.html")
 public class LogOut extends HttpServlet {
     
-    private VarvRepository vr;
+    private JobDAO vr;
     
     @Inject
-    public LogOut(VarvRepository vr){
+    public LogOut(JobDAO vr){
         this.vr =  vr;
     }
     

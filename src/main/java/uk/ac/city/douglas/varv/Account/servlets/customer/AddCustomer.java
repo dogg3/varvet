@@ -6,8 +6,14 @@
 package uk.ac.city.douglas.varv.Account.servlets.customer;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Enumeration;
+import java.util.HashMap;
 import javax.inject.Inject;
+import javax.json.Json;
+import javax.json.JsonObject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -16,20 +22,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.asayama.gwt.jsni.client.JSON;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import uk.ac.city.douglas.varv.Account.dao.AccountDAO;
+import uk.ac.city.douglas.varv.Account.dao.AccountDAOInterface;
 import uk.ac.city.douglas.varv.Account.domain.Customer;
-import uk.ac.city.douglas.varv.Job.dao.VarvRepository;
+import uk.ac.city.douglas.varv.Job.dao.JobDAO;
 
 /**
  *
  * @author douglaslandvik
  */
-@WebServlet(value = "/customer/addCustomer.html")
+@WebServlet(value = "/admin/customer/addCustomer.html")
 public class AddCustomer extends HttpServlet {
 
-    private VarvRepository vr;
+    private AccountDAOInterface vr;
 
     @Inject
-    public AddCustomer(VarvRepository vr) {
+    public AddCustomer(AccountDAOInterface vr) {
         this.vr = vr;
 
     }
@@ -37,34 +50,37 @@ public class AddCustomer extends HttpServlet {
     public void doPost(HttpServletRequest request,
             HttpServletResponse response) throws IOException, ServletException {
 
-        response.setContentType("text/plain");
+        response.setContentType("application/x-www-form-urlencoded");
         request.setCharacterEncoding("UTF-8");
-
         Customer customer = new Customer();
+        HashMap<String,String> customerData = new HashMap<>();
+        String json = request.getParameter("formData");
+        JSONParser jsonParser = new JSONParser();
+        try {
+            JSONArray jsonArray = (JSONArray) jsonParser.parse(json);
 
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        Long personNr = null;
-        if (request.getParameter("personNr") == " ") {
-            personNr = Long.parseLong(request.getParameter("personNr"));
+           for(Object obj: jsonArray){
+                JSONObject jsonObject = (JSONObject) obj;
+                String name = (String) jsonObject.get("name");
+                String value = (String) jsonObject.get("value");
+                customerData.put(name,value);
+                System.out.println("name is :" +name + " value is "+ value);
+           }
 
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-        String adress = request.getParameter("adress");
-        String phoneNumber = request.getParameter("phoneNumber");
-        String email = request.getParameter("email");
-        String city = request.getParameter("city");
-        String reference = request.getParameter("referens");
-        String note = request.getParameter("note");
 
-        customer.setFirstName(firstName);
-        customer.setLastName(lastName);
-        customer.setEmail(email);
 
-//        vr.saveCustomer(customer);
+  //adding the customer
+       customer.populate(customerData);
+       vr.addCustomer(customer);
 
-        String url = URLEncoder.encode(customer.getFirstName(), "UTF-8");
-
-        response.sendRedirect("/varv/addCustomer.html?customer=" + url);
+       //sending back the status message to the client
+        JSONObject returnMessage = new JSONObject();
+        returnMessage.put("status","success");
+        returnMessage.put("customer", customer.getFirstName() + " " +customer.getLastName() );
+        response.getWriter().print(returnMessage.toJSONString());
 
     }
 
@@ -75,7 +91,17 @@ public class AddCustomer extends HttpServlet {
 
         request.setAttribute("customer", URLEncoder.encode(request.getParameter("customer"), "UTF-8"));
         ServletContext servletContext = getServletContext();
-        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/customer/customerAdded.jsp");
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/varv/customer/customerAdded.jsp");
         requestDispatcher.forward(request, response);
     }
+
+    public void doDelete(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
+        req.setCharacterEncoding("UTF-8");
+        String id = req.getParameter("id");
+        resp.setContentType("text/plain");
+        System.out.println(id);
+        vr.eraseCustomerById(Integer.parseInt(id));
+    }
+
+
 }

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import uk.ac.city.douglas.varv.Account.domain.Customer;
-import uk.ac.city.douglas.varv.Job.dao.VarvRepository;
+import uk.ac.city.douglas.varv.Job.dao.JobDAO;
 
 /**
  *
@@ -27,10 +27,10 @@ import uk.ac.city.douglas.varv.Job.dao.VarvRepository;
 
 public class FindCustomerById extends HttpServlet {
     
-    private VarvRepository vr;
+    private JobDAO vr;
     
     @Inject
-    public FindCustomerById(VarvRepository vr){
+    public FindCustomerById(JobDAO vr){
         this.vr =  vr;
     }
     

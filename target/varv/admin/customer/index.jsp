@@ -1,5 +1,7 @@
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.lang.reflect.Method" %>
+<%@ page import="java.util.LinkedList" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -8,7 +10,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Ramsovarvet AB</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="/varv/admin/assets/images/icon/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="/varv/admin/assets/images/icon/favicon-boat.png">
     <link rel="stylesheet" href="/varv/admin/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/themify-icons.css">
@@ -21,13 +23,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <!-- others css -->
     <link rel="stylesheet" href="/varv/admin/assets/css/typography.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/default-css.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/styles.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/responsive.css">
+    <link rel="stylesheet" href="/varv/admin/assets/css/step-jq.css">
     <!-- modernizr css -->
     <script src="/varv/admin/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
@@ -43,50 +45,53 @@
     <!-- sidebar menu area start -->
     <div class="sidebar-menu">
         <div class="sidebar-header">
-            <div class="logo">
-                <h2 style="color:white">Ramsovarvet</h2>
-            </div>
+            <a href="/varv/admin/index.html">
+                <div class="logo">
+                    <h2 style="color:white">Ramsovarvet</h2>
+                </div>
+            </a>
         </div>
         <div class="main-menu">
             <div class="menu-inner">
                 <nav>
                     <ul class="metismenu" id="menu">
-                        <li><a href="/varv/admin/customer/index.html"><i class="ti-dashboard"></i> <span>Kunder</span></a></li>
-                        <li><a href="maps.html"><i class="ti-map-alt"></i> <span>Anstallda</span></a></li>
+                        <li><a href="/varv/admin/customer/index.html"><i class="ti-target"></i> <span>Kunder</span></a></li>
+                        <li><a href="/varv/admin/staff/index.jsp"><i class="ti-user-alt"></i> <span>Anstallda</span></a></li>
                         <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-receipt"></i>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-anchor"></i>
                                 <span>Batar</span></a>
                             <ul class="collapse">
-                                <li><a href="404.html">Bat-databas</a></li>
-                                <li><a href="403.html">Vinterplats</a></li>
+                                <li><a href="/varv/admin/boat/index.jsp">Bat-databas</a></li>
+                                <li><a href="/varv/admin/boat/customerBoats.jsp">Kundbatar</a></li>
+                                <li><a href="/varv/admin/boat/vinterplats.jsp">Vinterplats</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-receipt"></i>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-money"></i>
                                 <span>Ekonomi</span></a>
                             <ul class="collapse">
-                                <li><a href="404.html">Faktura-vy</a></li>
-                                <li><a href="403.html">Generera faktura</a></li>
-                                <li><a href="500.html">Generera rapporter</a></li>
+                                <li><a href="/varv/admin/finance/invoices.jsp">Faktura-vy</a></li>
+                                <li><a href="/varv/admin/finance/generateInvoice.jsp">Generera faktura</a></li>
+                                <li><a href="/varv/admin/finance/generateReports.jsp">Generera rapporter</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-receipt"></i>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-hummer"></i>
                                 <span>Jobb</span></a>
                             <ul class="collapse">
-                                <li><a href="404.html">Jobb-vy</a></li>
-                                <li><a href="403.html">Arbetsuppgifter</a></li>
+                                <li><a href="/varv/admin/job/index.jsp">Jobb-vy</a></li>
+                                <li><a href="/varv/admin/job/task.jsp">Arbetsuppgifter</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-receipt"></i>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="ti-archive"></i>
                                 <span>Lager</span></a>
                             <ul class="collapse">
-                                <li><a href="404.html">Lager-vy</a></li>
-                                <li><a href="403.html">Aterforsaljare</a></li>
+                                <li><a href="/varv/admin/inventory/index.jsp">Lager-vy</a></li>
+                                <li><a href="/varv/admin/inventory/resellers.jsp">Aterforsaljare</a></li>
                             </ul>
                         </li>
-                        <li><a href="invoice.html"><i class="ti-dashboard"></i> <span>Sakerhet</span></a></li>
+                        <li><a href="/varv/admin/secure/index.jsp"><i class="ti-dashboard"></i> <span>Sakerhet</span></a></li>
 
                     </ul>
                 </nav>
@@ -108,7 +113,7 @@
                     </div>
                     <div class="search-box pull-left">
                         <form action="#">
-                            <input type="text" name="search" placeholder="Search..." required>
+                            <input type="text" name="search" placeholder="Sok..." required>
                             <i class="ti-search"></i>
                         </form>
                     </div>
@@ -272,13 +277,13 @@
                         <div class="col-sm-6">
                             <h2>Hantera <b>kunder</b></h2>
                         </div>
-                        <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny kund</span></a>
+                        <div  class="col-sm-6">
+                            <a href="#addEmployeeNew" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny kund</span></a>
                         </div>
                     </div>
                 </div>
                 <div class="table-responsive">
-                <table class="table table-striped table-hover">
+                <table id="table1" class="table table-striped table-hover">
                     <thead>
                     <tr>
                         <th>Kund-ID</th>
@@ -292,14 +297,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+
                             <%
                 List<Customer> customers = (List<Customer>)request.getAttribute("customers");
 
-
                 for(Customer customer: customers){
 
-                    out.print("<tr>");
+
+                    out.print("<tr id='customer-tr-id' data-value=" +
+                            customer.getCustomerID()+">");
                     out.print("<td><a href=/varv/customer/findCustomerById.html?id="+customer.getCustomerID()+">"+
                             customer.getCustomerID()+"</td>");
 
@@ -307,8 +313,8 @@
                     out.print("<td>"+customer.getTel()+"</td>");
                     out.print("<td>"+customer.getEmail()+"</td>");
                     out.print("<td>"+customer.getDiscountPlan()+"</td>");
-                    out.print("<td>"+customer.getAddress().getPostCode()
-                            + "<br>"+customer.getAddress().getStreet() +"</td>");
+                    out.print("<td>"+customer.getPostCode()
+                            + "<br>"+customer.getStreet() +"</td>");
                     out.print("<td>"+customer.getIdentifier()+"</a></td>");
 
                     out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
@@ -318,46 +324,56 @@
                     out.print("</tr>");
                 }
             %>
-                    <tr/>
+
                     </tbody>
                 </table>
                 <div/>
             </div>
-            <!-- Edit Modal HTML -->
-            <div id="addEmployeeModal" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form>
-                            <div class="modal-header">
-                                <h4 class="modal-title">Ny kund</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label>Namn</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Address</label>
-                                    <textarea class="form-control" required></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-success" value="Add">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+
+                <!--add employee moda -->
+
+                <div id="addEmployeeNew" class="modal fade">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h4 class="modal-title">Ny kund</h4>
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          </div>
+                          <form id="example-advanced-form" action="#">
+                              <h3>Info</h3>
+                              <fieldset>
+                                  <label>Fornamn</label>
+                                  <input name="firstName" type="text" class="form-control" required>
+                                  <label>Efternamn</label>
+                                  <input name="lastName" type="text" class="form-control" required>
+                                  <label>Smeknamn</label>
+                                  <input name="identifier" type="text" class="form-control" required>
+                                  <label>Telefon</label>
+                                  <input name="tel" type="text" class="form-control" required>
+                                  <label>Email</label>
+                                  <input name="email" type="email" class="form-control" required>
+                                  <label>Rabatt</label>
+                                  <input name="discountPlan" type="text" class="form-control" required>
+                              </fieldset>
+
+                              <h3>Adress</h3>
+                              <fieldset>
+                                  <label>Gata</label>
+                                  <input name="street" type="text" class="form-control" required>
+                                  <label>Stad</label>
+                                  <input name="town" type="text" class="form-control" required>
+                                  <label>Post-nummer</label>
+                                  <input name="postCode" type="text" class="form-control" required>
+                              </fieldset>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+
+                <!--end-->
+
+            <!-- add Modal HTML -->
+
             <!-- Edit Modal HTML -->
             <div id="editEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
@@ -408,12 +424,23 @@
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
-                                <input type="submit" class="btn btn-danger" value="Radera">
+                                <input id="eraseCustomer" type="submit" class="btn btn-danger" value="Radera">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+
+                <div id="successAddEmployee" class="modal fade">
+                    <div class="modal-dialog">
+                        <div id="modalContent" class="modal-content">
+
+                                <div class="modal-footer">
+
+                                </div>
+                        </div>
+                    </div>
+                </div>
         </div>
         <!-- page title area end -->
         </div>
@@ -608,14 +635,21 @@
 <!-- offset area end -->
 <!-- jquery latest version -->
 <script src="/varv/admin/assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="/varv/admin/assets/js/vendor/jquery.steps.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
 <!-- bootstrap 4 js -->
 <script src="/varv/admin/assets/js/popper.min.js"></script>
 <script src="/varv/admin/assets/js/bootstrap.min.js"></script>
+
 <script src="/varv/admin/assets/js/owl.carousel.min.js"></script>
 <script src="/varv/admin/assets/js/metisMenu.min.js"></script>
 <script src="/varv/admin/assets/js/jquery.slimscroll.min.js"></script>
 <script src="/varv/admin/assets/js/jquery.slicknav.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
+<!--jquery form plygin -->
+<script src="/varv/admin/assets/js/jquery.form.min.js"></script>
 <!-- start chart js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <!-- start highcharts js -->
@@ -633,6 +667,34 @@
 <!-- others plugins -->
 <script src="/varv/admin/assets/js/plugins.js"></script>
 <script src="/varv/admin/assets/js/scripts.js"></script>
+<script src="/varv/admin/assets/js/jq-modal.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#table1').DataTable();
+        $("#example-basic").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            autoFocus: true
+        });
+    });
+
+
+
+    $('#eraseCustomer').click(function(e){
+        e.preventDefault();
+
+      var id =  $('#customer-tr-id').data('value');
+        $.ajax({
+            url:'/varv/admin/customer/addCustomer.html?id='+id,
+            type: 'DELETE',
+            success: function (data, status, xhr) {
+                console.log(data);
+            }
+        })
+    })
+</script>
 </body>
 
 </html>

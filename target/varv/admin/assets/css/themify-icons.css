@@ -455,10 +455,10 @@
 .ti-menu-alt:before {
 	content: "\e68f";
 }
-.ti-map:before {
+.ti-user:before {
 	content: "\e690";
 }
-.ti-map-alt:before {
+.ti-user-alt:before {
 	content: "\e691";
 }
 .ti-loop:before {
@@ -683,7 +683,7 @@
 .ti-ruler-alt-2:before {
 	content: "\e6db";
 }
-.ti-receipt:before {
+.ti-money:before {
 	content: "\e6dc";
 }
 .ti-pin2:before {
