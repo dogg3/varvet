@@ -14206,3 +14206,764 @@ java.lang.NullPointerException
 [2019-06-10T14:45:29.393+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_set_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=29 _ThreadName=http-listener-1(2)] [timeMillis: 1560170729393] [levelValue: 800] [[
   RAR7115: Unable to set ClientInfo for connection]]
 
+[2019-06-10T14:48:19.983+0200] [glassfish 5.0] [INFO] [NCLS-CORE-00092] [javax.enterprise.system.core] [tid: _ThreadID=154 _ThreadName=Thread-42] [timeMillis: 1560170899983] [levelValue: 800] [[
+  Server shutdown initiated]]
+
+[2019-06-10T14:48:19.993+0200] [glassfish 5.0] [INFO] [NCLS-BOOTSTRAP-00028] [javax.enterprise.bootstrap] [tid: _ThreadID=154 _ThreadName=Thread-42] [timeMillis: 1560170899993] [levelValue: 800] [[
+  Unregistered com.sun.enterprise.glassfish.bootstrap.osgi.EmbeddedOSGiGlassFishImpl@153f66e7 from service registry.]]
+
+[2019-06-10T14:48:19.993+0200] [glassfish 5.0] [INFO] [] [] [tid: _ThreadID=154 _ThreadName=Thread-8] [timeMillis: 1560170899993] [levelValue: 800] [[
+  FileMonitoring shutdown]]
+
+[2019-06-10T14:48:20.000+0200] [glassfish 5.0] [INFO] [NCLS-JMX-00002] [javax.enterprise.system.jmx] [tid: _ThreadID=154 _ThreadName=Thread-42] [timeMillis: 1560170900000] [levelValue: 800] [[
+  JMXStartupService: Stopped JMXConnectorServer: null]]
+
+[2019-06-10T14:48:20.000+0200] [glassfish 5.0] [INFO] [NCLS-JMX-00001] [javax.enterprise.system.jmx] [tid: _ThreadID=154 _ThreadName=Thread-42] [timeMillis: 1560170900000] [levelValue: 800] [[
+  JMXStartupService and JMXConnectors have been shut down.]]
+
+[2019-06-10T14:48:20.063+0200] [glassfish 5.0] [INFO] [] [org.eclipse.persistence.session./file:/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/applications/varv/WEB-INF/classes/_ramsoPU.connection] [tid: _ThreadID=160 _ThreadName=RunLevelControllerThread-1560170900014] [timeMillis: 1560170900063] [levelValue: 800] [[
+  /file:/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/applications/varv/WEB-INF/classes/_ramsoPU logout successful]]
+
+[2019-06-10T14:48:20.081+0200] [glassfish 5.0] [SEVERE] [] [javax.enterprise.web.util] [tid: _ThreadID=160 _ThreadName=RunLevelControllerThread-1560170900014] [timeMillis: 1560170900081] [levelValue: 1000] [[
+  The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@273fe011]) and a value of type [org.glassfish.admingui.theme.AdminguiThemeContext] (value [org.glassfish.admingui.theme.AdminguiThemeContext@4a976650]) but failed to remove it when the web application was stopped. Threads are going to be renewed over time to try and avoid a probable memory leak.]]
+
+[2019-06-10T14:48:20.082+0200] [glassfish 5.0] [SEVERE] [] [javax.enterprise.web.util] [tid: _ThreadID=160 _ThreadName=RunLevelControllerThread-1560170900014] [timeMillis: 1560170900082] [levelValue: 1000] [[
+  The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@273fe011]) and a value of type [org.glassfish.admingui.theme.AdminguiThemeContext] (value [org.glassfish.admingui.theme.AdminguiThemeContext@4a976650]) but failed to remove it when the web application was stopped. Threads are going to be renewed over time to try and avoid a probable memory leak.]]
+
+[2019-06-10T14:48:20.082+0200] [glassfish 5.0] [SEVERE] [] [javax.enterprise.web.util] [tid: _ThreadID=160 _ThreadName=RunLevelControllerThread-1560170900014] [timeMillis: 1560170900082] [levelValue: 1000] [[
+  The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@273fe011]) and a value of type [org.glassfish.admingui.theme.AdminguiThemeContext] (value [org.glassfish.admingui.theme.AdminguiThemeContext@4a976650]) but failed to remove it when the web application was stopped. Threads are going to be renewed over time to try and avoid a probable memory leak.]]
+
+[2019-06-10T14:48:20.082+0200] [glassfish 5.0] [SEVERE] [] [javax.enterprise.web.util] [tid: _ThreadID=160 _ThreadName=RunLevelControllerThread-1560170900014] [timeMillis: 1560170900082] [levelValue: 1000] [[
+  The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@273fe011]) and a value of type [org.glassfish.admingui.theme.AdminguiThemeContext] (value [org.glassfish.admingui.theme.AdminguiThemeContext@4a976650]) but failed to remove it when the web application was stopped. Threads are going to be renewed over time to try and avoid a probable memory leak.]]
+
+[2019-06-10T14:48:20.082+0200] [glassfish 5.0] [SEVERE] [] [javax.enterprise.web.util] [tid: _ThreadID=160 _ThreadName=RunLevelControllerThread-1560170900014] [timeMillis: 1560170900082] [levelValue: 1000] [[
+  The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@273fe011]) and a value of type [org.glassfish.admingui.theme.AdminguiThemeContext] (value [org.glassfish.admingui.theme.AdminguiThemeContext@4a976650]) but failed to remove it when the web application was stopped. Threads are going to be renewed over time to try and avoid a probable memory leak.]]
+
+[2019-06-10T14:48:20.082+0200] [glassfish 5.0] [SEVERE] [] [javax.enterprise.web.util] [tid: _ThreadID=160 _ThreadName=RunLevelControllerThread-1560170900014] [timeMillis: 1560170900082] [levelValue: 1000] [[
+  The web application [] created a ThreadLocal with key of type [java.lang.ThreadLocal] (value [java.lang.ThreadLocal@273fe011]) and a value of type [org.glassfish.admingui.theme.AdminguiThemeContext] (value [org.glassfish.admingui.theme.AdminguiThemeContext@4a976650]) but failed to remove it when the web application was stopped. Threads are going to be renewed over time to try and avoid a probable memory leak.]]
+
+[2019-06-10T14:48:20.101+0200] [glassfish 5.0] [INFO] [] [] [tid: _ThreadID=161 _ThreadName=Thread-8] [timeMillis: 1560170900101] [levelValue: 800] [[
+  JdbcRuntimeExtension,  getAllSystemRAResourcesAndPools = [GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource]]]
+
+[2019-06-10T14:48:20.105+0200] [glassfish 5.0] [INFO] [ra.stop-successful] [javax.enterprise.resource.resourceadapter.com.sun.enterprise.connectors.service] [tid: _ThreadID=163 _ThreadName=Thread-50] [timeMillis: 1560170900105] [levelValue: 800] [[
+  RAR7094: __cp_jdbc_ra shutdown successful.]]
+
+[2019-06-10T14:48:53.455+0200] [] [INFO] [NCLS-GFLAUNCHER-00005] [javax.enterprise.launcher] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1560170933455] [levelValue: 800] [[
+  JVM invocation command line:
+/usr/lib/jvm/java-8-oracle/bin/java
+-cp
+/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/modules/glassfish.jar
+-XX:+UnlockDiagnosticVMOptions
+-XX:NewRatio=2
+-XX:MaxPermSize=192m
+-Xmx512m
+-javaagent:/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/lib/monitor/flashlight-agent.jar
+-client
+-Djavax.xml.accessExternalSchema=all
+-Djavax.net.ssl.trustStore=/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/config/cacerts.jks
+-Djdk.tls.rejectClientInitiatedRenegotiation=true
+-Djdk.corba.allowOutputStreamSubclass=true
+-Dfelix.fileinstall.dir=/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/modules/autostart/
+-Dorg.glassfish.additionalOSGiBundlesToStart=org.apache.felix.shell,org.apache.felix.gogo.runtime,org.apache.felix.gogo.shell,org.apache.felix.gogo.command,org.apache.felix.shell.remote,org.apache.felix.fileinstall
+-Dcom.sun.aas.installRoot=/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish
+-Dfelix.fileinstall.poll=5000
+-Djava.endorsed.dirs=/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/modules/endorsed:/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/lib/endorsed
+-Djava.security.policy=/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/config/server.policy
+-Dosgi.shell.telnet.maxconn=1
+-Dfelix.fileinstall.bundles.startTransient=true
+-Dcom.sun.enterprise.config.config_environment_factory_class=com.sun.enterprise.config.serverbeans.AppserverConfigEnvironmentFactory
+-Dfelix.fileinstall.log.level=2
+-Djavax.net.ssl.keyStore=/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/config/keystore.jks
+-Djava.security.auth.login.config=/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/config/login.conf
+-Dfelix.fileinstall.disableConfigSave=false
+-Dfelix.fileinstall.bundles.new.start=true
+-Dcom.sun.aas.instanceRoot=/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1
+-Dosgi.shell.telnet.port=6666
+-Dgosh.args=--nointeractive
+-Dcom.sun.enterprise.security.httpsOutboundKeyAlias=s1as
+-Dosgi.shell.telnet.ip=127.0.0.1
+-DANTLR_USE_DIRECT_CLASS_LOADING=true
+-Djava.awt.headless=true
+-Dcom.ctc.wstx.returnNullForDefaultNamespace=true
+-Djava.ext.dirs=/usr/lib/jvm/java-8-oracle/lib/ext:/usr/lib/jvm/java-8-oracle/jre/lib/ext:/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/lib/ext
+-Djdbc.drivers=org.apache.derby.jdbc.ClientDriver
+-Djava.library.path=/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/lib:/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+com.sun.enterprise.glassfish.bootstrap.ASMain
+-upgrade
+false
+-domaindir
+/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1
+-read-stdin
+true
+-asadmin-args
+--host,,,localhost,,,--port,,,4848,,,--secure=false,,,--terse=false,,,--echo=false,,,--interactive=false,,,start-domain,,,--verbose=false,,,--watchdog=false,,,--debug=false,,,--domaindir,,,/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains,,,domain1
+-domainname
+domain1
+-instancename
+server
+-type
+DAS
+-verbose
+false
+-asadmin-classpath
+/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/lib/client/appserver-cli.jar
+-debug
+false
+-asadmin-classname
+com.sun.enterprise.admin.cli.AdminMain]]
+
+[2019-06-10T14:48:54.949+0200] [glassfish 5.0] [INFO] [NCLS-LOGGING-00009] [javax.enterprise.logging] [tid: _ThreadID=17 _ThreadName=RunLevelControllerThread-1560170934866] [timeMillis: 1560170934949] [levelValue: 800] [[
+  Running GlassFish Version: GlassFish Server Open Source Edition  5.0  (build 25)]]
+
+[2019-06-10T14:48:54.950+0200] [glassfish 5.0] [INFO] [NCLS-LOGGING-00010] [javax.enterprise.logging] [tid: _ThreadID=17 _ThreadName=RunLevelControllerThread-1560170934866] [timeMillis: 1560170934950] [levelValue: 800] [[
+  Server log file is using Formatter class: com.sun.enterprise.server.logging.ODLLogFormatter]]
+
+[2019-06-10T14:48:55.022+0200] [glassfish 5.0] [INFO] [NCLS-SECURITY-01115] [javax.enterprise.system.core.security] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170935022] [levelValue: 800] [[
+  Realm [admin-realm] of classtype [com.sun.enterprise.security.auth.realm.file.FileRealm] successfully created.]]
+
+[2019-06-10T14:48:55.023+0200] [glassfish 5.0] [INFO] [NCLS-SECURITY-01115] [javax.enterprise.system.core.security] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170935023] [levelValue: 800] [[
+  Realm [file] of classtype [com.sun.enterprise.security.auth.realm.file.FileRealm] successfully created.]]
+
+[2019-06-10T14:48:55.026+0200] [glassfish 5.0] [INFO] [NCLS-SECURITY-01115] [javax.enterprise.system.core.security] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170935026] [levelValue: 800] [[
+  Realm [certificate] of classtype [com.sun.enterprise.security.auth.realm.certificate.CertificateRealm] successfully created.]]
+
+[2019-06-10T14:48:55.239+0200] [glassfish 5.0] [INFO] [SEC-SVCS-00100] [javax.enterprise.security.services] [tid: _ThreadID=17 _ThreadName=RunLevelControllerThread-1560170934866] [timeMillis: 1560170935239] [levelValue: 800] [[
+  Authorization Service has successfully initialized.]]
+
+[2019-06-10T14:48:55.241+0200] [glassfish 5.0] [INFO] [] [org.glassfish.ha.store.spi.BackingStoreFactoryRegistry] [tid: _ThreadID=19 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170935241] [levelValue: 800] [[
+  Registered org.glassfish.ha.store.adapter.cache.ShoalBackingStoreProxy for persistence-type = replicated in BackingStoreFactoryRegistry]]
+
+[2019-06-10T14:48:55.326+0200] [glassfish 5.0] [INFO] [jts.startup_msg] [javax.enterprise.system.core.transaction.com.sun.jts.CosTransactions] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170935326] [levelValue: 800] [[
+  JTS5014: Recoverable JTS instance, serverId = [100]]]
+
+[2019-06-10T14:48:55.349+0200] [glassfish 5.0] [INFO] [NCLS-CORE-00087] [javax.enterprise.system.core] [tid: _ThreadID=16 _ThreadName=RunLevelControllerThread-1560170934865] [timeMillis: 1560170935349] [levelValue: 800] [[
+  Grizzly Framework 2.4.1 started in: 15ms - bound to [/0.0.0.0:8080]]]
+
+[2019-06-10T14:48:55.370+0200] [glassfish 5.0] [INFO] [NCLS-CORE-00087] [javax.enterprise.system.core] [tid: _ThreadID=16 _ThreadName=RunLevelControllerThread-1560170934865] [timeMillis: 1560170935370] [levelValue: 800] [[
+  Grizzly Framework 2.4.1 started in: 0ms - bound to [/0.0.0.0:8181]]]
+
+[2019-06-10T14:48:55.384+0200] [glassfish 5.0] [INFO] [NCLS-CORE-00087] [javax.enterprise.system.core] [tid: _ThreadID=16 _ThreadName=RunLevelControllerThread-1560170934865] [timeMillis: 1560170935384] [levelValue: 800] [[
+  Grizzly Framework 2.4.1 started in: 4ms - bound to [/0.0.0.0:4848]]]
+
+[2019-06-10T14:48:55.426+0200] [glassfish 5.0] [INFO] [NCLS-CORE-00087] [javax.enterprise.system.core] [tid: _ThreadID=19 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170935426] [levelValue: 800] [[
+  Grizzly Framework 2.4.1 started in: 2ms - bound to [/0.0.0.0:3700]]]
+
+[2019-06-10T14:48:55.966+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170935966] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:56.263+0200] [glassfish 5.0] [SEVERE] [NCLS-SECURITY-05054] [javax.enterprise.system.security.ssl] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936263] [levelValue: 1000] [[
+  The SSL certificate has expired: [
+[
+  Version: V3
+  Subject: OU=Equifax Secure Certificate Authority, O=Equifax, C=US
+  Signature Algorithm: SHA1withRSA, OID = 1.2.840.113549.1.1.5
+
+  Key:  Sun RSA public key, 1024 bits
+  modulus: 135786214035069526348186531221551781468391756233528066061569654028671100866720352830303278016129003918213826297308054231261658522889438712013757624116391437358730449661353175673177742307421061340003741057138887918110217006515773038453829253517076741780039735595086881329494037450587568122088113584549069375417
+  public exponent: 65537
+  Validity: [From: Sat Aug 22 18:41:51 CEST 1998,
+               To: Wed Aug 22 18:41:51 CEST 2018]
+  Issuer: OU=Equifax Secure Certificate Authority, O=Equifax, C=US
+  SerialNumber: [    35def4cf]
+
+Certificate Extensions: 7
+[1]: ObjectId: 1.2.840.113533.7.65.0 Criticality=false
+Extension unknown: DER encoded OCTET string =
+0000: 04 0D 30 0B 1B 05 56 33   2E 30 63 03 02 06 C0     ..0...V3.0c....
+
+
+[2]: ObjectId: 2.5.29.35 Criticality=false
+AuthorityKeyIdentifier [
+KeyIdentifier [
+0000: 48 E6 68 F9 2B D2 B2 95   D7 47 D8 23 20 10 4F 33  H.h.+....G.# .O3
+0010: 98 90 9F D4                                        ....
+]
+]
+
+[3]: ObjectId: 2.5.29.19 Criticality=false
+BasicConstraints:[
+  CA:true
+  PathLen:2147483647
+]
+
+[4]: ObjectId: 2.5.29.31 Criticality=false
+CRLDistributionPoints [
+  [DistributionPoint:
+     [CN=CRL1, OU=Equifax Secure Certificate Authority, O=Equifax, C=US]
+]]
+
+[5]: ObjectId: 2.5.29.15 Criticality=false
+KeyUsage [
+  Key_CertSign
+  Crl_Sign
+]
+
+[6]: ObjectId: 2.5.29.16 Criticality=false
+PrivateKeyUsage: [
+To: Wed Aug 22 18:41:51 CEST 2018]
+
+[7]: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 48 E6 68 F9 2B D2 B2 95   D7 47 D8 23 20 10 4F 33  H.h.+....G.# .O3
+0010: 98 90 9F D4                                        ....
+]
+]
+
+]
+  Algorithm: [SHA1withRSA]
+  Signature:
+0000: 58 CE 29 EA FC F7 DE B5   CE 02 B9 17 B5 85 D1 B9  X.).............
+0010: E3 E0 95 CC 25 31 0D 00   A6 92 6E 7F B6 92 63 9E  ....%1....n...c.
+0020: 50 95 D1 9A 6F E4 11 DE   63 85 6E 98 EE A8 FF 5A  P...o...c.n....Z
+0030: C8 D3 55 B2 66 71 57 DE   C0 21 EB 3D 2A A7 23 49  ..U.fqW..!.=*.#I
+0040: 01 04 86 42 7B FC EE 7F   A2 16 52 B5 67 67 D3 40  ...B......R.gg.@
+0050: DB 3B 26 58 B2 28 77 3D   AE 14 77 61 D6 FA 2A 66  .;&X.(w=..wa..*f
+0060: 27 A0 0D FA A7 73 5C EA   70 F1 94 21 65 44 5F FA  '....s\.p..!eD_.
+0070: FC EF 29 68 A9 A2 87 79   EF 79 EF 4F AC 07 77 38  ..)h...y.y.O..w8
+
+]]]
+
+[2019-06-10T14:48:56.268+0200] [glassfish 5.0] [SEVERE] [NCLS-SECURITY-05054] [javax.enterprise.system.security.ssl] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936268] [levelValue: 1000] [[
+  The SSL certificate has expired: [
+[
+  Version: V1
+  Subject: CN=GTE CyberTrust Global Root, OU="GTE CyberTrust Solutions, Inc.", O=GTE Corporation, C=US
+  Signature Algorithm: MD5withRSA, OID = 1.2.840.113549.1.1.4
+
+  Key:  Sun RSA public key, 1024 bits
+  modulus: 104674226241368487598835828377585222181792546532354327780214427055917513664449991602803276678454577364904540367827644455215731003386468752240014232146814457308076052176227490263634768927290191763858631579785604655038492469791381988347440106477066514204303723029602991655085187937840556671697442212352844587673
+  public exponent: 65537
+  Validity: [From: Thu Aug 13 02:29:00 CEST 1998,
+               To: Tue Aug 14 01:59:00 CEST 2018]
+  Issuer: CN=GTE CyberTrust Global Root, OU="GTE CyberTrust Solutions, Inc.", O=GTE Corporation, C=US
+  SerialNumber: [    01a5]
+
+]
+  Algorithm: [MD5withRSA]
+  Signature:
+0000: 6D EB 1B 09 E9 5E D9 51   DB 67 22 61 A4 2A 3C 48  m....^.Q.g"a.*<H
+0010: 77 E3 A0 7C A6 DE 73 A2   14 03 85 3D FB AB 0E 30  w.....s....=...0
+0020: C5 83 16 33 81 13 08 9E   7B 34 4E DF 40 C8 74 D7  ...3.....4N.@.t.
+0030: B9 7D DC F4 76 55 7D 9B   63 54 18 E9 F0 EA F3 5C  ....vU..cT.....\
+0040: B1 D9 8B 42 1E B9 C0 95   4E BA FA D5 E2 7C F5 68  ...B....N......h
+0050: 61 BF 8E EC 05 97 5F 5B   B0 D7 A3 85 34 C4 24 A7  a....._[....4.$.
+0060: 0D 0F 95 93 EF CB 94 D8   9E 1F 9D 5C 85 6D C7 AA  ...........\.m..
+0070: AE 4F 1F 22 B5 CD 95 AD   BA A7 CC F9 AB 0B 7A 7F  .O."..........z.
+
+]]]
+
+[2019-06-10T14:48:56.270+0200] [glassfish 5.0] [SEVERE] [NCLS-SECURITY-05054] [javax.enterprise.system.security.ssl] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936270] [levelValue: 1000] [[
+  The SSL certificate has expired: [
+[
+  Version: V3
+  Subject: CN=Entrust.net Secure Server Certification Authority, OU=(c) 1999 Entrust.net Limited, OU=www.entrust.net/CPS incorp. by ref. (limits liab.), O=Entrust.net, C=US
+  Signature Algorithm: SHA1withRSA, OID = 1.2.840.113549.1.1.5
+
+  Key:  Sun RSA public key, 1024 bits
+  modulus: 144067023913051061401427662951005762134922353734488468053603530223452408322326917369347612678930500793708458747092762943382762018047024013938414215872028527163969125655573945488614401571467677066488315957153441759858575776484848611157850921563438091296557524842885335944479053857025193408242979060399539152451
+  public exponent: 3
+  Validity: [From: Tue May 25 18:09:40 CEST 1999,
+               To: Sat May 25 18:39:40 CEST 2019]
+  Issuer: CN=Entrust.net Secure Server Certification Authority, OU=(c) 1999 Entrust.net Limited, OU=www.entrust.net/CPS incorp. by ref. (limits liab.), O=Entrust.net, C=US
+  SerialNumber: [    374ad243]
+
+Certificate Extensions: 8
+[1]: ObjectId: 1.2.840.113533.7.65.0 Criticality=false
+Extension unknown: DER encoded OCTET string =
+0000: 04 0C 30 0A 1B 04 56 34   2E 30 03 02 04 90        ..0...V4.0....
+
+
+[2]: ObjectId: 2.5.29.35 Criticality=false
+AuthorityKeyIdentifier [
+KeyIdentifier [
+0000: F0 17 62 13 55 3D B3 FF   0A 00 6B FB 50 84 97 F3  ..b.U=....k.P...
+0010: ED 62 D0 1A                                        .b..
+]
+]
+
+[3]: ObjectId: 2.5.29.19 Criticality=false
+BasicConstraints:[
+  CA:true
+  PathLen:2147483647
+]
+
+[4]: ObjectId: 2.5.29.31 Criticality=false
+CRLDistributionPoints [
+  [DistributionPoint:
+     [CN=CRL1, CN=Entrust.net Secure Server Certification Authority, OU=(c) 1999 Entrust.net Limited, OU=www.entrust.net/CPS incorp. by ref. (limits liab.), O=Entrust.net, C=US]
+, DistributionPoint:
+     [URIName: http://www.entrust.net/CRL/net1.crl]
+]]
+
+[5]: ObjectId: 2.5.29.15 Criticality=false
+KeyUsage [
+  Key_CertSign
+  Crl_Sign
+]
+
+[6]: ObjectId: 2.16.840.1.113730.1.1 Criticality=false
+NetscapeCertType [
+   SSL CA
+   S/MIME CA
+   Object Signing CA]
+
+[7]: ObjectId: 2.5.29.16 Criticality=false
+PrivateKeyUsage: [
+From: Tue May 25 18:09:40 CEST 1999, To: Sat May 25 18:09:40 CEST 2019]
+
+[8]: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: F0 17 62 13 55 3D B3 FF   0A 00 6B FB 50 84 97 F3  ..b.U=....k.P...
+0010: ED 62 D0 1A                                        .b..
+]
+]
+
+]
+  Algorithm: [SHA1withRSA]
+  Signature:
+0000: 90 DC 30 02 FA 64 74 C2   A7 0A A5 7C 21 8D 34 17  ..0..dt.....!.4.
+0010: A8 FB 47 0E FF 25 7C 8D   13 0A FB E4 98 B5 EF 8C  ..G..%..........
+0020: F8 C5 10 0D F7 92 BE F1   C3 D5 D5 95 6A 04 BB 2C  ............j..,
+0030: CE 26 36 65 C8 31 C6 E7   EE 3F E3 57 75 84 7A 11  .&6e.1...?.Wu.z.
+0040: EF 46 4F 18 F4 D3 98 BB   A8 87 32 BA 72 F6 3C E2  .FO.......2.r.<.
+0050: 3D 9F D7 1D D9 C3 60 43   8C 58 0E 22 96 2F 62 A3  =.....`C.X."./b.
+0060: 2C 1F BA AD 05 EF AB 32   78 87 A0 54 73 19 B5 5C  ,......2x..Ts..\
+0070: 05 F9 52 3E 6D 2D 45 0B   F7 0A 93 EA ED 06 F9 B2  ..R>m-E.........
+
+]]]
+
+[2019-06-10T14:48:56.279+0200] [glassfish 5.0] [INFO] [NCLS-SECURITY-01002] [javax.enterprise.system.core.security] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936279] [levelValue: 800] [[
+  Java security manager is disabled.]]
+
+[2019-06-10T14:48:56.279+0200] [glassfish 5.0] [INFO] [NCLS-SECURITY-01010] [javax.enterprise.system.core.security] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936279] [levelValue: 800] [[
+  Entering Security Startup Service.]]
+
+[2019-06-10T14:48:56.281+0200] [glassfish 5.0] [INFO] [NCLS-SECURITY-01143] [javax.enterprise.system.core.security] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936281] [levelValue: 800] [[
+  Loading policy provider com.sun.enterprise.security.provider.PolicyWrapper.]]
+
+[2019-06-10T14:48:56.303+0200] [glassfish 5.0] [INFO] [NCLS-SECURITY-01011] [javax.enterprise.system.core.security] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936303] [levelValue: 800] [[
+  Security Service(s) started successfully.]]
+
+[2019-06-10T14:48:56.490+0200] [glassfish 5.0] [INFO] [AS-WEB-GLUE-00198] [javax.enterprise.web] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936490] [levelValue: 800] [[
+  Created HTTP listener http-listener-1 on host/port 0.0.0.0:8080]]
+
+[2019-06-10T14:48:56.495+0200] [glassfish 5.0] [INFO] [AS-WEB-GLUE-00198] [javax.enterprise.web] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936495] [levelValue: 800] [[
+  Created HTTP listener http-listener-2 on host/port 0.0.0.0:8181]]
+
+[2019-06-10T14:48:56.498+0200] [glassfish 5.0] [INFO] [AS-WEB-GLUE-00198] [javax.enterprise.web] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936498] [levelValue: 800] [[
+  Created HTTP listener admin-listener on host/port 0.0.0.0:4848]]
+
+[2019-06-10T14:48:56.513+0200] [glassfish 5.0] [INFO] [AS-WEB-GLUE-00200] [javax.enterprise.web] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936513] [levelValue: 800] [[
+  Created virtual server server]]
+
+[2019-06-10T14:48:56.515+0200] [glassfish 5.0] [INFO] [AS-WEB-GLUE-00200] [javax.enterprise.web] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936515] [levelValue: 800] [[
+  Created virtual server __asadmin]]
+
+[2019-06-10T14:48:56.746+0200] [glassfish 5.0] [INFO] [AS-WEB-CORE-00306] [javax.enterprise.web.core] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936746] [levelValue: 800] [[
+  Setting JAAS app name glassfish-web]]
+
+[2019-06-10T14:48:56.746+0200] [glassfish 5.0] [INFO] [AS-WEB-GLUE-00201] [javax.enterprise.web] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170936746] [levelValue: 800] [[
+  Virtual server server loaded default web module ]]
+
+[2019-06-10T14:48:57.057+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937057] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.129+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937129] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.153+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937153] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.154+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937154] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.155+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937155] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.156+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937156] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.156+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937156] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.157+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937157] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.158+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937158] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.158+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937158] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.159+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937159] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.160+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937160] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.263+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.dol] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937263] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:48:57.380+0200] [glassfish 5.0] [INFO] [] [org.hibernate.validator.internal.util.Version] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170937380] [levelValue: 800] [[
+  HV000001: Hibernate Validator 6.0.2.Final]]
+
+[2019-06-10T14:48:58.035+0200] [glassfish 5.0] [INFO] [AS-EJB-00054] [javax.enterprise.ejb.container] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938035] [levelValue: 800] [[
+  Portable JNDI names for EJB JobDAO: [java:global/varv/JobDAO, java:global/varv/JobDAO!uk.ac.city.douglas.varv.Job.dao.JobDAOInterface]]]
+
+[2019-06-10T14:48:58.107+0200] [glassfish 5.0] [INFO] [AS-EJB-00054] [javax.enterprise.ejb.container] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938107] [levelValue: 800] [[
+  Portable JNDI names for EJB AccountDAO: [java:global/varv/AccountDAO, java:global/varv/AccountDAO!uk.ac.city.douglas.varv.Account.dao.AccountDAOInterface]]]
+
+[2019-06-10T14:48:58.113+0200] [glassfish 5.0] [INFO] [AS-EJB-00054] [javax.enterprise.ejb.container] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938113] [levelValue: 800] [[
+  Portable JNDI names for EJB BoatDAO: [java:global/varv/BoatDAO!uk.ac.city.douglas.varv.Boat.dao.BoatDAOInterface, java:global/varv/BoatDAO]]]
+
+[2019-06-10T14:48:58.129+0200] [glassfish 5.0] [INFO] [] [org.jboss.weld.Version] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938129] [levelValue: 800] [[
+  WELD-000900: 3.0.0 (Final)]]
+
+[2019-06-10T14:48:58.572+0200] [glassfish 5.0] [INFO] [] [org.jboss.weld.Event] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938572] [levelValue: 800] [[
+  WELD-000411: Observer method [BackedAnnotatedMethod] org.glassfish.sse.impl.ServerSentEventCdiExtension.processAnnotatedType(@Observes ProcessAnnotatedType<T>, BeanManager) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.]]
+
+[2019-06-10T14:48:58.579+0200] [glassfish 5.0] [INFO] [] [org.jboss.weld.Event] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938579] [levelValue: 800] [[
+  WELD-000411: Observer method [BackedAnnotatedMethod] private org.glassfish.jersey.ext.cdi1x.internal.CdiComponentProvider.processAnnotatedType(@Observes ProcessAnnotatedType) receives events for all annotated types. Consider restricting events using @WithAnnotations or a generic type with bounds.]]
+
+[2019-06-10T14:48:58.589+0200] [glassfish 5.0] [WARN] [] [org.jboss.weld.Bootstrap] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938589] [levelValue: 900] [[
+  WELD-000146: BeforeBeanDiscovery.addAnnotatedType(AnnotatedType<?>) used for class org.glassfish.cdi.transaction.TransactionalInterceptorMandatory is deprecated from CDI 1.1!]]
+
+[2019-06-10T14:48:58.598+0200] [glassfish 5.0] [WARN] [] [org.jboss.weld.Bootstrap] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938598] [levelValue: 900] [[
+  WELD-000146: BeforeBeanDiscovery.addAnnotatedType(AnnotatedType<?>) used for class org.glassfish.cdi.transaction.TransactionalInterceptorNever is deprecated from CDI 1.1!]]
+
+[2019-06-10T14:48:58.600+0200] [glassfish 5.0] [WARN] [] [org.jboss.weld.Bootstrap] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938600] [levelValue: 900] [[
+  WELD-000146: BeforeBeanDiscovery.addAnnotatedType(AnnotatedType<?>) used for class org.glassfish.cdi.transaction.TransactionalInterceptorNotSupported is deprecated from CDI 1.1!]]
+
+[2019-06-10T14:48:58.601+0200] [glassfish 5.0] [WARN] [] [org.jboss.weld.Bootstrap] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938601] [levelValue: 900] [[
+  WELD-000146: BeforeBeanDiscovery.addAnnotatedType(AnnotatedType<?>) used for class org.glassfish.cdi.transaction.TransactionalInterceptorRequired is deprecated from CDI 1.1!]]
+
+[2019-06-10T14:48:58.603+0200] [glassfish 5.0] [WARN] [] [org.jboss.weld.Bootstrap] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938603] [levelValue: 900] [[
+  WELD-000146: BeforeBeanDiscovery.addAnnotatedType(AnnotatedType<?>) used for class org.glassfish.cdi.transaction.TransactionalInterceptorRequiresNew is deprecated from CDI 1.1!]]
+
+[2019-06-10T14:48:58.604+0200] [glassfish 5.0] [WARN] [] [org.jboss.weld.Bootstrap] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938604] [levelValue: 900] [[
+  WELD-000146: BeforeBeanDiscovery.addAnnotatedType(AnnotatedType<?>) used for class org.glassfish.cdi.transaction.TransactionalInterceptorSupports is deprecated from CDI 1.1!]]
+
+[2019-06-10T14:48:58.606+0200] [glassfish 5.0] [WARN] [] [org.jboss.weld.Bootstrap] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938606] [levelValue: 900] [[
+  WELD-000146: BeforeBeanDiscovery.addAnnotatedType(AnnotatedType<?>) used for class org.glassfish.jersey.ext.cdi1x.internal.CdiComponentProvider$JaxRsParamProducer is deprecated from CDI 1.1!]]
+
+[2019-06-10T14:48:58.609+0200] [glassfish 5.0] [WARN] [] [org.jboss.weld.Bootstrap] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938609] [levelValue: 900] [[
+  WELD-000146: BeforeBeanDiscovery.addAnnotatedType(AnnotatedType<?>) used for class org.glassfish.jersey.ext.cdi1x.transaction.internal.WebAppExceptionHolder is deprecated from CDI 1.1!]]
+
+[2019-06-10T14:48:58.612+0200] [glassfish 5.0] [WARN] [] [org.jboss.weld.Bootstrap] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938612] [levelValue: 900] [[
+  WELD-000146: BeforeBeanDiscovery.addAnnotatedType(AnnotatedType<?>) used for class org.glassfish.jersey.ext.cdi1x.transaction.internal.WebAppExceptionInterceptor is deprecated from CDI 1.1!]]
+
+[2019-06-10T14:48:58.614+0200] [glassfish 5.0] [WARN] [] [org.jboss.weld.Bootstrap] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938614] [levelValue: 900] [[
+  WELD-000146: BeforeBeanDiscovery.addAnnotatedType(AnnotatedType<?>) used for class org.glassfish.jersey.ext.cdi1x.transaction.internal.TransactionalExceptionMapper is deprecated from CDI 1.1!]]
+
+[2019-06-10T14:48:58.626+0200] [glassfish 5.0] [WARN] [] [org.jboss.weld.Bootstrap] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938626] [levelValue: 900] [[
+  WELD-000146: BeforeBeanDiscovery.addAnnotatedType(AnnotatedType<?>) used for class com.sun.faces.flow.FlowDiscoveryCDIHelper is deprecated from CDI 1.1!]]
+
+[2019-06-10T14:48:58.628+0200] [glassfish 5.0] [WARN] [] [org.jboss.weld.Bootstrap] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170938628] [levelValue: 900] [[
+  WELD-000146: BeforeBeanDiscovery.addAnnotatedType(AnnotatedType<?>) used for class org.glassfish.jersey.ext.cdi1x.servlet.internal.CdiExternalRequestScope is deprecated from CDI 1.1!]]
+
+[2019-06-10T14:48:59.403+0200] [glassfish 5.0] [INFO] [] [org.glassfish.soteria.servlet.SamRegistrationInstaller] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170939403] [levelValue: 800] [[
+  Initializing Soteria 1.0 for context '/varv']]
+
+[2019-06-10T14:48:59.445+0200] [glassfish 5.0] [INFO] [AS-WEB-GLUE-00172] [javax.enterprise.web] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170939445] [levelValue: 800] [[
+  Loading application [varv] at [/varv]]]
+
+[2019-06-10T14:48:59.447+0200] [glassfish 5.0] [INFO] [NCLS-CORE-00022] [javax.enterprise.system.core] [tid: _ThreadID=18 _ThreadName=RunLevelControllerThread-1560170934872] [timeMillis: 1560170939447] [levelValue: 800] [[
+  Loading application varv done in 4,322 ms]]
+
+[2019-06-10T14:48:59.448+0200] [glassfish 5.0] [INFO] [NCLS-CORE-00017] [javax.enterprise.system.core] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1560170939448] [levelValue: 800] [[
+  GlassFish Server Open Source Edition  5.0  (25) startup time : Felix (1,249ms), startup services(4,587ms), total(5,836ms)]]
+
+[2019-06-10T14:48:59.673+0200] [glassfish 5.0] [INFO] [NCLS-JMX-00005] [javax.enterprise.system.jmx] [tid: _ThreadID=76 _ThreadName=Thread-27] [timeMillis: 1560170939673] [levelValue: 800] [[
+  JMXStartupService has started JMXConnector on JMXService URL service:jmx:rmi://douglas-ThinkPad-P52s:8686/jndi/rmi://douglas-ThinkPad-P52s:8686/jmxrmi]]
+
+[2019-06-10T14:49:01.149+0200] [glassfish 5.0] [INFO] [NCLS-REST-00001] [javax.enterprise.admin.rest] [tid: _ThreadID=42 _ThreadName=admin-listener(1)] [timeMillis: 1560170941149] [levelValue: 800] [[
+  Listening to REST requests at context: /management/domain.]]
+
+[2019-06-10T14:49:01.284+0200] [glassfish 5.0] [INFO] [NCLS-BOOTSTRAP-00027] [javax.enterprise.bootstrap] [tid: _ThreadID=1 _ThreadName=main] [timeMillis: 1560170941284] [levelValue: 800] [[
+  Registered com.sun.enterprise.glassfish.bootstrap.osgi.EmbeddedOSGiGlassFishImpl@319854f0 as OSGi service registration: org.apache.felix.framework.ServiceRegistrationImpl@22d1886d.]]
+
+[2019-06-10T14:49:01.374+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=85 _ThreadName=Thread-28] [timeMillis: 1560170941374] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:49:01.519+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=85 _ThreadName=Thread-28] [timeMillis: 1560170941519] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:49:01.524+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=85 _ThreadName=Thread-28] [timeMillis: 1560170941524] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:49:01.524+0200] [glassfish 5.0] [INFO] [] [javax.enterprise.system.tools.deployment.common] [tid: _ThreadID=85 _ThreadName=Thread-28] [timeMillis: 1560170941524] [levelValue: 800] [[
+  visiting unvisited references]]
+
+[2019-06-10T14:49:02.037+0200] [glassfish 5.0] [INFO] [jsf.config.listener.version] [javax.enterprise.resource.webcontainer.jsf.config] [tid: _ThreadID=85 _ThreadName=Thread-28] [timeMillis: 1560170942037] [levelValue: 800] [[
+  Initializing Mojarra 2.3.2 ( 20170627-2139 e63598abf2ed2bb1a24674f308a734e0dce18a72) for context '']]
+
+[2019-06-10T14:49:02.660+0200] [glassfish 5.0] [INFO] [AS-WEB-GLUE-00172] [javax.enterprise.web] [tid: _ThreadID=85 _ThreadName=Thread-28] [timeMillis: 1560170942660] [levelValue: 800] [[
+  Loading application [__admingui] at [/]]]
+
+[2019-06-10T14:49:02.661+0200] [glassfish 5.0] [INFO] [NCLS-CORE-00022] [javax.enterprise.system.core] [tid: _ThreadID=85 _ThreadName=Thread-28] [timeMillis: 1560170942661] [levelValue: 800] [[
+  Loading application __admingui done in 1,379 ms]]
+
+[2019-06-10T14:49:13.235+0200] [glassfish 5.0] [INFO] [] [org.eclipse.persistence.session./file:/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/applications/varv/WEB-INF/classes/_ramsoPU] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560170953235] [levelValue: 800] [[
+  EclipseLink, version: Eclipse Persistence Services - 2.7.0.v20170811-d680af5]]
+
+[2019-06-10T14:49:13.344+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_get_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560170953344] [levelValue: 800] [[
+  RAR7114: Unable to get ClientInfo for connection ]]
+
+[2019-06-10T14:49:13.351+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_set_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560170953351] [levelValue: 800] [[
+  RAR7115: Unable to set ClientInfo for connection]]
+
+[2019-06-10T14:49:13.353+0200] [glassfish 5.0] [INFO] [] [org.eclipse.persistence.session./file:/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/applications/varv/WEB-INF/classes/_ramsoPU.connection] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560170953353] [levelValue: 800] [[
+  Not able to detect platform for vendor name [SQLite33.21.0]. Defaulting to [org.eclipse.persistence.platform.database.DatabasePlatform]. The database dialect used may not match with the database you are using. Please explicitly provide a platform using property "eclipselink.target-database".]]
+
+[2019-06-10T14:49:13.360+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_get_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560170953360] [levelValue: 800] [[
+  RAR7114: Unable to get ClientInfo for connection ]]
+
+[2019-06-10T14:49:13.360+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_set_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560170953360] [levelValue: 800] [[
+  RAR7115: Unable to set ClientInfo for connection]]
+
+[2019-06-10T14:49:13.362+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_get_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560170953362] [levelValue: 800] [[
+  RAR7114: Unable to get ClientInfo for connection ]]
+
+[2019-06-10T14:49:13.364+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_set_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560170953364] [levelValue: 800] [[
+  RAR7115: Unable to set ClientInfo for connection]]
+
+[2019-06-10T14:49:13.423+0200] [glassfish 5.0] [INFO] [] [org.eclipse.persistence.session./file:/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/applications/varv/WEB-INF/classes/_ramsoPU.connection] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560170953423] [levelValue: 800] [[
+  /file:/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/applications/varv/WEB-INF/classes/_ramsoPU login successful]]
+
+[2019-06-10T14:49:13.586+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_get_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560170953586] [levelValue: 800] [[
+  RAR7114: Unable to get ClientInfo for connection ]]
+
+[2019-06-10T14:49:13.600+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_set_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560170953600] [levelValue: 800] [[
+  RAR7115: Unable to set ClientInfo for connection]]
+
+[2019-06-10T14:50:26.056+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_get_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560171026056] [levelValue: 800] [[
+  RAR7114: Unable to get ClientInfo for connection ]]
+
+[2019-06-10T14:50:26.058+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_set_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=29 _ThreadName=http-listener-1(4)] [timeMillis: 1560171026058] [levelValue: 800] [[
+  RAR7115: Unable to set ClientInfo for connection]]
+
+[2019-06-10T16:41:53.326+0200] [glassfish 5.0] [WARNING] [] [javax.enterprise.web] [tid: _ThreadID=27 _ThreadName=http-listener-1(2)] [timeMillis: 1560177713326] [levelValue: 900] [[
+  StandardWrapperValve[jsp]: Servlet.service() for servlet jsp threw exception
+java.lang.NullPointerException
+	at org.apache.jsp.admin.boat.index_jsp._jspService(index_jsp.java:370)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:111)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:791)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:411)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:473)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:377)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:791)
+	at org.apache.catalina.core.StandardWrapper.service(StandardWrapper.java:1580)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:258)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:160)
+	at org.apache.catalina.core.StandardPipeline.doInvoke(StandardPipeline.java:652)
+	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:591)
+	at com.sun.enterprise.web.WebPipeline.invoke(WebPipeline.java:99)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155)
+	at org.apache.catalina.connector.CoyoteAdapter.doService(CoyoteAdapter.java:371)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:238)
+	at com.sun.enterprise.v3.services.impl.ContainerMapper$HttpHandlerCallable.call(ContainerMapper.java:463)
+	at com.sun.enterprise.v3.services.impl.ContainerMapper.service(ContainerMapper.java:168)
+	at org.glassfish.grizzly.http.server.HttpHandler.runService(HttpHandler.java:206)
+	at org.glassfish.grizzly.http.server.HttpHandler.doHandle(HttpHandler.java:180)
+	at org.glassfish.grizzly.http.server.HttpServerFilter.handleRead(HttpServerFilter.java:242)
+	at org.glassfish.grizzly.filterchain.ExecutorResolver$9.execute(ExecutorResolver.java:119)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.executeFilter(DefaultFilterChain.java:284)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.executeChainPart(DefaultFilterChain.java:201)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.execute(DefaultFilterChain.java:133)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.process(DefaultFilterChain.java:112)
+	at org.glassfish.grizzly.ProcessorExecutor.execute(ProcessorExecutor.java:77)
+	at org.glassfish.grizzly.nio.transport.TCPNIOTransport.fireIOEvent(TCPNIOTransport.java:539)
+	at org.glassfish.grizzly.strategies.AbstractIOStrategy.fireIOEvent(AbstractIOStrategy.java:112)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy.run0(WorkerThreadIOStrategy.java:117)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy.access$100(WorkerThreadIOStrategy.java:56)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy$WorkerThreadRunnable.run(WorkerThreadIOStrategy.java:137)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.doWork(AbstractThreadPool.java:593)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.run(AbstractThreadPool.java:573)
+	at java.lang.Thread.run(Thread.java:748)
+]]
+
+[2019-06-10T16:42:00.956+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_get_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=28 _ThreadName=http-listener-1(3)] [timeMillis: 1560177720956] [levelValue: 800] [[
+  RAR7114: Unable to get ClientInfo for connection ]]
+
+[2019-06-10T16:42:01.097+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_set_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=28 _ThreadName=http-listener-1(3)] [timeMillis: 1560177721097] [levelValue: 800] [[
+  RAR7115: Unable to set ClientInfo for connection]]
+
+[2019-06-10T16:42:12.719+0200] [glassfish 5.0] [WARNING] [] [javax.enterprise.web] [tid: _ThreadID=30 _ThreadName=http-listener-1(5)] [timeMillis: 1560177732719] [levelValue: 900] [[
+  StandardWrapperValve[jsp]: Servlet.service() for servlet jsp threw exception
+java.lang.NullPointerException
+	at org.apache.jsp.admin.boat.index_jsp._jspService(index_jsp.java:370)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:111)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:791)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:411)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:473)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:377)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:791)
+	at org.apache.catalina.core.StandardWrapper.service(StandardWrapper.java:1580)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:258)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:160)
+	at org.apache.catalina.core.StandardPipeline.doInvoke(StandardPipeline.java:652)
+	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:591)
+	at com.sun.enterprise.web.WebPipeline.invoke(WebPipeline.java:99)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155)
+	at org.apache.catalina.connector.CoyoteAdapter.doService(CoyoteAdapter.java:371)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:238)
+	at com.sun.enterprise.v3.services.impl.ContainerMapper$HttpHandlerCallable.call(ContainerMapper.java:463)
+	at com.sun.enterprise.v3.services.impl.ContainerMapper.service(ContainerMapper.java:168)
+	at org.glassfish.grizzly.http.server.HttpHandler.runService(HttpHandler.java:206)
+	at org.glassfish.grizzly.http.server.HttpHandler.doHandle(HttpHandler.java:180)
+	at org.glassfish.grizzly.http.server.HttpServerFilter.handleRead(HttpServerFilter.java:242)
+	at org.glassfish.grizzly.filterchain.ExecutorResolver$9.execute(ExecutorResolver.java:119)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.executeFilter(DefaultFilterChain.java:284)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.executeChainPart(DefaultFilterChain.java:201)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.execute(DefaultFilterChain.java:133)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.process(DefaultFilterChain.java:112)
+	at org.glassfish.grizzly.ProcessorExecutor.execute(ProcessorExecutor.java:77)
+	at org.glassfish.grizzly.nio.transport.TCPNIOTransport.fireIOEvent(TCPNIOTransport.java:539)
+	at org.glassfish.grizzly.strategies.AbstractIOStrategy.fireIOEvent(AbstractIOStrategy.java:112)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy.run0(WorkerThreadIOStrategy.java:117)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy.access$100(WorkerThreadIOStrategy.java:56)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy$WorkerThreadRunnable.run(WorkerThreadIOStrategy.java:137)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.doWork(AbstractThreadPool.java:593)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.run(AbstractThreadPool.java:573)
+	at java.lang.Thread.run(Thread.java:748)
+]]
+
+[2019-06-10T16:42:21.173+0200] [glassfish 5.0] [INFO] [] [] [tid: _ThreadID=27 _ThreadName=Thread-8] [timeMillis: 1560177741173] [levelValue: 800] [[
+  hej]]
+
+[2019-06-10T16:42:21.174+0200] [glassfish 5.0] [WARNING] [] [javax.enterprise.web] [tid: _ThreadID=27 _ThreadName=http-listener-1(2)] [timeMillis: 1560177741174] [levelValue: 900] [[
+  StandardWrapperValve[jsp]: Servlet.service() for servlet jsp threw exception
+java.lang.NullPointerException
+	at org.apache.jsp.admin.staff.index_jsp._jspService(index_jsp.java:353)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:111)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:791)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:411)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:473)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:377)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:791)
+	at org.apache.catalina.core.StandardWrapper.service(StandardWrapper.java:1580)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:258)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:160)
+	at org.apache.catalina.core.StandardPipeline.doInvoke(StandardPipeline.java:652)
+	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:591)
+	at com.sun.enterprise.web.WebPipeline.invoke(WebPipeline.java:99)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155)
+	at org.apache.catalina.connector.CoyoteAdapter.doService(CoyoteAdapter.java:371)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:238)
+	at com.sun.enterprise.v3.services.impl.ContainerMapper$HttpHandlerCallable.call(ContainerMapper.java:463)
+	at com.sun.enterprise.v3.services.impl.ContainerMapper.service(ContainerMapper.java:168)
+	at org.glassfish.grizzly.http.server.HttpHandler.runService(HttpHandler.java:206)
+	at org.glassfish.grizzly.http.server.HttpHandler.doHandle(HttpHandler.java:180)
+	at org.glassfish.grizzly.http.server.HttpServerFilter.handleRead(HttpServerFilter.java:242)
+	at org.glassfish.grizzly.filterchain.ExecutorResolver$9.execute(ExecutorResolver.java:119)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.executeFilter(DefaultFilterChain.java:284)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.executeChainPart(DefaultFilterChain.java:201)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.execute(DefaultFilterChain.java:133)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.process(DefaultFilterChain.java:112)
+	at org.glassfish.grizzly.ProcessorExecutor.execute(ProcessorExecutor.java:77)
+	at org.glassfish.grizzly.nio.transport.TCPNIOTransport.fireIOEvent(TCPNIOTransport.java:539)
+	at org.glassfish.grizzly.strategies.AbstractIOStrategy.fireIOEvent(AbstractIOStrategy.java:112)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy.run0(WorkerThreadIOStrategy.java:117)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy.access$100(WorkerThreadIOStrategy.java:56)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy$WorkerThreadRunnable.run(WorkerThreadIOStrategy.java:137)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.doWork(AbstractThreadPool.java:593)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.run(AbstractThreadPool.java:573)
+	at java.lang.Thread.run(Thread.java:748)
+]]
+
+[2019-06-10T16:42:28.160+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_get_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=26 _ThreadName=http-listener-1(1)] [timeMillis: 1560177748160] [levelValue: 800] [[
+  RAR7114: Unable to get ClientInfo for connection ]]
+
+[2019-06-10T16:42:28.161+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_set_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=26 _ThreadName=http-listener-1(1)] [timeMillis: 1560177748161] [levelValue: 800] [[
+  RAR7115: Unable to set ClientInfo for connection]]
+
+[2019-06-10T16:42:28.164+0200] [glassfish 5.0] [INFO] [] [] [tid: _ThreadID=26 _ThreadName=Thread-8] [timeMillis: 1560177748164] [levelValue: 800] [[
+  Staff{staffId=4, firstName='douglas', lastName='landvik', email='dlandvik@fau.edu', hourlyRate='asd', tel='0705707499', town='Stockholm', street='Valevägen 35', postCode='18264'}]]
+
+[2019-06-10T16:42:28.168+0200] [glassfish 5.0] [INFO] [] [] [tid: _ThreadID=26 _ThreadName=Thread-8] [timeMillis: 1560177748168] [levelValue: 800] [[
+  hej]]
+
+[2019-06-10T16:42:31.576+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_get_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=26 _ThreadName=http-listener-1(1)] [timeMillis: 1560177751576] [levelValue: 800] [[
+  RAR7114: Unable to get ClientInfo for connection ]]
+
+[2019-06-10T16:42:31.579+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_set_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=26 _ThreadName=http-listener-1(1)] [timeMillis: 1560177751579] [levelValue: 800] [[
+  RAR7115: Unable to set ClientInfo for connection]]
+
+[2019-06-10T16:42:33.225+0200] [glassfish 5.0] [INFO] [] [] [tid: _ThreadID=30 _ThreadName=Thread-8] [timeMillis: 1560177753225] [levelValue: 800] [[
+  hej]]
+
+[2019-06-10T16:42:33.227+0200] [glassfish 5.0] [WARNING] [] [javax.enterprise.web] [tid: _ThreadID=30 _ThreadName=http-listener-1(5)] [timeMillis: 1560177753227] [levelValue: 900] [[
+  StandardWrapperValve[jsp]: Servlet.service() for servlet jsp threw exception
+java.lang.NullPointerException
+	at org.apache.jsp.admin.staff.index_jsp._jspService(index_jsp.java:353)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:111)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:791)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:411)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:473)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:377)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:791)
+	at org.apache.catalina.core.StandardWrapper.service(StandardWrapper.java:1580)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:258)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:160)
+	at org.apache.catalina.core.StandardPipeline.doInvoke(StandardPipeline.java:652)
+	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:591)
+	at com.sun.enterprise.web.WebPipeline.invoke(WebPipeline.java:99)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:155)
+	at org.apache.catalina.connector.CoyoteAdapter.doService(CoyoteAdapter.java:371)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:238)
+	at com.sun.enterprise.v3.services.impl.ContainerMapper$HttpHandlerCallable.call(ContainerMapper.java:463)
+	at com.sun.enterprise.v3.services.impl.ContainerMapper.service(ContainerMapper.java:168)
+	at org.glassfish.grizzly.http.server.HttpHandler.runService(HttpHandler.java:206)
+	at org.glassfish.grizzly.http.server.HttpHandler.doHandle(HttpHandler.java:180)
+	at org.glassfish.grizzly.http.server.HttpServerFilter.handleRead(HttpServerFilter.java:242)
+	at org.glassfish.grizzly.filterchain.ExecutorResolver$9.execute(ExecutorResolver.java:119)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.executeFilter(DefaultFilterChain.java:284)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.executeChainPart(DefaultFilterChain.java:201)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.execute(DefaultFilterChain.java:133)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.process(DefaultFilterChain.java:112)
+	at org.glassfish.grizzly.ProcessorExecutor.execute(ProcessorExecutor.java:77)
+	at org.glassfish.grizzly.nio.transport.TCPNIOTransport.fireIOEvent(TCPNIOTransport.java:539)
+	at org.glassfish.grizzly.strategies.AbstractIOStrategy.fireIOEvent(AbstractIOStrategy.java:112)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy.run0(WorkerThreadIOStrategy.java:117)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy.access$100(WorkerThreadIOStrategy.java:56)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy$WorkerThreadRunnable.run(WorkerThreadIOStrategy.java:137)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.doWork(AbstractThreadPool.java:593)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.run(AbstractThreadPool.java:573)
+	at java.lang.Thread.run(Thread.java:748)
+]]
+
+[2019-06-10T17:55:04.439+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_get_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=28 _ThreadName=http-listener-1(3)] [timeMillis: 1560182104439] [levelValue: 800] [[
+  RAR7114: Unable to get ClientInfo for connection ]]
+
+[2019-06-10T17:55:04.441+0200] [glassfish 5.0] [INFO] [jdbc.unable_to_set_client_info] [javax.enterprise.resource.resourceadapter.com.sun.gjc.spi] [tid: _ThreadID=28 _ThreadName=http-listener-1(3)] [timeMillis: 1560182104441] [levelValue: 800] [[
+  RAR7115: Unable to set ClientInfo for connection]]
+
+[2019-06-10T17:55:48.960+0200] [glassfish 5.0] [INFO] [NCLS-REST-00001] [javax.enterprise.admin.rest] [tid: _ThreadID=43 _ThreadName=admin-listener(2)] [timeMillis: 1560182148960] [levelValue: 800] [[
+  Listening to REST requests at context: /command/domain.]]
+
+[2019-06-10T17:55:49.064+0200] [glassfish 5.0] [INFO] [NCLS-CORE-00092] [javax.enterprise.system.core] [tid: _ThreadID=164 _ThreadName=Thread-44] [timeMillis: 1560182149064] [levelValue: 800] [[
+  Server shutdown initiated]]
+
+[2019-06-10T17:55:49.091+0200] [glassfish 5.0] [INFO] [NCLS-BOOTSTRAP-00028] [javax.enterprise.bootstrap] [tid: _ThreadID=164 _ThreadName=Thread-44] [timeMillis: 1560182149091] [levelValue: 800] [[
+  Unregistered com.sun.enterprise.glassfish.bootstrap.osgi.EmbeddedOSGiGlassFishImpl@319854f0 from service registry.]]
+
+[2019-06-10T17:55:49.092+0200] [glassfish 5.0] [INFO] [] [] [tid: _ThreadID=164 _ThreadName=Thread-8] [timeMillis: 1560182149092] [levelValue: 800] [[
+  FileMonitoring shutdown]]
+
+[2019-06-10T17:55:49.105+0200] [glassfish 5.0] [INFO] [NCLS-JMX-00002] [javax.enterprise.system.jmx] [tid: _ThreadID=164 _ThreadName=Thread-44] [timeMillis: 1560182149105] [levelValue: 800] [[
+  JMXStartupService: Stopped JMXConnectorServer: null]]
+
+[2019-06-10T17:55:49.106+0200] [glassfish 5.0] [INFO] [NCLS-JMX-00001] [javax.enterprise.system.jmx] [tid: _ThreadID=164 _ThreadName=Thread-44] [timeMillis: 1560182149106] [levelValue: 800] [[
+  JMXStartupService and JMXConnectors have been shut down.]]
+
+[2019-06-10T17:55:49.292+0200] [glassfish 5.0] [INFO] [] [org.eclipse.persistence.session./file:/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/applications/varv/WEB-INF/classes/_ramsoPU.connection] [tid: _ThreadID=169 _ThreadName=RunLevelControllerThread-1560182149127] [timeMillis: 1560182149292] [levelValue: 800] [[
+  /file:/home/douglas/varvet/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/applications/varv/WEB-INF/classes/_ramsoPU logout successful]]
+
+[2019-06-10T17:55:49.378+0200] [glassfish 5.0] [INFO] [] [] [tid: _ThreadID=171 _ThreadName=Thread-8] [timeMillis: 1560182149378] [levelValue: 800] [[
+  JdbcRuntimeExtension,  getAllSystemRAResourcesAndPools = [GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcConnectionPool, GlassFishConfigBean.org.glassfish.jdbc.config.JdbcResource]]]
+
+[2019-06-10T17:55:49.386+0200] [glassfish 5.0] [INFO] [ra.stop-successful] [javax.enterprise.resource.resourceadapter.com.sun.enterprise.connectors.service] [tid: _ThreadID=174 _ThreadName=Thread-53] [timeMillis: 1560182149386] [levelValue: 800] [[
+  RAR7094: __cp_jdbc_ra shutdown successful.]]
+
