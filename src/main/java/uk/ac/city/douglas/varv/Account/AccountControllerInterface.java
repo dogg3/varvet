@@ -2,7 +2,6 @@ package uk.ac.city.douglas.varv.Account;
 
 
 
-import uk.ac.city.douglas.varv.Account.domain.Address;
 import uk.ac.city.douglas.varv.Account.domain.Customer;
 import uk.ac.city.douglas.varv.Account.domain.Invoice;
 import uk.ac.city.douglas.varv.Account.domain.Staff;
@@ -33,14 +32,6 @@ public interface AccountControllerInterface {
 
 
 
-
-    //Address
-
-    public boolean addAddress(HashMap<String, String> addressData) throws SQLException;
-    public boolean removeAddress(String postCode) throws SQLException;
-    public Address getAdress(String postCode) throws SQLException;
-    public void modifyAccount(int id);
-    public boolean doesAddressExist(String postCode) throws SQLException;
 
 
 

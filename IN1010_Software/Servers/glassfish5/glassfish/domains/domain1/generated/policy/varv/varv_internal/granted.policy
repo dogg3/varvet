@@ -1,0 +1,24 @@
+/* AUTOMATICALLY GENERATED ON Mon Jun 10 13:14:51 CEST 2019*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "eraseStaffById,Local,int";
+  permission javax.security.jacc.EJBMethodPermission "BoatDAO", "getAllBoats,Local,";
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "addCustomer,Local,uk.ac.city.douglas.varv.Account.domain.Customer";
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "getAllCustomers,Local,";
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "eraseCustomerById,Local,int";
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "editStaff,Local,java.util.HashMap";
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "findCustomerById,Local,int";
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "getAllStaffs,Local,";
+  permission javax.security.jacc.EJBMethodPermission "JobDAO", "getAllCustomers,Local,";
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "editCustomer,Local,java.util.HashMap";
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "findStaffById,Local,int";
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "addStaff,Local,uk.ac.city.douglas.varv.Account.domain.Staff";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.EJBRoleRefPermission "JobDAO", "**";
+  permission javax.security.jacc.EJBRoleRefPermission "AccountDAO", "**";
+  permission javax.security.jacc.EJBRoleRefPermission "BoatDAO", "**";
+};
+

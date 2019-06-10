@@ -4,12 +4,15 @@
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Boat/domain/BoatVariantEngine.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Job/JobInterface.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Boat/domain/BoatVariant.java
+/home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Account/servlets/Staff/AddStaff.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Job/domain/Storage.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Boat/servlets/FindAllBoatBrands.java
+/home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Account/servlets/Staff/EditStaff.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Job/domain/JobTask.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Job/domain/Part.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Boat/servlets/FindAllBoatsByBrand.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Job/domain/Job.java
+/home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Account/servlets/Staff/FindAllStaff.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Boat/dao/BoatDAO.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Account/servlets/customer/EditCustomer.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Account/domain/Staff.java
@@ -28,7 +31,6 @@
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Boat/dao/BoatDAOInterface.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Account/domain/Customer.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Account/servlets/customer/FindCustomerById.java
-/home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Account/domain/Address.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Finance/dao/FinanceDAO.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Boat/domain/BoatVariantEngineKey.java
 /home/douglas/varvet/src/main/java/uk/ac/city/douglas/varv/Account/servlets/customer/EraseCustomer.java

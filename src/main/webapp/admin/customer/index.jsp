@@ -391,7 +391,7 @@
 
             <!-- Edit Modal HTML -->
                 <div id="editEmployeeModal" class="modal fade">
-                    <div class="modal-dialog">
+                    <div style="margin-top:30px" class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title">Andra kund</h4>
@@ -442,30 +442,56 @@
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
-                                <input id="eraseCustomer" type="submit" class="btn btn-danger" value="Radera">
+                                <input id="eraseCustomer" type="submit" class="btn btn-basic" value="Radera">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
+                <!-- confirmation to modals -->
 
-                <div id="successAddEmployee" class="modal fade">
+
+
+                <div id="successAddEmployee" class="modal fade ">
                     <div class="modal-dialog">
                         <div id="modalContent" class="modal-content">
-
-                                <div class="modal-footer">
-
-                                </div>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kund tillagd</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                                <div class="statusResponse" id="statusSuccessAddCustomer"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic" data-dismiss="modal" value="Ok">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div id="successEraseCustomer" class="modal fade">
+
+                <div id="successEditCustomer" class="modal fade ">
                     <div class="modal-dialog">
-                        <div id="modalContentErase" class="modal-content">
-
-                                <div class="modal-footer">
-
-                                </div>
+                        <div  class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kund uppdaterad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessEditCustomer"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic"  data-dismiss="modal"  value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="successEraseCustomer" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div  class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kund raderad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessEraseCustomer"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic"   data-dismiss="modal" value="Ok">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -735,7 +761,7 @@
             success: function (data, status, xhr) {
 
                 $('#deleteEmployeeModal').modal("toggle");
-                $('#modalContentErase').html(name+ " ar raderad.");
+                $('#statusSuccessEraseCustomer').html(name+ " ar raderad.");
 
                 $('#successEraseCustomer').modal("toggle");
             }
@@ -762,7 +788,7 @@
         });
 
         //show the form modal
-        $('#editEmployeeModal').modal("toggle");
+        $('#editEmployeeModal').modal("show");
 
     })
 </script>

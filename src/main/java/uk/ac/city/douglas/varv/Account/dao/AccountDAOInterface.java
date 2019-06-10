@@ -1,6 +1,7 @@
 package uk.ac.city.douglas.varv.Account.dao;
 
 import uk.ac.city.douglas.varv.Account.domain.Customer;
+import uk.ac.city.douglas.varv.Account.domain.Staff;
 import uk.ac.city.douglas.varv.Boat.domain.Boat;
 
 import java.util.HashMap;
@@ -15,12 +16,13 @@ public interface AccountDAOInterface {
     public boolean eraseCustomerById(int id);
     public Customer findCustomerById(int id);
 
-//
-//    /*Staff**/
-//    public boolean addStaff();
-//    public boolean editEditStaff();
-//    public boolean remove();
-//    public boolean getCustomerById();
+
+    /*Staff**/
+    public List<Staff> getAllStaffs();
+    public void addStaff(Staff staff);
+    public void editStaff(HashMap<String,String> staffData);
+    public void eraseStaffById(int id);
+    public Staff findStaffById(int id);
 
 
 

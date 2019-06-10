@@ -1,6 +1,7 @@
 package uk.ac.city.douglas.varv.Account.dao;
 
 import uk.ac.city.douglas.varv.Account.domain.Customer;
+import uk.ac.city.douglas.varv.Account.domain.Staff;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,6 +17,8 @@ public class AccountDAO implements AccountDAOInterface {
     @PersistenceContext(unitName="ramsoPU")
     public EntityManager em;
 
+
+    //CUSTOMER CRUD
 
     @Override
     public List<Customer> getAllCustomers(){
@@ -42,13 +45,7 @@ public class AccountDAO implements AccountDAOInterface {
     @Override
     public void editCustomer(HashMap<String,String> customerData) {
         Customer customer = em.find(Customer.class, Integer.parseInt(customerData.get("customerId")));
-            System.out.println(customer);
-           for(Map.Entry mapElemnt: customerData.entrySet()){
-            System.out.println(
-                    "Customer data hash map" + mapElemnt.getKey() +
-                            " value " +mapElemnt.getValue()
-            );
-           }
+        
 
 
             if(customerData.get("firstName")!=null && !customerData.get("firstName").isEmpty()){
@@ -79,19 +76,81 @@ public class AccountDAO implements AccountDAOInterface {
         if(customerData.get("postCode")!=null && !customerData.get("postCode").isEmpty()){
             customer.setPostCode(customerData.get("postCode"));
         }
-
-
-            System.out.println("customer precis innan merger "  + customer);
+        
            em.merge(customer);
 
     }
 
 
-
-
     @Override
     public Customer findCustomerById(int id) {
          return em.find(Customer.class, id);
+    }
+
+
+
+
+    //CRUD STAFF
+
+
+    @Override
+    public List<Staff> getAllStaffs() {
+        TypedQuery query = em.createQuery("SELECT s FROM Staff AS s",Staff.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public void addStaff(Staff staff) {
+        em.persist(staff);
+    }
+
+    @Override
+    public void editStaff(HashMap<String, String> staffData) {
+        Staff staff = em.find(Staff.class, Integer.parseInt(staffData.get("staffId")));
+
+
+
+        if(staffData.get("firstName")!=null && !staffData.get("firstName").isEmpty()){
+            staff.setFirstName(staffData.get("firstName"));
+        }
+        if(staffData.get("lastName")!=null && !staffData.get("lastName").isEmpty()){
+            staff.setLastName(staffData.get("lastName"));
+        }
+        if(staffData.get("tel")!=null && !staffData.get("tel").isEmpty()){
+            staff.setTel(staffData.get("tel"));
+        }
+        if(staffData.get("email")!=null && !staffData.get("email").isEmpty()){
+            staff.setEmail(staffData.get("email"));
+        }
+        if(staffData.get("hourlyRate")!= null && !staffData.get("hourlyRate").isEmpty()){
+            staff.setHourlyRate(staffData.get("hourlyRate"));
+        }
+
+        if(staffData.get("street")!=null && !staffData.get("street").isEmpty()){
+            staff.setStreet(staffData.get("street"));
+        }
+        if(staffData.get("town")!=null && !staffData.get("town").isEmpty()){
+            staff.setTown(staffData.get("town"));
+        }
+        if(staffData.get("postCode")!=null && !staffData.get("postCode").isEmpty()){
+            staff.setPostCode(staffData.get("postCode"));
+        }
+
+        em.merge(staff);
+    }
+
+    @Override
+    public void eraseStaffById(int id) {
+
+        Staff staff = em.find(Staff.class, id);
+        if(staff != null){
+            em.remove(staff);
+        }
+    }
+
+    @Override
+    public Staff findStaffById(int id) {
+        return em.find(Staff.class,id);
     }
 
 }

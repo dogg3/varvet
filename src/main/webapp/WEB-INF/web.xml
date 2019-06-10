@@ -10,16 +10,8 @@
         </session-timeout>
     </session-config>
 
-
-
-
-     <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name>varvRealm</realm-name>
-        <form-login-config>
-            <form-login-page>/loginForm.jsp</form-login-page>
-            <form-error-page>/loginError.jsp</form-error-page>
-        </form-login-config>
-    </login-config>
+    <welcome-file-list>
+        <welcome-file>/admin/index.html</welcome-file>
+    </welcome-file-list>
 
 </web-app>

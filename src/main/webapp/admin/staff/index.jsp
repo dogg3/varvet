@@ -1,5 +1,9 @@
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
+<%@ page import="uk.ac.city.douglas.varv.Account.domain.Staff" %>
+<%@ page import="org.json.simple.JSONObject" %>
+
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -27,8 +31,9 @@
     <link rel="stylesheet" href="/varv/admin/assets/css/default-css.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/styles.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/responsive.css">
+    <link rel="stylesheet" href="/varv/admin/assets/css/step-jq.css">
     <!-- modernizr css -->
-    <script src="/varv/admin/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="/varv/admin/assets/js/vendor/modernizr-2.8.3.min.js"></script>s
 </head>
 
 <body>
@@ -275,7 +280,7 @@
                             <h2>Hantera <b>anstallda</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny anstalld</span></a>
+                            <a href="#addStaffModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny anstalld</span></a>
                         </div>
                     </div>
                 </div>
@@ -283,139 +288,184 @@
                     <table id="table1" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Kund-ID</th>
+                            <th>Anstallds-ID</th>
                             <th>Namn</th>
                             <th>Telefon</th>
                             <th>Email</th>
-                            <th>Rabatt</th>
+                            <th>Tim-lon</th>
                             <th>Adress</th>
-                            <th>Smeknamn</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
+                        <%
+                            List<Staff> staffs = (List<Staff>)request.getAttribute("staffs");
+                System.out.println("hej");
+                            for(Staff staff: staffs){
 
-                        <%--<%--%>
-                            <%--List<Customer> customers = (List<Customer>)request.getAttribute("customers");--%>
-
-
-                            <%--for(Customer customer: customers){--%>
-
-                                <%--out.print("<tr>");--%>
-                                <%--out.print("<td><a href=/varv/customer/findCustomerById.html?id="+customer.getCustomerID()+">"+--%>
-                                        <%--customer.getCustomerID()+"</td>");--%>
-
-                                <%--out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");--%>
-                                <%--out.print("<td>"+customer.getTel()+"</td>");--%>
-                                <%--out.print("<td>"+customer.getEmail()+"</td>");--%>
-                                <%--out.print("<td>"+customer.getDiscountPlan()+"</td>");--%>
-                                <%--out.print("<td>"+customer.getAddress().getPostCode()--%>
-                                        <%--+ "<br>"+customer.getAddress().getStreet() +"</td>");--%>
-                                <%--out.print("<td>"+customer.getIdentifier()+"</a></td>");--%>
-
-                                <%--out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");--%>
+                            JSONObject staffJSon = new JSONObject();
+                                staffJSon.put("staffId", staff.getStaffId());
+                                staffJSon.put("firstName", staff.getFirstName());
+                                staffJSon.put("lastName", staff.getLastName());
+                                staffJSon.put("tel", staff.getTel());
+                                staffJSon.put("email", staff.getEmail());
+                                staffJSon.put("postCode", staff.getPostCode());
+                                staffJSon.put("street", staff.getStreet());
+                                staffJSon.put("town", staff.getTown());
 
 
+                                out.print("<tr id='staff-tr-id' data-value='" + staff.getStaffId()+"'>");
+                                out.print("<td>"+ staff.getStaffId()+"</td>");
+                                out.print("<td id=staff-tr-name data-value='"+staff.getFirstName()+" " +staff.getLastName()+"'>" +staff.getFirstName()+" "+ staff.getLastName()+"</td>");
+                                out.print("<td>"+staff.getTel()+"</td>");
+                                out.print("<td>"+staff.getEmail()+"</td>");
+                                out.print("<td>"+staff.getHourlyRate()+"</td>");
+                                out.print("<td>"+staff.getPostCode()
+                                        + "<br>"+staff.getStreet() + "<br>" +
+                                        staff.getTown()+ "</td>");
 
-                                <%--out.print("</tr>");--%>
-                            <%--}--%>
-                        <%--%>--%>
+                                out.print("<td>" +
+                                        "<a data-value='" +staffJSon +"' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                        "<a data-value='" + staff.getStaffId()+"' data-name='" + staff.getFirstName()+" "+staff.getLastName() +"'id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+
+
+
+                                out.print("</tr>");
+                            }
+                        %>
 
                         </tbody>
                     </table>
                     <div/>
                 </div>
-                <!-- Edit Modal HTML -->
-                <div id="addEmployeeModal" class="modal fade">
+
+                <!-- add Modal HTML -->
+                <div id="addStaffModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Ny kund</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Namn</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-success" value="Add">
-                                </div>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Ny anstalld</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <form id="example-advanced-form-addStaff" action="#">
+                                <h3>Info</h3>
+                                <fieldset>
+                                    <label>Fornamn</label>
+                                    <input name="firstName" type="text" class="form-control" required>
+                                    <label>Efternamn</label>
+                                    <input name="lastName" type="text" class="form-control" required>
+                                    <label>Telefon</label>
+                                    <input name="tel" type="text" class="form-control" required>
+                                    <label>Email</label>
+                                    <input name="email" type="email" class="form-control" required>
+                                    <label>Tim-lon</label>
+                                    <input name="hourlyRate" type="text" class="form-control" required>
+                                </fieldset>
+
+                                <h3>Adress</h3>
+                                <fieldset>
+                                    <label>Gata</label>
+                                    <input name="street" type="text" class="form-control" required>
+                                    <label>Stad</label>
+                                    <input name="town" type="text" class="form-control" required>
+                                    <label>Post-nummer</label>
+                                    <input name="postCode" type="text" class="form-control" required>
+                                </fieldset>
                             </form>
                         </div>
                     </div>
                 </div>
                 <!-- Edit Modal HTML -->
-                <div id="editEmployeeModal" class="modal fade">
-                    <div class="modal-dialog">
+                <div id="editStaffModal" class="modal fade">
+                    <div style="margin-top:30px" class="modal-dialog">
                         <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Andra kund-data</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
-                                    <input type="submit" class="btn btn-info" value="Spara">
-                                </div>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Andra anstalld</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <form id="example-advanced-form-editStaff" action="#">
+                                <h3>Info</h3>
+                                <fieldset>
+                                    <input id="editStaffId" name="staffId" style="visibility: hidden" >
+                                    <label>Fornamn</label>
+                                    <input name="firstName" type="text" class="form-control" >
+                                    <label>Efternamn</label>
+                                    <input name="lastName" type="text" class="form-control" >
+                                    <label>Telefon</label>
+                                    <input name="tel" type="text" class="form-control" >
+                                    <label>Email</label>
+                                    <input name="email" type="email" class="form-control" >
+                                    <label>Timlon</label>
+                                    <input name="hourlyRate" type="text" class="form-control" >
+                                </fieldset>
+
+                                <h3>Adress</h3>
+                                <fieldset>
+                                    <label>Gata</label>
+                                    <input name="street" type="text" class="form-control" >
+                                    <label>Stad</label>
+                                    <input name="town" type="text" class="form-control" >
+                                    <label>Post-nummer</label>
+                                    <input name="postCode" type="text" class="form-control" >
+                                </fieldset>
                             </form>
                         </div>
                     </div>
                 </div>
                 <!-- Delete Modal HTML -->
-                <div id="deleteEmployeeModal" class="modal fade">
+                <div id="deleteStaffModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Radera kund</h4>
+                                    <h4 class="modal-title">Ta bort anstalld</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Ar du saker att du vill radera denna kund?</p>
-                                    <p class="text-warning"><small>Detta gar inte att angra</small></p>
+                                    <p id="statusAreSure"></p>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
-                                    <input type="submit" class="btn btn-danger" value="Radera">
+                                    <input id="eraseStaff" type="submit" class="btn btn-basic" value="Radera">
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
+
+                <!-- confirmation to modals -->
+                <div id="successAddStaff" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div id="modalContent" class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Anstalld tillagd</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessAddStaff"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic" data-dismiss="modal" value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="successEraseStaff" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div  class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kund raderad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessEraseStaff"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic"   data-dismiss="modal" value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
             <!-- page title area end -->
         </div>
@@ -610,9 +660,12 @@
 <!-- offset area end -->
 <!-- jquery latest version -->
 <script src="/varv/admin/assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="/varv/admin/assets/js/vendor/jquery.steps.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
 <!-- bootstrap 4 js -->
 <script src="/varv/admin/assets/js/popper.min.js"></script>
 <script src="/varv/admin/assets/js/bootstrap.min.js"></script>
+
 <script src="/varv/admin/assets/js/owl.carousel.min.js"></script>
 <script src="/varv/admin/assets/js/metisMenu.min.js"></script>
 <script src="/varv/admin/assets/js/jquery.slimscroll.min.js"></script>
@@ -620,6 +673,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
+<!--jquery form plygin -->
+<script src="/varv/admin/assets/js/jquery.form.min.js"></script>
 <!-- start chart js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <!-- start highcharts js -->
@@ -637,11 +692,81 @@
 <!-- others plugins -->
 <script src="/varv/admin/assets/js/plugins.js"></script>
 <script src="/varv/admin/assets/js/scripts.js"></script>
+<script src="/varv/admin/assets/js/jq-modal.js"></script>
+
 
 <script>
     $(document).ready(function () {
         $('#table1').DataTable();
+        $("#example-basic").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            autoFocus: true
+        });
     });
+
+
+    //////////////////DELETE
+    //pop up are u sure button and passing the customer ID
+    $('.delete').click(function(e){
+        e.preventDefault();
+        var id = $(this).data('value');
+        var name = $(this).data('name');
+        var deleteModal =  $('#deleteStaffModal');
+        deleteModal.find('#eraseStaff').data("value",id);
+        deleteModal.find('#eraseStaff').data("name",name);
+        deleteModal.find('#statusAreSure').html("Ar du saker pa add radera <span style='color:black'>" + name + "</span>");
+        deleteModal.modal("toggle");
+        console.log($(this).data('name'));
+    })
+
+        //SEND DELETE REQUEST TO SERVLET AddStaff
+    $('#eraseStaff').click(function(e){
+        e.preventDefault();
+
+        var id =  $(this).data('value');
+        var name = $(this).data('name');
+        $.ajax({
+            url:'/varv/admin/staff/addStaff.html?id='+id,
+            type: 'DELETE',
+            success: function (data, status, xhr) {
+
+                $('#deleteStaffModal').modal("toggle");
+                $('#statusSuccessEraseStaff').html(name+ " ar raderad.");
+                $('#successEraseCustomer').modal("toggle");
+            }
+        })
+    })
+
+
+    ///EDIT STAFF /////////
+    //fill placeholder with correct valie//
+
+    $('.edit').click(function(e){
+        e.preventDefault();
+
+        //Set placeholders
+        var staff = $(this).data('value');
+        var form =$('#editStaffModal').find('form');
+        var allInput = form.find('input');
+        //Set correct staff id to an input that is hidden
+        //The script in script.js knows what staff to edit
+        $('#editStaffId').val(staff['staffId']);
+
+        allInput.each(function(index,value){
+            var attr = $(value).attr('name');
+            var placeholder = staff[attr];
+            $(value).attr("placeholder", placeholder);
+
+        });
+
+        //show the form modal
+        $('#editStaffModal').modal("show");
+
+    })
+
+
 </script>
 </body>
 

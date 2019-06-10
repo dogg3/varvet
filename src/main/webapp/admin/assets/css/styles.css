@@ -1279,6 +1279,14 @@ table.dbkit-table tr td {
     letter-spacing: 0;
 }
 
+.statusResponse {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 1.4em;
+}
+
 .tm-social a {
     display: inline-block;
     margin-left: 15px;
@@ -1535,6 +1543,7 @@ table.dbkit-table tr td {
 .tst-item p {
     color: #fff;
 }
+
 
 .testimonial-carousel .owl-dots {
     text-align: center;

@@ -221,7 +221,9 @@
 
 
 
-    //add new customer form
+////////////////CUSTOMER//////////////////////////////////
+
+    //ADD CUSTOMER FORM
     var form = $("#example-advanced-form").show();
 
 
@@ -281,7 +283,7 @@
         onFinished: function (event, currentIndex)
         {
             var data = JSON.stringify($(form).serializeArray());
-            console.log(data);
+
 
             $.ajax({
                 url:'/varv/admin/customer/addCustomer.html',
@@ -295,7 +297,7 @@
                     if(data.status=="success"){
                 statusMessage = data.customer;
                     }
-                    $('#modalContent').html(statusMessage + " har lagts till!");
+                    $('#statusSuccessAddCustomer').html(statusMessage + " har lagts till!");
                     $('#addEmployeeNew').modal('toggle');
                     $('#successAddEmployee').modal('toggle');
                     $('#example-advanced-form').resetForm();
@@ -317,7 +319,7 @@
 
 
 
-    //editForm
+ ////////////////////////EDIT-CUSTOMER FORM /////////////////////////////////////////////////////////////////
     var editCustomerForm = $("#example-advanced-form-editCustomer").show();
 
 
@@ -363,7 +365,10 @@
         onFinished: function (event, currentIndex)
         {
             var data = JSON.stringify($(editCustomerForm).serializeArray());
-            console.log(data);
+
+            var firstName = $('#example-advanced-form-editCustomer').find("input[name=firstName]");
+            var lastName = $('#example-advanced-form-editCustomer').find("input[name=lastName]");
+
 
             $.ajax({
                 url:'/varv/admin/customer/editCustomer.html',
@@ -375,13 +380,13 @@
                 success: function(data,status,xhr){
                     var statusMessage;
                     if(data.status=="success"){
-                        statusMessage = data.customer;
+                        statusMessage =   firstName.attr('placeholder')  + " " + lastName.attr('placeholder');
                     }
-                    $('#modalContent').html(statusMessage + " har andrats");
-                    $('#editEmployeeModal').modal('toggle');
-                    // $('#successAddEmployee').modal('toggle');
+                    $('#statusSuccessEditCustomer').html("Kund: " + statusMessage + " har uppdaterats!");
+                    $('#editEmployeeModal').modal('hide');
+                    $('#successEditCustomer').modal('show');
                     $('#example-advanced-form-editCustomer').resetForm();
-                    form.steps("previous");
+                    editCustomerForm.steps("previous");
                 },
                 error: function(jqXhr, textStatus,errorMessage){
                     console.log(errorMessage);
@@ -389,5 +394,168 @@
             })
         }
     });
+
+
+
+    ///////////////////////////STAFF///////////////////////////////////
+
+
+    //ADD STAFF FORM
+
+    //ADD CUSTOMER FORM
+    var formAddStaff = $("#example-advanced-form-addStaff").show();
+
+
+
+    formAddStaff.steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        transitionEffect: "slideLeft",
+        labels: {
+            current: "Aktuellt steg:",
+            pagination: "Pagination",
+            finish: "Lagg till",
+            next: "Nasta",
+            previous: "Forra",
+            loading: "Laddar ..."
+        },
+        onStepChanging: function (event, currentIndex, newIndex)
+        {
+            // Allways allow previous action even if the current form is not valid!
+            if (currentIndex > newIndex)
+            {
+                return true;
+            }
+            // Forbid next action on "Warning" step if the user is to young
+            if (newIndex === 3 && Number($("#age-2").val()) < 18)
+            {
+                return false;
+            }
+            // Needed in some cases if the user went back (clean up)
+            if (currentIndex < newIndex)
+            {
+                // To remove error styles
+                formAddStaff.find(".body:eq(" + newIndex + ") label.error").remove();
+                formAddStaff.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+            }
+            formAddStaff.validate().settings.ignore = ":disabled,:hidden";
+            return formAddStaff.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex)
+        {
+
+        },
+        onFinishing: function (event, currentIndex)
+        {
+            formAddStaff.validate().settings.ignore = ":disabled";
+            return formAddStaff.valid();
+        },
+        onFinished: function (event, currentIndex)
+        {
+            var data = JSON.stringify($(formAddStaff).serializeArray());
+
+
+            $.ajax({
+                url:'/varv/admin/staff/addStaff.html',
+                type:'POST',
+                contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                dataType:'json',
+                data: {formData:data
+                },
+                success: function(data,status,xhr){
+                    var statusMessage;
+                    if(data.status=="success"){
+                        statusMessage = data.staff;
+                    }
+                    $('#statusSuccessAddStaff').html(statusMessage + " har lagts till!");
+                    $('#addStaffModal').modal('toggle');
+                    $('#successAddStaff').modal('toggle');
+                    $('#example-advanced-form-addStaff').resetForm();
+                    formAddStaff.steps("previous");
+                },
+                error: function(jqXhr, textStatus,errorMessage){
+                    console.log(errorMessage);
+                }
+            })
+        }
+    });
+
+    ////EDIT STAFF //////
+    var editStaffForm = $("#example-advanced-form-editStaff").show();
+
+
+
+    editStaffForm.steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        transitionEffect: "slideLeft",
+        labels: {
+            current: "Aktuellt steg:",
+            pagination: "Pagination",
+            finish: "Submit",
+            next: "Nasta",
+            previous: "Forra",
+            loading: "Laddar ..."
+        },
+        onStepChanging: function (event, currentIndex, newIndex)
+        {
+            // Allways allow previous action even if the current form is not valid!
+            if (currentIndex > newIndex)
+            {
+                return true;
+            }
+            // Needed in some cases if the user went back (clean up)
+            if (currentIndex < newIndex)
+            {
+                // To remove error styles
+                editStaffForm.find(".body:eq(" + newIndex + ") label.error").remove();
+                editStaffForm.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+            }
+            editStaffForm.validate().settings.ignore = ":disabled,:hidden";
+            return editStaffForm.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex)
+        {
+
+        },
+        onFinishing: function (event, currentIndex)
+        {
+            editStaffForm.validate().settings.ignore = ":disabled";
+            return editStaffForm.valid();
+        },
+        onFinished: function (event, currentIndex)
+        {
+            var data = JSON.stringify($(editStaffForm).serializeArray());
+
+            var firstName = $('#example-advanced-form-editStaff').find("input[name=firstName]");
+            var lastName = $('#example-advanced-form-editStaff').find("input[name=lastName]");
+
+
+            $.ajax({
+                url:'/varv/admin/staff/editStaff.html',
+                type:'POST',
+                contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                dataType:'json',
+                data: {formData:data
+                },
+                success: function(data,status,xhr){
+                    var statusMessage;
+                    if(data.status=="success"){
+                        statusMessage =   firstName.attr('placeholder')  + " " + lastName.attr('placeholder');
+                    }
+                    // $('#statusSuccessEditStaff').html("Kund: " + statusMessage + " har uppdaterats!");
+                    $('#editStaffModal').modal('hide');
+                    // $('#successEditStaff').modal('show');
+                    $('#example-advanced-form-editStaff').resetForm();
+                    editStaffForm.steps("previous");
+                },
+                error: function(jqXhr, textStatus,errorMessage){
+                    console.log(errorMessage);
+                }
+            })
+        }
+    });
+
+
 
 })(jQuery);
