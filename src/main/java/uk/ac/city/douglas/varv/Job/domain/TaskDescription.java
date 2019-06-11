@@ -1,5 +1,7 @@
 package uk.ac.city.douglas.varv.Job.domain;
 
+import uk.ac.city.douglas.varv.Stock.domain.Part;
+
 import java.util.List;
 import java.util.Objects;
 

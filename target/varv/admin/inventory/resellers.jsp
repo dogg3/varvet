@@ -1,5 +1,6 @@
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
+<%@ page import="uk.ac.city.douglas.varv.Stock.domain.Part" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -294,53 +295,54 @@
                         <div class="col-sm-6">
                             <h2>Aterforsaljare</h2>
                         </div>
-                        <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny aterforsaljare</span></a>
-                        </div>
+
                     </div>
                 </div>
                 <div class="table-responsive">
                     <table id="table1" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Anvandarnamn</th>
-                            <th>Namn</th>
-                            <th>Telefon</th>
-                            <th>Email</th>
-                            <th>Adress</th>
-                            <th>Timlon</th>
-                            <th>Actions</th>
+                            <th>Artikel-nr</th>
+                            <th>Priskod</th>
+                            <th>Beskrivning</th>
+                            <th>Varugrupp</th>
+                            <th>Katalogpris ex-moms</th>
+                            <th>Katalogpris ink-moms</th>
+                            <th>Momskod</th>
+                            <th>EAN-kod</th>
                         </tr>
                         </thead>
-                        <%--<tbody>--%>
-                        <%--<tr>--%>
-
-                        <%--List<Customer> customers = (List<Customer>)request.getAttribute("customers");--%>
-
-
-                        <%--for(Customer customer: customers){--%>
-
-                        <%--out.print("<tr>");--%>
-                        <%--out.print("<td><a href=/varv/customer/findCustomerById.html?id="+customer.getCustomerID()+">"+--%>
-                        <%--customer.getCustomerID()+"</td>");--%>
-
-                        <%--out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getTel()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getEmail()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getDiscountPlan()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getAddress().getPostCode()--%>
-                        <%--+ "<br>"+customer.getAddress().getStreet() +"</td>");--%>
-                        <%--out.print("<td>"+customer.getIdentifier()+"</a></td>");--%>
-
-                        <%--out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");--%>
 
 
 
-                        <%--out.print("</tr>");--%>
-                        <%--}--%>
-                        <%--%>--%>
-                        <%--<tr/>--%>
-                        <%--</tbody>--%>
+                        <tbody>
+                        <tr>
+                            <%
+                        List<Part> parts = (List<Part>)request.getAttribute("parts");
+
+
+                        for(Part part: parts){
+
+                        out.print("<tr>");
+
+
+                        out.print("<td>"+part.getArtNr()+"</td>");
+                        out.print("<td>"+part.getPrisKod()+"</td>");
+                        out.print("<td>"+part.getDescription()+"</td>");
+                        out.print("<td>"+part.getVaruGrupp()+"</td>");
+                        out.print("<td>"+part.getKatalogPrisExMoms()+"</td>");
+                        out.print("<td>"+part.getGetKatalogPrisInkMoms()+"</td>");
+                        out.print("<td>"+part.getMomsKod()+"</td>");
+                        out.print("<td>"+part.getEanKod()+"</td>");
+
+
+
+
+                        out.print("</tr>");
+                        }
+                        %>
+                        <tr/>
+                        </tbody>
                     </table>
                     <div/>
                 </div>

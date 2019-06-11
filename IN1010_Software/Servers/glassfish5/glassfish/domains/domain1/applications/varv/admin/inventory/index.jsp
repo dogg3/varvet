@@ -1,5 +1,6 @@
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
+<%@ page import="org.json.simple.JSONObject" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -303,44 +304,58 @@
                     <table id="table1" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Anvandarnamn</th>
+                            <th>Kund-ID</th>
                             <th>Namn</th>
                             <th>Telefon</th>
                             <th>Email</th>
+                            <th>Rabatt</th>
                             <th>Adress</th>
-                            <th>Timlon</th>
+                            <th>Smeknamn</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
-                        <%--<tbody>--%>
-                        <%--<tr>--%>
+                        <tbody>
 
-                        <%--List<Customer> customers = (List<Customer>)request.getAttribute("customers");--%>
+                        <%
+                            List<Customer> customers = (List<Customer>)request.getAttribute("customers");
 
+                            for(Customer customer: customers){
 
-                        <%--for(Customer customer: customers){--%>
-
-                        <%--out.print("<tr>");--%>
-                        <%--out.print("<td><a href=/varv/customer/findCustomerById.html?id="+customer.getCustomerID()+">"+--%>
-                        <%--customer.getCustomerID()+"</td>");--%>
-
-                        <%--out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getTel()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getEmail()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getDiscountPlan()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getAddress().getPostCode()--%>
-                        <%--+ "<br>"+customer.getAddress().getStreet() +"</td>");--%>
-                        <%--out.print("<td>"+customer.getIdentifier()+"</a></td>");--%>
-
-                        <%--out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");--%>
+                                JSONObject customerJSon = new JSONObject();
+                                customerJSon.put("customerId", customer.getCustomerID());
+                                customerJSon.put("firstName", customer.getFirstName());
+                                customerJSon.put("lastName", customer.getLastName());
+                                customerJSon.put("tel", customer.getTel());
+                                customerJSon.put("email", customer.getEmail());
+                                customerJSon.put("discountPlan", customer.getDiscountPlan());
+                                customerJSon.put("postCode", customer.getPostCode());
+                                customerJSon.put("street", customer.getStreet());
+                                customerJSon.put("identifier", customer.getIdentifier());
+                                customerJSon.put("town", customer.getTown());
 
 
+                                out.print("<tr id='customer-tr-id' data-value='" + customer.getCustomerID()+"'>");
+                                out.print("<td>"+ customer.getCustomerID()+"</td>");
+                                out.print("<td id=customer-tr-name data-value='"+customer.getFirstName()+" " +customer.getLastName()+"'>" +customer.getFirstName()+" "+ customer.getLastName()+"</td>");
+                                out.print("<td>"+customer.getTel()+"</td>");
+                                out.print("<td>"+customer.getEmail()+"</td>");
+                                out.print("<td>"+customer.getDiscountPlan()+"</td>");
+                                out.print("<td>"+customer.getPostCode()
+                                        + "<br>"+customer.getStreet() + "<br>" +
+                                        customer.getTown()+ "</td>");
+                                out.print("<td>"+customer.getIdentifier()+"</a></td>");
 
-                        <%--out.print("</tr>");--%>
-                        <%--}--%>
-                        <%--%>--%>
-                        <%--<tr/>--%>
-                        <%--</tbody>--%>
+                                out.print("<td>" +
+                                        "<a data-value='" +customerJSon +"' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                        "<a data-value='" + customer.getCustomerID()+"' data-name='" + customer.getFirstName()+" "+customer.getLastName() +"'id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+
+
+
+                                out.print("</tr>");
+                            }
+                        %>
+
+                        </tbody>
                     </table>
                     <div/>
                 </div>

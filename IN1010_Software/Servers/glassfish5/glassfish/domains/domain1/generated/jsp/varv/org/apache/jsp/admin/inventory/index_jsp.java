@@ -5,6 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import uk.ac.city.douglas.varv.Account.domain.Customer;
 import java.util.List;
+import org.json.simple.JSONObject;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -44,6 +45,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("<!doctype html>\n");
@@ -349,64 +351,60 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <table id=\"table1\" class=\"table table-striped table-hover\">\n");
       out.write("                        <thead>\n");
       out.write("                        <tr>\n");
-      out.write("                            <th>Anvandarnamn</th>\n");
+      out.write("                            <th>Kund-ID</th>\n");
       out.write("                            <th>Namn</th>\n");
       out.write("                            <th>Telefon</th>\n");
       out.write("                            <th>Email</th>\n");
+      out.write("                            <th>Rabatt</th>\n");
       out.write("                            <th>Adress</th>\n");
-      out.write("                            <th>Timlon</th>\n");
+      out.write("                            <th>Smeknamn</th>\n");
       out.write("                            <th>Actions</th>\n");
       out.write("                        </tr>\n");
       out.write("                        </thead>\n");
-      out.write("                        ");
+      out.write("                        <tbody>\n");
       out.write("\n");
       out.write("                        ");
+
+                            List<Customer> customers = (List<Customer>)request.getAttribute("customers");
+
+                            for(Customer customer: customers){
+
+                                JSONObject customerJSon = new JSONObject();
+                                customerJSon.put("customerId", customer.getCustomerID());
+                                customerJSon.put("firstName", customer.getFirstName());
+                                customerJSon.put("lastName", customer.getLastName());
+                                customerJSon.put("tel", customer.getTel());
+                                customerJSon.put("email", customer.getEmail());
+                                customerJSon.put("discountPlan", customer.getDiscountPlan());
+                                customerJSon.put("postCode", customer.getPostCode());
+                                customerJSon.put("street", customer.getStreet());
+                                customerJSon.put("identifier", customer.getIdentifier());
+                                customerJSon.put("town", customer.getTown());
+
+
+                                out.print("<tr id='customer-tr-id' data-value='" + customer.getCustomerID()+"'>");
+                                out.print("<td>"+ customer.getCustomerID()+"</td>");
+                                out.print("<td id=customer-tr-name data-value='"+customer.getFirstName()+" " +customer.getLastName()+"'>" +customer.getFirstName()+" "+ customer.getLastName()+"</td>");
+                                out.print("<td>"+customer.getTel()+"</td>");
+                                out.print("<td>"+customer.getEmail()+"</td>");
+                                out.print("<td>"+customer.getDiscountPlan()+"</td>");
+                                out.print("<td>"+customer.getPostCode()
+                                        + "<br>"+customer.getStreet() + "<br>" +
+                                        customer.getTown()+ "</td>");
+                                out.print("<td>"+customer.getIdentifier()+"</a></td>");
+
+                                out.print("<td>" +
+                                        "<a data-value='" +customerJSon +"' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                        "<a data-value='" + customer.getCustomerID()+"' data-name='" + customer.getFirstName()+" "+customer.getLastName() +"'id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+
+
+
+                                out.print("</tr>");
+                            }
+                        
       out.write("\n");
       out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
-      out.write("                        ");
-      out.write("\n");
+      out.write("                        </tbody>\n");
       out.write("                    </table>\n");
       out.write("                    <div/>\n");
       out.write("                </div>\n");
