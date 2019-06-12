@@ -1,10 +1,10 @@
-/* AUTOMATICALLY GENERATED ON Tue Jun 11 20:27:59 CEST 2019*/
+/* AUTOMATICALLY GENERATED ON Wed Jun 12 10:34:15 CEST 2019*/
 /* DO NOT EDIT */
 
 grant {
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "eraseCustomerById,Local,int";
-  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "editStaff,Local,java.util.HashMap";
   permission javax.security.jacc.EJBMethodPermission "StockDAO", "getAllParts,Local,";
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "editStaff,Local,java.util.HashMap";
   permission javax.security.jacc.EJBMethodPermission "JobDAO", "getAllCustomers,Local,";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "editCustomer,Local,java.util.HashMap";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "findStaffById,Local,int";

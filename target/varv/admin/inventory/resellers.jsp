@@ -1,6 +1,7 @@
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
 <%@ page import="uk.ac.city.douglas.varv.Stock.domain.Part" %>
+<%@ page import="org.json.simple.JSONObject" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -94,7 +95,7 @@
                                 <span>Lager</span></a>
                             <ul class="collapse">
                                 <li><a href="/varv/admin/inventory/index.jsp">Lager-vy</a></li>
-                                <li><a href="/varv/admin/inventory/resellers.jsp">Aterforsaljare</a></li>
+                                <li><a href="/varv/admin/inventory/resellers.jsp">Byggplast</a></li>
                             </ul>
                         </li>
                         <li><a href="/varv/admin/secure/index.jsp"><i class="ti-dashboard"></i> <span>Sakerhet</span></a></li>
@@ -279,10 +280,10 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumbs-area clearfix">
-                        <h4 class="page-title pull-left">Aterforsaljare</h4>
+                        <h4 class="page-title pull-left">Byggplast</h4>
                         <ul class="breadcrumbs pull-left">
                             <li>Lager</li>
-                            <li><span>Aterforsaljare</span></li>
+                            <li><span>Byggplast</span></li>
                         </ul>
                     </div>
                 </div>
@@ -293,7 +294,7 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2>Aterforsaljare</h2>
+                            <h2>Byggplast</h2>
                         </div>
 
                     </div>
@@ -303,79 +304,80 @@
                         <thead>
                         <tr>
                             <th>Artikel-nr</th>
-                            <th>Priskod</th>
                             <th>Beskrivning</th>
                             <th>Varugrupp</th>
                             <th>Katalogpris ex-moms</th>
                             <th>Katalogpris ink-moms</th>
                             <th>Momskod</th>
                             <th>EAN-kod</th>
+                            <th>Bestall</th>
                         </tr>
                         </thead>
-
-
-
                         <tbody>
-                        <tr>
+
                             <%
                         List<Part> parts = (List<Part>)request.getAttribute("parts");
 
 
                         for(Part part: parts){
 
+                           //Set all the values of each Part row into a json object
+                            // Then passing the jsonObject as a data-value onClick function of the
+                            //Edit button when the modal is popping up
+                            //the script that is invoked is at the end of this file
+
+                            JSONObject partJson = new JSONObject();
+                            partJson.put("artNr", part.getArtNr());
+                            partJson.put("benamning", part.getBenamning());
+                            partJson.put("vaurGrupp", part.getVaruGrupp());
+                            partJson.put("katalogPrisExMoms", part.getKatalogPrisExMoms());
+                            partJson.put("katalogPrisInkMoms", part.getGetKatalogPrisInkMoms());
+
+
                         out.print("<tr>");
 
 
                         out.print("<td>"+part.getArtNr()+"</td>");
-                        out.print("<td>"+part.getPrisKod()+"</td>");
-                        out.print("<td>"+part.getDescription()+"</td>");
+                        out.print("<td>"+part.getBenamning()+"</td>");
                         out.print("<td>"+part.getVaruGrupp()+"</td>");
-                        out.print("<td>"+part.getKatalogPrisExMoms()+"</td>");
-                        out.print("<td>"+part.getGetKatalogPrisInkMoms()+"</td>");
+                        out.print("<td>"+part.getKatalogPrisExMoms()+" kr</td>");
+                        out.print("<td>"+part.getGetKatalogPrisInkMoms()+" kr</td>");
                         out.print("<td>"+part.getMomsKod()+"</td>");
                         out.print("<td>"+part.getEanKod()+"</td>");
 
-
+                            out.print("<td>" +
+                                    "<a data-value='"+partJson+"' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a></td>");
 
 
                         out.print("</tr>");
                         }
                         %>
-                        <tr/>
+
                         </tbody>
                     </table>
                     <div/>
                 </div>
                 <!-- Edit Modal HTML -->
-                <div id="addEmployeeModal" class="modal fade">
+                <div id="orderPartModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form>
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Ny kund</h4>
+                                    <h4 class="modal-title">Bestall del</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Namn</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
+                                        <label style="font-size: 1.7em" id="benamning"></label><br>
+                                        <label>Artikel nr:</label>&nbsp;<label style="font-size: 1.3em" id="artNrInModal"></label><br>
+                                        <label>Katalogpris ex moms:</label>&nbsp;<label style="font-size: 1.3em" id="katalogPrisExMoms"></label>&nbsp;<span style="font-size: 1.3em">SEK</span><br>
+                                        <label>Katalogpris ink moms:</label>&nbsp;<label style="font-size: 1.3em" id="katalogPrisInkMoms"></label>&nbsp;<span style="font-size: 1.3em">SEK</span><br>
+                                        <label style="font-size: 1.5em">Antal</label>
                                         <input type="text" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-success" value="Add">
+                                    <input type="submit" class="btn btn-success" value="Bestall">
                                 </div>
                             </form>
                         </div>
@@ -628,12 +630,14 @@
         </div>
     </div>
 </div>
-<!-- offset area end -->
 <!-- jquery latest version -->
 <script src="/varv/admin/assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="/varv/admin/assets/js/vendor/jquery.steps.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
 <!-- bootstrap 4 js -->
 <script src="/varv/admin/assets/js/popper.min.js"></script>
 <script src="/varv/admin/assets/js/bootstrap.min.js"></script>
+
 <script src="/varv/admin/assets/js/owl.carousel.min.js"></script>
 <script src="/varv/admin/assets/js/metisMenu.min.js"></script>
 <script src="/varv/admin/assets/js/jquery.slimscroll.min.js"></script>
@@ -641,6 +645,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
+<!--jquery form plygin -->
+<script src="/varv/admin/assets/js/jquery.form.min.js"></script>
 <!-- start chart js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <!-- start highcharts js -->
@@ -658,11 +664,44 @@
 <!-- others plugins -->
 <script src="/varv/admin/assets/js/plugins.js"></script>
 <script src="/varv/admin/assets/js/scripts.js"></script>
-
+<script src="/varv/admin/assets/js/jq-modal.js"></script>
 <script>
     $(document).ready(function () {
         $('#table1').DataTable();
     });
+
+
+
+    ///Order Part /////////
+
+    $('.edit').click(function(e){
+        e.preventDefault();
+
+        //Set placeholders
+        //the variable part is taking the jsonObject that was passed in the form
+        var part = $(this).data('value');
+
+        //This is putting the form into a variale
+        var form =$('#orderPartModal').find('form');
+
+        console.log(part);
+        console.log(part['artNr'])
+
+        //Set correct staff id to an input that is hidden
+        //The script in script.js knows what staff to edit
+        $('#benamning').html(part['benamning']);
+        $('#artNrInModal').html(part['artNr']);
+        $('#katalogPrisExMoms').html(part['katalogPrisExMoms']);
+        $('#katalogPrisInkMoms').html(part['katalogPrisInkMoms']);
+
+
+
+
+        //show the form modal
+        $('#orderPartModal').modal("show");
+
+    })
+
 </script>
 </body>
 

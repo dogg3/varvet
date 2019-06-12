@@ -89,8 +89,8 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-archive"></i>
                                 <span>Lager</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/inventory/index.jsp">Lager-vy</a></li>
-                                <li><a href="/varv/admin/inventory/resellers.jsp">Aterforsaljare</a></li>
+                                <li><a href="/varv/admin/inventory/index.html">Lager-vy</a></li>
+                                <li><a href="/varv/admin/inventory/resellers.html">Byggplast</a></li>
                             </ul>
                         </li>
                         <li><a href="/varv/admin/secure/index.jsp"><i class="ti-dashboard"></i> <span>Sakerhet</span></a></li>
@@ -698,12 +698,6 @@
 <script>
     $(document).ready(function () {
         $('#table1').DataTable();
-        $("#example-basic").steps({
-            headerTag: "h3",
-            bodyTag: "section",
-            transitionEffect: "slideLeft",
-            autoFocus: true
-        });
     });
 
 
@@ -748,7 +742,9 @@
 
         //Set placeholders
         var staff = $(this).data('value');
+        console.log(staff);
         var form =$('#editStaffModal').find('form');
+      console.log($.type(form));
         var allInput = form.find('input');
         //Set correct staff id to an input that is hidden
         //The script in script.js knows what staff to edit
