@@ -63,12 +63,12 @@
                 <nav>
                     <ul class="metismenu" id="menu">
                         <li><a href="/varv/admin/customer/index.html"><i class="ti-target"></i> <span>Kunder</span></a></li>
-                        <li><a href="/varv/admin/staff/index.jsp"><i class="ti-user-alt"></i> <span>Anstallda</span></a></li>
+                        <li><a href="/varv/admin/staff/index.html"><i class="ti-user-alt"></i> <span>Anstallda</span></a></li>
                         <li>
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-anchor"></i>
                                 <span>Batar</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/boat/index.jsp">Bat-databas</a></li>
+                                <li><a href="/varv/admin/boat/index.html">Bat-databas</a></li>
                                 <li><a href="/varv/admin/boat/customerBoats.jsp">Kundbatar</a></li>
                                 <li><a href="/varv/admin/boat/vinterplats.jsp">Vinterplats</a></li>
                             </ul>

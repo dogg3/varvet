@@ -1,13 +1,14 @@
-/* AUTOMATICALLY GENERATED ON Wed Jun 12 10:34:15 CEST 2019*/
+/* AUTOMATICALLY GENERATED ON Wed Jun 12 17:18:11 CEST 2019*/
 /* DO NOT EDIT */
 
 grant {
-  permission javax.security.jacc.WebResourcePermission "/";
   permission javax.security.jacc.WebUserDataPermission "/";
+  permission javax.security.jacc.WebResourcePermission "/";
 };
 
 grant      principal * * {
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.FindAllBoatsByBrand", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.FindAllCustomerBoats", "**";
   permission javax.security.jacc.WebRoleRefPermission "", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.FindAllParts", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.AddCustomer", "**";

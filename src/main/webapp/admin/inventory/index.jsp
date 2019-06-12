@@ -62,12 +62,12 @@
                 <nav>
                     <ul class="metismenu" id="menu">
                         <li><a href="/varv/admin/customer/index.html"><i class="ti-target"></i> <span>Kunder</span></a></li>
-                        <li><a href="/varv/admin/staff/index.jsp"><i class="ti-user-alt"></i> <span>Anstallda</span></a></li>
+                        <li><a href="/varv/admin/staff/index.html"><i class="ti-user-alt"></i> <span>Anstallda</span></a></li>
                         <li>
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-anchor"></i>
                                 <span>Batar</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/boat/index.jsp">Bat-databas</a></li>
+                                <li><a href="/varv/admin/boat/index.html">Bat-databas</a></li>
                                 <li><a href="/varv/admin/boat/customerBoats.jsp">Kundbatar</a></li>
                                 <li><a href="/varv/admin/boat/vinterplats.jsp">Vinterplats</a></li>
                             </ul>
@@ -361,24 +361,16 @@
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Ny kund</h4>
+                                    <h4 class="modal-title">Ny reservdel</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Namn</label>
+                                        <label>Artikel-nr</label>
                                         <input type="text" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
+                                        <label>Antal</label>
                                         <input type="text" class="form-control" required>
                                     </div>
                                 </div>

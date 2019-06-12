@@ -62,12 +62,12 @@
                 <nav>
                     <ul class="metismenu" id="menu">
                         <li><a href="/varv/admin/customer/index.html"><i class="ti-target"></i> <span>Kunder</span></a></li>
-                        <li><a href="/varv/admin/staff/index.jsp"><i class="ti-user-alt"></i> <span>Anstallda</span></a></li>
+                        <li><a href="/varv/admin/staff/index.html"><i class="ti-user-alt"></i> <span>Anstallda</span></a></li>
                         <li>
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-anchor"></i>
                                 <span>Batar</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/boat/index.jsp">Bat-databas</a></li>
+                                <li><a href="/varv/admin/boat/index.html">Bat-databas</a></li>
                                 <li><a href="/varv/admin/boat/customerBoats.jsp">Kundbatar</a></li>
                                 <li><a href="/varv/admin/boat/vinterplats.jsp">Vinterplats</a></li>
                             </ul>
@@ -305,13 +305,12 @@
                     <table id="table1" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Anvandarnamn</th>
-                            <th>Namn</th>
-                            <th>Telefon</th>
-                            <th>Email</th>
-                            <th>Adress</th>
-                            <th>Timlon</th>
-                            <th>Actions</th>
+                            <th>Modell</th>
+                            <th>Marke</th>
+                            <th>Langd</th>
+                            <th>Bredd</th>
+                            <th>Vikt</th>
+                            <th>Minimum hastkraft</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -328,10 +327,8 @@
                         out.print("<td>"+boat.getLength()+"</td>");
                         out.print("<td>"+boat.getWidth()+"</td>");
                         out.print("<td>"+boat.getWeight()+"</td>");
+                        out.print("<td>"+boat.getEngineMinHp()+"</td>");
 
-                        out.print("<td>"+boat.getEngineMinHp()+"</a></td>");
-
-                        out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
 
 
 

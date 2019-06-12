@@ -1,14 +1,13 @@
-package org.apache.jsp.admin.inventory;
+package org.apache.jsp.admin.boat;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import uk.ac.city.douglas.varv.Account.domain.Customer;
 import java.util.List;
-import uk.ac.city.douglas.varv.Stock.domain.Part;
-import org.json.simple.JSONObject;
+import uk.ac.city.douglas.varv.Boat.domain.BoatVariant;
 
-public final class resellers_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class customerBoats_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -46,7 +45,6 @@ public final class resellers_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -111,12 +109,12 @@ public final class resellers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <nav>\n");
       out.write("                    <ul class=\"metismenu\" id=\"menu\">\n");
       out.write("                        <li><a href=\"/varv/admin/customer/index.html\"><i class=\"ti-target\"></i> <span>Kunder</span></a></li>\n");
-      out.write("                        <li><a href=\"/varv/admin/staff/index.jsp\"><i class=\"ti-user-alt\"></i> <span>Anstallda</span></a></li>\n");
+      out.write("                        <li><a href=\"/varv/admin/staff/index.html\"><i class=\"ti-user-alt\"></i> <span>Anstallda</span></a></li>\n");
       out.write("                        <li>\n");
       out.write("                            <a href=\"javascript:void(0)\" aria-expanded=\"true\"><i class=\"ti-anchor\"></i>\n");
       out.write("                                <span>Batar</span></a>\n");
       out.write("                            <ul class=\"collapse\">\n");
-      out.write("                                <li><a href=\"/varv/admin/boat/index.jsp\">Bat-databas</a></li>\n");
+      out.write("                                <li><a href=\"/varv/admin/boat/index.html\">Bat-databas</a></li>\n");
       out.write("                                <li><a href=\"/varv/admin/boat/customerBoats.jsp\">Kundbatar</a></li>\n");
       out.write("                                <li><a href=\"/varv/admin/boat/vinterplats.jsp\">Vinterplats</a></li>\n");
       out.write("                            </ul>\n");
@@ -328,106 +326,125 @@ public final class resellers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div class=\"row align-items-center\">\n");
       out.write("                <div class=\"col-sm-6\">\n");
       out.write("                    <div class=\"breadcrumbs-area clearfix\">\n");
-      out.write("                        <h4 class=\"page-title pull-left\">Byggplast</h4>\n");
+      out.write("                        <h4 class=\"page-title pull-left\">Kundbatar</h4>\n");
       out.write("                        <ul class=\"breadcrumbs pull-left\">\n");
-      out.write("                            <li>Lager</li>\n");
-      out.write("                            <li><span>Byggplast</span></li>\n");
+      out.write("                            <li>Batar /</li>\n");
+      out.write("                            <li><span>Kundbatar</span></li>\n");
       out.write("                        </ul>\n");
       out.write("                    </div>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
+      out.write("\n");
       out.write("        <div class=\"container\">\n");
       out.write("            <div class=\"table-wrapper\">\n");
       out.write("                <div class=\"table-title\">\n");
       out.write("                    <div class=\"row\">\n");
       out.write("                        <div class=\"col-sm-6\">\n");
-      out.write("                            <h2>Byggplast</h2>\n");
+      out.write("                            <h2>Hantera<b> kundbatar</b></h2>\n");
       out.write("                        </div>\n");
-      out.write("\n");
+      out.write("                        <div class=\"col-sm-6\">\n");
+      out.write("                            <a href=\"#addEmployeeModal\" class=\"btn btn-success\" data-toggle=\"modal\"><i class=\"material-icons\">&#xE147;</i> <span>Lagg till ny kundbat</span></a>\n");
+      out.write("                        </div>\n");
       out.write("                    </div>\n");
       out.write("                </div>\n");
       out.write("                <div class=\"table-responsive\">\n");
       out.write("                    <table id=\"table1\" class=\"table table-striped table-hover\">\n");
       out.write("                        <thead>\n");
       out.write("                        <tr>\n");
-      out.write("                            <th>Artikel-nr</th>\n");
-      out.write("                            <th>Beskrivning</th>\n");
-      out.write("                            <th>Varugrupp</th>\n");
-      out.write("                            <th>Katalogpris ex-moms</th>\n");
-      out.write("                            <th>Katalogpris ink-moms</th>\n");
-      out.write("                            <th>Momskod</th>\n");
-      out.write("                            <th>EAN-kod</th>\n");
-      out.write("                            <th>Bestall</th>\n");
+      out.write("                            <th>Anvandarnamn</th>\n");
+      out.write("                            <th>Namn</th>\n");
+      out.write("                            <th>Telefon</th>\n");
+      out.write("                            <th>Email</th>\n");
+      out.write("                            <th>Adress</th>\n");
+      out.write("                            <th>Timlon</th>\n");
+      out.write("                            <th>Actions</th>\n");
       out.write("                        </tr>\n");
       out.write("                        </thead>\n");
-      out.write("                        <tbody>\n");
+      out.write("                        ");
       out.write("\n");
-      out.write("                            ");
+      out.write("                        ");
+      out.write("\n");
+      out.write("    ");
 
-                        List<Part> parts = (List<Part>)request.getAttribute("parts");
+                        List<BoatVariant> customers = (List<BoatVariant>)request.getAttribute("customerBoats");
 
+            for(BoatVariant b : customers){
+                System.out.println(b.toString());
+            }
 
-                        for(Part part: parts){
-
-                           //Set all the values of each Part row into a json object
-                            // Then passing the jsonObject as a data-value onClick function of the
-                            //Edit button when the modal is popping up
-                            //the script that is invoked is at the end of this file
-
-                            JSONObject partJson = new JSONObject();
-                            partJson.put("artNr", part.getArtNr());
-                            partJson.put("benamning", part.getBenamning());
-                            partJson.put("vaurGrupp", part.getVaruGrupp());
-                            partJson.put("katalogPrisExMoms", part.getKatalogPrisExMoms());
-                            partJson.put("katalogPrisInkMoms", part.getGetKatalogPrisInkMoms());
-
-
-                        out.print("<tr>");
-
-
-                        out.print("<td>"+part.getArtNr()+"</td>");
-                        out.print("<td>"+part.getBenamning()+"</td>");
-                        out.print("<td>"+part.getVaruGrupp()+"</td>");
-                        out.print("<td>"+part.getKatalogPrisExMoms()+" kr</td>");
-                        out.print("<td>"+part.getGetKatalogPrisInkMoms()+" kr</td>");
-                        out.print("<td>"+part.getMomsKod()+"</td>");
-                        out.print("<td>"+part.getEanKod()+"</td>");
-
-                            out.print("<td>" +
-                                    "<a data-value='"+partJson+"' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a></td>");
-
-
-                        out.print("</tr>");
-                        }
-                        
+    
       out.write("\n");
       out.write("\n");
-      out.write("                        </tbody>\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
+      out.write("                        ");
+      out.write("\n");
       out.write("                    </table>\n");
       out.write("                    <div/>\n");
       out.write("                </div>\n");
-      out.write("                <!-- Edit Modal HTML -->\n");
-      out.write("                <div id=\"orderPartModal\" class=\"modal fade\">\n");
+      out.write("                <!-- Ny kundbat -->\n");
+      out.write("                <div id=\"addEmployeeModal\" class=\"modal fade\">\n");
       out.write("                    <div class=\"modal-dialog\">\n");
       out.write("                        <div class=\"modal-content\">\n");
+      out.write("                            <form>\n");
       out.write("                                <div class=\"modal-header\">\n");
-      out.write("                                    <h4 class=\"modal-title\">Bestall del</h4>\n");
+      out.write("                                    <h4 class=\"modal-title\">Ny kundbat</h4>\n");
       out.write("                                    <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"modal-body\">\n");
       out.write("                                    <div class=\"form-group\">\n");
-      out.write("                                        <label style=\"font-size: 1.7em\" id=\"benamning\"></label><br>\n");
-      out.write("                                        <label>Artikel nr:</label>&nbsp;<label style=\"font-size: 1.3em\" id=\"artNrInModal\"></label><br>\n");
-      out.write("                                        <label>Katalogpris ex moms:</label>&nbsp;<label style=\"font-size: 1.3em\" id=\"katalogPrisExMoms\"></label>&nbsp;<span style=\"font-size: 1.3em\">SEK</span><br>\n");
-      out.write("                                        <label>Katalogpris ink moms:</label>&nbsp;<label style=\"font-size: 1.3em\" id=\"katalogPrisInkMoms\"></label>&nbsp;<span style=\"font-size: 1.3em\">SEK</span><br>\n");
-      out.write("                                        <label style=\"font-size: 1.5em\">Antal</label>\n");
+      out.write("                                        <label>Kund</label>\n");
       out.write("                                        <input type=\"text\" class=\"form-control\" required>\n");
+      out.write("                                    </div>\n");
+      out.write("                                    <div class=\"form-group\">\n");
+      out.write("                                        <label>Bat</label>\n");
+      out.write("                                        <input type=\"text\" class=\"form-control\" required>\n");
+      out.write("                                    </div>\n");
+      out.write("                                    <div class=\"form-group\">\n");
+      out.write("                                        <label>Kommentar</label>\n");
+      out.write("                                        <textarea class=\"form-control\" required=\"\" style=\"margin-top: 0px; margin-bottom: 0px; height: 52px;\"></textarea>\n");
       out.write("                                    </div>\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"modal-footer\">\n");
       out.write("                                    <input type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" value=\"Cancel\">\n");
-      out.write("                                    <input type=\"submit\" class=\"btn btn-success\" value=\"Bestall\">\n");
+      out.write("                                    <input type=\"submit\" class=\"btn btn-success\" value=\"Lagg till\">\n");
       out.write("                                </div>\n");
       out.write("                            </form>\n");
       out.write("                        </div>\n");
@@ -490,7 +507,7 @@ public final class resellers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </div>\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
-      out.write("            <!-- page title area end -->\n");
+      out.write("\n");
       out.write("        </div>\n");
       out.write("    </div>\n");
       out.write("    <!-- main content area end -->\n");
@@ -680,14 +697,12 @@ public final class resellers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\n");
       out.write("    </div>\n");
       out.write("</div>\n");
+      out.write("<!-- offset area end -->\n");
       out.write("<!-- jquery latest version -->\n");
       out.write("<script src=\"/varv/admin/assets/js/vendor/jquery-2.2.4.min.js\"></script>\n");
-      out.write("<script src=\"/varv/admin/assets/js/vendor/jquery.steps.min.js\"></script>\n");
-      out.write("<script src=\"https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js\"></script>\n");
       out.write("<!-- bootstrap 4 js -->\n");
       out.write("<script src=\"/varv/admin/assets/js/popper.min.js\"></script>\n");
       out.write("<script src=\"/varv/admin/assets/js/bootstrap.min.js\"></script>\n");
-      out.write("\n");
       out.write("<script src=\"/varv/admin/assets/js/owl.carousel.min.js\"></script>\n");
       out.write("<script src=\"/varv/admin/assets/js/metisMenu.min.js\"></script>\n");
       out.write("<script src=\"/varv/admin/assets/js/jquery.slimscroll.min.js\"></script>\n");
@@ -695,8 +710,6 @@ public final class resellers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n");
       out.write("<script type=\"text/javascript\" charset=\"utf8\" src=\"https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js\"></script>\n");
       out.write("\n");
-      out.write("<!--jquery form plygin -->\n");
-      out.write("<script src=\"/varv/admin/assets/js/jquery.form.min.js\"></script>\n");
       out.write("<!-- start chart js -->\n");
       out.write("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js\"></script>\n");
       out.write("<!-- start highcharts js -->\n");
@@ -714,44 +727,11 @@ public final class resellers_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<!-- others plugins -->\n");
       out.write("<script src=\"/varv/admin/assets/js/plugins.js\"></script>\n");
       out.write("<script src=\"/varv/admin/assets/js/scripts.js\"></script>\n");
-      out.write("<script src=\"/varv/admin/assets/js/jq-modal.js\"></script>\n");
+      out.write("\n");
       out.write("<script>\n");
       out.write("    $(document).ready(function () {\n");
       out.write("        $('#table1').DataTable();\n");
       out.write("    });\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("    ///Order Part /////////\n");
-      out.write("\n");
-      out.write("    $('.edit').click(function(e){\n");
-      out.write("        e.preventDefault();\n");
-      out.write("\n");
-      out.write("        //Set placeholders\n");
-      out.write("        //the variable part is taking the jsonObject that was passed in the form\n");
-      out.write("        var part = $(this).data('value');\n");
-      out.write("\n");
-      out.write("        //This is putting the form into a variale\n");
-      out.write("        var form =$('#orderPartModal').find('form');\n");
-      out.write("\n");
-      out.write("        console.log(part);\n");
-      out.write("        console.log(part['artNr'])\n");
-      out.write("\n");
-      out.write("        //Set correct staff id to an input that is hidden\n");
-      out.write("        //The script in script.js knows what staff to edit\n");
-      out.write("        $('#benamning').html(part['benamning']);\n");
-      out.write("        $('#artNrInModal').html(part['artNr']);\n");
-      out.write("        $('#katalogPrisExMoms').html(part['katalogPrisExMoms']);\n");
-      out.write("        $('#katalogPrisInkMoms').html(part['katalogPrisInkMoms']);\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("        //show the form modal\n");
-      out.write("        $('#orderPartModal').modal(\"show\");\n");
-      out.write("\n");
-      out.write("    })\n");
-      out.write("\n");
       out.write("</script>\n");
       out.write("</body>\n");
       out.write("\n");
