@@ -2,6 +2,7 @@ package uk.ac.city.douglas.varv.Boat.dao;
 
 import uk.ac.city.douglas.varv.Boat.domain.Boat;
 import uk.ac.city.douglas.varv.Boat.domain.BoatVariant;
+import uk.ac.city.douglas.varv.Boat.domain.BoatVariantKey;
 
 
 import java.util.List;
@@ -15,7 +16,13 @@ public interface BoatDAOInterface {
      */
 
     public List<Boat> getAllBoats();
+    public Boat getBoatById(int id);
+
+    //BoatVariants aka customerBoats
     public List<BoatVariant> getAllCustomerBoats();
+    public void addBoatVariant(BoatVariant boatVariant);
+    public boolean eraseBoatVariant(BoatVariantKey bvk);
+
 //    public Boat findBoatById(int id);
 //    public void saveBoat(Boat boat);
 //
@@ -23,7 +30,7 @@ public interface BoatDAOInterface {
 //    public List<Boat> getAllBoatsByModel(String model);
 //    public List<Boat> getAllBoatsById(int id);
 //    public List<String> getAllBoatBrands();
-//
+
 
 
 

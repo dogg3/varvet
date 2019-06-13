@@ -53,6 +53,7 @@
   <servers>
     <server config-ref="server-config" name="server">
       <application-ref ref="__admingui" virtual-servers="__asadmin" />
+      <application-ref ref="varv" virtual-servers="server" />
       <resource-ref ref="jdbc/__TimerPool" />
       <resource-ref ref="jdbc/__default" />
       <resource-ref ref="jdbc/varv" />
@@ -438,6 +439,20 @@
     <secure-admin-principal dn="CN=localhost-instance,OU=GlassFish,O=Oracle Corporation,L=Santa Clara,ST=California,C=US" />
   </secure-admin>
   <clusters />
-  <applications />
+  <applications>
+    <application context-root="/varv" object-type="user" name="varv" location="${com.sun.aas.instanceRootURI}/applications/varv/">
+      <property name="archiveType" value="war" />
+      <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/varv/varv.war" />
+      <property name="org.glassfish.ejb.container.application_unique_id" value="102266016203276288" />
+      <property name="defaultAppName" value="varv" />
+      <module name="varv">
+        <engine sniffer="ejb" />
+        <engine sniffer="security" />
+        <engine sniffer="weld" />
+        <engine sniffer="jpa" />
+        <engine sniffer="web" />
+      </module>
+    </application>
+  </applications>
 </domain>
 

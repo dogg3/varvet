@@ -67,7 +67,7 @@
                                 <span>Batar</span></a>
                             <ul class="collapse">
                                 <li><a href="/varv/admin/boat/index.html">Bat-databas</a></li>
-                                <li><a href="/varv/admin/boat/customerBoats.jsp">Kundbatar</a></li>
+                                <li><a href="/varv/admin/boat/customerBoats.html">Kundbatar</a></li>
                                 <li><a href="/varv/admin/boat/vinterplats.jsp">Vinterplats</a></li>
                             </ul>
                         </li>

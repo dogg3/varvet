@@ -556,6 +556,96 @@
         }
     });
 
+    //// ADD BOATVARIANT pppppppppppppppppppp
+
+    var addBoatVariantForm = $("#add-boatVariantForm").show();
+
+
+    addBoatVariantForm.steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        transitionEffect: "slideLeft",
+        labels: {
+            current: "Aktuellt steg:",
+            pagination: "Pagination",
+            finish: "Lagg till",
+            next: "Nasta",
+            previous: "Forra",
+            loading: "Laddar ..."
+        },
+        onStepChanging: function (event, currentIndex, newIndex)
+        {
+            // Allways allow previous action even if the current addBoatVariantForm is not valid!
+            if (currentIndex > newIndex)
+            {
+                return true;
+            }
+            // Needed in some cases if the user went back (clean up)
+            if (currentIndex < newIndex)
+            {
+                // To remove error styles
+                addBoatVariantForm.find(".body:eq(" + newIndex + ") label.error").remove();
+                addBoatVariantForm.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+            }
+            addBoatVariantForm.validate().settings.ignore = ":disabled,:hidden";
+            return addBoatVariantForm.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex)
+        {
+            // Used to skip the "Warning" step if the user is old enough.
+            if (currentIndex === 2 && Number($("#age-2").val()) >= 18)
+            {
+                addBoatVariantForm.steps("next");
+            }
+            // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
+            if (currentIndex === 2 && priorIndex === 3)
+            {
+                addBoatVariantForm.steps("previous");
+            }
+        },
+        onFinishing: function (event, currentIndex)
+        {
+            addBoatVariantForm.validate().settings.ignore = ":disabled";
+            return addBoatVariantForm.valid();
+        },
+        onFinished: function (event, currentIndex)
+        {
+            var data = JSON.stringify($(addBoatVariantForm).serializeArray());
+
+
+            $.ajax({
+                url:'/varv/admin/customer/addCustomer.html',
+                type:'POST',
+                contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                dataType:'json',
+                data: {addBoatVariantFormData:data
+                },
+                success: function(data,status,xhr){
+                    var statusMessage;
+                    if(data.status=="success"){
+                        statusMessage = data.customer;
+                    }
+                    $('#statusSuccessAddCustomer').html(statusMessage + " har lagts till!");
+                    $('#addEmployeeNew').modal('toggle');
+                    $('#successAddEmployee').modal('toggle');
+                    $('#example-advanced-addBoatVariantForm').resetForm();
+                    addBoatVariantForm.steps("previous");
+                },
+                error: function(jqXhr, textStatus,errorMessage){
+                    console.log(errorMessage);
+                }
+            })
+        }
+    }).validate({
+        errorPlacement: function errorPlacement(error, element) { element.before(error); },
+        rules: {
+            confirm: {
+                equalTo: "#password-2"
+            }
+        }
+    });
+
+
 
 
 })(jQuery);

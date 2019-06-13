@@ -23,22 +23,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-
-
-
     <!-- others css -->
-
-
-
-
-
     <link rel="stylesheet" href="/varv/admin/assets/css/typography.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/default-css.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/styles.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/responsive.css">
+    <link rel="stylesheet" href="/varv/admin/assets/css/step-jq.css">
     <!-- modernizr css -->
     <script src="/varv/admin/assets/js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
 
 <body>
 
@@ -68,7 +60,7 @@
                                 <span>Batar</span></a>
                             <ul class="collapse">
                                 <li><a href="/varv/admin/boat/index.html">Bat-databas</a></li>
-                                <li><a href="/varv/admin/boat/customerBoats.jsp">Kundbatar</a></li>
+                                <li><a href="/varv/admin/boat/customerBoats.html">Kundbatar</a></li>
                                 <li><a href="/varv/admin/boat/vinterplats.jsp">Vinterplats</a></li>
                             </ul>
                         </li>
@@ -305,79 +297,67 @@
                     <table id="table1" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Anvandarnamn</th>
-                            <th>Namn</th>
-                            <th>Telefon</th>
-                            <th>Email</th>
-                            <th>Adress</th>
-                            <th>Timlon</th>
+                            <th>Kund</th>
+                            <th>Bat</th>
+                            <th>Langd</th>
+                            <th>Bredd</th>
+                            <th>Ar</th>
+                            <th>Kommentar</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
-                        <%--<tbody>--%>
-                        <%--<tr>--%>
+                        <tbody>
     <%
-                        List<BoatVariant> customers = (List<BoatVariant>)request.getAttribute("customerBoats");
+                        List<BoatVariant> boatVariants = (List<BoatVariant>)request.getAttribute("customerBoats");
 
-            for(BoatVariant b : customers){
+            for(BoatVariant b : boatVariants){
                 System.out.println(b.toString());
             }
 
-    %>
 
-                        <%--for(Customer customer: customers){--%>
+                        for(BoatVariant b: boatVariants){
 
-                        <%--out.print("<tr>");--%>
-                        <%--out.print("<td><a href=/varv/customer/findCustomerById.html?id="+customer.getCustomerID()+">"+--%>
-                        <%--customer.getCustomerID()+"</td>");--%>
+                        out.print("<tr>");
+                        out.print("<td>"+b.getCustomer().getFirstName()+"&nbsp;"+ b.getCustomer().getLastName()+"</td>");
+                        out.print("<td>"+b.getBoat().getBrand()+"&nbsp; "+b.getBoat().getModel()+"</td>");
+                        out.print("<td>"+b.getBoat().getLength()+"</td>");
+                        out.print("<td>"+b.getBoat().getWidth()+"</td>");
+                        out.print("<td>"+b.getYear()+"</td>");
+                        out.print("<td>"+b.getDescription()+"</td>");
 
-                        <%--out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getTel()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getEmail()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getDiscountPlan()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getAddress().getPostCode()--%>
-                        <%--+ "<br>"+customer.getAddress().getStreet() +"</td>");--%>
-                        <%--out.print("<td>"+customer.getIdentifier()+"</a></td>");--%>
-
-                        <%--out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");--%>
+                        out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
 
 
 
-                        <%--out.print("</tr>");--%>
-                        <%--}--%>
-                        <%--%>--%>
-                        <%--<tr/>--%>
-                        <%--</tbody>--%>
+                        out.print("</tr>");
+                        }
+                        %>
+                        </tbody>
                     </table>
                     <div/>
                 </div>
+
                 <!-- Ny kundbat -->
                 <div id="addEmployeeModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Ny kundbat</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Kund</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Bat</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Kommentar</label>
-                                        <textarea class="form-control" required="" style="margin-top: 0px; margin-bottom: 0px; height: 52px;"></textarea>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-success" value="Lagg till">
-                                </div>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Ny kund</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <form id="add-boatVariantForm" action="#">
+                                <h3>Info</h3>
+                                <fieldset>
+                                    <label>Kund</label>
+                                    <input name="kund" type="text" class="form-control" required>
+                                    <label>Boat</label>
+                                    <input name="boat" type="text" class="form-control" required>
+                                    <label>Kommentar</label>
+                                    <input name="description" type="text" class="form-control" required>
+                                    <label>Ar</label>
+                                    <input name="year" type="text" class="form-control" required>
+                                </fieldset>
+
                             </form>
                         </div>
                     </div>
@@ -629,12 +609,14 @@
         </div>
     </div>
 </div>
-<!-- offset area end -->
 <!-- jquery latest version -->
 <script src="/varv/admin/assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="/varv/admin/assets/js/vendor/jquery.steps.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
 <!-- bootstrap 4 js -->
 <script src="/varv/admin/assets/js/popper.min.js"></script>
 <script src="/varv/admin/assets/js/bootstrap.min.js"></script>
+
 <script src="/varv/admin/assets/js/owl.carousel.min.js"></script>
 <script src="/varv/admin/assets/js/metisMenu.min.js"></script>
 <script src="/varv/admin/assets/js/jquery.slimscroll.min.js"></script>
@@ -642,6 +624,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
+<!--jquery form plygin -->
+<script src="/varv/admin/assets/js/jquery.form.min.js"></script>
 <!-- start chart js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <!-- start highcharts js -->
@@ -659,6 +643,7 @@
 <!-- others plugins -->
 <script src="/varv/admin/assets/js/plugins.js"></script>
 <script src="/varv/admin/assets/js/scripts.js"></script>
+<script src="/varv/admin/assets/js/jq-modal.js"></script>
 
 <script>
     $(document).ready(function () {

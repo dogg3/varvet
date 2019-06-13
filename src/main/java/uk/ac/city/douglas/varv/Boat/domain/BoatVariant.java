@@ -11,6 +11,7 @@ import uk.ac.city.douglas.varv.Boat.domain.Boat;
 import uk.ac.city.douglas.varv.Boat.domain.BoatVariantKey;
 
 import javax.persistence.*;
+import java.util.HashMap;
 
 /**
  *
@@ -28,7 +29,7 @@ public class BoatVariant {
     @Column(name="boatID")
     private int boatId;
 
-    private int year;
+    private String year;
 
     @Column(name="comment")
     private String description;
@@ -40,6 +41,29 @@ public class BoatVariant {
     @ManyToOne
     @JoinColumn(name = "customerID", insertable = false, updatable = false)
     private Customer customer;
+
+
+
+    public HashMap<String, String> populate(Boat boat, Customer customer, HashMap<String, String> boatVariantData) {
+        HashMap<String, String> error = new HashMap<>();
+
+        if(boatVariantData.get("description") != null) {
+            this.setDescription(boatVariantData.get("description"));
+        }else {
+            this.setDescription("");
+            error.put("description","descri[ption");
+        }
+        if(boatVariantData.get("year") != null) {
+            this.setYear(boatVariantData.get("year"));
+        }else {
+            this.setYear("");
+            error.put("year","year");
+        }
+
+        this.boat = boat;
+        this.customer = customer;
+        return error;
+    }
 
 
     public int getCustID() {
@@ -58,11 +82,11 @@ public class BoatVariant {
         this.boatId = boatId;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
