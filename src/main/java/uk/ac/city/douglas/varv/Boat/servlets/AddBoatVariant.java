@@ -68,7 +68,6 @@ public class AddBoatVariant extends HttpServlet {
         Customer customer = ar.findCustomerById(Integer.parseInt(boatVariantData.get("customer")));
 
 
-        System.out.println(customer.toString());
 
         boatVariant.populate(boat,customer,boatVariantData);
         vr.addBoatVariant(boatVariant);
@@ -79,6 +78,14 @@ public class AddBoatVariant extends HttpServlet {
         returnMessage.put("customer", boatVariant.getCustomer().getFirstName() + " " +boatVariant.getBoat().getModel());
         response.getWriter().print(returnMessage.toJSONString());
 
+    }
+
+    public void doDelete(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
+        req.setCharacterEncoding("UTF-8");
+        String id = req.getParameter("id");
+        resp.setContentType("text/plain");
+        System.out.println(id);
+        vr.eraseBoatVariantById(Integer.parseInt(id));
     }
 
 }

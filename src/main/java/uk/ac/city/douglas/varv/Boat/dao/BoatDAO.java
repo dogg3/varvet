@@ -42,8 +42,8 @@ public class BoatDAO implements BoatDAOInterface{
     }
 
     @Override
-    public boolean eraseBoatVariant(BoatVariantKey bvk) {
-        BoatVariant boatVariant = em.find(BoatVariant.class, bvk);
+    public boolean eraseBoatVariantById(int id) {
+        BoatVariant boatVariant = em.find(BoatVariant.class, id);
         if(boatVariant != null){
             em.remove(boatVariant);
             return true;

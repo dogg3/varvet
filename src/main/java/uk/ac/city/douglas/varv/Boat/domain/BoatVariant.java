@@ -17,15 +17,19 @@ import java.util.HashMap;
  *
  * @author douglaslandvik
  */
-@IdClass(BoatVariantKey.class)
+
 @Entity
 @Table(name = "CustomerBoat")
 public class BoatVariant {
 
     @Id
+    @Column(name="customerBoatId",updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int customerBoatId;
+
     @Column(name="customerID")
     private int CustID;
-    @Id
+
     @Column(name="boatID")
     private int boatId;
 
@@ -69,6 +73,14 @@ public class BoatVariant {
         return error;
     }
 
+
+    public int getCustomerBoatId() {
+        return customerBoatId;
+    }
+
+    public void setCustomerBoatId(int customerBoatId) {
+        this.customerBoatId = customerBoatId;
+    }
 
     public int getCustID() {
         return CustID;
@@ -118,13 +130,13 @@ public class BoatVariant {
         this.customer = customer;
     }
 
-
     @Override
     public String toString() {
         return "BoatVariant{" +
-                "CustID=" + CustID +
+                "customerBoatId=" + customerBoatId +
+                ", CustID=" + CustID +
                 ", boatId=" + boatId +
-                ", year=" + year +
+                ", year='" + year + '\'' +
                 ", description='" + description + '\'' +
                 ", boat=" + boat +
                 ", customer=" + customer +

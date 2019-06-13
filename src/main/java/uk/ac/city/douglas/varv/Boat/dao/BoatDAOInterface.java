@@ -21,7 +21,7 @@ public interface BoatDAOInterface {
     //BoatVariants aka customerBoats
     public List<BoatVariant> getAllCustomerBoats();
     public void addBoatVariant(BoatVariant boatVariant);
-    public boolean eraseBoatVariant(BoatVariantKey bvk);
+    public boolean eraseBoatVariantById(int id);
 
 //    public Boat findBoatById(int id);
 //    public void saveBoat(Boat boat);

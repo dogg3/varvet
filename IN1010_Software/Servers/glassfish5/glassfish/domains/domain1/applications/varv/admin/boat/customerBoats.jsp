@@ -299,8 +299,8 @@
                         <tr>
                             <th>Kund</th>
                             <th>Bat</th>
-                            <th>Langd</th>
-                            <th>Bredd</th>
+                            <th>Langd cm</th>
+                            <th>Bredd cm</th>
                             <th>Ar</th>
                             <th>Kommentar</th>
                             <th>Actions</th>
@@ -325,11 +325,14 @@
                         out.print("<td>"+b.getYear()+"</td>");
                         out.print("<td>"+b.getDescription()+"</td>");
 
-                        out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+                            out.print("<td>" +
+                                    "<a data-value='' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                    "<a data-value='" + b.getCustomerBoatId()+"'data-boat='"+b.getBoat().getBrand()+"&nbsp;"+b.getBoat().getModel() +"' data-name='" + b.getCustomer().getFirstName()+" "+b.getCustomer().getLastName() +"'id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
 
 
 
-                        out.print("</tr>");
+
+                            out.print("</tr>");
                         }
                         %>
                         </tbody>
@@ -398,7 +401,8 @@
                     </div>
                 </div>
                 <!-- Delete Modal HTML -->
-                <div id="deleteEmployeeModal" class="modal fade">
+
+                <div id="deleteBoatVariantModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
@@ -407,17 +411,66 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Ar du saker att du vill radera denna kund?</p>
-                                    <p class="text-warning"><small>Detta gar inte att angra</small></p>
+                                    <p id="statusAreSure"></p>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
-                                    <input type="submit" class="btn btn-danger" value="Radera">
+                                    <input id="eraseBoatVariant" type="submit" class="btn btn-basic" value="Radera">
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
+
+                <%--successs areae--%>
+
+
+
+                <div id="successAddEmployee" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div id="modalContent" class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kund tillagd</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessAddCustomer"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic" data-dismiss="modal" value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="successEditCustomer" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div  class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kund uppdaterad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessEditCustomer"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic"  data-dismiss="modal"  value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="successEraseBoatVariant" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div  class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kund raderad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessEraseBoatVariant"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic"   data-dismiss="modal" value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -649,6 +702,48 @@
     $(document).ready(function () {
         $('#table1').DataTable();
     });
+
+
+
+    //pop up are u sure button and passing the customer ID
+    $('.delete').click(function(e){
+        e.preventDefault();
+        var id = $(this).data('value');
+        console.log(id);
+        var name = $(this).data('name');
+        var boat = $(this).data('boat');
+        var deleteModal =  $('#deleteBoatVariantModal');
+        deleteModal.find('#eraseBoatVariant').data("value",id);
+        deleteModal.find('#eraseBoatVariant').data("name",name);
+        deleteModal.find('#eraseBoatVariant').data("boat",boat);
+        deleteModal.find('#statusAreSure').html("Ar du saker pa add radera <span style='color:black'>" + name + "'s</span><br>" + boat);
+        deleteModal.modal("toggle");
+        console.log($(this).data('name'));
+    })
+
+
+    ///erase boatVariant send request to sevlert
+
+    $('#eraseBoatVariant').click(function(e){
+        e.preventDefault();
+
+        var id =  $(this).data('value');
+        console.log(id);
+        var name = $(this).data('name');
+        var boat = $(this).data('boat');
+        $.ajax({
+            url:'/varv/admin/boatVariant/addBoatVariant.html?id='+id,
+            type: 'DELETE',
+            success: function (data, status, xhr) {
+
+                $('#deleteBoatVariantModal').modal("toggle");
+                $('#statusSuccessEraseBoatVariant').html(name+ "s "+boat+" ar raderad.");
+
+                $('#successEraseBoatVariant').modal("toggle");
+            }
+        })
+    })
+
 </script>
 </body>
 

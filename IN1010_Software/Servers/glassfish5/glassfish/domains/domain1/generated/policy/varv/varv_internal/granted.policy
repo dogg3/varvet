@@ -1,9 +1,9 @@
-/* AUTOMATICALLY GENERATED ON Thu Jun 13 22:47:28 CEST 2019*/
+/* AUTOMATICALLY GENERATED ON Thu Jun 13 23:55:47 CEST 2019*/
 /* DO NOT EDIT */
 
 grant {
   permission javax.security.jacc.EJBMethodPermission "BoatDAO", "getBoatById,Local,int";
-  permission javax.security.jacc.EJBMethodPermission "BoatDAO", "eraseBoatVariant,Local,uk.ac.city.douglas.varv.Boat.domain.BoatVariantKey";
+  permission javax.security.jacc.EJBMethodPermission "BoatDAO", "eraseBoatVariantById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "eraseCustomerById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "BoatDAO", "addBoatVariant,Local,uk.ac.city.douglas.varv.Boat.domain.BoatVariant";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "editStaff,Local,java.util.HashMap";
@@ -17,8 +17,8 @@ grant {
   permission javax.security.jacc.EJBMethodPermission "BoatDAO", "getAllBoats,Local,";
   permission javax.security.jacc.EJBMethodPermission "BoatDAO", "getAllCustomerBoats,Local,";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "getAllCustomers,Local,";
-  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "findCustomerById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "getAllStaffs,Local,";
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "findCustomerById,Local,int";
 };
 
 grant      principal * * {
