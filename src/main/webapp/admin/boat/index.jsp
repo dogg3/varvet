@@ -296,21 +296,20 @@
                         <div class="col-sm-6">
                             <h2>Sweboat<b> batdatabas</b></h2>
                         </div>
-                        <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny bat</span></a>
-                        </div>
                     </div>
                 </div>
                 <div class="table-responsive">
                     <table id="table1" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Modell</th>
+                            <th>ID</th>
+                            <th>Kategori</th>
                             <th>Marke</th>
-                            <th>Langd</th>
-                            <th>Bredd</th>
-                            <th>Vikt</th>
-                            <th>Minimum hastkraft</th>
+                            <th>Modell</th>
+                            <th>Langd cm</th>
+                            <th>Bredd cm</th>
+                            <th>Vikt kg</th>
+                            <th>Djup cm</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -321,13 +320,14 @@
                         for(Boat boat: boats){
 
                         out.print("<tr>");
-
-                        out.print("<td>"+boat.getModel()+"</td>");
+                        out.print("<td>"+boat.getBoatId()+"</td>");
+                        out.print("<td>"+boat.getSubCatagory()+"</td>");
                         out.print("<td>"+boat.getBrand()+"</td>");
+                        out.print("<td>"+boat.getModel()+"</td>");
                         out.print("<td>"+boat.getLength()+"</td>");
                         out.print("<td>"+boat.getWidth()+"</td>");
                         out.print("<td>"+boat.getWeight()+"</td>");
-                        out.print("<td>"+boat.getEngineMinHp()+"</td>");
+                        out.print("<td>"+boat.getDepth()+"</td>");
 
 
 

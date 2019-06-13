@@ -64,8 +64,11 @@ public class AddBoatVariant extends HttpServlet {
             e.printStackTrace();
         }
 
-        Boat boat = vr.getBoatById(Integer.parseInt(boatVariantData.get("boatId")));
-        Customer customer = ar.findCustomerById(Integer.parseInt(boatVariantData.get("customerId")));
+        Boat boat = vr.getBoatById(Integer.parseInt(boatVariantData.get("boat")));
+        Customer customer = ar.findCustomerById(Integer.parseInt(boatVariantData.get("customer")));
+
+
+        System.out.println(customer.toString());
 
         boatVariant.populate(boat,customer,boatVariantData);
         vr.addBoatVariant(boatVariant);

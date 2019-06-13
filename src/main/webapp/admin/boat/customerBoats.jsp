@@ -289,7 +289,7 @@
                             <h2>Hantera<b> kundbatar</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny kundbat</span></a>
+                            <a href="#addBoatVariantModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny kundbat</span></a>
                         </div>
                     </div>
                 </div>
@@ -299,8 +299,8 @@
                         <tr>
                             <th>Kund</th>
                             <th>Bat</th>
-                            <th>Langd</th>
-                            <th>Bredd</th>
+                            <th>Langd cm</th>
+                            <th>Bredd cm</th>
                             <th>Ar</th>
                             <th>Kommentar</th>
                             <th>Actions</th>
@@ -338,18 +338,18 @@
                 </div>
 
                 <!-- Ny kundbat -->
-                <div id="addEmployeeModal" class="modal fade">
+                <div id="addBoatVariantModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Ny kund</h4>
+                                <h4 class="modal-title">Ny kundbat</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <form id="add-boatVariantForm" action="#">
                                 <h3>Info</h3>
                                 <fieldset>
                                     <label>Kund</label>
-                                    <input name="kund" type="text" class="form-control" required>
+                                    <input name="customer" type="text" class="form-control" required>
                                     <label>Boat</label>
                                     <input name="boat" type="text" class="form-control" required>
                                     <label>Kommentar</label>
@@ -398,6 +398,7 @@
                     </div>
                 </div>
                 <!-- Delete Modal HTML -->
+
                 <div id="deleteEmployeeModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -407,17 +408,18 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Ar du saker att du vill radera denna kund?</p>
-                                    <p class="text-warning"><small>Detta gar inte att angra</small></p>
+                                    <p id="statusAreSure"></p>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
-                                    <input type="submit" class="btn btn-danger" value="Radera">
+                                    <input id="eraseBoatVariant" type="submit" class="btn btn-basic" value="Radera">
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
+
             </div>
 
         </div>
@@ -649,6 +651,27 @@
     $(document).ready(function () {
         $('#table1').DataTable();
     });
+
+    ///erase boatVariant send request to sevlert
+
+    $('#eraseCustomer').click(function(e){
+        e.preventDefault();
+
+        var id =  $(this).data('value');
+        var name = $(this).data('name');
+        $.ajax({
+            url:'/varv/admin/boatVariant/addBoatVariant.html?id='+id,
+            type: 'DELETE',
+            success: function (data, status, xhr) {
+
+                $('#deleteEmployeeModal').modal("toggle");
+                $('#statusSuccessEraseCustomer').html(name+ " ar raderad.");
+
+                $('#successEraseCustomer').modal("toggle");
+            }
+        })
+    })
+
 </script>
 </body>
 

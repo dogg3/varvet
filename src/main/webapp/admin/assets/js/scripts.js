@@ -614,11 +614,11 @@
 
 
             $.ajax({
-                url:'/varv/admin/customer/addCustomer.html',
+                url:'/varv/admin/boatVariant/addBoatVariant.html',
                 type:'POST',
                 contentType:'application/x-www-form-urlencoded; charset=UTF-8',
                 dataType:'json',
-                data: {addBoatVariantFormData:data
+                data: {formData:data
                 },
                 success: function(data,status,xhr){
                     var statusMessage;
@@ -626,9 +626,9 @@
                         statusMessage = data.customer;
                     }
                     $('#statusSuccessAddCustomer').html(statusMessage + " har lagts till!");
-                    $('#addEmployeeNew').modal('toggle');
+                    $('#addBoatVariantModal').modal('toggle');
                     $('#successAddEmployee').modal('toggle');
-                    $('#example-advanced-addBoatVariantForm').resetForm();
+                    $('#add-boatVariantForm').resetForm();
                     addBoatVariantForm.steps("previous");
                 },
                 error: function(jqXhr, textStatus,errorMessage){

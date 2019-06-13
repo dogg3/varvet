@@ -1,0 +1,29 @@
+/* AUTOMATICALLY GENERATED ON Thu Jun 13 22:47:28 CEST 2019*/
+/* DO NOT EDIT */
+
+grant {
+  permission javax.security.jacc.WebResourcePermission "/";
+  permission javax.security.jacc.WebUserDataPermission "/";
+};
+
+grant      principal * * {
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.FindAllCustomerBoats", "**";
+  permission javax.security.jacc.WebRoleRefPermission "", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.FindAllParts", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.AddCustomer", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.FindAllBoats", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.Staff.EditStaff", "**";
+  permission javax.security.jacc.WebRoleRefPermission "default", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.EditCustomer", "**";
+  permission javax.security.jacc.WebRoleRefPermission "jsp", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Stock.servlets.FindAllParts", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.AddStaff", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.FindCustomerById", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.AddBoatVariant", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.LogOut", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.Staff.FindAllStaff", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.AddBoat", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.EraseCustomer", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.FindAllCustomers", "**";
+};
+

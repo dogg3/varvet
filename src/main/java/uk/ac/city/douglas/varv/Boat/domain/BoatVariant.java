@@ -60,8 +60,12 @@ public class BoatVariant {
             error.put("year","year");
         }
 
+
         this.boat = boat;
         this.customer = customer;
+
+        this.boatId = boat.getBoatId();
+        this.CustID = customer.getCustomerID();
         return error;
     }
 
