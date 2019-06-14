@@ -1,6 +1,7 @@
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
 <%@ page import="uk.ac.city.douglas.varv.Boat.domain.BoatVariant" %>
+<%@ page import="org.json.simple.JSONObject" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -317,6 +318,14 @@
 
                         for(BoatVariant b: boatVariants){
 
+
+                            JSONObject boatVariantJson = new JSONObject();
+                            boatVariantJson.put("id", b.getCustomerBoatId());
+                            boatVariantJson.put("boat", b.getBoat().getBrand() +" " + b.getBoat().getModel());
+                            boatVariantJson.put("customer", b.getCustomer().getFirstName() +" " + b.getCustomer().getLastName());
+                            boatVariantJson.put("comment", b.getDescription());
+                            boatVariantJson.put("year", b.getYear());
+
                         out.print("<tr>");
                         out.print("<td>"+b.getCustomer().getFirstName()+"&nbsp;"+ b.getCustomer().getLastName()+"</td>");
                         out.print("<td>"+b.getBoat().getBrand()+"&nbsp; "+b.getBoat().getModel()+"</td>");
@@ -326,8 +335,9 @@
                         out.print("<td>"+b.getDescription()+"</td>");
 
                             out.print("<td>" +
-                                    "<a data-value='' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
-                                    "<a data-value='" + b.getCustomerBoatId()+"'data-boat='"+b.getBoat().getBrand()+"&nbsp;"+b.getBoat().getModel() +"' data-name='" + b.getCustomer().getFirstName()+" "+b.getCustomer().getLastName() +"'id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+                                    "<a data-value='"+boatVariantJson+"' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                    "<a data-value='" + b.getCustomerBoatId()+"'data-boat='"+b.getBoat().getBrand()+"&nbsp;"+b.getBoat().getModel() +"' data-name='" + b.getCustomer().getFirstName()+" "+b.getCustomer().getLastName() +"'id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a>" +
+                                    "</td>");
 
 
 
@@ -366,30 +376,26 @@
                     </div>
                 </div>
                 <!-- Edit Modal HTML -->
-                <div id="editEmployeeModal" class="modal fade">
+                <div id="editBoatVariantModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Andra kund-data</h4>
+                                    <h4 class="modal-title">Andra kundbats-data</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" class="form-control" required>
+                                        <label>Kund</label>
+                                        <label name="customer"></label>
                                     </div>
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" required>
+                                        <label>Bat</label>
+                                        <label name="boat"></label>
                                     </div>
                                     <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
-                                        <input type="text" class="form-control" required>
+                                        <label>Kommentar</label>
+                                        <textarea name="comment" class="form-control" required></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -744,6 +750,37 @@
         })
     })
 
+
+
+    ///EDIT TOOGLE AND FILL PLACEHOLDER
+
+    $('.edit').click(function(e){
+        e.preventDefault();
+
+        //Set placeholders
+        var boatVariant = $(this).data('value');
+        var form =$('#editBoatVariantModal').find('form');
+        // console.log(boatVariant);
+        var allInput = form.find('label');
+        $('#boatVariantId').val(boatVariant['id']);
+
+        allInput.each(function(index,value){
+            // console.log(value);
+            var attr = $(value).attr('name');
+
+            var placeholder = boatVariant[attr];
+            // console.log(attr);
+            $(value).html( placeholder);
+
+        });
+
+        var textarea = form.find('textarea');
+        console.log()
+        $(textarea).attr("placeholder", boatVariant["comment"]);
+        //show the form modal
+        $('#editBoatVariantModal').modal("show");
+
+    })
 </script>
 </body>
 

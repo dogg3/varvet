@@ -6,6 +6,7 @@ import javax.servlet.jsp.*;
 import uk.ac.city.douglas.varv.Account.domain.Customer;
 import java.util.List;
 import uk.ac.city.douglas.varv.Boat.domain.BoatVariant;
+import org.json.simple.JSONObject;
 
 public final class customerBoats_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -45,6 +46,7 @@ public final class customerBoats_jsp extends org.apache.jasper.runtime.HttpJspBa
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
@@ -365,6 +367,14 @@ public final class customerBoats_jsp extends org.apache.jasper.runtime.HttpJspBa
 
                         for(BoatVariant b: boatVariants){
 
+
+                            JSONObject boatVariantJson = new JSONObject();
+                            boatVariantJson.put("id", b.getCustomerBoatId());
+                            boatVariantJson.put("boat", b.getBoat().getBrand() +" " + b.getBoat().getModel());
+                            boatVariantJson.put("customer", b.getCustomer().getFirstName() +" " + b.getCustomer().getLastName());
+                            boatVariantJson.put("comment", b.getDescription());
+                            boatVariantJson.put("year", b.getYear());
+
                         out.print("<tr>");
                         out.print("<td>"+b.getCustomer().getFirstName()+"&nbsp;"+ b.getCustomer().getLastName()+"</td>");
                         out.print("<td>"+b.getBoat().getBrand()+"&nbsp; "+b.getBoat().getModel()+"</td>");
@@ -374,8 +384,9 @@ public final class customerBoats_jsp extends org.apache.jasper.runtime.HttpJspBa
                         out.print("<td>"+b.getDescription()+"</td>");
 
                             out.print("<td>" +
-                                    "<a data-value='' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
-                                    "<a data-value='" + b.getCustomerBoatId()+"'data-boat='"+b.getBoat().getBrand()+"&nbsp;"+b.getBoat().getModel() +"' data-name='" + b.getCustomer().getFirstName()+" "+b.getCustomer().getLastName() +"'id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+                                    "<a data-value='"+boatVariantJson+"' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                    "<a data-value='" + b.getCustomerBoatId()+"'data-boat='"+b.getBoat().getBrand()+"&nbsp;"+b.getBoat().getModel() +"' data-name='" + b.getCustomer().getFirstName()+" "+b.getCustomer().getLastName() +"'id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a>" +
+                                    "</td>");
 
 
 
@@ -415,7 +426,7 @@ public final class customerBoats_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                    </div>\n");
       out.write("                </div>\n");
       out.write("                <!-- Edit Modal HTML -->\n");
-      out.write("                <div id=\"editEmployeeModal\" class=\"modal fade\">\n");
+      out.write("                <div id=\"editBoatVariantModal\" class=\"modal fade\">\n");
       out.write("                    <div class=\"modal-dialog\">\n");
       out.write("                        <div class=\"modal-content\">\n");
       out.write("                            <form>\n");
@@ -425,20 +436,16 @@ public final class customerBoats_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                                </div>\n");
       out.write("                                <div class=\"modal-body\">\n");
       out.write("                                    <div class=\"form-group\">\n");
-      out.write("                                        <label>Name</label>\n");
-      out.write("                                        <input type=\"text\" class=\"form-control\" required>\n");
+      out.write("                                        <label>Kund</label>\n");
+      out.write("                                        <label name=\"customer\"></label>\n");
       out.write("                                    </div>\n");
       out.write("                                    <div class=\"form-group\">\n");
-      out.write("                                        <label>Email</label>\n");
-      out.write("                                        <input type=\"email\" class=\"form-control\" required>\n");
+      out.write("                                        <label>Bat</label>\n");
+      out.write("                                        <label name=\"boat\"></label>\n");
       out.write("                                    </div>\n");
       out.write("                                    <div class=\"form-group\">\n");
-      out.write("                                        <label>Address</label>\n");
-      out.write("                                        <textarea class=\"form-control\" required></textarea>\n");
-      out.write("                                    </div>\n");
-      out.write("                                    <div class=\"form-group\">\n");
-      out.write("                                        <label>Phone</label>\n");
-      out.write("                                        <input type=\"text\" class=\"form-control\" required>\n");
+      out.write("                                        <label>Kommentar</label>\n");
+      out.write("                                        <textarea name=\"comment\" class=\"form-control\" required></textarea>\n");
       out.write("                                    </div>\n");
       out.write("                                </div>\n");
       out.write("                                <div class=\"modal-footer\">\n");
@@ -510,7 +517,7 @@ public final class customerBoats_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                    <div class=\"modal-dialog\">\n");
       out.write("                        <div  class=\"modal-content\">\n");
       out.write("                            <div class=\"modal-header\">\n");
-      out.write("                                <h4 class=\"modal-title\">Kund raderad</h4>\n");
+      out.write("                                <h4 class=\"modal-title\">Kundbat raderad</h4>\n");
       out.write("                                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\n");
       out.write("                            </div>\n");
       out.write("                            <div class=\"statusResponse\" id=\"statusSuccessEraseBoatVariant\"></div>\n");
@@ -794,6 +801,37 @@ public final class customerBoats_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        })\n");
       out.write("    })\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("    ///EDIT TOOGLE AND FILL PLACEHOLDER\n");
+      out.write("\n");
+      out.write("    $('.edit').click(function(e){\n");
+      out.write("        e.preventDefault();\n");
+      out.write("\n");
+      out.write("        //Set placeholders\n");
+      out.write("        var boatVariant = $(this).data('value');\n");
+      out.write("        var form =$('#editBoatVariantModal').find('form');\n");
+      out.write("        // console.log(boatVariant);\n");
+      out.write("        var allInput = form.find('label');\n");
+      out.write("        $('#boatVariantId').val(boatVariant['id']);\n");
+      out.write("\n");
+      out.write("        allInput.each(function(index,value){\n");
+      out.write("            // console.log(value);\n");
+      out.write("            var attr = $(value).attr('name');\n");
+      out.write("\n");
+      out.write("            var placeholder = boatVariant[attr];\n");
+      out.write("            // console.log(attr);\n");
+      out.write("            $(value).html( placeholder);\n");
+      out.write("\n");
+      out.write("        });\n");
+      out.write("\n");
+      out.write("        var textarea = form.find('textarea');\n");
+      out.write("        console.log()\n");
+      out.write("        $(textarea).attr(\"placeholder\", boatVariant[\"comment\"]);\n");
+      out.write("        //show the form modal\n");
+      out.write("        $('#editBoatVariantModal').modal(\"show\");\n");
+      out.write("\n");
+      out.write("    })\n");
       out.write("</script>\n");
       out.write("</body>\n");
       out.write("\n");
