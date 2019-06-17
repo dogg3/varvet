@@ -24,6 +24,7 @@ public class Job {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="JobID")
     private int jobId;
     @Column(name="dateBooked")

@@ -1,5 +1,6 @@
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
+<%@ page import="uk.ac.city.douglas.varv.Job.domain.TaskDescription" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -303,44 +304,35 @@
                     <table id="table1" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Anvandarnamn</th>
-                            <th>Namn</th>
-                            <th>Telefon</th>
-                            <th>Email</th>
-                            <th>Adress</th>
-                            <th>Timlon</th>
-                            <th>Actions</th>
+                            <th>ID</th>
+                            <th>Kategori</th>
+                            <th>Estimerad tid</th>
+                            <th>Beskrivning</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
-                        <%--<tbody>--%>
-                        <%--<tr>--%>
+                        <tbody>
+            <%
+                        List<TaskDescription> taskDescriptions = (List<TaskDescription>)request.getAttribute("taskDescriptions");
 
-                        <%--List<Customer> customers = (List<Customer>)request.getAttribute("customers");--%>
 
+                        for(TaskDescription taskDescription: taskDescriptions){
 
-                        <%--for(Customer customer: customers){--%>
+                        out.print("<tr>");
 
-                        <%--out.print("<tr>");--%>
-                        <%--out.print("<td><a href=/varv/customer/findCustomerById.html?id="+customer.getCustomerID()+">"+--%>
-                        <%--customer.getCustomerID()+"</td>");--%>
+                        out.print("<td>"+taskDescription.getTaskDescriptionID()+"</td>");
+                        out.print("<td>"+taskDescription.getTaskType()+"</td>");
+                        out.print("<td>"+taskDescription.getEstimatedTime()+"</td>");
+                        out.print("<td>"+taskDescription.getDescription()+"</td>");
 
-                        <%--out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getTel()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getEmail()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getDiscountPlan()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getAddress().getPostCode()--%>
-                        <%--+ "<br>"+customer.getAddress().getStreet() +"</td>");--%>
-                        <%--out.print("<td>"+customer.getIdentifier()+"</a></td>");--%>
-
-                        <%--out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");--%>
+                        out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
 
 
 
-                        <%--out.print("</tr>");--%>
-                        <%--}--%>
-                        <%--%>--%>
-                        <%--<tr/>--%>
-                        <%--</tbody>--%>
+                        out.print("</tr>");
+                        }
+                        %>
+                        </tbody>
                     </table>
                     <div/>
                 </div>

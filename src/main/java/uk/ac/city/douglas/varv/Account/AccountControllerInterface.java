@@ -3,7 +3,6 @@ package uk.ac.city.douglas.varv.Account;
 
 
 import uk.ac.city.douglas.varv.Account.domain.Customer;
-import uk.ac.city.douglas.varv.Account.domain.Invoice;
 import uk.ac.city.douglas.varv.Account.domain.Staff;
 //import uk.ac.city.douglas.varv.Job.domain.Job;
 import uk.ac.city.douglas.varv.Job.domain.TaskDescription;
@@ -72,5 +71,4 @@ public interface AccountControllerInterface {
 
     List<TaskDescription> getAllTaskDescriptions() throws SQLException;
 
-    List<Invoice> getAllInvoices() throws SQLException;
 }

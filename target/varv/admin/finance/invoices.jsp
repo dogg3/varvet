@@ -1,5 +1,6 @@
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
+<%@ page import="uk.ac.city.douglas.varv.Finance.domain.Invoice" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -300,44 +301,39 @@
                     <table id="table1" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Anvandarnamn</th>
-                            <th>Namn</th>
-                            <th>Telefon</th>
-                            <th>Email</th>
-                            <th>Adress</th>
-                            <th>Timlon</th>
+                            <th>Faktura #</th>
+                            <th>Datum</th>
+                            <th>Kostnad ex moms</th>
+                            <th>Moms</th>
+                            <th>Kostnad ink moms</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
-                        <%--<tbody>--%>
-                        <%--<tr>--%>
+                        <tbody>
+                        <%
+                        List<Invoice> invoices = (List<Invoice>)request.getAttribute("invoices");
 
-                        <%--List<Customer> customers = (List<Customer>)request.getAttribute("customers");--%>
+
+                        for(Invoice invoice: invoices){
+
+                        out.print("<tr>");
 
 
-                        <%--for(Customer customer: customers){--%>
-
-                        <%--out.print("<tr>");--%>
-                        <%--out.print("<td><a href=/varv/customer/findCustomerById.html?id="+customer.getCustomerID()+">"+--%>
-                        <%--customer.getCustomerID()+"</td>");--%>
-
-                        <%--out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getTel()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getEmail()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getDiscountPlan()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getAddress().getPostCode()--%>
-                        <%--+ "<br>"+customer.getAddress().getStreet() +"</td>");--%>
-                        <%--out.print("<td>"+customer.getIdentifier()+"</a></td>");--%>
-
-                        <%--out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");--%>
+                        out.print("<td>"+invoice.getInvoiceNo()+"</td>");
+                        out.print("<td>"+invoice.getDate()+"</td>");
+                        out.print("<td>"+invoice.getCost()+"</td>");
+                        out.print("<td>"+invoice.getVat()+"</td>");
+                        out.print("<td>"+invoice.getCostAfterVat()+"</td>");
+                        out.print("<td>"+invoice.getStatus()+"</td>");
+                        out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
 
 
 
-                        <%--out.print("</tr>");--%>
-                        <%--}--%>
-                        <%--%>--%>
-                        <%--<tr/>--%>
-                        <%--</tbody>--%>
+                        out.print("</tr>");
+                        }
+                        %>
+                        </tbody>
                     </table>
                     <div/>
                 </div>

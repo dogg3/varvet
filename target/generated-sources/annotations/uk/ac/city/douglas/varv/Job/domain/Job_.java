@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import uk.ac.city.douglas.varv.Account.domain.Staff;
 import uk.ac.city.douglas.varv.Boat.domain.BoatVariant;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-06-17T19:23:59")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-06-17T22:34:52")
 @StaticMetamodel(Job.class)
 public class Job_ { 
 

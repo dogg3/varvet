@@ -13,6 +13,7 @@ import javax.persistence.TypedQuery;
 
 import uk.ac.city.douglas.varv.Account.domain.Customer;
 import uk.ac.city.douglas.varv.Job.domain.Job;
+import uk.ac.city.douglas.varv.Job.domain.TaskDescription;
 //import uk.ac.city.douglas.varv.Boat.domain.Boat;
 //import uk.ac.city.douglas.varv.Job.domain.BoatVariant;
 //import uk.ac.city.douglas.varv.Job.domain.BoatVariantEngine;
@@ -31,11 +32,14 @@ public class JobDAO implements JobDAOInterface {
     public EntityManager em;
 
 
+
+
+    //JOBS
+
     @Override
     public List<Job> getAllJobs() {
         TypedQuery query = em.createQuery("SELECT j FROM Job AS j",Job.class);
         return query.getResultList();
-
     }
 
     @Override
@@ -55,12 +59,34 @@ public class JobDAO implements JobDAOInterface {
     }
 
 
-    @Override
-    public List<Customer> getAllCustomers(){
-        TypedQuery query = em.createQuery("SELECT c FROM Customer AS c",Customer.class);
 
+
+
+
+    //TASK DESCRIPTIONS
+    @Override
+    public List<TaskDescription> getAllTaskDescriptions() {
+        TypedQuery query = em.createQuery("SELECT t FROM TaskDescription AS t",TaskDescription.class);
         return query.getResultList();
     }
+
+    @Override
+    public void addTaskDescription(TaskDescription taskDescription) {
+        em.persist(taskDescription);
+    }
+
+    @Override
+    public void eraseTaskDescriptionById(int id) {
+        TaskDescription taskDescription = em.find(TaskDescription.class, id);
+        em.remove(taskDescription);
+
+    }
+
+    @Override
+    public TaskDescription getTaskDescriptionById(int id) {
+        return em.find(TaskDescription.class,id);
+    }
+
 
 
 ////
