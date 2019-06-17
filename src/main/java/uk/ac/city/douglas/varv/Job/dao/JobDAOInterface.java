@@ -8,6 +8,7 @@ package uk.ac.city.douglas.varv.Job.dao;
 import java.util.List;
 
 import uk.ac.city.douglas.varv.Account.domain.Customer;
+import uk.ac.city.douglas.varv.Job.domain.Job;
 //import uk.ac.city.douglas.varv.Boat.domain.Boat;
 //import uk.ac.city.douglas.varv.Job.domain.BoatVariant;
 //import uk.ac.city.douglas.varv.Job.domain.BoatVariantEngine;
@@ -22,7 +23,16 @@ import uk.ac.city.douglas.varv.Account.domain.Customer;
 public interface JobDAOInterface {
 
     
-   
+
+
+
+
+    public List<Job> getAllJobs();
+    public void addJob(Job job);
+    public void eraseJobById(int id);
+    public Job getJobById(int id);
+
+
     /*
     *customer
     */

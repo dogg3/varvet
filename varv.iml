@@ -21,7 +21,7 @@
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
           <factory-entry name="Entities" value="f502a5c1-7767-4a9f-86c0-5c19fdf09027" />
-          <factory-entry name="ramsoPU" />
+          <factory-entry name="ramsoPU" value="f502a5c1-7767-4a9f-86c0-5c19fdf09027" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/IN1010_Software/Servers/glassfish5/glassfish/domains/domain1/applications/varv/WEB-INF/persistence.xml" />

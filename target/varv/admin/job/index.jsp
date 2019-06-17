@@ -1,5 +1,8 @@
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
+<%@ page import="uk.ac.city.douglas.varv.Job.domain.Job" %>
+<%@ page import="uk.ac.city.douglas.varv.Boat.domain.Boat" %>
+<%@ page import="uk.ac.city.douglas.varv.Account.domain.Staff" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -303,44 +306,50 @@
                     <table id="table1" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Anvandarnamn</th>
-                            <th>Namn</th>
-                            <th>Telefon</th>
-                            <th>Email</th>
-                            <th>Adress</th>
-                            <th>Timlon</th>
-                            <th>Actions</th>
+                            <th>Job-id</th>
+                            <th>Kund</th>
+                            <th>Bat</th>
+                            <th>Status</th>
+                            <th>Datum bokad</th>
+                            <th>Job-typ</th>
+                            <th>Ansvarig anstalld</th>
+                            <th>Estimerad tid</th>
+                            <th>Aktuell tid</th>
+                            <th>Kommentar</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
-                        <%--<tbody>--%>
-                        <%--<tr>--%>
-
-                        <%--List<Customer> customers = (List<Customer>)request.getAttribute("customers");--%>
-
-
-                        <%--for(Customer customer: customers){--%>
-
-                        <%--out.print("<tr>");--%>
-                        <%--out.print("<td><a href=/varv/customer/findCustomerById.html?id="+customer.getCustomerID()+">"+--%>
-                        <%--customer.getCustomerID()+"</td>");--%>
-
-                        <%--out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getTel()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getEmail()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getDiscountPlan()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getAddress().getPostCode()--%>
-                        <%--+ "<br>"+customer.getAddress().getStreet() +"</td>");--%>
-                        <%--out.print("<td>"+customer.getIdentifier()+"</a></td>");--%>
-
-                        <%--out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");--%>
+                        <tbody>
+                        <tr>
+            <%
+                        List<Job> jobs = (List<Job>)request.getAttribute("jobs");
 
 
+                        for(Job job: jobs){
+                Boat boat = job.getBoatVariant().getBoat();
+                Customer customer = job.getBoatVariant().getCustomer();
+                Staff staff =  job.getStaff();
+                        out.print("<tr>");
+                        out.print("<td>"+job.getJobId()+"</td>");
+                        out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");
+                        out.print("<td>"+boat.getBrand()+" "+boat.getModel()+"</td>");
+                        out.print("<td>"+job.getStatus()+"</td>");
+                        out.print("<td>"+job.getDateBooked()+"</td>");
+                        out.print("<td>"+job.getJobType()+"</td>");
+                        out.print("<td>"+staff.getFirstName()+" "+staff.getLastName()+"</td>");
+                        out.print("<td>"+job.getEstimatedTime()+"</td>");
+                        out.print("<td>"+job.getActualTime()+"</td>");
+                        out.print("<td>"+job.getNote()+"</td>");
 
-                        <%--out.print("</tr>");--%>
-                        <%--}--%>
-                        <%--%>--%>
-                        <%--<tr/>--%>
-                        <%--</tbody>--%>
+                        out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+
+
+
+                        out.print("</tr>");
+                        }
+                        %>
+                        <tr/>
+                        </tbody>
                     </table>
                     <div/>
                 </div>

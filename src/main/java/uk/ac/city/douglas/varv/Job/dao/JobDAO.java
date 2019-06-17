@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import uk.ac.city.douglas.varv.Account.domain.Customer;
+import uk.ac.city.douglas.varv.Job.domain.Job;
 //import uk.ac.city.douglas.varv.Boat.domain.Boat;
 //import uk.ac.city.douglas.varv.Job.domain.BoatVariant;
 //import uk.ac.city.douglas.varv.Job.domain.BoatVariantEngine;
@@ -28,6 +29,30 @@ public class JobDAO implements JobDAOInterface {
 
     @PersistenceContext(unitName="ramsoPU")
     public EntityManager em;
+
+
+    @Override
+    public List<Job> getAllJobs() {
+        TypedQuery query = em.createQuery("SELECT j FROM Job AS j",Job.class);
+        return query.getResultList();
+
+    }
+
+    @Override
+    public void addJob(Job job) {
+         em.persist(job);
+    }
+
+    @Override
+    public void eraseJobById(int id) {
+    Job job = em.find(Job.class, id);
+    em.remove(job);
+    }
+
+    @Override
+    public Job getJobById(int id) {
+            return em.find(Job.class,id);
+    }
 
 
     @Override
