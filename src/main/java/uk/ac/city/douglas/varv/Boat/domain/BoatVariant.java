@@ -9,9 +9,11 @@ package uk.ac.city.douglas.varv.Boat.domain;
 import uk.ac.city.douglas.varv.Account.domain.Customer;
 import uk.ac.city.douglas.varv.Boat.domain.Boat;
 import uk.ac.city.douglas.varv.Boat.domain.BoatVariantKey;
+import uk.ac.city.douglas.varv.Job.domain.Job;
 
 import javax.persistence.*;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -45,6 +47,9 @@ public class BoatVariant {
     @ManyToOne
     @JoinColumn(name = "customerID", insertable = false, updatable = false)
     private Customer customer;
+
+    @OneToMany(mappedBy = "boatVariant")
+    private List<Job> jobs;
 
 
 
@@ -80,6 +85,14 @@ public class BoatVariant {
 
     public void setCustomerBoatId(int customerBoatId) {
         this.customerBoatId = customerBoatId;
+    }
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
     }
 
     public int getCustID() {

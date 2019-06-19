@@ -10,6 +10,7 @@ import uk.ac.city.douglas.varv.Account.domain.Staff;
 import uk.ac.city.douglas.varv.Boat.domain.BoatVariant;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 import javax.persistence.*;
 
@@ -43,16 +44,62 @@ public class Job {
     private String note;
 
 
-    @OneToOne
-    @JoinColumn(name = "StaffID", insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "StaffID")
     private Staff staff;
 
-    @OneToOne
-    @JoinColumn(name = "CustomerBoatId", insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name = "customerBoatId")
     private BoatVariant boatVariant;
 
     public Job(){
 
+    }
+
+    public HashMap<String, String> populate(HashMap<String, String> jobData) {
+        HashMap<String, String> error = new HashMap<>();
+        if(jobData.get("date") != null) {
+            this.setDateBooked(jobData.get("date"));
+        }else {
+            this.setDateBooked("");
+            error.put("date","date");
+        }
+        if(jobData.get("status") != null) {
+            this.setStatus(jobData.get("status"));
+        }else {
+            this.setStatus("");
+            error.put("status","status");
+        }
+        if(jobData.get("actualTime") != null) {
+            this.setActualTime(jobData.get("actualTime"));
+        }else {
+            this.setActualTime("");
+            error.put("actualTime","actualTime");
+        }
+        if(jobData.get("cost") != null) {
+            this.setCost(jobData.get("cost"));
+        }else {
+            this.setCost("");
+            error.put("cost","cost");
+        }if(jobData.get("jobType") != null) {
+            this.setJobType(jobData.get("jobType"));
+        }else {
+            this.setJobType("");
+            error.put("jobType","jobType");
+        }
+        if(jobData.get("estimatedTime") != null) {
+            this.setEstimatedTime(jobData.get("estimatedTime"));
+        }else {
+            this.setEstimatedTime("");
+            error.put("estimatedTime","estimatedTime");
+        }
+        if(jobData.get("note") != null) {
+            this.setNote(jobData.get("note"));
+        }else {
+            this.setNote("");
+            error.put("note","note");
+        }
+        return error;
     }
 
     public int getJobId() {
@@ -150,4 +197,6 @@ public class Job {
                 ", boatVariant=" + boatVariant +
                 '}';
     }
+
+
 }

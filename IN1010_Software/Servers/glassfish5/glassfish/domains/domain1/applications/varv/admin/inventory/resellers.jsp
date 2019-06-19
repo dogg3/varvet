@@ -77,7 +77,7 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-money"></i>
                                 <span>Ekonomi</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/finance/invoices.jsp">Faktura-vy</a></li>
+                                <li><a href="/varv/admin/finance/invoices.html">Faktura-vy</a></li>
                                 <li><a href="/varv/admin/finance/generateInvoice.jsp">Generera faktura</a></li>
                                 <li><a href="/varv/admin/finance/generateReports.jsp">Generera rapporter</a></li>
                             </ul>
@@ -86,8 +86,8 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-hummer"></i>
                                 <span>Jobb</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/job/index.jsp">Jobb-vy</a></li>
-                                <li><a href="/varv/admin/job/task.jsp">Arbetsuppgifter</a></li>
+                                <li><a href="/varv/admin/job/index.html">Jobb-vy</a></li>
+                                <li><a href="/varv/admin/job/task.html">Arbetsuppgifter</a></li>
                             </ul>
                         </li>
                         <li>

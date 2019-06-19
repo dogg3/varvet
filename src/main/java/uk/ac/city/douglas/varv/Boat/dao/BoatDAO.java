@@ -51,5 +51,10 @@ public class BoatDAO implements BoatDAOInterface{
         return false;
     }
 
+    @Override
+    public BoatVariant findBoatVariantById(int id) {
+        return em.find(BoatVariant.class,id);
+    }
+
 
 }

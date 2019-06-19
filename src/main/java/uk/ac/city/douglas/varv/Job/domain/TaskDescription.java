@@ -2,12 +2,15 @@ package uk.ac.city.douglas.varv.Job.domain;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class TaskDescription {
     @Id
-    private String taskDescriptionID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int taskDescriptionID;
     private String estimatedTime;
     private String description;
     private String taskType;
@@ -16,11 +19,11 @@ public class TaskDescription {
     public TaskDescription() {
     }
 
-    public String getTaskDescriptionID() {
+    public int getTaskDescriptionID() {
         return taskDescriptionID;
     }
 
-    public void setTaskDescriptionID(String taskDescriptionID) {
+    public void setTaskDescriptionID(int taskDescriptionID) {
         this.taskDescriptionID = taskDescriptionID;
     }
 

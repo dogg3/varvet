@@ -1,5 +1,11 @@
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.lang.reflect.Method" %>
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="org.json.simple.JSONObject" %>
+<%@ page import="uk.ac.city.douglas.varv.Job.domain.Job" %>
+<%@ page import="uk.ac.city.douglas.varv.Boat.domain.Boat" %>
+<%@ page import="uk.ac.city.douglas.varv.Account.domain.Staff" %>
 <%@ page import="uk.ac.city.douglas.varv.Job.domain.TaskDescription" %>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -23,19 +29,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-
-
-
     <!-- others css -->
-
-
-
-
-
     <link rel="stylesheet" href="/varv/admin/assets/css/typography.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/default-css.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/styles.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/responsive.css">
+    <link rel="stylesheet" href="/varv/admin/assets/css/step-jq.css">
     <!-- modernizr css -->
     <script src="/varv/admin/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
@@ -76,7 +75,7 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-money"></i>
                                 <span>Ekonomi</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/finance/invoices.jsp">Faktura-vy</a></li>
+                                <li><a href="/varv/admin/finance/invoices.html">Faktura-vy</a></li>
                                 <li><a href="/varv/admin/finance/generateInvoice.jsp">Generera faktura</a></li>
                                 <li><a href="/varv/admin/finance/generateReports.jsp">Generera rapporter</a></li>
                             </ul>
@@ -85,8 +84,8 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-hummer"></i>
                                 <span>Jobb</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/job/index.jsp">Jobb-vy</a></li>
-                                <li><a href="/varv/admin/job/task.jsp">Arbetsuppgifter</a></li>
+                                <li><a href="/varv/admin/job/index.html">Jobb-vy</a></li>
+                                <li><a href="/varv/admin/job/task.html">Arbetsuppgifter</a></li>
                             </ul>
                         </li>
                         <li>
@@ -275,139 +274,134 @@
         </div>
         <!-- header area end -->
         <!-- page title area start -->
-        <div style="padding:20px" class="page-title-area">
-            <div class="row align-items-center">
-                <div class="col-sm-6">
-                    <div class="breadcrumbs-area clearfix">
-                        <h4 class="page-title pull-left">Arbetsuppgifter</h4>
-                        <ul class="breadcrumbs pull-left">
-                            <li>Jobb /</li>
-                            <li><span>Arbetsuppgifter</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="container">
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2>Hantera<b> arbetsuppgifter</b></h2>
+                            <h2>Hantera <b>arbetsuppgifter</b></h2>
                         </div>
-                        <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny arbetsuppgift</span></a>
+                        <div  class="col-sm-6">
+                            <a href="#addTaskNew" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny arbetsuppgift</span></a>
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table id="table1" class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Kategori</th>
-                            <th>Estimerad tid</th>
-                            <th>Beskrivning</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-            <%
+                ​
+                ​<div class="table-responsive">
+                <table id="table1" class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Kategori</th>
+                        <th>Estimerad tid</th>
+                        <th>Beskrivning</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <%
                         List<TaskDescription> taskDescriptions = (List<TaskDescription>)request.getAttribute("taskDescriptions");
 
 
                         for(TaskDescription taskDescription: taskDescriptions){
 
-                        out.print("<tr>");
+                            out.print("<tr>");
 
-                        out.print("<td>"+taskDescription.getTaskDescriptionID()+"</td>");
-                        out.print("<td>"+taskDescription.getTaskType()+"</td>");
-                        out.print("<td>"+taskDescription.getEstimatedTime()+"</td>");
-                        out.print("<td>"+taskDescription.getDescription()+"</td>");
+                            out.print("<td>"+taskDescription.getTaskDescriptionID()+"</td>");
+                            out.print("<td>"+taskDescription.getTaskType()+"</td>");
+                            out.print("<td>"+taskDescription.getEstimatedTime()+"</td>");
+                            out.print("<td>"+taskDescription.getDescription()+"</td>");
 
-                        out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+                            out.print("<td><a href=\"#\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                    "<a data-value='" + taskDescription.getTaskDescriptionID()+ "' href=\"#\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
 
 
 
-                        out.print("</tr>");
+                            out.print("</tr>");
                         }
-                        %>
-                        </tbody>
-                    </table>
-                    <div/>
-                </div>
-                <!-- Edit Modal HTML -->
-                <div id="addEmployeeModal" class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Ny kund</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Namn</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-success" value="Add">
-                                </div>
-                            </form>
+                    %>
+                    </tbody>
+                </table>
+                <div/>
+            </div>​
+
+                ​
+
+                <!--add employee moda -->
+
+                ​<div id="addTaskNew" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Ny arbetsuppgift</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
+                        <form id="example-advanced-form-addTask" action="#">
+                            <h3>Info</h3>
+                            <fieldset>
+                                <label>Kategori</label>
+                                <input name="taskType" type="text" class="form-control" required>
+                                <label>Estimerad tid (timmar)</label>
+                                <input name="estimatedTime" type="text" class="form-control" required>
+                                <label>Job-typ</label>
+                                <input name="jobType" type="text" class="form-control" required>
+                                <label>Beskrivning</label>
+                                <textarea name="description"  class="form-control" required></textarea>
+                            </fieldset>
+
+                        </form>
                     </div>
                 </div>
+            </div>
+
+                <!--end-->
+
+                <!-- add Modal HTML -->
+
+                <!--get all info from current customer -->
+
                 <!-- Edit Modal HTML -->
                 <div id="editEmployeeModal" class="modal fade">
-                    <div class="modal-dialog">
+                    <div style="margin-top:30px" class="modal-dialog">
                         <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Andra kund-data</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
-                                    <input type="submit" class="btn btn-info" value="Spara">
-                                </div>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Andra kund</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <form id="example-advanced-form-editCustomer" action="#">
+                                <h3>Info</h3>
+                                <fieldset>
+                                    <input id="editCustomerId" name="customerId" style="visibility: hidden" >
+                                    <label>Fornamn</label>
+                                    <input name="firstName" type="text" class="form-control" >
+                                    <label>Efternamn</label>
+                                    <input name="lastName" type="text" class="form-control" >
+                                    <label>Smeknamn</label>
+                                    <input name="identifier" type="text" class="form-control" >
+                                    <label>Telefon</label>
+                                    <input name="tel" type="text" class="form-control" >
+                                    <label>Email</label>
+                                    <input name="email" type="email" class="form-control" >
+                                    <label>Rabatt</label>
+                                    <input name="discountPlan" type="text" class="form-control" >
+                                </fieldset>
+
+                                <h3>Adress</h3>
+                                <fieldset>
+                                    <label>Gata</label>
+                                    <input name="street" type="text" class="form-control" >
+                                    <label>Stad</label>
+                                    <input name="town" type="text" class="form-control" >
+                                    <label>Post-nummer</label>
+                                    <input name="postCode" type="text" class="form-control" >
+                                </fieldset>
                             </form>
                         </div>
                     </div>
                 </div>
                 <!-- Delete Modal HTML -->
-                <div id="deleteEmployeeModal" class="modal fade">
+                <div id="deleteTaskDescriptionModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
@@ -416,17 +410,65 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Ar du saker att du vill radera denna kund?</p>
-                                    <p class="text-warning"><small>Detta gar inte att angra</small></p>
+                                    <p id="statusAreSure"></p>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
-                                    <input type="submit" class="btn btn-danger" value="Radera">
+                                    <input id="eraseTaskDescription" type="submit" class="btn btn-basic" value="Radera">
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+                <!-- confirmation to modals -->
+
+
+
+
+                <div id="successAddTaskDescription" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div id="modalContent" class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Jobb tillagt!</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessAddTaskDescription"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic" data-dismiss="modal" value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="successEditCustomer" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div  class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kund uppdaterad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessEditCustomer"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic"  data-dismiss="modal"  value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="successEraseTaskDescription" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div  class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kund raderad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessEraseTaskDescription"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic"   data-dismiss="modal" value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!-- page title area end -->
         </div>
@@ -621,9 +663,12 @@
 <!-- offset area end -->
 <!-- jquery latest version -->
 <script src="/varv/admin/assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="/varv/admin/assets/js/vendor/jquery.steps.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
 <!-- bootstrap 4 js -->
 <script src="/varv/admin/assets/js/popper.min.js"></script>
 <script src="/varv/admin/assets/js/bootstrap.min.js"></script>
+
 <script src="/varv/admin/assets/js/owl.carousel.min.js"></script>
 <script src="/varv/admin/assets/js/metisMenu.min.js"></script>
 <script src="/varv/admin/assets/js/jquery.slimscroll.min.js"></script>
@@ -631,6 +676,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
+<!--jquery form plygin -->
+<script src="/varv/admin/assets/js/jquery.form.min.js"></script>
 <!-- start chart js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <!-- start highcharts js -->
@@ -648,11 +695,73 @@
 <!-- others plugins -->
 <script src="/varv/admin/assets/js/plugins.js"></script>
 <script src="/varv/admin/assets/js/scripts.js"></script>
+<script src="/varv/admin/assets/js/jq-modal.js"></script>
 
 <script>
     $(document).ready(function () {
         $('#table1').DataTable();
+        $("#example-basic").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            autoFocus: true
+        });
     });
+
+
+    //pop up are u sure button and passing the customer ID
+    $('.delete').click(function(e){
+        e.preventDefault();
+        var id = $(this).data('value');
+        var deleteModal =  $('#deleteTaskDescriptionModal');
+        deleteModal.find('#eraseTaskDescription').data("value",id);
+        deleteModal.find('#statusAreSure').html("Ar du saker pa add radera jobb med id: <span style='color:black'>" + id + "</span>");
+        deleteModal.modal("toggle");
+    })
+
+    ///erase customer send request to sevlert
+
+    $('#eraseTaskDescription').click(function(e){
+        e.preventDefault();
+
+        var id =  $(this).data('value');
+        console.log(id);
+        $.ajax({
+            url:'/varv/admin/job/addTaskDescription.html?id='+id,
+            type: 'DELETE',
+            success: function (data, status, xhr) {
+
+                $('#deleteTaskDescriptionModal').modal("toggle");
+                $('#statusSuccessEraseTaskDescription').html("Arbetsuppgift med id" + name+ "<br> ar raderad.");
+
+                $('#successEraseTaskDescription').modal("toggle");
+            }
+        })
+    })
+
+
+
+    //edit toogle and fill placeholder
+    $('.edit').click(function(e){
+        e.preventDefault();
+
+        //Set placeholders
+        var customer = $(this).data('value');
+        var form =$('#editEmployeeModal').find('form');
+        var allInput = form.find('input');
+        $('#editCustomerId').val(customer['customerId']);
+
+        allInput.each(function(index,value){
+            var attr = $(value).attr('name');
+            var placeholder = customer[attr];
+            $(value).attr("placeholder", placeholder);
+
+        });
+
+        //show the form modal
+        $('#editEmployeeModal').modal("show");
+
+    })
 </script>
 </body>
 

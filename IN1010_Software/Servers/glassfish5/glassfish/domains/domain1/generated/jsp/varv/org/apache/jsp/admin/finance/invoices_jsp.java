@@ -123,7 +123,7 @@ public final class invoices_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <a href=\"javascript:void(0)\" aria-expanded=\"true\"><i class=\"ti-money\"></i>\n");
       out.write("                                <span>Ekonomi</span></a>\n");
       out.write("                            <ul class=\"collapse\">\n");
-      out.write("                                <li><a href=\"/varv/admin/finance/invoices.jsp\">Faktura-vy</a></li>\n");
+      out.write("                                <li><a href=\"/varv/admin/finance/invoices.html\">Faktura-vy</a></li>\n");
       out.write("                                <li><a href=\"/varv/admin/finance/generateInvoice.jsp\">Generera faktura</a></li>\n");
       out.write("                                <li><a href=\"/varv/admin/finance/generateReports.jsp\">Generera rapporter</a></li>\n");
       out.write("                            </ul>\n");
@@ -132,8 +132,8 @@ public final class invoices_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <a href=\"javascript:void(0)\" aria-expanded=\"true\"><i class=\"ti-hummer\"></i>\n");
       out.write("                                <span>Jobb</span></a>\n");
       out.write("                            <ul class=\"collapse\">\n");
-      out.write("                                <li><a href=\"/varv/admin/job/index.jsp\">Jobb-vy</a></li>\n");
-      out.write("                                <li><a href=\"/varv/admin/job/task.jsp\">Arbetsuppgifter</a></li>\n");
+      out.write("                                <li><a href=\"/varv/admin/job/index.html\">Jobb-vy</a></li>\n");
+      out.write("                                <li><a href=\"/varv/admin/job/task.html\">Arbetsuppgifter</a></li>\n");
       out.write("                            </ul>\n");
       out.write("                        </li>\n");
       out.write("                        <li>\n");

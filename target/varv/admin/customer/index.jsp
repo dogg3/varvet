@@ -71,7 +71,7 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-money"></i>
                                 <span>Ekonomi</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/finance/invoices.jsp">Faktura-vy</a></li>
+                                <li><a href="/varv/admin/finance/invoices.html">Faktura-vy</a></li>
                                 <li><a href="/varv/admin/finance/generateInvoice.jsp">Generera faktura</a></li>
                                 <li><a href="/varv/admin/finance/generateReports.jsp">Generera rapporter</a></li>
                             </ul>
@@ -80,8 +80,8 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-hummer"></i>
                                 <span>Jobb</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/job/index.jsp">Jobb-vy</a></li>
-                                <li><a href="/varv/admin/job/task.jsp">Arbetsuppgifter</a></li>
+                                <li><a href="/varv/admin/job/index.html">Jobb-vy</a></li>
+                                <li><a href="/varv/admin/job/task.html">Arbetsuppgifter</a></li>
                             </ul>
                         </li>
                         <li>
@@ -346,42 +346,42 @@
                 <!--add employee moda -->
 
                 <div id="addEmployeeNew" class="modal fade">
-                  <div class="modal-dialog">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                              <h4 class="modal-title">Ny kund</h4>
-                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                          </div>
-                          <form id="example-advanced-form" action="#">
-                              <h3>Info</h3>
-                              <fieldset>
-                                  <label>Fornamn</label>
-                                  <input name="firstName" type="text" class="form-control" required>
-                                  <label>Efternamn</label>
-                                  <input name="lastName" type="text" class="form-control" required>
-                                  <label>Smeknamn</label>
-                                  <input name="identifier" type="text" class="form-control" required>
-                                  <label>Telefon</label>
-                                  <input name="tel" type="text" class="form-control" required>
-                                  <label>Email</label>
-                                  <input name="email" type="email" class="form-control" required>
-                                  <label>Rabatt</label>
-                                  <input name="discountPlan" type="text" class="form-control" required>
-                              </fieldset>
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Ny kund</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <form id="example-advanced-form" action="#">
+                                <h3>Info</h3>
+                                <fieldset>
+                                    <label>Fornamn</label>
+                                    <input name="firstName" type="text" class="form-control" required>
+                                    <label>Efternamn</label>
+                                    <input name="lastName" type="text" class="form-control" required>
+                                    <label>Smeknamn</label>
+                                    <input name="identifier" type="text" class="form-control" required>
+                                    <label>Telefon</label>
+                                    <input name="tel" type="text" class="form-control" required>
+                                    <label>Email</label>
+                                    <input name="email" type="email" class="form-control" required>
+                                    <label>Rabatt</label>
+                                    <input name="discountPlan" type="text" class="form-control" required>
+                                </fieldset>
 
-                              <h3>Adress</h3>
-                              <fieldset>
-                                  <label>Gata</label>
-                                  <input name="street" type="text" class="form-control" required>
-                                  <label>Stad</label>
-                                  <input name="town" type="text" class="form-control" required>
-                                  <label>Post-nummer</label>
-                                  <input name="postCode" type="text" class="form-control" required>
-                              </fieldset>
-                          </form>
-                      </div>
-                  </div>
-              </div>
+                                <h3>Adress</h3>
+                                <fieldset>
+                                    <label>Gata</label>
+                                    <input name="street" type="text" class="form-control" required>
+                                    <label>Stad</label>
+                                    <input name="town" type="text" class="form-control" required>
+                                    <label>Post-nummer</label>
+                                    <input name="postCode" type="text" class="form-control" required>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
                 <!--end-->
 
