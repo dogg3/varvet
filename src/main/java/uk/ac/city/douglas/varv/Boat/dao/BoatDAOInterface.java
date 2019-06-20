@@ -1,9 +1,6 @@
 package uk.ac.city.douglas.varv.Boat.dao;
 
-import uk.ac.city.douglas.varv.Boat.domain.Boat;
-import uk.ac.city.douglas.varv.Boat.domain.BoatStorage;
-import uk.ac.city.douglas.varv.Boat.domain.BoatVariant;
-import uk.ac.city.douglas.varv.Job.domain.Engine;
+import uk.ac.city.douglas.varv.Boat.domain.*;
 
 
 import java.util.List;
@@ -26,6 +23,7 @@ public interface BoatDAOInterface {
     public boolean eraseBoatVariantById(int id);
     public BoatVariant findBoatVariantById(int id);
 
+    
     ///ENGINE
     public List<Engine> getAllEngines();
     public void addEngine(Engine engine);
@@ -35,12 +33,22 @@ public interface BoatDAOInterface {
     
     
     ///BOAT-STORAGE
-
     public List<BoatStorage> getAllBoatStorages();
     public void addBoatStorage(BoatStorage boatStorage);
     public boolean eraseBoatStorageById(int id);
     public BoatStorage findBoatStorageById(int id);
-    
+
+
+
+
+    ///BOAT-VARIANT-ENGINE
+    public List<BoatVariantEngine> getAllBoatVariantEngines();
+    public void addBoatVariantEngine(BoatVariantEngine boatVariantEngine);
+    public boolean eraseBoatVariantEngineById(int id);
+    public BoatVariantEngine findBoatVariantEngineById(int id);
+
+
+
 
 
 

@@ -1,9 +1,6 @@
 package uk.ac.city.douglas.varv.Boat.dao;
 
-import uk.ac.city.douglas.varv.Boat.domain.Boat;
-import uk.ac.city.douglas.varv.Boat.domain.BoatStorage;
-import uk.ac.city.douglas.varv.Boat.domain.BoatVariant;
-import uk.ac.city.douglas.varv.Job.domain.Engine;
+import uk.ac.city.douglas.varv.Boat.domain.*;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -66,8 +63,12 @@ public class BoatDAO implements BoatDAOInterface{
 
 
 
-    //////////////////////////ENGINE//////////////////
 
+
+
+
+
+    //////////////////////////ENGINE//////////////////
 
     @Override
     public List<Engine> getAllEngines() {
@@ -94,7 +95,11 @@ public class BoatDAO implements BoatDAOInterface{
 
     }
 
-    
+
+
+
+
+
     
     ////BOAT-STORAGE/////////////////////
     @Override
@@ -119,6 +124,40 @@ public class BoatDAO implements BoatDAOInterface{
     @Override
     public BoatStorage findBoatStorageById(int id) {
         return em.find(BoatStorage.class,id);
+    }
+
+
+
+
+
+
+
+
+    /////////////////////////BOATVARIANT-ENGINE/////////////////////////////
+
+
+    @Override
+    public List<BoatVariantEngine> getAllBoatVariantEngines() {
+        TypedQuery query = em.createQuery("SELECT b FROM BoatVariantEngine AS b", BoatVariantEngine.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public void addBoatVariantEngine(BoatVariantEngine boatVariantEngine) {
+        em.persist(boatVariantEngine);
+
+    }
+
+    @Override
+    public boolean eraseBoatVariantEngineById(int id) {
+        BoatVariantEngine boatVariantEngine = em.find(BoatVariantEngine.class, id);
+        return true;
+    }
+
+    @Override
+    public BoatVariantEngine findBoatVariantEngineById(int id) {
+            return em.find(BoatVariantEngine.class, id);
+
     }
 
 

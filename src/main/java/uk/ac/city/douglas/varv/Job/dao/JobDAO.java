@@ -12,9 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import uk.ac.city.douglas.varv.Account.domain.Customer;
-import uk.ac.city.douglas.varv.Job.domain.Job;
-import uk.ac.city.douglas.varv.Job.domain.JobTask;
-import uk.ac.city.douglas.varv.Job.domain.TaskDescription;
+import uk.ac.city.douglas.varv.Job.domain.*;
 //import uk.ac.city.douglas.varv.Boat.domain.Boat;
 //import uk.ac.city.douglas.varv.Job.domain.BoatVariant;
 //import uk.ac.city.douglas.varv.Job.domain.BoatVariantEngine;
@@ -119,5 +117,63 @@ public class JobDAO implements JobDAOInterface {
     }
 
 
-    
+
+
+    ///TASKDESCRIPTIONPARTS
+
+    @Override
+    public List<TaskDescriptionPart> getAllTaskDescriptionParts() {
+        TypedQuery query = em.createQuery("SELECT jt FROM TaskDescriptionPart AS jt",TaskDescriptionPart.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public void addTaskDescriptionPart(TaskDescriptionPart taskDescriptionPart) {
+        em.persist(taskDescriptionPart);
+
+    }
+
+    @Override
+    public void eraseTaskDescriptionPartById(int id) {
+        TaskDescriptionPart taskDescriptionPart = em.find(TaskDescriptionPart.class, id);
+        em.remove(taskDescriptionPart);
+    }
+
+    @Override
+    public TaskDescriptionPart getTaskDescriptionPartById(int id) {
+
+        return em.find(TaskDescriptionPart.class,id);
+
+    }
+
+
+
+    ///////JOBPARTS
+
+    @Override
+    public List<JobPart> getAllJobParts() {
+        TypedQuery query = em.createQuery("SELECT jt FROM JobPart AS jt",JobPart.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public void addJobPart(JobPart jobPart) {
+        em.persist(jobPart);
+
+    }
+
+    @Override
+    public void eraseJobPartById(int id) {
+        JobPart jobPart = em.find(JobPart.class,id);
+        em.remove(jobPart);
+
+    }
+
+    @Override
+    public JobPart getJobPartById(int id) {
+
+        return em.find(JobPart.class, id);
+    }
+
+
 }
