@@ -8,8 +8,7 @@ package uk.ac.city.douglas.varv.Job.dao;
 import java.util.List;
 
 import uk.ac.city.douglas.varv.Account.domain.Customer;
-import uk.ac.city.douglas.varv.Job.domain.Job;
-import uk.ac.city.douglas.varv.Job.domain.TaskDescription;
+import uk.ac.city.douglas.varv.Job.domain.*;
 //import uk.ac.city.douglas.varv.Boat.domain.Boat;
 //import uk.ac.city.douglas.varv.Job.domain.BoatVariant;
 //import uk.ac.city.douglas.varv.Job.domain.BoatVariantEngine;
@@ -43,64 +42,31 @@ public interface JobDAOInterface {
     
     
     
+    //Job-task
+    public List<JobTask> getAllJobTasks();
+    public void addJobTask(JobTask jobTask);
+    public void eraseJobTaskById(int id);
+    public JobTask getJobTaskById(int id);
+
+
+
+
+    //TaskDescriptionPart
+    public List<TaskDescriptionPart> getAllTaskDescriptionParts();
+    public void addTaskDescriptionPart(TaskDescriptionPart taskDescriptionPart);
+    public void eraseTaskDescriptionPartById(int id);
+    public TaskDescriptionPart getTaskDescriptionPartById(int id);
+
+
+    //JobPart
+    public List<JobPart> getAllJobParts();
+    public void addJobPart(JobPart jobPart);
+    public void eraseJobPartById(int id);
+    public JobPart getJobPartById(int id);
     
 
-    /*
-    *customer
-    */
-//    public void saveCustomer(Customer customer);
-//    public void eraseCustomerById(int id);
-//    public void addEmployee();
-//    public Customer findCustomerById(int id);
-//
-//
-//
-//       /*
-//    *storage
-//    */
-//
-//    public List<Storage> getAllStorages();
-//
-//       /*
-//    *BoatVariants - kundBåtar
-//    */
-//      public List<BoatVariant> getAllBoatVariants();
-//     public void saveBoatVariant(BoatVariant boatVariant);
-//     public void removeBoatVariant(BoatVariant boatVariant);
-//     public List<BoatVariant> findAllBoatVariantByCustomerId(int customerId);
-//     public BoatVariant findAllBoatVariantByCustomerIdAndBoatId(int customerId, int boatId);
-//
-//
-//      /*
-//    *engine
-//    */
-//
-//    public List<Engine> getAllEngines();
-//    public List<Engine>findEnginesByBrand(String brand);
-//    public void addEngine(Engine engine);
-//    public void removeEngineById(int id);
-//    public Engine findEngineById(int id);
-//
-//
-//
-//       /*
-//    *boatVariant engine
-//    */
-//
-//    public void addBoatVariantEngine(BoatVariantEngine boatVariantEngine);
-//    public void removeBoatVariantEngineById(BoatVariantEngine boatVariantEngine);
-//    public List<BoatVariantEngine> findBoatVariantEngineById(int boatId, int customerId, int engineId);
-//
-//
-//
-//
-//       /*
-//    *BoatVariantStorages - kundbåtsVinterplats
-//    */
-//
-//
-    
-    
-    
-    
+
+
+
+
 }

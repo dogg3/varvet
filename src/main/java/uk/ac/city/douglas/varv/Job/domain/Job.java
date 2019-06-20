@@ -52,6 +52,12 @@ public class Job {
     @JoinColumn(name = "customerBoatId")
     private BoatVariant boatVariant;
 
+
+    @OneToMany(mappedBy = "job")
+    private List<JobTask> jobTasks;
+
+
+
     public Job(){
 
     }
@@ -182,11 +188,20 @@ public class Job {
         this.jobType = jobType;
     }
 
+
+    public List<JobTask> getJobTasks() {
+        return jobTasks;
+    }
+
+    public void setJobTasks(List<JobTask> jobTasks) {
+        this.jobTasks = jobTasks;
+    }
+
     @Override
     public String toString() {
         return "Job{" +
                 "jobId=" + jobId +
-                ", dateBooked=" + dateBooked +
+                ", dateBooked='" + dateBooked + '\'' +
                 ", status='" + status + '\'' +
                 ", actualTime='" + actualTime + '\'' +
                 ", cost='" + cost + '\'' +
@@ -195,8 +210,7 @@ public class Job {
                 ", note='" + note + '\'' +
                 ", staff=" + staff +
                 ", boatVariant=" + boatVariant +
+                ", jobTasks=" + jobTasks +
                 '}';
     }
-
-
 }

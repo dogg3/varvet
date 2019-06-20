@@ -10,7 +10,7 @@ public class BoatStorage {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int boatStorageId;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="CustomerBoatID")
     private BoatVariant customerBoat;
 

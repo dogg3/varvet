@@ -1,10 +1,8 @@
 package uk.ac.city.douglas.varv.Job.domain;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class TaskDescription {
@@ -14,6 +12,9 @@ public class TaskDescription {
     private String estimatedTime;
     private String description;
     private String taskType;
+
+    @OneToMany(mappedBy = "taskDescription")
+    private List<JobTask> jobTasks;
 
 
     public TaskDescription() {
@@ -51,17 +52,22 @@ public class TaskDescription {
         this.taskType = taskType;
     }
 
+    public List<JobTask> getJobTasks() {
+        return jobTasks;
+    }
 
-
-
+    public void setJobTasks(List<JobTask> jobTasks) {
+        this.jobTasks = jobTasks;
+    }
 
     @Override
     public String toString() {
         return "TaskDescription{" +
-                "taskDescriptionID='" + taskDescriptionID + '\'' +
+                "taskDescriptionID=" + taskDescriptionID +
                 ", estimatedTime='" + estimatedTime + '\'' +
                 ", description='" + description + '\'' +
                 ", taskType='" + taskType + '\'' +
+                ", jobTasks=" + jobTasks +
                 '}';
     }
 }

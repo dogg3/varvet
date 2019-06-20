@@ -65,9 +65,6 @@ public class Boat {
      private String description;
 
 
-//    @OneToMany(mappedBy="boat")
-//    List <BoatVariant> boatVariants;
-//
 
 
     public int getBoatId() {

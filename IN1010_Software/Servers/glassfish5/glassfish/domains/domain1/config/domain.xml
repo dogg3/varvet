@@ -442,7 +442,7 @@
     <application context-root="/varv" object-type="user" name="varv" location="${com.sun.aas.instanceRootURI}/applications/varv/">
       <property name="archiveType" value="war"></property>
       <property name="appLocation" value="${com.sun.aas.instanceRootURI}/applications/__internal/varv/varv.war"></property>
-      <property name="org.glassfish.ejb.container.application_unique_id" value="102298305024098304"></property>
+      <property name="org.glassfish.ejb.container.application_unique_id" value="102303786622386176"></property>
       <property name="defaultAppName" value="varv"></property>
       <module name="varv">
         <engine sniffer="ejb"></engine>

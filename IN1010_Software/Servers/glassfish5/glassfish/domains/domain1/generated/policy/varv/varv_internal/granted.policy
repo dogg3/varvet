@@ -1,41 +1,45 @@
-/* AUTOMATICALLY GENERATED ON Wed Jun 19 14:44:23 CEST 2019*/
+/* AUTOMATICALLY GENERATED ON Thu Jun 20 13:58:28 CEST 2019*/
 /* DO NOT EDIT */
 
 grant {
   permission javax.security.jacc.EJBMethodPermission "BoatDAO", "getBoatById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "JobDAO", "eraseJobById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "JobDAO", "getTaskDescriptionById,Local,int";
-  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "eraseCustomerById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "JobDAO", "eraseTaskDescriptionById,Local,int";
+  permission javax.security.jacc.EJBMethodPermission "AccountDAO", "eraseCustomerById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "editCustomer,Local,java.util.HashMap";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "findStaffById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "addStaff,Local,uk.ac.city.douglas.varv.Account.domain.Staff";
   permission javax.security.jacc.EJBMethodPermission "BoatDAO", "findBoatVariantById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "FinanceDAO", "eraseInvoiceById,Local,int";
+  permission javax.security.jacc.EJBMethodPermission "JobDAO", "addJobTask,Local,uk.ac.city.douglas.varv.Job.domain.JobTask";
   permission javax.security.jacc.EJBMethodPermission "FinanceDAO", "findInvoiceById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "findCustomerById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "getAllStaffs,Local,";
+  permission javax.security.jacc.EJBMethodPermission "JobDAO", "eraseJobTaskById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "FinanceDAO", "addInvoice,Local,uk.ac.city.douglas.varv.Finance.domain.Invoice";
   permission javax.security.jacc.EJBMethodPermission "JobDAO", "addTaskDescription,Local,uk.ac.city.douglas.varv.Job.domain.TaskDescription";
+  permission javax.security.jacc.EJBMethodPermission "JobDAO", "getJobTaskById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "JobDAO", "getAllJobs,Local,";
-  permission javax.security.jacc.EJBMethodPermission "BoatDAO", "eraseBoatVariantById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "FinanceDAO", "getAllInvoices,Local,";
+  permission javax.security.jacc.EJBMethodPermission "BoatDAO", "eraseBoatVariantById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "BoatDAO", "addBoatVariant,Local,uk.ac.city.douglas.varv.Boat.domain.BoatVariant";
   permission javax.security.jacc.EJBMethodPermission "StockDAO", "getAllParts,Local,";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "editStaff,Local,java.util.HashMap";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "eraseStaffById,Local,int";
-  permission javax.security.jacc.EJBMethodPermission "BoatDAO", "getAllBoats,Local,";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "addCustomer,Local,uk.ac.city.douglas.varv.Account.domain.Customer";
+  permission javax.security.jacc.EJBMethodPermission "BoatDAO", "getAllBoats,Local,";
   permission javax.security.jacc.EJBMethodPermission "JobDAO", "addJob,Local,uk.ac.city.douglas.varv.Job.domain.Job";
   permission javax.security.jacc.EJBMethodPermission "BoatDAO", "getAllCustomerBoats,Local,";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "getAllCustomers,Local,";
   permission javax.security.jacc.EJBMethodPermission "JobDAO", "getAllTaskDescriptions,Local,";
+  permission javax.security.jacc.EJBMethodPermission "JobDAO", "getAllJobTasks,Local,";
   permission javax.security.jacc.EJBMethodPermission "JobDAO", "getJobById,Local,int";
 };
 
 grant      principal * * {
-  permission javax.security.jacc.EJBRoleRefPermission "FinanceDAO", "**";
   permission javax.security.jacc.EJBRoleRefPermission "JobDAO", "**";
+  permission javax.security.jacc.EJBRoleRefPermission "FinanceDAO", "**";
   permission javax.security.jacc.EJBRoleRefPermission "AccountDAO", "**";
   permission javax.security.jacc.EJBRoleRefPermission "BoatDAO", "**";
   permission javax.security.jacc.EJBRoleRefPermission "StockDAO", "**";

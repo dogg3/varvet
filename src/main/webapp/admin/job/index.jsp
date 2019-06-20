@@ -309,10 +309,11 @@
 
 
             for(Job job: jobs){
-    Boat boat = job.getBoatVariant().getBoat();
-    Customer customer = job.getBoatVariant().getCustomer();
-    Staff staff =  job.getStaff();
+                Boat boat = job.getBoatVariant().getBoat();
+                Customer customer = job.getBoatVariant().getCustomer();
+                Staff staff =  job.getStaff();
             out.print("<tr>");
+
             out.print("<td>"+job.getJobId()+"</td>");
             out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");
             out.print("<td>"+boat.getBrand()+" "+boat.getModel()+"</td>");
@@ -338,7 +339,6 @@
                 <div/>
             </div>​
 
-                <!--add employee moda -->
 
                 ​<div id="addJobNew" class="modal fade">
                 <div class="modal-dialog">
@@ -376,9 +376,6 @@
 
                 <!--end-->
 
-                <!-- add Modal HTML -->
-
-                <!--get all info from current customer -->
 
                 <!-- Edit Modal HTML -->
                 <div id="editEmployeeModal" class="modal fade">

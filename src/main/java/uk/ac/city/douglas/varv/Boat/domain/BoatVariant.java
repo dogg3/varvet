@@ -7,8 +7,6 @@
 package uk.ac.city.douglas.varv.Boat.domain;
 
 import uk.ac.city.douglas.varv.Account.domain.Customer;
-import uk.ac.city.douglas.varv.Boat.domain.Boat;
-import uk.ac.city.douglas.varv.Boat.domain.BoatVariantKey;
 import uk.ac.city.douglas.varv.Job.domain.Job;
 
 import javax.persistence.*;
@@ -51,6 +49,9 @@ public class BoatVariant {
     @OneToMany(mappedBy = "boatVariant")
     private List<Job> jobs;
 
+    @OneToMany(mappedBy = "customerBoat")
+    private List<BoatStorage> boatStorages;
+
 
 
     public HashMap<String, String> populate(Boat boat, Customer customer, HashMap<String, String> boatVariantData) {
@@ -78,6 +79,14 @@ public class BoatVariant {
         return error;
     }
 
+
+    public List<BoatStorage> getBoatStorages() {
+        return boatStorages;
+    }
+
+    public void setBoatStorages(List<BoatStorage> boatStorages) {
+        this.boatStorages = boatStorages;
+    }
 
     public int getCustomerBoatId() {
         return customerBoatId;
@@ -153,6 +162,8 @@ public class BoatVariant {
                 ", description='" + description + '\'' +
                 ", boat=" + boat +
                 ", customer=" + customer +
+                ", jobs=" + jobs +
+                ", boatStorages=" + boatStorages +
                 '}';
     }
 }

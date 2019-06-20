@@ -362,10 +362,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
 
             for(Job job: jobs){
-    Boat boat = job.getBoatVariant().getBoat();
-    Customer customer = job.getBoatVariant().getCustomer();
-    Staff staff =  job.getStaff();
+                Boat boat = job.getBoatVariant().getBoat();
+                Customer customer = job.getBoatVariant().getCustomer();
+                Staff staff =  job.getStaff();
             out.print("<tr>");
+
             out.print("<td>"+job.getJobId()+"</td>");
             out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");
             out.print("<td>"+boat.getBrand()+" "+boat.getModel()+"</td>");
