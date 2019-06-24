@@ -8,7 +8,7 @@ import java.util.List;
 public class TaskDescriptionPart {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int TaskDescriptionId;
+    private int TaskDescriptionPartId;
     private int amount;
 
     @ManyToOne
@@ -18,12 +18,12 @@ public class TaskDescriptionPart {
     public TaskDescriptionPart() {
     }
 
-    public int getTaskDescriptionId() {
-        return TaskDescriptionId;
+    public int getTaskDescriptionPartId() {
+        return TaskDescriptionPartId;
     }
 
-    public void setTaskDescriptionId(int taskDescriptionId) {
-        TaskDescriptionId = taskDescriptionId;
+    public void setTaskDescriptionPartId(int taskDescriptionPartId) {
+        TaskDescriptionPartId = taskDescriptionPartId;
     }
 
     public int getAmount() {
@@ -40,14 +40,5 @@ public class TaskDescriptionPart {
 
     public void setTaskDescription(TaskDescription taskDescription) {
         this.taskDescription = taskDescription;
-    }
-
-    @Override
-    public String toString() {
-        return "TaskDescriptionPart{" +
-                "TaskDescriptionId=" + TaskDescriptionId +
-                ", amount=" + amount +
-                ", taskDescription=" + taskDescription +
-                '}';
     }
 }

@@ -339,7 +339,6 @@
                 <div/>
             </div>​
 
-                <!--add employee moda -->
 
                 ​<div id="addJobNew" class="modal fade">
                 <div class="modal-dialog">
@@ -377,9 +376,6 @@
 
                 <!--end-->
 
-                <!-- add Modal HTML -->
-
-                <!--get all info from current customer -->
 
                 <!-- Edit Modal HTML -->
                 <div id="editEmployeeModal" class="modal fade">

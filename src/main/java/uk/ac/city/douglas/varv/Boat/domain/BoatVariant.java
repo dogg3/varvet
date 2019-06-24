@@ -46,11 +46,14 @@ public class BoatVariant {
     @JoinColumn(name = "customerID", insertable = false, updatable = false)
     private Customer customer;
 
-    @OneToMany(mappedBy = "boatVariant")
+    @OneToMany(mappedBy = "boatVariant" , fetch=FetchType.EAGER)
     private List<Job> jobs;
 
-    @OneToMany(mappedBy = "customerBoat")
+    @OneToMany(mappedBy = "customerBoat" , fetch=FetchType.EAGER)
     private List<BoatStorage> boatStorages;
+
+    @OneToMany(mappedBy = "boatVariant" , fetch=FetchType.EAGER)
+    private List<BoatVariantEngine> boatVariantEngines;
 
 
 
@@ -152,6 +155,14 @@ public class BoatVariant {
         this.customer = customer;
     }
 
+    public List<BoatVariantEngine> getBoatVariantEngines() {
+        return boatVariantEngines;
+    }
+
+    public void setBoatVariantEngines(List<BoatVariantEngine> boatVariantEngines) {
+        this.boatVariantEngines = boatVariantEngines;
+    }
+
     @Override
     public String toString() {
         return "BoatVariant{" +
@@ -162,8 +173,6 @@ public class BoatVariant {
                 ", description='" + description + '\'' +
                 ", boat=" + boat +
                 ", customer=" + customer +
-                ", jobs=" + jobs +
-                ", boatStorages=" + boatStorages +
                 '}';
     }
 }

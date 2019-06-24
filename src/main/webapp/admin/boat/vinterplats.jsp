@@ -1,5 +1,9 @@
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
+<%@ page import="uk.ac.city.douglas.varv.Boat.domain.BoatVariant" %>
+<%@ page import="org.json.simple.JSONObject" %>
+<%@ page import="uk.ac.city.douglas.varv.Boat.domain.BoatStorage" %>
+<%@ page import="uk.ac.city.douglas.varv.Boat.domain.Boat" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -22,22 +26,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-
-
-
     <!-- others css -->
-
-
-
-
-
     <link rel="stylesheet" href="/varv/admin/assets/css/typography.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/default-css.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/styles.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/responsive.css">
+    <link rel="stylesheet" href="/varv/admin/assets/css/step-jq.css">
     <!-- modernizr css -->
     <script src="/varv/admin/assets/js/vendor/modernizr-2.8.3.min.js"></script>
-</head>
 
 <body>
 
@@ -278,24 +274,25 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumbs-area clearfix">
-                        <h4 class="page-title pull-left">Vinterplats</h4>
+                        <h4 class="page-title pull-left">Kundbatar</h4>
                         <ul class="breadcrumbs pull-left">
                             <li>Batar /</li>
-                            <li><span>Vinterplats</span></li>
+                            <li><span>Kundbatar</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="container">
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2>Hantera<b> vinterplatser</b></h2>
+                            <h2>Hantera<b> vinterplats</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny vinterplats</span></a>
+                            <a href="#addBoatVariantModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny vinterplats</span></a>
                         </div>
                     </div>
                 </div>
@@ -303,107 +300,97 @@
                     <table id="table1" class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Anvandarnamn</th>
-                            <th>Namn</th>
-                            <th>Telefon</th>
-                            <th>Email</th>
-                            <th>Adress</th>
-                            <th>Timlon</th>
+                            <th>Vinterplats-id</th>
+                            <th>Kund</th>
+                            <th>Bat</th>
+                            <th>Status</th>
+                            <th>Upphamtningsdatum</th>
+                            <th>Avlamningsdatum</th>
+                            <th>Kommentar</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
-                        <%--<tbody>--%>
-                        <%--<tr>--%>
-
-                        <%--List<Customer> customers = (List<Customer>)request.getAttribute("customers");--%>
-
-
-                        <%--for(Customer customer: customers){--%>
-
-                        <%--out.print("<tr>");--%>
-                        <%--out.print("<td><a href=/varv/customer/findCustomerById.html?id="+customer.getCustomerID()+">"+--%>
-                        <%--customer.getCustomerID()+"</td>");--%>
-
-                        <%--out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getTel()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getEmail()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getDiscountPlan()+"</td>");--%>
-                        <%--out.print("<td>"+customer.getAddress().getPostCode()--%>
-                        <%--+ "<br>"+customer.getAddress().getStreet() +"</td>");--%>
-                        <%--out.print("<td>"+customer.getIdentifier()+"</a></td>");--%>
-
-                        <%--out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a><a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");--%>
+                        <tbody>
+                        <%
+                            List<BoatStorage> boatStorages = (List<BoatStorage>)request.getAttribute("boatStorages");
 
 
 
-                        <%--out.print("</tr>");--%>
-                        <%--}--%>
-                        <%--%>--%>
-                        <%--<tr/>--%>
-                        <%--</tbody>--%>
+
+                            for(BoatStorage bs: boatStorages){
+
+
+                                Customer customer = bs.getCustomerBoat().getCustomer();
+
+                                Boat boat = bs.getCustomerBoat().getBoat();
+
+                                out.print("<tr>");
+                                out.print("<td>"+bs.getBoatStorageId()+"</td>");
+                                out.print("<td>"+customer.getFirstName()+" &nbsp;"+customer.getLastName()+"</td>");
+                                out.print("<td>"+boat.getModel()+"&nbsp;"+boat.getBrand()+"</td>");
+
+                                out.print("<td>" +
+                                        "<a class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                        "<a data-value='" + bs.getBoatStorageId()+"'id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a>" +
+                                        "</td>");
+
+
+
+
+                                out.print("</tr>");
+                            }
+                        %>
+                        </tbody>
                     </table>
                     <div/>
                 </div>
-                <!-- Edit Modal HTML -->
-                <div id="addEmployeeModal" class="modal fade">
+
+                <!-- Ny kundbat -->
+                <div id="addBoatVariantModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Ny kund</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Namn</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-success" value="Add">
-                                </div>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Ny kundbat</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <form id="add-boatVariantForm" action="#">
+                                <h3>Info</h3>
+                                <fieldset>
+                                    <label>Kund</label>
+                                    <input name="customer" type="text" class="form-control" required>
+                                    <label>Boat</label>
+                                    <input name="boat" type="text" class="form-control" required>
+                                    <label>Kommentar</label>
+                                    <input name="description" type="text" class="form-control" required>
+                                    <label>Ar</label>
+                                    <input name="year" type="text" class="form-control" required>
+                                </fieldset>
+
                             </form>
                         </div>
                     </div>
                 </div>
                 <!-- Edit Modal HTML -->
-                <div id="editEmployeeModal" class="modal fade">
+                <div id="editBoatVariantModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Andra kund-data</h4>
+                                    <h4 class="modal-title">Andra kundbats-data</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Name</label>
-                                        <input type="text" class="form-control" required>
+                                        <label>Kund</label>
+                                        <label name="customer"></label>
                                     </div>
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" required>
+                                        <label>Bat</label>
+                                        <label name="boat"></label>
                                     </div>
                                     <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
-                                        <input type="text" class="form-control" required>
+                                        <label>Kommentar</label>
+                                        <textarea name="comment" class="form-control" required></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -415,7 +402,8 @@
                     </div>
                 </div>
                 <!-- Delete Modal HTML -->
-                <div id="deleteEmployeeModal" class="modal fade">
+
+                <div id="deleteBoatVariantModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
@@ -424,19 +412,68 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Ar du saker att du vill radera denna kund?</p>
-                                    <p class="text-warning"><small>Detta gar inte att angra</small></p>
+                                    <p id="statusAreSure"></p>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
-                                    <input type="submit" class="btn btn-danger" value="Radera">
+                                    <input id="eraseBoatVariant" type="submit" class="btn btn-basic" value="Radera">
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
+
+                <%--successs areae--%>
+
+
+
+                <div id="successAddEmployee" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div id="modalContent" class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kund tillagd</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessAddCustomer"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic" data-dismiss="modal" value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="successEditCustomer" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div  class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kund uppdaterad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessEditCustomer"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic"  data-dismiss="modal"  value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="successEraseBoatVariant" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div  class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kundbat raderad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessEraseBoatVariant"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic"   data-dismiss="modal" value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <!-- page title area end -->
+
         </div>
     </div>
     <!-- main content area end -->
@@ -626,12 +663,14 @@
         </div>
     </div>
 </div>
-<!-- offset area end -->
 <!-- jquery latest version -->
 <script src="/varv/admin/assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="/varv/admin/assets/js/vendor/jquery.steps.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
 <!-- bootstrap 4 js -->
 <script src="/varv/admin/assets/js/popper.min.js"></script>
 <script src="/varv/admin/assets/js/bootstrap.min.js"></script>
+
 <script src="/varv/admin/assets/js/owl.carousel.min.js"></script>
 <script src="/varv/admin/assets/js/metisMenu.min.js"></script>
 <script src="/varv/admin/assets/js/jquery.slimscroll.min.js"></script>
@@ -639,6 +678,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
+<!--jquery form plygin -->
+<script src="/varv/admin/assets/js/jquery.form.min.js"></script>
 <!-- start chart js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <!-- start highcharts js -->
@@ -656,11 +697,85 @@
 <!-- others plugins -->
 <script src="/varv/admin/assets/js/plugins.js"></script>
 <script src="/varv/admin/assets/js/scripts.js"></script>
+<script src="/varv/admin/assets/js/jq-modal.js"></script>
 
 <script>
     $(document).ready(function () {
         $('#table1').DataTable();
     });
+
+
+
+    //pop up are u sure button and passing the customer ID
+    $('.delete').click(function(e){
+        e.preventDefault();
+        var id = $(this).data('value');
+        console.log(id);
+        var name = $(this).data('name');
+        var boat = $(this).data('boat');
+        var deleteModal =  $('#deleteBoatVariantModal');
+        deleteModal.find('#eraseBoatVariant').data("value",id);
+        deleteModal.find('#eraseBoatVariant').data("name",name);
+        deleteModal.find('#eraseBoatVariant').data("boat",boat);
+        deleteModal.find('#statusAreSure').html("Ar du saker pa add radera <span style='color:black'>" + name + "'s</span><br>" + boat);
+        deleteModal.modal("toggle");
+        console.log($(this).data('name'));
+    })
+
+
+    ///erase boatVariant send request to sevlert
+
+    $('#eraseBoatVariant').click(function(e){
+        e.preventDefault();
+
+        var id =  $(this).data('value');
+        console.log(id);
+        var name = $(this).data('name');
+        var boat = $(this).data('boat');
+        $.ajax({
+            url:'/varv/admin/boatVariant/addBoatVariant.html?id='+id,
+            type: 'DELETE',
+            success: function (data, status, xhr) {
+
+                $('#deleteBoatVariantModal').modal("toggle");
+                $('#statusSuccessEraseBoatVariant').html(name+ "s "+boat+" ar raderad.");
+
+                $('#successEraseBoatVariant').modal("toggle");
+            }
+        })
+    })
+
+
+
+    ///EDIT TOOGLE AND FILL PLACEHOLDER
+
+    $('.edit').click(function(e){
+        e.preventDefault();
+
+        //Set placeholders
+        var boatVariant = $(this).data('value');
+        var form =$('#editBoatVariantModal').find('form');
+        // console.log(boatVariant);
+        var allInput = form.find('label');
+        $('#boatVariantId').val(boatVariant['id']);
+
+        allInput.each(function(index,value){
+            // console.log(value);
+            var attr = $(value).attr('name');
+
+            var placeholder = boatVariant[attr];
+            // console.log(attr);
+            $(value).html( placeholder);
+
+        });
+
+        var textarea = form.find('textarea');
+        console.log()
+        $(textarea).attr("placeholder", boatVariant["comment"]);
+        //show the form modal
+        $('#editBoatVariantModal').modal("show");
+
+    })
 </script>
 </body>
 

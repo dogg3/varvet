@@ -10,7 +10,7 @@ public class BoatStorage {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int boatStorageId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="CustomerBoatID")
     private BoatVariant customerBoat;
 
@@ -21,6 +21,7 @@ public class BoatStorage {
     @Column(name="DropOffDate")
     private String dropOffDate;
 
+    private String comment;
 
     public BoatStorage() {
     }
@@ -65,6 +66,13 @@ public class BoatStorage {
         this.dropOffDate = dropOffDate;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     @Override
     public String toString() {
@@ -74,6 +82,7 @@ public class BoatStorage {
                 ", status='" + status + '\'' +
                 ", pickUpDate='" + pickUpDate + '\'' +
                 ", dropOffDate='" + dropOffDate + '\'' +
+                ", comment='" + comment + '\'' +
                 '}';
     }
 }
