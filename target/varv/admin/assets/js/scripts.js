@@ -614,7 +614,7 @@
 
 
             $.ajax({
-                url:'/varv/admin/boatVariant/addBoatVariant.html',
+                url:'/varv/admin/boatVariant/addBoatVariantEngine.html',
                 type:'POST',
                 contentType:'application/x-www-form-urlencoded; charset=UTF-8',
                 dataType:'json',
@@ -625,9 +625,9 @@
                     if(data.status=="success"){
                         statusMessage = data.job;
                     }
-                    $('#statusSuccessAddCustomer').html(statusMessage + " har lagts till!");
+                    $('#statusSuccessAddBoatVariantEngine').html(statusMessage + " har lagts till!");
                     $('#addBoatVariantModal').modal('toggle');
-                    $('#successAddEmployee').modal('toggle');
+                    $('#successAddBoatVariantEngine').modal('toggle');
                     $('#add-boatVariantForm').resetForm();
                     addBoatVariantForm.steps("previous");
                 },
@@ -652,11 +652,9 @@
 
     ///ADDJOB- FORM
     //ADD job FORM
-    var form = $("#example-advanced-form-addJob").show();
+    var formJob = $("#example-advanced-form-addJob").show();
 
-
-
-    form.steps({
+    formJob.steps({
         headerTag: "h3",
         bodyTag: "fieldset",
         transitionEffect: "slideLeft",
@@ -670,43 +668,39 @@
         },
         onStepChanging: function (event, currentIndex, newIndex)
         {
+            console.log(formJob + "hej");
             // Allways allow previous action even if the current form is not valid!
             if (currentIndex > newIndex)
             {
                 return true;
             }
-            // Forbid next action on "Warning" step if the user is to young
-            if (newIndex === 3 && Number($("#age-2").val()) < 18)
-            {
-                return false;
-            }
             // Needed in some cases if the user went back (clean up)
             if (currentIndex < newIndex)
             {
                 // To remove error styles
-                form.find(".body:eq(" + newIndex + ") label.error").remove();
-                form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+                formJob.find(".body:eq(" + newIndex + ") label.error").remove();
+                formJob.find(".body:eq(" + newIndex + ") .error").removeClass("error");
             }
-            form.validate().settings.ignore = ":disabled,:hidden";
-            return form.valid();
+            formJob.validate().settings.ignore = ":disabled,:hidden";
+            return formJob.valid();
         },
         onStepChanged: function (event, currentIndex, priorIndex)
         {
             // Used to skip the "Warning" step if the user is old enough.
             if (currentIndex === 2 && Number($("#age-2").val()) >= 18)
             {
-                form.steps("next");
+                formJob.steps("next");
             }
             // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
             if (currentIndex === 2 && priorIndex === 3)
             {
-                form.steps("previous");
+                formJob.steps("previous");
             }
         },
         onFinishing: function (event, currentIndex)
         {
-            form.validate().settings.ignore = ":disabled";
-            return form.valid();
+            formJob.validate().settings.ignore = ":disabled";
+            return formJob.valid();
         },
         onFinished: function (event, currentIndex)
         {
@@ -728,8 +722,8 @@
                     $('#statusSuccessAddJob').html(statusMessage + " har lagts till!");
                     $('#addJobNew').modal('toggle');
                     $('#successAddJob').modal('toggle');
-                    $('#example-advanced-form-addJob').resetForm();
-                    form.steps("previous");
+                    formJob.resetForm();
+                    formJob.steps("previous");
                 },
                 error: function(jqXhr, textStatus,errorMessage){
                     console.log(errorMessage);
@@ -752,7 +746,107 @@
     //////ADD TASK DESCRIPTION////////////////////////
 
 
-    var form = $("#example-advanced-form-addTask").show();
+    var formJob = $("#example-advanced-form-addTask").show();
+
+
+
+    formJob.steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        transitionEffect: "slideLeft",
+        labels: {
+            current: "Aktuellt steg:",
+            pagination: "Pagination",
+            finish: "Lagg till",
+            next: "Nasta",
+            previous: "Forra",
+            loading: "Laddar ..."
+        },
+        onStepChanging: function (event, currentIndex, newIndex)
+        {
+            // Allways allow previous action even if the current form is not valid!
+            if (currentIndex > newIndex)
+            {
+                return true;
+            }
+            // Forbid next action on "Warning" step if the user is to young
+            if (newIndex === 3 && Number($("#age-2").val()) < 18)
+            {
+                return false;
+            }
+            // Needed in some cases if the user went back (clean up)
+            if (currentIndex < newIndex)
+            {
+                // To remove error styles
+                formJob.find(".body:eq(" + newIndex + ") label.error").remove();
+                formJob.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+            }
+            formJob.validate().settings.ignore = ":disabled,:hidden";
+            return formJob.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex)
+        {
+            // Used to skip the "Warning" step if the user is old enough.
+            if (currentIndex === 2 && Number($("#age-2").val()) >= 18)
+            {
+                form.steps("next");
+            }
+            // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
+            if (currentIndex === 2 && priorIndex === 3)
+            {
+                form.steps("previous");
+            }
+        },
+        onFinishing: function (event, currentIndex)
+        {
+            formJob.validate().settings.ignore = ":disabled";
+            return formJob.valid();
+        },
+        onFinished: function (event, currentIndex)
+        {
+            var data = JSON.stringify($(form).serializeArray());
+
+
+            $.ajax({
+                url:'/varv/admin/job/addTaskDescription.html',
+                type:'POST',
+                contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                dataType:'json',
+                data: {formData:data
+                },
+                success: function(data,status,xhr){
+                    var statusMessage;
+                    if(data.status=="success"){
+                        statusMessage = data.job;
+                    }
+                    $('#statusSuccessAddTaskDescription').html(statusMessage + " har lagts till!");
+                    $('#addTaskNew').modal('toggle');
+                    $('#successAddTaskDescription').modal('toggle');
+                    $('#example-advanced-form-addTask').resetForm();
+                    formJob.steps("previous");
+                },
+                error: function(jqXhr, textStatus,errorMessage){
+                    console.log(errorMessage);
+                }
+            })
+        }
+    }).validate({
+        errorPlacement: function errorPlacement(error, element) { element.before(error); },
+        rules: {
+            confirm: {
+                equalTo: "#password-2"
+            }
+        }
+    });
+
+
+
+
+    ////////////////////////BOAT STORAGE?///////////////////////////////////////
+
+
+
+    var form = $("#add-boatStorageForm").show();
 
 
 
@@ -814,7 +908,7 @@
 
 
             $.ajax({
-                url:'/varv/admin/job/addTaskDescription.html',
+                url:'/varv/admin/vinterplats/addBoatStorage.html',
                 type:'POST',
                 contentType:'application/x-www-form-urlencoded; charset=UTF-8',
                 dataType:'json',
@@ -823,12 +917,12 @@
                 success: function(data,status,xhr){
                     var statusMessage;
                     if(data.status=="success"){
-                        statusMessage = data.job;
+                        statusMessage = data.name;
                     }
-                    $('#statusSuccessAddTaskDescription').html(statusMessage + " har lagts till!");
-                    $('#addTaskNew').modal('toggle');
-                    $('#successAddTaskDescription').modal('toggle');
-                    $('#example-advanced-form-addTask').resetForm();
+                    $('#statusSuccessAddBoatStorage').html( statusMessage + "&nbsp;"+ data.boat+"&nbsp;bat har bokat en vinterplats!");
+                    $('#addBoatStorageModal').modal('toggle');
+                    $('#successAddBoatStorage').modal('toggle');
+                    form.resetForm();
                     form.steps("previous");
                 },
                 error: function(jqXhr, textStatus,errorMessage){
@@ -844,5 +938,8 @@
             }
         }
     });
+
+
+
 
 })(jQuery);

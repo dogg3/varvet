@@ -63,7 +63,7 @@
                             <ul class="collapse">
                                 <li><a href="/varv/admin/boat/index.html">Bat-databas</a></li>
                                 <li><a href="/varv/admin/boat/customerBoats.html">Kundbatar</a></li>
-                                <li><a href="/varv/admin/boat/vinterplats.jsp">Vinterplats</a></li>
+                                <li><a href="/varv/admin/boat/vinterplats.html">Vinterplats</a></li>
                             </ul>
                         </li>
                         <li>
@@ -291,7 +291,7 @@
                             <h2>Hantera<b> kundbatsmotorer</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addBoatVariantEngineModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny kundbat</span></a>
+                            <a href="#addBoatVariantEngineModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny kundbats-motor</span></a>
                         </div>
                     </div>
                 </div>
@@ -302,6 +302,7 @@
                             <th>KundBatsmotor-id</th>
                             <th>Kundbats-id</th>
                             <th>Motor-namn</th>
+                            <th>Kund-namn</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -317,6 +318,7 @@
                         out.print("<td>"+be.getCustomerBoatEngineId()+"</td>");
                         out.print("<td>"+be.getBoatVariant().getCustomerBoatId()+"</td>");
                         out.print("<td>"+be.getEngine().getModel()+"</td>");
+                        out.print("<td>"+be.getBoatVariant().getCustomer().getFirstName()+"&nbsp;"+be.getBoatVariant().getCustomer().getLastName() +"</td>");
 
                         out.print("<td>" +
                         "<a class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
@@ -335,24 +337,20 @@
                 </div>
 
                 <!-- Ny kundbat -->
-                <div id="addBoatVariantModal" class="modal fade">
+                <div id="addBoatVariantEngineModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Ny kundbat</h4>
+                                <h4 class="modal-title">Ny kundbats-motor</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <form id="add-boatVariantForm" action="#">
                                 <h3>Info</h3>
                                 <fieldset>
-                                    <label>Kund</label>
-                                    <input name="customer" type="text" class="form-control" required>
-                                    <label>Boat</label>
-                                    <input name="boat" type="text" class="form-control" required>
-                                    <label>Kommentar</label>
-                                    <input name="description" type="text" class="form-control" required>
-                                    <label>Ar</label>
-                                    <input name="year" type="text" class="form-control" required>
+                                    <label>kundbats-id</label>
+                                    <input name="boatVariantId" type="text" class="form-control" required>
+                                    <label>motor-id</label>
+                                    <input name="engineId" type="text" class="form-control" required>
                                 </fieldset>
 
                             </form>
@@ -417,14 +415,14 @@
 
 
 
-                <div id="successAddEmployee" class="modal fade ">
+                <div id="successAddBoatVariantEngine" class="modal fade ">
                     <div class="modal-dialog">
                         <div id="modalContent" class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title">Kund tillagd</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
-                            <div class="statusResponse" id="statusSuccessAddCustomer"></div>
+                            <div class="statusResponse" id="statusSuccessAddBoatVariantEngine"></div>
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-basic" data-dismiss="modal" value="Ok">
                             </div>

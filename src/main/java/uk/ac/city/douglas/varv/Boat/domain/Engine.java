@@ -5,6 +5,8 @@
  */
 package uk.ac.city.douglas.varv.Boat.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -29,6 +31,7 @@ public class Engine {
     private String gas;
 
     @OneToMany(mappedBy = "engine")
+    @JsonManagedReference
     private List<BoatVariantEngine> boatVariantEngines;
 
     public Engine() {

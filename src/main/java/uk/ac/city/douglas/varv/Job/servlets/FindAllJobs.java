@@ -41,7 +41,7 @@ public class FindAllJobs extends HttpServlet {
 
     public void service(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-
+        response.setContentType("text/html");
         List<Job> jobs = vr.getAllJobs();
         request.setAttribute("jobs", jobs);
         ServletContext servletContext = getServletContext();

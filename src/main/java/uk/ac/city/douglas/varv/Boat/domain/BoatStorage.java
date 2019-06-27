@@ -1,5 +1,8 @@
 package uk.ac.city.douglas.varv.Boat.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +14,7 @@ public class BoatStorage {
     private int boatStorageId;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name="CustomerBoatID")
     private BoatVariant customerBoat;
 

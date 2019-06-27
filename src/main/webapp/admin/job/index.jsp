@@ -10,8 +10,7 @@
 <html class="no-js" lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Ramsovarvet AB</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="/varv/admin/assets/images/icon/favicon-boat.png">
@@ -23,7 +22,6 @@
     <link rel="stylesheet" href="/varv/admin/assets/css/slicknav.min.css">
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -67,7 +65,7 @@
                             <ul class="collapse">
                                 <li><a href="/varv/admin/boat/index.html">Bat-databas</a></li>
                                 <li><a href="/varv/admin/boat/customerBoats.html">Kundbatar</a></li>
-                                <li><a href="/varv/admin/boat/vinterplats.jsp">Vinterplats</a></li>
+                                <li><a href="/varv/admin/boat/vinterplats.html">Vinterplats</a></li>
                             </ul>
                         </li>
                         <li>
@@ -275,69 +273,40 @@
         <!-- page title area start -->
 
         <div class="container">
-            <div class="table-wrapper">
-                <div class="table-title">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h2>Hantera <b>jobb</b></h2>
-                        </div>
-                        <div  class="col-sm-6">
-                            <a href="#addJobNew" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till nytt jobb</span></a>
+                <div class="table-wrapper">
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h2>Hantera <b>jobb</b></h2>
+                            </div>
+                            <div  class="col-sm-6">
+                                <a href="#addJobNew" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till nytt jobb</span></a>
+                            </div>
                         </div>
                     </div>
+                    ​<div class="table-responsive">
+                    <table id="table1" class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>Job-id</th>
+                            <th>Kund</th>
+                            <th>Bat</th>
+                            <th>Status</th>
+                            <th>Datum bokad</th>
+                            <th>Job-typ</th>
+                            <th>Ansvarig anstalld</th>
+                            <th>Estimerad tid</th>
+                            <th>Aktuell tid</th>
+                            <th>Kommentar</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
                 </div>
-                ​<div class="table-responsive">
-                <table id="table1" class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        <th>Job-id</th>
-                        <th>Kund</th>
-                        <th>Bat</th>
-                        <th>Status</th>
-                        <th>Datum bokad</th>
-                        <th>Job-typ</th>
-                        <th>Ansvarig anstalld</th>
-                        <th>Estimerad tid</th>
-                        <th>Aktuell tid</th>
-                        <th>Kommentar</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                            <%
-            List<Job> jobs = (List<Job>)request.getAttribute("jobs");
-
-
-            for(Job job: jobs){
-                Boat boat = job.getBoatVariant().getBoat();
-                Customer customer = job.getBoatVariant().getCustomer();
-                Staff staff =  job.getStaff();
-            out.print("<tr>");
-
-            out.print("<td>"+job.getJobId()+"</td>");
-            out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");
-            out.print("<td>"+boat.getBrand()+" "+boat.getModel()+"</td>");
-            out.print("<td>"+job.getStatus()+"</td>");
-            out.print("<td>"+job.getDateBooked()+"</td>");
-            out.print("<td>"+job.getJobType()+"</td>");
-            out.print("<td>"+staff.getFirstName()+" "+staff.getLastName()+"</td>");
-            out.print("<td>"+job.getEstimatedTime()+"</td>");
-            out.print("<td>"+job.getActualTime()+"</td>");
-            out.print("<td>"+job.getNote()+"</td>");
-
-            out.print("<td>" +
-                    "<a data-value='" + job.getJobId()+"' href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
-                    "<a data-value='" + job.getJobId()+"' href=\"\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
-
-
-
-            out.print("</tr>");
-            }
-            %>
-                    </tbody>
-                </table>
-                <div/>
-            </div>​
+                </div>​
 
 
                 ​<div id="addJobNew" class="modal fade">
@@ -362,13 +331,6 @@
                                 <textarea name="note"  class="form-control" required></textarea>
                             </fieldset>
 
-                            <h3>Arbeten</h3>
-                            <fieldset>
-                                <label>Anstalld</label>
-                                <input name="staff" type="text" class="form-control" required>
-                                <label>Arbetsuppgift</label>
-                                <input name="taskDescription" type="text" class="form-control" required>
-                            </fieldset>
                         </form>
                     </div>
                 </div>
@@ -497,7 +459,6 @@
         </div>
     </footer>
     <!-- footer area end-->
-</div>
 <!-- page container area end -->
 <!-- offset area start -->
 <div class="offset-area">
@@ -690,7 +651,7 @@
 <script src="/varv/admin/assets/js/jquery.slimscroll.min.js"></script>
 <script src="/varv/admin/assets/js/jquery.slicknav.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf-8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
 <!--jquery form plygin -->
 <script src="/varv/admin/assets/js/jquery.form.min.js"></script>
@@ -715,13 +676,7 @@
 
 <script>
     $(document).ready(function () {
-        $('#table1').DataTable();
-        $("#example-basic").steps({
-            headerTag: "h3",
-            bodyTag: "section",
-            transitionEffect: "slideLeft",
-            autoFocus: true
-        });
+        $('#table1').DataTable();;
     });
 
 

@@ -5,6 +5,7 @@
  */
 package uk.ac.city.douglas.varv.Boat.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import uk.ac.city.douglas.varv.Boat.domain.BoatVariant;
 import uk.ac.city.douglas.varv.Boat.domain.Engine;
 
@@ -25,10 +26,12 @@ public class BoatVariantEngine {
 
     @ManyToOne
     @JoinColumn(name="CustomerBoatId")
+    @JsonBackReference
     private BoatVariant boatVariant;
 
     @ManyToOne
     @JoinColumn(name="engineId")
+    @JsonBackReference
     private Engine engine;
 
 

@@ -6,6 +6,8 @@
  */
 package uk.ac.city.douglas.varv.Boat.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import uk.ac.city.douglas.varv.Account.domain.Customer;
 import uk.ac.city.douglas.varv.Job.domain.Job;
 
@@ -39,20 +41,27 @@ public class BoatVariant {
     private String description;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "boatID", insertable = false, updatable = false)
     private Boat boat;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "customerID", insertable = false, updatable = false)
     private Customer customer;
 
+
     @OneToMany(mappedBy = "boatVariant" , fetch=FetchType.EAGER)
+    @JsonManagedReference
     private List<Job> jobs;
 
+
     @OneToMany(mappedBy = "customerBoat" , fetch=FetchType.EAGER)
+    @JsonManagedReference
     private List<BoatStorage> boatStorages;
 
     @OneToMany(mappedBy = "boatVariant" , fetch=FetchType.EAGER)
+    @JsonManagedReference
     private List<BoatVariantEngine> boatVariantEngines;
 
 

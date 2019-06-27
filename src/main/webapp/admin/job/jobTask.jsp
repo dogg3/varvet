@@ -67,7 +67,7 @@
                             <ul class="collapse">
                                 <li><a href="/varv/admin/boat/index.html">Bat-databas</a></li>
                                 <li><a href="/varv/admin/boat/customerBoats.html">Kundbatar</a></li>
-                                <li><a href="/varv/admin/boat/vinterplats.jsp">Vinterplats</a></li>
+                                <li><a href="/varv/admin/boat/vinterplats.html">Vinterplats</a></li>
                             </ul>
                         </li>
                         <li>
@@ -347,7 +347,7 @@
                             <h4 class="modal-title">Nytt jobb</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
-                        <form id="example-advanced-form-addJob" action="#">
+                        <form id="example-advanced-form-addJobTask" action="#">
                             <h3>Info</h3>
                             <fieldset>
                                 <label>Kundbat</label>

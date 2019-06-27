@@ -64,7 +64,7 @@
                             <ul class="collapse">
                                 <li><a href="/varv/admin/boat/index.html">Bat-databas</a></li>
                                 <li><a href="/varv/admin/boat/customerBoats.html">Kundbatar</a></li>
-                                <li><a href="/varv/admin/boat/vinterplats.jsp">Vinterplats</a></li>
+                                <li><a href="/varv/admin/boat/vinterplats.html">Vinterplats</a></li>
                             </ul>
                         </li>
                         <li>
@@ -292,7 +292,7 @@
                             <h2>Hantera<b> vinterplats</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addBoatVariantModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny vinterplats</span></a>
+                            <a href="#addBoatStorageModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny vinterplats</span></a>
                         </div>
                     </div>
                 </div>
@@ -328,6 +328,10 @@
                                 out.print("<td>"+bs.getBoatStorageId()+"</td>");
                                 out.print("<td>"+customer.getFirstName()+" &nbsp;"+customer.getLastName()+"</td>");
                                 out.print("<td>"+boat.getModel()+"&nbsp;"+boat.getBrand()+"</td>");
+                                out.print("<td>"+bs.getStatus()+"</td>");
+                                out.print("<td>"+bs.getPickUpDate()+"</td>");
+                                out.print("<td>"+bs.getDropOffDate()+"</td>");
+                                out.print("<td>"+bs.getComment()+"</td>");
 
                                 out.print("<td>" +
                                         "<a class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
@@ -344,26 +348,27 @@
                     </table>
                     <div/>
                 </div>
+            </div>
 
                 <!-- Ny kundbat -->
-                <div id="addBoatVariantModal" class="modal fade">
+                <div id="addBoatStorageModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Ny kundbat</h4>
+                                <h4 class="modal-title">Ny vinterplats</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
-                            <form id="add-boatVariantForm" action="#">
+                            <form id="add-boatStorageForm" action="#">
                                 <h3>Info</h3>
                                 <fieldset>
-                                    <label>Kund</label>
-                                    <input name="customer" type="text" class="form-control" required>
-                                    <label>Boat</label>
-                                    <input name="boat" type="text" class="form-control" required>
+                                    <label>KundBat</label>
+                                    <input name="boatVariantId" type="text" class="form-control" required>
+                                    <label>Upphamtnings-datum</label>
+                                    <input name="pickUpDate" type="date" class="form-control" required>
+                                    <label>Avlamnings-datum</label>
+                                    <input name="dropOffDate" type="date" class="form-control" required>
                                     <label>Kommentar</label>
-                                    <input name="description" type="text" class="form-control" required>
-                                    <label>Ar</label>
-                                    <input name="year" type="text" class="form-control" required>
+                                    <textarea name="comment" type="text" class="form-control" required></textarea>
                                 </fieldset>
 
                             </form>
@@ -403,12 +408,12 @@
                 </div>
                 <!-- Delete Modal HTML -->
 
-                <div id="deleteBoatVariantModal" class="modal fade">
+                <div id="deleteBoatStorageModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Radera kund</h4>
+                                    <h4 class="modal-title">Radera vinterplats</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
@@ -416,7 +421,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
-                                    <input id="eraseBoatVariant" type="submit" class="btn btn-basic" value="Radera">
+                                    <input id="eraseBoatStorage" type="submit" class="btn btn-basic" value="Radera">
                                 </div>
                             </form>
                         </div>
@@ -428,14 +433,14 @@
 
 
 
-                <div id="successAddEmployee" class="modal fade ">
+                <div id="successAddBoatStorage" class="modal fade ">
                     <div class="modal-dialog">
                         <div id="modalContent" class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Kund tillagd</h4>
+                                <h4 class="modal-title">Vinterplats tillagd</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
-                            <div class="statusResponse" id="statusSuccessAddCustomer"></div>
+                            <div class="statusResponse" id="statusSuccessAddBoatStorage"></div>
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-basic" data-dismiss="modal" value="Ok">
                             </div>
@@ -457,14 +462,14 @@
                         </div>
                     </div>
                 </div>
-                <div id="successEraseBoatVariant" class="modal fade ">
+                <div id="successEraseBoatStorage" class="modal fade ">
                     <div class="modal-dialog">
                         <div  class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title">Kundbat raderad</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
-                            <div class="statusResponse" id="statusSuccessEraseBoatVariant"></div>
+                            <div class="statusResponse" id="statusSuccessEraseBoatStorage"></div>
                             <div class="modal-footer">
                                 <input type="submit" class="btn btn-basic"   data-dismiss="modal" value="Ok">
                             </div>
@@ -711,36 +716,29 @@
         e.preventDefault();
         var id = $(this).data('value');
         console.log(id);
-        var name = $(this).data('name');
-        var boat = $(this).data('boat');
-        var deleteModal =  $('#deleteBoatVariantModal');
-        deleteModal.find('#eraseBoatVariant').data("value",id);
-        deleteModal.find('#eraseBoatVariant').data("name",name);
-        deleteModal.find('#eraseBoatVariant').data("boat",boat);
-        deleteModal.find('#statusAreSure').html("Ar du saker pa add radera <span style='color:black'>" + name + "'s</span><br>" + boat);
+        var deleteModal =  $('#deleteBoatStorageModal');
+        deleteModal.find('#eraseBoatStorage').data("value",id);
+        deleteModal.find('#statusAreSure').html("Ar du saker pa add radera <span style='color:black'>" + id);
         deleteModal.modal("toggle");
-        console.log($(this).data('name'));
     })
 
 
     ///erase boatVariant send request to sevlert
 
-    $('#eraseBoatVariant').click(function(e){
+    $('#eraseBoatStorage').click(function(e){
         e.preventDefault();
 
         var id =  $(this).data('value');
         console.log(id);
-        var name = $(this).data('name');
-        var boat = $(this).data('boat');
         $.ajax({
-            url:'/varv/admin/boatVariant/addBoatVariant.html?id='+id,
+            url:'/varv/admin/vinterplats/addBoatStorage.html?id='+id,
             type: 'DELETE',
             success: function (data, status, xhr) {
 
-                $('#deleteBoatVariantModal').modal("toggle");
-                $('#statusSuccessEraseBoatVariant').html(name+ "s "+boat+" ar raderad.");
+                $('#deleteBoatStorageModal').modal("toggle");
+                $('#statusSuccessEraseBoatStorage').html("Vinterplats ar raderad");
 
-                $('#successEraseBoatVariant').modal("toggle");
+                $('#successEraseBoatStorage').modal("toggle");
             }
         })
     })

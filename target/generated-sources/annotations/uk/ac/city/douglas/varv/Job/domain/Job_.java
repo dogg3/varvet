@@ -8,7 +8,7 @@ import uk.ac.city.douglas.varv.Account.domain.Staff;
 import uk.ac.city.douglas.varv.Boat.domain.BoatVariant;
 import uk.ac.city.douglas.varv.Job.domain.JobTask;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-06-24T16:04:48")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-06-27T12:21:00")
 @StaticMetamodel(Job.class)
 public class Job_ { 
 
