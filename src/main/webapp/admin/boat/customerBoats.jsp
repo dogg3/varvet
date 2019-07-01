@@ -370,7 +370,15 @@
                                     <label>Ar</label>
                                     <input name="year" type="text" class="form-control" required>
                                 </fieldset>
+                                <h3>Motorer</h3>
+                                <fieldset>
+                                    <label>Motorer</label>
+                                    <input list="engineList" name="engineList"  class="form-control" required>
+                                    <datalist id="engineList">
 
+                                    </datalist>
+                                    <label>Boat</label>
+                                </fieldset>
                             </form>
                         </div>
                     </div>

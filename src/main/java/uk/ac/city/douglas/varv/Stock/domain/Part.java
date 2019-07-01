@@ -5,6 +5,9 @@
  */
 package uk.ac.city.douglas.varv.Stock.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import uk.ac.city.douglas.varv.Job.domain.Job;
+
 import java.util.List;
 import javax.persistence.*;
 
@@ -58,6 +61,13 @@ public class Part {
 
     @Column(name="Momskod")
     private String momsKod;
+
+    @Column(name="Reseller")
+    private String reseller;
+
+    @OneToMany(mappedBy = "part" , fetch=FetchType.EAGER)
+    @JsonManagedReference
+    private List<Inventory> inventories;
 
 
     public String getArtNr() {
@@ -165,6 +175,23 @@ public class Part {
     }
 
 
+    public String getReseller() {
+        return reseller;
+    }
+
+    public void setReseller(String reseller) {
+        this.reseller = reseller;
+    }
+
+
+    public List<Inventory> getInventories() {
+        return inventories;
+    }
+
+    public void setInventories(List<Inventory> inventories) {
+        this.inventories = inventories;
+    }
+
     @Override
     public String toString() {
         return "Part{" +
@@ -181,6 +208,7 @@ public class Part {
                 ", getKatalogPrisInkMoms='" + getKatalogPrisInkMoms + '\'' +
                 ", eanKod='" + eanKod + '\'' +
                 ", momsKod='" + momsKod + '\'' +
+                ", reseller='" + reseller + '\'' +
                 '}';
     }
 }

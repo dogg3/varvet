@@ -1,6 +1,8 @@
 package uk.ac.city.douglas.varv.Job.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class JobPart {
     private int amount;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name="jobId")
     private Job job;
 

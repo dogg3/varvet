@@ -44,9 +44,7 @@ public class Job {
     private String note;
 
 
-    @ManyToOne
-    @JoinColumn(name = "StaffID")
-    private Staff staff;
+
 
     @ManyToOne
     @JoinColumn(name = "customerBoatId")
@@ -164,13 +162,6 @@ public class Job {
         this.note = note;
     }
 
-    public Staff getStaff() {
-        return staff;
-    }
-
-    public void setStaff(Staff staff) {
-        this.staff = staff;
-    }
 
     public BoatVariant getBoatVariant() {
         return boatVariant;
@@ -208,7 +199,6 @@ public class Job {
                 ", jobType='" + jobType + '\'' +
                 ", estimatedTime='" + estimatedTime + '\'' +
                 ", note='" + note + '\'' +
-                ", staff=" + staff +
                 ", boatVariant=" + boatVariant +
                 ", jobTasks=" + jobTasks +
                 '}';

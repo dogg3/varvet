@@ -294,7 +294,6 @@
                             <th>Status</th>
                             <th>Datum bokad</th>
                             <th>Job-typ</th>
-                            <th>Ansvarig anstalld</th>
                             <th>Estimerad tid</th>
                             <th>Aktuell tid</th>
                             <th>Kommentar</th>
@@ -302,7 +301,27 @@
                         </tr>
                         </thead>
                         <tbody>
-
+                        <%
+                            List<Job> jobs = (List<Job>)request.getAttribute("jobs");
+                            for(Job job: jobs){
+                                Boat boat = job.getBoatVariant().getBoat();
+                                Customer customer = job.getBoatVariant().getCustomer();
+                                out.print("<tr>");
+                                out.print("<td>"+job.getJobId()+"</td>");
+                                out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");
+                                out.print("<td>"+boat.getBrand()+" "+boat.getModel()+"</td>");
+                                out.print("<td>"+job.getStatus()+"</td>");
+                                out.print("<td>"+job.getDateBooked()+"</td>");
+                                out.print("<td>"+job.getJobType()+"</td>");
+                                out.print("<td>"+job.getEstimatedTime()+"</td>");
+                                out.print("<td>"+job.getActualTime()+"</td>");
+                                out.print("<td>"+job.getNote()+"</td>");
+                                out.print("<td>" +
+                                        "<a data-value='" + job.getJobId()+"' href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                        "<a data-value='" + job.getJobId()+"' href=\"\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+                                out.print("</tr>");
+                            }
+                        %>
                         </tbody>
                     </table>
                 </div>
@@ -703,7 +722,7 @@
             success: function (data, status, xhr) {
 
                 $('#deleteJobModal').modal("toggle");
-                $('#statusSuccessEraseJob').html("Jobb med id" + name+ "<br> ar raderad.");
+                $('#statusSuccessEraseJob').html("Jobb med id" + id + "<br> ar raderad.");
 
                 $('#successEraseJob').modal("toggle");
             }

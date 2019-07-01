@@ -224,11 +224,11 @@
 ////////////////CUSTOMER//////////////////////////////////
 
     //ADD CUSTOMER FORM
-    var form = $("#example-advanced-form").show();
+    var formCustomer = $("#example-advanced-form").show();
 
 
 
-    form.steps({
+    formCustomer.steps({
         headerTag: "h3",
         bodyTag: "fieldset",
         transitionEffect: "slideLeft",
@@ -256,33 +256,33 @@
             if (currentIndex < newIndex)
             {
                 // To remove error styles
-                form.find(".body:eq(" + newIndex + ") label.error").remove();
-                form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+                formCustomer.find(".body:eq(" + newIndex + ") label.error").remove();
+                formCustomer.find(".body:eq(" + newIndex + ") .error").removeClass("error");
             }
-            form.validate().settings.ignore = ":disabled,:hidden";
-            return form.valid();
+            formCustomer.validate().settings.ignore = ":disabled,:hidden";
+            return formCustomer.valid();
         },
         onStepChanged: function (event, currentIndex, priorIndex)
         {
             // Used to skip the "Warning" step if the user is old enough.
             if (currentIndex === 2 && Number($("#age-2").val()) >= 18)
             {
-                form.steps("next");
+                formCustomer.steps("next");
             }
             // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
             if (currentIndex === 2 && priorIndex === 3)
             {
-                form.steps("previous");
+                formCustomer.steps("previous");
             }
         },
         onFinishing: function (event, currentIndex)
         {
-            form.validate().settings.ignore = ":disabled";
-            return form.valid();
+            formCustomer.validate().settings.ignore = ":disabled";
+            return formCustomer.valid();
         },
         onFinished: function (event, currentIndex)
         {
-            var data = JSON.stringify($(form).serializeArray());
+            var data = JSON.stringify($(formCustomer).serializeArray());
 
 
             $.ajax({
@@ -301,7 +301,7 @@
                     $('#addEmployeeNew').modal('toggle');
                     $('#successAddEmployee').modal('toggle');
                     $('#example-advanced-form').resetForm();
-                    form.steps("previous");
+                    formCustomer.steps("previous");
                 },
                 error: function(jqXhr, textStatus,errorMessage){
                     console.log(errorMessage);
@@ -704,7 +704,7 @@
         },
         onFinished: function (event, currentIndex)
         {
-            var data = JSON.stringify($(form).serializeArray());
+            var data = JSON.stringify($(formJob).serializeArray());
 
 
             $.ajax({
@@ -717,7 +717,7 @@
                 success: function(data,status,xhr){
                     var statusMessage;
                     if(data.status=="success"){
-                        statusMessage = data.job;
+                        statusMessage = data.jobId;
                     }
                     $('#statusSuccessAddJob').html(statusMessage + " har lagts till!");
                     $('#addJobNew').modal('toggle');
@@ -746,11 +746,11 @@
     //////ADD TASK DESCRIPTION////////////////////////
 
 
-    var formJob = $("#example-advanced-form-addTask").show();
+    var formTask = $("#example-advanced-form-addTask").show();
 
 
 
-    formJob.steps({
+    formTask.steps({
         headerTag: "h3",
         bodyTag: "fieldset",
         transitionEffect: "slideLeft",
@@ -778,33 +778,33 @@
             if (currentIndex < newIndex)
             {
                 // To remove error styles
-                formJob.find(".body:eq(" + newIndex + ") label.error").remove();
-                formJob.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+                formTask.find(".body:eq(" + newIndex + ") label.error").remove();
+                formTask.find(".body:eq(" + newIndex + ") .error").removeClass("error");
             }
-            formJob.validate().settings.ignore = ":disabled,:hidden";
-            return formJob.valid();
+            formTask.validate().settings.ignore = ":disabled,:hidden";
+            return formTask.valid();
         },
         onStepChanged: function (event, currentIndex, priorIndex)
         {
             // Used to skip the "Warning" step if the user is old enough.
             if (currentIndex === 2 && Number($("#age-2").val()) >= 18)
             {
-                form.steps("next");
+                formTask.steps("next");
             }
             // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
             if (currentIndex === 2 && priorIndex === 3)
             {
-                form.steps("previous");
+                formTask.steps("previous");
             }
         },
         onFinishing: function (event, currentIndex)
         {
-            formJob.validate().settings.ignore = ":disabled";
-            return formJob.valid();
+            formTask.validate().settings.ignore = ":disabled";
+            return formTask.valid();
         },
         onFinished: function (event, currentIndex)
         {
-            var data = JSON.stringify($(form).serializeArray());
+            var data = JSON.stringify($(formTask).serializeArray());
 
 
             $.ajax({
@@ -817,13 +817,14 @@
                 success: function(data,status,xhr){
                     var statusMessage;
                     if(data.status=="success"){
-                        statusMessage = data.job;
+                        console.log(data.taskDescription);
+                        statusMessage = data.taskDescription;
                     }
-                    $('#statusSuccessAddTaskDescription').html(statusMessage + " har lagts till!");
+                    $('#statusSuccessAddTaskDescription').html(" Ny arbetstuppgift har lagts till!");
                     $('#addTaskNew').modal('toggle');
                     $('#successAddTaskDescription').modal('toggle');
                     $('#example-advanced-form-addTask').resetForm();
-                    formJob.steps("previous");
+                    formTask.steps("previous");
                 },
                 error: function(jqXhr, textStatus,errorMessage){
                     console.log(errorMessage);
@@ -938,6 +939,100 @@
             }
         }
     });
+
+
+
+    /////////////////////ADD INVENTORY/////////////////////////////
+
+    var formInventory = $("#example-advanced-form-addInventory").show();
+
+
+    formInventory.steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        transitionEffect: "slideLeft",
+        labels: {
+            current: "Aktuellt steg:",
+            pagination: "Pagination",
+            finish: "Lagg till",
+            next: "Nasta",
+            previous: "Forra",
+            loading: "Laddar ..."
+        },
+        onStepChanging: function (event, currentIndex, newIndex)
+        {
+            // Allways allow previous action even if the current form is not valid!
+            if (currentIndex > newIndex)
+            {
+                return true;
+            }
+            // Forbid next action on "Warning" step if the user is to young
+            if (newIndex === 3 && Number($("#age-2").val()) < 18)
+            {
+                return false;
+            }
+            // Needed in some cases if the user went back (clean up)
+            if (currentIndex < newIndex)
+            {
+                // To remove error styles
+                formInventory.find(".body:eq(" + newIndex + ") label.error").remove();
+                formInventory.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+            }
+            formInventory.validate().settings.ignore = ":disabled,:hidden";
+            return formInventory.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex)
+        {
+            // Used to skip the "Warning" step if the user is old enough.
+            if (currentIndex === 2 && Number($("#age-2").val()) >= 18)
+            {
+                formInventory.steps("next");
+            }
+            // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
+            if (currentIndex === 2 && priorIndex === 3)
+            {
+                formInventory.steps("previous");
+            }
+        },
+        onFinishing: function (event, currentIndex)
+        {
+            formInventory.validate().settings.ignore = ":disabled";
+            return formInventory.valid();
+        },
+        onFinished: function (event, currentIndex)
+        {
+            var data = JSON.stringify($(formInventory).serializeArray());
+
+
+            $.ajax({
+                url:'/varv/admin/inventory/addInventory.html',
+                type:'POST',
+                contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                dataType:'json',
+                data: {formData:data
+                },
+                success: function(data,status,xhr){
+                    var statusMessage;
+                    $('#statusSuccessAddInventory').html( "Ny del tillagd i lagret :" + data.part );
+                    $('#addInventoryNew').modal('toggle');
+                    $('#successAddInventory').modal('toggle');
+                    formInventory.resetForm();
+                    formInventory.steps("previous");
+                },
+                error: function(jqXhr, textStatus,errorMessage){
+                    console.log(errorMessage);
+                }
+            })
+        }
+    }).validate({
+        errorPlacement: function errorPlacement(error, element) { element.before(error); },
+        rules: {
+            confirm: {
+                equalTo: "#password-2"
+            }
+        }
+    });
+
 
 
 

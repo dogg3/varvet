@@ -429,7 +429,7 @@
                     <div class="modal-dialog">
                         <div id="modalContent" class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Jobb tillagt!</h4>
+                                <h4 class="modal-title">Arbetstuppgift tillagt!</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="statusResponse" id="statusSuccessAddTaskDescription"></div>

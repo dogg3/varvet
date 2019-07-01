@@ -61,10 +61,12 @@ public class AddTaskDescription extends HttpServlet {
         TaskDescription taskDescription = new TaskDescription();
         HashMap<String,String> taskDescriptionData = new HashMap<>();
         String json = request.getParameter("formData");
+        System.out.println("formData" + json);
         JSONParser jsonParser = new JSONParser();
-        try {
-            JSONArray jsonArray = (JSONArray) jsonParser.parse(json);
 
+        try {
+
+            JSONArray jsonArray = (JSONArray) jsonParser.parse(json);
             for(Object obj: jsonArray){
                 JSONObject jsonObject = (JSONObject) obj;
                 String name = (String) jsonObject.get("name");
@@ -77,15 +79,17 @@ public class AddTaskDescription extends HttpServlet {
             e.printStackTrace();
         }
 
+        taskDescriptionData.forEach((k,v)->System.out.println(k + " " + v ));
         taskDescription.setDescription(taskDescriptionData.get("description"));
         taskDescription.setEstimatedTime(taskDescriptionData.get("estimatedTime"));
         taskDescription.setTaskType(taskDescriptionData.get("taskType"));
         vr.addTaskDescription(taskDescription);
 
+
         //sending back the status message to the client
         JSONObject returnMessage = new JSONObject();
         returnMessage.put("status","success");
-        returnMessage.put("taskDescription", taskDescription.toString());
+        returnMessage.put("taskDescription", new JSONObject(taskDescriptionData));
         response.getWriter().print(returnMessage.toJSONString());
 
     }

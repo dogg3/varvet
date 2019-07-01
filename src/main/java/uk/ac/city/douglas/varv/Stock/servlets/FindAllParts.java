@@ -16,12 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
-import uk.ac.city.douglas.varv.Account.dao.AccountDAO;
-import uk.ac.city.douglas.varv.Account.dao.AccountDAOInterface;
-import uk.ac.city.douglas.varv.Account.domain.Customer;
-import uk.ac.city.douglas.varv.Job.dao.JobDAO;
+
 import uk.ac.city.douglas.varv.Stock.dao.StockDAOInterface;
+import uk.ac.city.douglas.varv.Stock.domain.Inventory;
 import uk.ac.city.douglas.varv.Stock.domain.Part;
 
 /**
@@ -43,7 +40,6 @@ public class FindAllParts extends HttpServlet {
             throws IOException, ServletException {
 
         List<Part> parts = vr.getAllParts();
-        parts.forEach(p->System.out.println(p.toString())   );
         request.setAttribute("parts", parts);
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/admin/inventory/resellers.jsp");

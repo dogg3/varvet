@@ -79,21 +79,25 @@ public class AddJob extends HttpServlet {
             e.printStackTrace();
         }
 
+
         BoatVariant boatVariant = br.findBoatVariantById(Integer.parseInt(jobData.get("kundbat")));
-        Staff staff = ar.findStaffById(Integer.parseInt(jobData.get("staff")));
-        job.setStaff(staff);
+
+        //NOT SETTING ANY STAFF YET
+        //        Staff staff = ar.findStaffById(Integer.parseInt(jobData.get("staff")));
+//        job.setStaff(staff);
 
         job.setStatus("Skapat");
         job.setBoatVariant(boatVariant);
         //adding the customer
         job.populate(jobData);
+        job.setStatus("Skapad");
         System.out.println(job.toString());
         vr.addJob(job);
 
         //sending back the status message to the client
         JSONObject returnMessage = new JSONObject();
         returnMessage.put("status","success");
-        returnMessage.put("job", job.toString());
+        returnMessage.put("jobId", Integer.toString(job.getJobId()));
         response.getWriter().print(returnMessage.toJSONString());
 
     }

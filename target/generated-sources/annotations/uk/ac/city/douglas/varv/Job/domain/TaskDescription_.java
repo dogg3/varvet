@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import uk.ac.city.douglas.varv.Job.domain.JobTask;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-06-27T12:21:00")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-07-01T17:48:35")
 @StaticMetamodel(TaskDescription.class)
 public class TaskDescription_ { 
 

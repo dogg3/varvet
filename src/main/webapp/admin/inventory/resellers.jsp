@@ -283,7 +283,7 @@
                         <h4 class="page-title pull-left">Byggplast</h4>
                         <ul class="breadcrumbs pull-left">
                             <li>Lager</li>
-                            <li><span>Byggplast</span></li>
+                            <li><span>Aterforsaljare</span></li>
                         </ul>
                     </div>
                 </div>
@@ -294,7 +294,7 @@
                 <div class="table-title">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h2>Byggplast</h2>
+                            <h2>Aterforsaljare</h2>
                         </div>
 
                     </div>
@@ -303,6 +303,7 @@
                     <table id="table1" class="table table-striped table-hover">
                         <thead>
                         <tr>
+                            <th>Aterforsaljare</th>
                             <th>Artikel-nr</th>
                             <th>Beskrivning</th>
                             <th>Varugrupp</th>
@@ -337,6 +338,7 @@
                         out.print("<tr>");
 
 
+                        out.print("<td>"+part.getReseller()+"</td>");
                         out.print("<td>"+part.getArtNr()+"</td>");
                         out.print("<td>"+part.getBenamning()+"</td>");
                         out.print("<td>"+part.getVaruGrupp()+"</td>");

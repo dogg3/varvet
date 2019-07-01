@@ -10,7 +10,7 @@ import uk.ac.city.douglas.varv.Boat.domain.BoatStorage;
 import uk.ac.city.douglas.varv.Boat.domain.BoatVariantEngine;
 import uk.ac.city.douglas.varv.Job.domain.Job;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-06-27T12:21:00")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-07-01T17:48:35")
 @StaticMetamodel(BoatVariant.class)
 public class BoatVariant_ { 
 

@@ -1,6 +1,6 @@
-<%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
-<%@ page import="org.json.simple.JSONObject" %>
+<%@ page import="uk.ac.city.douglas.varv.Stock.domain.Inventory" %>
+<%@ page import="uk.ac.city.douglas.varv.Stock.domain.Part" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -23,19 +23,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-
-
-
     <!-- others css -->
-
-
-
-
-
     <link rel="stylesheet" href="/varv/admin/assets/css/typography.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/default-css.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/styles.css">
     <link rel="stylesheet" href="/varv/admin/assets/css/responsive.css">
+    <link rel="stylesheet" href="/varv/admin/assets/css/step-jq.css">
     <!-- modernizr css -->
     <script src="/varv/admin/assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
@@ -296,7 +289,7 @@
                             <h2>Hantera<b> lager</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny reservdel</span></a>
+                            <a href="#addInventoryNew" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny reservdel</span></a>
                         </div>
                     </div>
                 </div>
@@ -306,82 +299,66 @@
                         <tr>
                             <th>Artikel-nr</th>
                             <th>Aterforsaljare</th>
-                            <th>Beskrivning</th>
+                            <th>Produkt</th>
+                            <th>Pris ink moms</th>
+                            <th>EAN-kod</th>
                             <th>Antal</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
 
                         <%
-//                            List<Customer> customers = (List<Customer>)request.getAttribute("customers");
-//
-//                            for(Customer customer: customers){
-//
-//                                JSONObject customerJSon = new JSONObject();
-//                                customerJSon.put("customerId", customer.getCustomerID());
-//                                customerJSon.put("firstName", customer.getFirstName());
-//                                customerJSon.put("lastName", customer.getLastName());
-//                                customerJSon.put("tel", customer.getTel());
-//                                customerJSon.put("email", customer.getEmail());
-//                                customerJSon.put("discountPlan", customer.getDiscountPlan());
-//                                customerJSon.put("postCode", customer.getPostCode());
-//                                customerJSon.put("street", customer.getStreet());
-//                                customerJSon.put("identifier", customer.getIdentifier());
-//                                customerJSon.put("town", customer.getTown());
-//
-//
-//                                out.print("<tr id='customer-tr-id' data-value='" + customer.getCustomerID()+"'>");
-//                                out.print("<td>"+ customer.getCustomerID()+"</td>");
-//                                out.print("<td id=customer-tr-name data-value='"+customer.getFirstName()+" " +customer.getLastName()+"'>" +customer.getFirstName()+" "+ customer.getLastName()+"</td>");
-//                                out.print("<td>"+customer.getTel()+"</td>");
-//                                out.print("<td>"+customer.getEmail()+"</td>");
-//                                out.print("<td>"+customer.getDiscountPlan()+"</td>");
-//                                out.print("<td>"+customer.getPostCode()
-//                                        + "<br>"+customer.getStreet() + "<br>" +
-//                                        customer.getTown()+ "</td>");
-//                                out.print("<td>"+customer.getIdentifier()+"</a></td>");
-//
-//                                out.print("<td>" +
-//                                        "<a data-value='" +customerJSon +"' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
-//                                        "<a data-value='" + customer.getCustomerID()+"' data-name='" + customer.getFirstName()+" "+customer.getLastName() +"'id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
-//
-//
-//
-//                                out.print("</tr>");
-//                            }
+                            List<Inventory> inventories = (List<Inventory>)request.getAttribute("inventories");
+
+                            for(Inventory inventory: inventories){
+
+                                Part part = inventory.getPart();
+
+                                out.print("<tr>");
+                                out.print("<td>"+ inventory.getArtNr()+"</td>");
+                                out.print("<td>"+ part.getReseller()+"</td>");
+                                out.print("<td>"+ part.getBenamning()+"</td>");
+                                out.print("<td>"+ part.getGetKatalogPrisInkMoms()+"</td>");
+                                out.print("<td>"+ part.getEanKod()+"</td>");
+                                out.print("<td>"+ inventory.getAmount()+"</td>");
+
+                                out.print("<td>" +
+                                        "<a data-value='' class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                        "<a data-value='" + inventory.getArtNr()+"' id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+
+
+                                out.print("</tr>");
+                            }
                         %>
 
                         </tbody>
                     </table>
                     <div/>
                 </div>
-                <!-- Edit Modal HTML -->
-                <div id="addEmployeeModal" class="modal fade">
+                <!-- ADd Modal HTML -->
+                <div id="addInventoryNew" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Ny reservdel</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>Artikel-nr</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Antal</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-success" value="Add">
-                                </div>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Ny kund</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <form id="example-advanced-form-addInventory" action="#">
+                                <h3>Info</h3>
+                                <fieldset>
+                                    <label>Art-nr aterforsaljare</label>
+                                    <input name="artNrReseller" type="text" class="form-control" required>
+                                    <label>antal</label>
+                                    <input name="amount" type="text" class="form-control" required>
+                                </fieldset>
+
+
                             </form>
                         </div>
                     </div>
                 </div>
+
                 <!-- Edit Modal HTML -->
                 <div id="editEmployeeModal" class="modal fade">
                     <div class="modal-dialog">
@@ -418,7 +395,7 @@
                     </div>
                 </div>
                 <!-- Delete Modal HTML -->
-                <div id="deleteEmployeeModal" class="modal fade">
+                <div id="deleteInventory" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
@@ -427,17 +404,67 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Ar du saker att du vill radera denna kund?</p>
+                                    <p>Ar du saker att du vill radera denna <br>reservdel fran lagret?</p>
                                     <p class="text-warning"><small>Detta gar inte att angra</small></p>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Avbryt">
-                                    <input type="submit" class="btn btn-danger" value="Radera">
+                                    <input id="eraseInventory"  type="submit" class="btn btn-danger" value="Radera">
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
+
+                <%--Success area--%>
+
+
+                <div id="successAddInventory" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div id="modalContent" class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Reserv-del tillagd</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessAddInventory"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic" data-dismiss="modal" value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="successEditCustomer" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div  class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kund uppdaterad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessEditCustomer"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic"  data-dismiss="modal"  value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="successEraseInventory" class="modal fade ">
+                    <div class="modal-dialog">
+                        <div  class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Kundbat raderad</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="statusResponse" id="statusSuccessEraseInventory"></div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-basic"   data-dismiss="modal" value="Ok">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
             <!-- page title area end -->
         </div>
@@ -632,9 +659,12 @@
 <!-- offset area end -->
 <!-- jquery latest version -->
 <script src="/varv/admin/assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="/varv/admin/assets/js/vendor/jquery.steps.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
 <!-- bootstrap 4 js -->
 <script src="/varv/admin/assets/js/popper.min.js"></script>
 <script src="/varv/admin/assets/js/bootstrap.min.js"></script>
+
 <script src="/varv/admin/assets/js/owl.carousel.min.js"></script>
 <script src="/varv/admin/assets/js/metisMenu.min.js"></script>
 <script src="/varv/admin/assets/js/jquery.slimscroll.min.js"></script>
@@ -642,6 +672,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
+<!--jquery form plygin -->
+<script src="/varv/admin/assets/js/jquery.form.min.js"></script>
 <!-- start chart js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
 <!-- start highcharts js -->
@@ -658,12 +690,67 @@
 <script src="/varv/admin/assets/js/pie-chart.js"></script>
 <!-- others plugins -->
 <script src="/varv/admin/assets/js/plugins.js"></script>
-<script src="/varv/admin/assets/js/scripts.js"></script>
 
+<script src="/varv/admin/assets/js/jq-modal.js"></script>
+<script src="/varv/admin/assets/js/scripts.js"></script>
 <script>
     $(document).ready(function () {
         $('#table1').DataTable();
     });
+
+    //pop up are u sure button and passing the customer ID
+    $('.delete').click(function(e){
+        e.preventDefault();
+        var id = $(this).data('value');
+        var name = $(this).data('name');
+        var deleteModal =  $('#deleteInventory');
+        deleteModal.find('#eraseInventory').data("value",id);
+        deleteModal.find('#statusAreSure').html("Ar du saker pa add radera denna del");
+        deleteModal.modal("toggle");
+    })
+
+    ///erase customer send request to sevlert
+
+    $('#eraseInventory').click(function(e){
+        e.preventDefault();
+
+        var id =  $(this).data('value');
+        $.ajax({
+            url:'/varv/admin/inventory/addInventory.html?id='+id,
+            type: 'DELETE',
+            success: function (data, status, xhr) {
+
+                $('#deleteInventory').modal("toggle");
+                $('#statusSuccessEraseInventory').html("Delen ar raderad fran lagret.");
+
+                $('#successEraseInventory').modal("toggle");
+            }
+        })
+    })
+
+
+
+    //edit toogle and fill placeholder
+    $('.edit').click(function(e){
+        e.preventDefault();
+
+        //Set placeholders
+        var customer = $(this).data('value');
+        var form =$('#editEmployeeModal').find('form');
+        var allInput = form.find('input');
+        $('#editCustomerId').val(customer['customerId']);
+
+        allInput.each(function(index,value){
+            var attr = $(value).attr('name');
+            var placeholder = customer[attr];
+            $(value).attr("placeholder", placeholder);
+
+        });
+
+        //show the form modal
+        $('#editEmployeeModal').modal("show");
+
+    })
 </script>
 </body>
 

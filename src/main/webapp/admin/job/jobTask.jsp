@@ -6,6 +6,8 @@
 <%@ page import="uk.ac.city.douglas.varv.Job.domain.Job" %>
 <%@ page import="uk.ac.city.douglas.varv.Boat.domain.Boat" %>
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Staff" %>
+<%@ page import="uk.ac.city.douglas.varv.Job.domain.JobTask" %>
+<%@ page import="uk.ac.city.douglas.varv.Job.domain.TaskDescription" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -291,43 +293,32 @@
                     <thead>
                     <tr>
                         <th>Job-id</th>
-                        <th>Kund</th>
-                        <th>Bat</th>
-                        <th>Status</th>
-                        <th>Datum bokad</th>
-                        <th>Job-typ</th>
-                        <th>Ansvarig anstalld</th>
-                        <th>Estimerad tid</th>
-                        <th>Aktuell tid</th>
+                        <th>Arbetsuppgifts-id</th>
+                        <th>Beskrivning</th>
                         <th>Kommentar</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <%
-                        List<Job> jobs = (List<Job>)request.getAttribute("jobs");
+                        List<JobTask> jobTasks = (List<JobTask>)request.getAttribute("jobTasks");
 
 
-                        for(Job job: jobs){
-                            Boat boat = job.getBoatVariant().getBoat();
-                            Customer customer = job.getBoatVariant().getCustomer();
-                            Staff staff =  job.getStaff();
+                        for(JobTask jobTask: jobTasks){
+                         Job job = jobTask.getJob();
+                         TaskDescription task = jobTask.getTaskDescription();
                             out.print("<tr>");
 
                             out.print("<td>"+job.getJobId()+"</td>");
-                            out.print("<td>"+customer.getFirstName()+" "+ customer.getLastName()+"</td>");
-                            out.print("<td>"+boat.getBrand()+" "+boat.getModel()+"</td>");
-                            out.print("<td>"+job.getStatus()+"</td>");
-                            out.print("<td>"+job.getDateBooked()+"</td>");
-                            out.print("<td>"+job.getJobType()+"</td>");
-                            out.print("<td>"+staff.getFirstName()+" "+staff.getLastName()+"</td>");
-                            out.print("<td>"+job.getEstimatedTime()+"</td>");
-                            out.print("<td>"+job.getActualTime()+"</td>");
-                            out.print("<td>"+job.getNote()+"</td>");
+                            out.print("<td>"+task.getTaskDescriptionID()+"</td>");
+                            out.print("<td>"+task.getDescription()+"</td>");
+                            out.print("<td>"+jobTask.getComment()+"</td>");
+                            out.print("<td>"+jobTask.getStatus()+"</td>");
 
                             out.print("<td>" +
-                                    "<a data-value='" + job.getJobId()+"' href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
-                                    "<a data-value='" + job.getJobId()+"' href=\"\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+                                    "<a data-value='" +jobTask.getJobTaskId()+"' href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                    "<a data-value='" + jobTask.getJobTaskId()+"' href=\"\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
 
 
 
