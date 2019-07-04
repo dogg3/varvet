@@ -362,19 +362,27 @@
                                 <h3>Info</h3>
                                 <fieldset>
                                     <label>Kund</label>
-                                    <input name="customer" type="text" class="form-control" required>
+                                    <select id="customerList" name="customer" class="form-control" required>
+                                        <option selected="selected"></option>
+                                    </select>
                                     <label>Boat</label>
-                                    <input name="boat" type="text" class="form-control" required>
-                                    <label>Kommentar</label>
-                                    <input name="description" type="text" class="form-control" required>
+                                    <select id="boatList" name="boat" class="form-control" required>
+                                        <option selected="selected"></option>
+                                    </select>
                                     <label>Ar</label>
                                     <input name="year" type="text" class="form-control" required>
+                                    <label>Kommentar</label>
+                                    <textarea name="description" type="text" class="form-control" required></textarea>
                                 </fieldset>
                                 <h3>Motorer</h3>
                                 <fieldset>
                                     <label>Motorer</label>
-                                    <input id="engineList" name="engineList" type="text" class="form-control" required>
-                                    <label>Boat</label>
+                                    <select id="engineList" name="engineList"  class="form-control" required>
+                                        <option selected="selected"></option>
+                                    </select>
+
+
+
                                 </fieldset>
                             </form>
                         </div>
@@ -712,7 +720,82 @@
 <script>
     $(document).ready(function () {
         $('#table1').DataTable();
+
+        //populate boats
+
+        //populate customer list for choosing in add customer
+        $.ajax({
+            url:'/varv/admin/boat/FindAllBoatsJson.html',
+            type:'GET',
+            contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+            dataType:'json',
+
+            success: function(data,status,xhr){
+                console.log(data);
+
+                $.each(data
+                    , function(index,element){
+
+                        $("#boatList").append("<option value='"+index+"'>"+element+"</option>")
+                    })
+
+            },
+            error: function(jqXhr, textStatus,errorMessage){
+                console.log(errorMessage);
+            }
+        })
+
+
+
+
+
+        //populate customer list for choosing in add customer
+            $.ajax({
+                url:'/varv/admin/customer/FindAllEnginesJson.html',
+                type:'GET',
+                contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+                dataType:'json',
+
+                success: function(data,status,xhr){
+                    console.log(data);
+
+                    $.each(data
+                        , function(index,element){
+
+                            $("#customerList").append("<option value='"+index+"'>"+element+"</option>")
+                        })
+
+                },
+                error: function(jqXhr, textStatus,errorMessage){
+                    console.log(errorMessage);
+                }
+            })
+
+
+
+        ///Populate engine list for choosing in addengin
+        $.ajax({
+            url:'/varv/admin/boat/FindAllEnginesJson.html',
+            type:'GET',
+            contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+            dataType:'json',
+
+            success: function(data,status,xhr){
+                console.log(data);
+
+                $.each(data
+                    , function(index,element){
+
+                        $("#engineList").append("<option value='"+index+"'>"+element+"</option>")
+                    })
+
+            },
+            error: function(jqXhr, textStatus,errorMessage){
+                console.log(errorMessage);
+            }
+        })
     });
+
 
 
 
@@ -786,6 +869,9 @@
         $('#editBoatVariantModal').modal("show");
 
     })
+
+
+
 </script>
 </body>
 
