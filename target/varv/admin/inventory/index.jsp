@@ -348,7 +348,10 @@
                                 <h3>Info</h3>
                                 <fieldset>
                                     <label>Art-nr aterforsaljare</label>
-                                    <input name="artNrReseller" type="text" class="form-control" required>
+                                    <select id="resellerList" name="artNrReseller" class="form-control" required>
+                                        <option selected="selected"></option>
+                                    </select>
+
                                     <label>antal</label>
                                     <input name="amount" type="text" class="form-control" required>
                                 </fieldset>
@@ -697,6 +700,32 @@
     $(document).ready(function () {
         $('#table1').DataTable();
     });
+
+
+
+    //populate reseller list for choosing in add inventory
+    $.ajax({
+        url:'/varv/admin/stock/FindAllPartsJson.html',
+        type:'GET',
+        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+        dataType:'json',
+
+        success: function(data,status,xhr){
+            console.log(data);
+
+            $.each(data
+                , function(index,element){
+
+                    $("#resellerList").append("<option value='"+index+"'>"+element+"</option>")
+                })
+
+        },
+        error: function(jqXhr, textStatus,errorMessage){
+            console.log(errorMessage);
+        }
+    })
+
+
 
     //pop up are u sure button and passing the customer ID
     $('.delete').click(function(e){

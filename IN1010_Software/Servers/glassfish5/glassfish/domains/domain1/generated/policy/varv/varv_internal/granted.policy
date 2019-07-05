@@ -1,4 +1,4 @@
-/* AUTOMATICALLY GENERATED ON Thu Jul 04 19:38:25 CEST 2019*/
+/* AUTOMATICALLY GENERATED ON Fri Jul 05 16:54:48 CEST 2019*/
 /* DO NOT EDIT */
 
 grant {
@@ -11,8 +11,8 @@ grant {
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "editCustomer,Local,java.util.HashMap";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "findStaffById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "BoatDAO", "addBoatVariantEngine,Local,uk.ac.city.douglas.varv.Boat.domain.BoatVariantEngine";
-  permission javax.security.jacc.EJBMethodPermission "JobDAO", "addJobPart,Local,uk.ac.city.douglas.varv.Job.domain.JobPart";
   permission javax.security.jacc.EJBMethodPermission "BoatDAO", "eraseBoatVariantEngineById,Local,int";
+  permission javax.security.jacc.EJBMethodPermission "JobDAO", "addJobPart,Local,uk.ac.city.douglas.varv.Job.domain.JobPart";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "findCustomerById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "StockDAO", "getAllInventoris,Local,";
   permission javax.security.jacc.EJBMethodPermission "JobDAO", "eraseJobTaskById,Local,int";
@@ -45,8 +45,8 @@ grant {
   permission javax.security.jacc.EJBMethodPermission "FinanceDAO", "findInvoiceById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "AccountDAO", "getAllStaffs,Local,";
   permission javax.security.jacc.EJBMethodPermission "StockDAO", "getInventoryById,Local,int";
-  permission javax.security.jacc.EJBMethodPermission "JobDAO", "addTaskDescription,Local,uk.ac.city.douglas.varv.Job.domain.TaskDescription";
   permission javax.security.jacc.EJBMethodPermission "BoatDAO", "eraseBoatStorageById,Local,int";
+  permission javax.security.jacc.EJBMethodPermission "JobDAO", "addTaskDescription,Local,uk.ac.city.douglas.varv.Job.domain.TaskDescription";
   permission javax.security.jacc.EJBMethodPermission "JobDAO", "eraseTaskDescriptionPartById,Local,int";
   permission javax.security.jacc.EJBMethodPermission "BoatDAO", "getAllBoatStorages,Local,";
   permission javax.security.jacc.EJBMethodPermission "FinanceDAO", "getAllInvoices,Local,";

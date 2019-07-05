@@ -369,10 +369,10 @@
                                     <select id="boatList" name="boat" class="form-control" required>
                                         <option selected="selected"></option>
                                     </select>
+                                    <label>Ar</label>
+                                    <input  type="number" min="1900" max="2099" step="1" name="year" class="form-control" required>
                                     <label>Kommentar</label>
                                     <textarea name="description" type="text" class="form-control" required></textarea>
-                                    <label>Ar</label>
-                                    <input name="year" type="text" class="form-control" required>
                                 </fieldset>
                                 <h3>Motorer</h3>
                                 <fieldset>
@@ -380,6 +380,8 @@
                                     <select id="engineList" name="engineList"  class="form-control" required>
                                         <option selected="selected"></option>
                                     </select>
+                                    <label>Antal</label>
+                                    <input  type="number" min="1" max="5" step="1" name="amount" class="form-control" required>
 
 
 

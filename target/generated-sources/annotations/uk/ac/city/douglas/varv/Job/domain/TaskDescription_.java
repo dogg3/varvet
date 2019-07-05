@@ -5,8 +5,9 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import uk.ac.city.douglas.varv.Job.domain.JobTask;
+import uk.ac.city.douglas.varv.Job.domain.TaskDescriptionPart;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-07-04T19:38:21")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-07-05T16:54:31")
 @StaticMetamodel(TaskDescription.class)
 public class TaskDescription_ { 
 
@@ -15,5 +16,6 @@ public class TaskDescription_ {
     public static volatile SingularAttribute<TaskDescription, Integer> taskDescriptionID;
     public static volatile SingularAttribute<TaskDescription, String> description;
     public static volatile ListAttribute<TaskDescription, JobTask> jobTasks;
+    public static volatile ListAttribute<TaskDescription, TaskDescriptionPart> partList;
 
 }

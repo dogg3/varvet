@@ -16,6 +16,9 @@ public class TaskDescription {
     @OneToMany(mappedBy = "taskDescription")
     private List<JobTask> jobTasks;
 
+    @OneToMany(mappedBy = "taskDescription")
+    private List<TaskDescriptionPart> partList;
+
 
     public TaskDescription() {
     }

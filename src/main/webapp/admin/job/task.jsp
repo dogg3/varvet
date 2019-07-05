@@ -349,6 +349,17 @@
                                 <label>Beskrivning</label>
                                 <textarea name="description"  class="form-control" required></textarea>
                             </fieldset>
+                            <h3>Delar</h3>
+                            <fieldset>
+
+                                <label>Del fran lagret</label>
+                                <select id="firstInventoryList" class="form-control inventoryList" name="firstPart" required>
+                                    <option selected="selected"></option>
+                                </select>
+                            <label>Antal</label>
+                            <input id="firstPartAmount" name="firstPartAmount" type="text" class="form-control" required>
+                                <button id="firstPart">Lagg till del</button>
+                            </fieldset>
 
                         </form>
                     </div>
@@ -706,7 +717,85 @@
             transitionEffect: "slideLeft",
             autoFocus: true
         });
+
+
+////FILL PARTS CHPOOSING PART
+
+
+
+        $.ajax({
+            url:'/varv/admin/stock/FindAllPartsJson.html',
+            type:'GET',
+            contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+            dataType:'json',
+
+            success: function(data,status,xhr){
+                console.log(data);
+
+                $.each(data
+                    , function(index,element){
+
+                        $(".inventoryList").append("<option value='"+index+"'>"+element+"</option>")
+                    })
+
+            },
+            error: function(jqXhr, textStatus,errorMessage){
+                console.log(errorMessage);
+            }
+        })
+
+
+
+
+        //WHEN ADDOING PART
+        function hej (resetForm) {
+            $("#firstPart").click(function (e) {
+                e.preventDefault();
+                console.log("hej");
+                var count = 1;
+                var selectedOption = $("#firstInventoryList").children("option:selected").html();
+                var partId =  $("#firstInventoryList").children("option:selected").val();
+                console.log(selectedOption);
+                var amount = $("#firstPartAmount").val();
+
+                console.log(amount);
+
+
+                var id = "part" + count;
+                $("#firstPart").after("<p id='"+partId+"' class='partInP'>" + amount + "st :" + selectedOption + "</p>");
+                count++;
+
+
+
+                resetForm();
+
+            })
+
+        }
+
+     var resetForm =  function resetForm(){
+            var form = $("#firstPart").closest('form');
+            form.find("#firstPartAmount, #firstInventoryList").val("");
+            console.log(form);
+        }
+
+
+        hej(resetForm);
+
+
+
+
+
+
     });
+
+
+
+
+
+
+
+
 
 
     //pop up are u sure button and passing the customer ID
@@ -738,6 +827,10 @@
             }
         })
     })
+
+
+
+
 
 
 
