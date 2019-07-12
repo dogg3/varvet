@@ -5,6 +5,7 @@
  */
 package uk.ac.city.douglas.varv.Job.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -57,9 +58,12 @@ public class JobDAO implements JobDAOInterface {
             return em.find(Job.class,id);
     }
 
-
-
-
+    @Override
+    public void editJob(HashMap<String, String> jobData) {
+        Job job = em.find(Job.class, jobData.get("jobId"));
+        //TODO implement editJob
+    em.merge(job);
+    }
 
 
     //TASK DESCRIPTIONS
@@ -86,9 +90,15 @@ public class JobDAO implements JobDAOInterface {
         return em.find(TaskDescription.class,id);
     }
 
+    @Override
+    public void editTaskDescription(HashMap<String, String> taskDescriptionData) {
+        TaskDescription taskDescription = em.find(TaskDescription.class,taskDescriptionData.get("taskDescriptionId"));
 
+        //TODO implement editTaskDescription
 
+        em.merge(taskDescription);
 
+    }
 
 
     /////JOB-TASKS

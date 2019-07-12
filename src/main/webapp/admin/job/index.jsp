@@ -89,8 +89,8 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-archive"></i>
                                 <span>Lager</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/inventory/index.jsp">Lager-vy</a></li>
-                                <li><a href="/varv/admin/inventory/resellers.jsp">Byggplast</a></li>
+                                <li><a href="/varv/admin/inventory/index.html">Lager-vy</a></li>
+                                <li><a href="/varv/admin/inventory/resellers.html">Byggplast</a></li>
                             </ul>
                         </li>
                         <li><a href="/varv/admin/secure/index.jsp"><i class="ti-dashboard"></i> <span>Sakerhet</span></a></li>
@@ -271,6 +271,28 @@
         </div>
         <!-- header area end -->
         <!-- page title area start -->
+        <div class="page-title-area">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="breadcrumbs-area clearfix">
+                        <h4 class="page-title pull-left">Jobb</h4>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 clearfix">
+                    <div class="user-profile pull-right">
+                        <img class="avatar user-thumb" src="../assets/images/author/avatar.png" alt="avatar">
+                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Message</a>
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="#">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
 
         <div class="container">
                 <div class="table-wrapper">
@@ -363,35 +385,15 @@
                     <div style="margin-top:30px" class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Andra kund</h4>
+                                <h4 class="modal-title">Andra jobb</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <form id="example-advanced-form-editCustomer" action="#">
                                 <h3>Info</h3>
                                 <fieldset>
-                                    <input id="editCustomerId" name="customerId" style="visibility: hidden" >
-                                    <label>Fornamn</label>
-                                    <input name="firstName" type="text" class="form-control" >
-                                    <label>Efternamn</label>
-                                    <input name="lastName" type="text" class="form-control" >
-                                    <label>Smeknamn</label>
-                                    <input name="identifier" type="text" class="form-control" >
-                                    <label>Telefon</label>
-                                    <input name="tel" type="text" class="form-control" >
-                                    <label>Email</label>
-                                    <input name="email" type="email" class="form-control" >
-                                    <label>Rabatt</label>
-                                    <input name="discountPlan" type="text" class="form-control" >
-                                </fieldset>
-
-                                <h3>Adress</h3>
-                                <fieldset>
-                                    <label>Gata</label>
-                                    <input name="street" type="text" class="form-control" >
-                                    <label>Stad</label>
-                                    <input name="town" type="text" class="form-control" >
-                                    <label>Post-nummer</label>
-                                    <input name="postCode" type="text" class="form-control" >
+                                    <input id="editJobId" name="jobId" style="visibility: hidden" >
+                                    <label>Kommentar</label>
+                                    <textarea></textarea>
                                 </fieldset>
                             </form>
                         </div>

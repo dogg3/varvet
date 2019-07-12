@@ -88,8 +88,8 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-archive"></i>
                                 <span>Lager</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/inventory/index.jsp">Lager-vy</a></li>
-                                <li><a href="/varv/admin/inventory/resellers.jsp">Byggplast</a></li>
+                                <li><a href="/varv/admin/inventory/index.html">Lager-vy</a></li>
+                                <li><a href="/varv/admin/inventory/resellers.html">Byggplast</a></li>
                             </ul>
                         </li>
                         <li><a href="/varv/admin/secure/index.jsp"><i class="ti-dashboard"></i> <span>Sakerhet</span></a></li>
@@ -334,7 +334,7 @@
                                 out.print("<td>"+bs.getComment()+"</td>");
 
                                 out.print("<td>" +
-                                        "<a class='edit' id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                        "<a class='edit' href=\"#editVinterplatsModal\" id='editButton' class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
                                         "<a data-value='" + bs.getBoatStorageId()+"'id='deleteButton' class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a>" +
                                         "</td>");
 
@@ -376,22 +376,22 @@
                     </div>
                 </div>
                 <!-- Edit Modal HTML -->
-                <div id="editBoatVariantModal" class="modal fade">
+                <div id="editVinterplatsModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Andra kundbats-data</h4>
+                                    <h4 class="modal-title">Andra vinterplats</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Kund</label>
-                                        <label name="customer"></label>
+                                        <label>Upphamtnings-datum</label>
+                                        <input name="pickUpDate" type="date" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Bat</label>
-                                        <label name="boat"></label>
+                                        <label>Avlamnings-datum</label>
+                                        <input name="dropOffDate" type="date" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Kommentar</label>

@@ -1,11 +1,13 @@
 package uk.ac.city.douglas.varv.Boat.dao;
 
 import uk.ac.city.douglas.varv.Boat.domain.*;
+import uk.ac.city.douglas.varv.Stock.domain.Inventory;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -61,11 +63,44 @@ public class BoatDAO implements BoatDAOInterface{
         return em.find(BoatVariant.class,id);
     }
 
+    @Override
+    public void editBoatVariant(HashMap<String, String> boatVariantData) {
+        BoatVariant boatVariant = em.find(BoatVariant.class, Integer.parseInt(boatVariantData.get("boatVariantId")));
+        System.out.println(boatVariant);
 
 
 
+//        if(customerData.get("firstName")!=null && !customerData.get("firstName").isEmpty()){
+//            customer.setFirstName(customerData.get("firstName"));
+//        }
+//        if(customerData.get("lastName")!=null && !customerData.get("lastName").isEmpty()){
+//            customer.setLastName(customerData.get("lastName"));
+//        }
+//        if(customerData.get("tel")!=null && !customerData.get("tel").isEmpty()){
+//            customer.setTel(customerData.get("tel"));
+//        }
+//        if(customerData.get("email")!=null && !customerData.get("email").isEmpty()){
+//            customer.setEmail(customerData.get("email"));
+//        }
+//        if(customerData.get("discountPlan")!= null && !customerData.get("discountPlan").isEmpty()){
+//            customer.setDiscountPlan(customerData.get("discountPlan"));
+//        }
+//        if(customerData.get("identifier")!=null && !customerData.get("identifier").isEmpty()){
+//            customer.setIdentifier(customerData.get("identifier"));
+//        }
+//
+//        if(customerData.get("street")!=null && !customerData.get("street").isEmpty()){
+//            customer.setStreet(customerData.get("street"));
+//        }
+//        if(customerData.get("town")!=null && !customerData.get("town").isEmpty()){
+//            customer.setTown(customerData.get("town"));
+//        }
+//        if(customerData.get("postCode")!=null && !customerData.get("postCode").isEmpty()){
+//            customer.setPostCode(customerData.get("postCode"));
+//        }
 
-
+        em.merge(boatVariant);
+    }
 
 
     //////////////////////////ENGINE//////////////////
@@ -95,12 +130,46 @@ public class BoatDAO implements BoatDAOInterface{
 
     }
 
+    @Override
+    public void editEngine(HashMap<String, String> engineData) {
+        Engine engine = em.find(Engine.class, Integer.parseInt(engineData.get("engineId")));
+        System.out.println(engine);
 
 
 
+//        if(customerData.get("firstName")!=null && !customerData.get("firstName").isEmpty()){
+//            customer.setFirstName(customerData.get("firstName"));
+//        }
+//        if(customerData.get("lastName")!=null && !customerData.get("lastName").isEmpty()){
+//            customer.setLastName(customerData.get("lastName"));
+//        }
+//        if(customerData.get("tel")!=null && !customerData.get("tel").isEmpty()){
+//            customer.setTel(customerData.get("tel"));
+//        }
+//        if(customerData.get("email")!=null && !customerData.get("email").isEmpty()){
+//            customer.setEmail(customerData.get("email"));
+//        }
+//        if(customerData.get("discountPlan")!= null && !customerData.get("discountPlan").isEmpty()){
+//            customer.setDiscountPlan(customerData.get("discountPlan"));
+//        }
+//        if(customerData.get("identifier")!=null && !customerData.get("identifier").isEmpty()){
+//            customer.setIdentifier(customerData.get("identifier"));
+//        }
+//
+//        if(customerData.get("street")!=null && !customerData.get("street").isEmpty()){
+//            customer.setStreet(customerData.get("street"));
+//        }
+//        if(customerData.get("town")!=null && !customerData.get("town").isEmpty()){
+//            customer.setTown(customerData.get("town"));
+//        }
+//        if(customerData.get("postCode")!=null && !customerData.get("postCode").isEmpty()){
+//            customer.setPostCode(customerData.get("postCode"));
+//        }
+
+        em.merge(engine);
+    }
 
 
-    
     ////BOAT-STORAGE/////////////////////
     @Override
     public List<BoatStorage> getAllBoatStorages() {
@@ -126,11 +195,45 @@ public class BoatDAO implements BoatDAOInterface{
         return em.find(BoatStorage.class,id);
     }
 
+    @Override
+    public void editBoatStorage(HashMap<String, String> boatStorageData) {
+        BoatStorage boatStorage = em.find(BoatStorage.class, Integer.parseInt(boatStorageData.get("boatStorageId")));
+        System.out.println(boatStorage);
 
 
 
+//        if(customerData.get("firstName")!=null && !customerData.get("firstName").isEmpty()){
+//            customer.setFirstName(customerData.get("firstName"));
+//        }
+//        if(customerData.get("lastName")!=null && !customerData.get("lastName").isEmpty()){
+//            customer.setLastName(customerData.get("lastName"));
+//        }
+//        if(customerData.get("tel")!=null && !customerData.get("tel").isEmpty()){
+//            customer.setTel(customerData.get("tel"));
+//        }
+//        if(customerData.get("email")!=null && !customerData.get("email").isEmpty()){
+//            customer.setEmail(customerData.get("email"));
+//        }
+//        if(customerData.get("discountPlan")!= null && !customerData.get("discountPlan").isEmpty()){
+//            customer.setDiscountPlan(customerData.get("discountPlan"));
+//        }
+//        if(customerData.get("identifier")!=null && !customerData.get("identifier").isEmpty()){
+//            customer.setIdentifier(customerData.get("identifier"));
+//        }
+//
+//        if(customerData.get("street")!=null && !customerData.get("street").isEmpty()){
+//            customer.setStreet(customerData.get("street"));
+//        }
+//        if(customerData.get("town")!=null && !customerData.get("town").isEmpty()){
+//            customer.setTown(customerData.get("town"));
+//        }
+//        if(customerData.get("postCode")!=null && !customerData.get("postCode").isEmpty()){
+//            customer.setPostCode(customerData.get("postCode"));
+//        }
 
+        em.merge(boatStorage);
 
+    }
 
 
     /////////////////////////BOATVARIANT-ENGINE/////////////////////////////

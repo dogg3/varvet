@@ -38,7 +38,11 @@
     <!-- sidebar menu area start -->
     <div class="sidebar-menu">
         <div class="sidebar-header">
-
+            <a href="/varv/admin/index.html">
+                <div class="logo">
+                    <h2 style="color:white">Ramsovarvet</h2>
+                </div>
+            </a>
         </div>
         <div class="main-menu">
             <div class="menu-inner">
@@ -76,8 +80,8 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-archive"></i>
                                 <span>Lager</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/inventory/index.jsp">Lager-vy</a></li>
-                                <li><a href="/varv/admin/inventory/resellers.jsp">Byggplast</a></li>
+                                <li><a href="/varv/admin/inventory/index.html">Lager-vy</a></li>
+                                <li><a href="/varv/admin/inventory/resellers.html">Byggplast</a></li>
                             </ul>
                         </li>
                         <li><a href="/varv/admin/secure/index.jsp"><i class="ti-dashboard"></i> <span>Sakerhet</span></a></li>
@@ -262,11 +266,8 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumbs-area clearfix">
-                        <h4 class="page-title pull-left">Dashboard</h4>
-                        <ul class="breadcrumbs pull-left">
-                            <li><a href="index.html">Home</a></li>
-                            <li><span>pricing</span></li>
-                        </ul>
+                        <h4 class="page-title pull-left">Sakerhet</h4>
+
                     </div>
                 </div>
                 <div class="col-sm-6 clearfix">

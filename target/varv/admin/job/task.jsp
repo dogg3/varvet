@@ -92,8 +92,8 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-archive"></i>
                                 <span>Lager</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/inventory/index.jsp">Lager-vy</a></li>
-                                <li><a href="/varv/admin/inventory/resellers.jsp">Byggplast</a></li>
+                                <li><a href="/varv/admin/inventory/index.html">Lager-vy</a></li>
+                                <li><a href="/varv/admin/inventory/resellers.html">Byggplast</a></li>
                             </ul>
                         </li>
                         <li><a href="/varv/admin/secure/index.jsp"><i class="ti-dashboard"></i> <span>Sakerhet</span></a></li>
@@ -274,6 +274,28 @@
         </div>
         <!-- header area end -->
         <!-- page title area start -->
+        <div class="page-title-area">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="breadcrumbs-area clearfix">
+                        <h4 class="page-title pull-left">Sakerhet</h4>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 clearfix">
+                    <div class="user-profile pull-right">
+                        <img class="avatar user-thumb" src="../assets/images/author/avatar.png" alt="avatar">
+                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Message</a>
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="#">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
 
         <div class="container">
             <div class="table-wrapper">
@@ -313,7 +335,7 @@
                             out.print("<td>"+taskDescription.getEstimatedTime()+"</td>");
                             out.print("<td>"+taskDescription.getDescription()+"</td>");
 
-                            out.print("<td><a href=\"#\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                            out.print("<td><a href=\"#editTaskModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
                                     "<a data-value='" + taskDescription.getTaskDescriptionID()+ "' href=\"#\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
 
 
@@ -373,39 +395,34 @@
                 <!--get all info from current customer -->
 
                 <!-- Edit Modal HTML -->
-                <div id="editEmployeeModal" class="modal fade">
+                <div id="editTaskModal" class="modal fade">
                     <div style="margin-top:30px" class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Andra kund</h4>
+                                <h4 class="modal-title">Andra arbetsuppgift</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <form id="example-advanced-form-editCustomer" action="#">
                                 <h3>Info</h3>
                                 <fieldset>
-                                    <input id="editCustomerId" name="customerId" style="visibility: hidden" >
-                                    <label>Fornamn</label>
-                                    <input name="firstName" type="text" class="form-control" >
-                                    <label>Efternamn</label>
-                                    <input name="lastName" type="text" class="form-control" >
-                                    <label>Smeknamn</label>
-                                    <input name="identifier" type="text" class="form-control" >
-                                    <label>Telefon</label>
-                                    <input name="tel" type="text" class="form-control" >
-                                    <label>Email</label>
-                                    <input name="email" type="email" class="form-control" >
-                                    <label>Rabatt</label>
-                                    <input name="discountPlan" type="text" class="form-control" >
+                                    <input id="editCustomerId" name="taskType" style="visibility: hidden" >
+                                    <label>Kategori</label>
+                                    <input name="estimatedTime" type="text" class="form-control" >
+                                    <label>Estimerad tid</label>
+                                    <input name="description" type="text" class="form-control" >
+                                    <label>Beskrivning</label>
                                 </fieldset>
 
-                                <h3>Adress</h3>
+                                <h3>Delar</h3>
                                 <fieldset>
-                                    <label>Gata</label>
-                                    <input name="street" type="text" class="form-control" >
-                                    <label>Stad</label>
-                                    <input name="town" type="text" class="form-control" >
-                                    <label>Post-nummer</label>
-                                    <input name="postCode" type="text" class="form-control" >
+                                    <label>Del fran lagret</label>
+                                    <select  class="form-control inventoryList" name="firstPart" required>
+                                        <option selected="selected"></option>
+                                    </select>
+                                    <label>Antal</label>
+                                    <input  name="firstPartAmount" type="text" class="form-control" required>
+                                    <button>Lagg till del</button>
+                                </fieldset>
                                 </fieldset>
                             </form>
                         </div>
@@ -712,11 +729,11 @@
     $(document).ready(function () {
         $('#table1').DataTable();
         $("#example-basic").steps({
-            headerTag: "h3",
+            headerTag: "h3",res
             bodyTag: "section",
             transitionEffect: "slideLeft",
             autoFocus: true
-        });
+        });inv
 
 
 ////FILL PARTS CHPOOSING PART

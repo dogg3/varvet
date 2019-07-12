@@ -4,6 +4,7 @@ package uk.ac.city.douglas.varv.Stock.dao;
 import uk.ac.city.douglas.varv.Stock.domain.Inventory;
 import uk.ac.city.douglas.varv.Stock.domain.Part;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface StockDAOInterface {
@@ -21,6 +22,7 @@ public interface StockDAOInterface {
     public Inventory getInventoryById(int id);
     public void saveInventory(Inventory inventory);
     public void eraseInventoryById(int id);
+    public void editInventory(HashMap<String, String> inventoryData);
 
 
 }

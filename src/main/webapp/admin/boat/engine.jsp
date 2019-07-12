@@ -87,8 +87,8 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-archive"></i>
                                 <span>Lager</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/inventory/index.jsp">Lager-vy</a></li>
-                                <li><a href="/varv/admin/inventory/resellers.jsp">Byggplast</a></li>
+                                <li><a href="/varv/admin/inventory/index.html">Lager-vy</a></li>
+                                <li><a href="/varv/admin/inventory/resellers.html">Byggplast</a></li>
                             </ul>
                         </li>
                         <li><a href="/varv/admin/secure/index.jsp"><i class="ti-dashboard"></i> <span>Sakerhet</span></a></li>

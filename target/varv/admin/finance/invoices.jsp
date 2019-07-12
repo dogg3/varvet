@@ -93,8 +93,8 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="ti-archive"></i>
                                 <span>Lager</span></a>
                             <ul class="collapse">
-                                <li><a href="/varv/admin/inventory/index.jsp">Lager-vy</a></li>
-                                <li><a href="/varv/admin/inventory/resellers.jsp">Byggplast</a></li>
+                                <li><a href="/varv/admin/inventory/index.html">Lager-vy</a></li>
+                                <li><a href="/varv/admin/inventory/resellers.html">Byggplast</a></li>
                             </ul>
                         </li>
                         <li><a href="/varv/admin/secure/index.jsp"><i class="ti-dashboard"></i> <span>Sakerhet</span></a></li>
@@ -295,6 +295,9 @@
                         <div class="col-sm-6">
                             <h2>Hantera<b> fakturor</b></h2>
                         </div>
+                        <div class="col-sm-6">
+                            <a href="#addInvoiceModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Lagg till ny faktura</span></a>
+                        </div>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -326,8 +329,8 @@
                         out.print("<td>"+invoice.getVat()+"</td>");
                         out.print("<td>"+invoice.getCostAfterVat()+"</td>");
                         out.print("<td>"+invoice.getStatus()+"</td>");
-                        out.print("<td><a href=\"#editEmployeeModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
-                                "<a href=\"#deleteEmployeeModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
+                        out.print("<td><a href=\"#editInvoiceModal\" class=\"edit\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Edit\">&#xE254;</i></a>" +
+                                "<a href=\"#deleteInvoiceModal\" class=\"delete\" data-toggle=\"modal\"><i class=\"material-icons\" data-toggle=\"tooltip\" title=\"Delete\">&#xE872;</i></a></td>");
 
 
 
@@ -339,29 +342,33 @@
                     <div/>
                 </div>
                 <!-- Edit Modal HTML -->
-                <div id="addEmployeeModal" class="modal fade">
+                <div id="addInvoiceModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Ny kund</h4>
+                                    <h4 class="modal-title">Lagg till faktura</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label>Namn</label>
+                                        <label>Faktura #</label>
                                         <input type="text" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" required>
+                                        <label>Datum</label>
+                                        <input type="date" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" required></textarea>
+                                        <label>Kostand ex moms</label>
+                                        <input type="text" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Phone</label>
+                                        <label>Moms</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Status</label>
                                         <input type="text" class="form-control" required>
                                     </div>
                                 </div>
@@ -374,29 +381,29 @@
                     </div>
                 </div>
                 <!-- Edit Modal HTML -->
-                <div id="editEmployeeModal" class="modal fade">
+                <div id="editInvoiceModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Andra kund-data</h4>
+                                    <h4 class="modal-title">Andra faktura-data</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
+                                    < <div class="form-group">
+                                    <label>Datum</label>
+                                    <input type="date" class="form-control" required>
+                                </div>
                                     <div class="form-group">
-                                        <label>Name</label>
+                                        <label>Kostand ex moms</label>
                                         <input type="text" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" class="form-control" required>
+                                        <label>Moms</label>
+                                        <input type="text" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
+                                        <label>Status</label>
                                         <input type="text" class="form-control" required>
                                     </div>
                                 </div>
@@ -409,16 +416,16 @@
                     </div>
                 </div>
                 <!-- Delete Modal HTML -->
-                <div id="deleteEmployeeModal" class="modal fade">
+                <div id="deleteInvoiceModa" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Radera kund</h4>
+                                    <h4 class="modal-title">Radera faktura</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>Ar du saker att du vill radera denna kund?</p>
+                                    <p>Ar du saker att du vill radera denna Faktura?</p>
                                     <p class="text-warning"><small>Detta gar inte att angra</small></p>
                                 </div>
                                 <div class="modal-footer">

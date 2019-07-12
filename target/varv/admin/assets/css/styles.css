@@ -169,7 +169,7 @@ select {
 }
 
 .metismenu li a i {
-    color: #6a56a5;
+    color: #4100ff;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }
@@ -448,7 +448,7 @@ select {
     padding-left: 20px;
     padding-right: 40px;
     letter-spacing: 0;
-    background: #f3eeff;
+    background: #eaeaea;
 }
 
 .search-box input::-webkit-input-placeholder {
@@ -660,9 +660,7 @@ select {
     top: 50%;
     width: 4px;
     height: 36px;
-    background: var(--primary-color);
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    background: #4d5769;
 }
 
 .page-title {
@@ -716,8 +714,7 @@ ul.breadcrumbs {
             align-items: center;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);
-    background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);
+    background:#4d5769;
     padding: 17px 38px;
     position: relative;
 }

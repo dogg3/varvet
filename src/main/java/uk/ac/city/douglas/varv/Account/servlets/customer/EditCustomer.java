@@ -47,7 +47,6 @@ public class EditCustomer extends HttpServlet {
         response.setContentType("application/x-www-form-urlencoded");
         request.setCharacterEncoding("UTF-8");
 
-        System.out.println("reeusts"+ request.getParameterNames());
         Customer customer = new Customer();
         HashMap<String,String> customerData = new HashMap<>();
         String json = request.getParameter("formData");
@@ -69,7 +68,7 @@ public class EditCustomer extends HttpServlet {
         }
 
 
-        //adding the customer
+        //Editing the customer
         vr.editCustomer(customerData);
 
         //sending back the status message to the client

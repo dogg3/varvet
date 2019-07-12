@@ -5,6 +5,7 @@
  */
 package uk.ac.city.douglas.varv.Job.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import uk.ac.city.douglas.varv.Account.domain.Customer;
@@ -31,6 +32,7 @@ public interface JobDAOInterface {
     public void addJob(Job job);
     public void eraseJobById(int id);
     public Job getJobById(int id);
+    public void editJob(HashMap<String,String> jobData);
 
     
     
@@ -39,6 +41,7 @@ public interface JobDAOInterface {
     public void addTaskDescription(TaskDescription taskDescription);
     public void eraseTaskDescriptionById(int id);
     public TaskDescription getTaskDescriptionById(int id);
+    public void editTaskDescription(HashMap<String,String> taskDescriptionData);
     
     
     
