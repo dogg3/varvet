@@ -3292,7 +3292,6 @@
 [2019-06-11T20:27:04.088+0200] [glassfish 5.0] [INFO] [] [] [tid: _ThreadID=27 _ThreadName=Thread-8] [timeMillis: 1560277624088] [levelValue: 800] [[
   Part{artNr='79378', prisKod='1', benamning='GÄNGPRESS.20ST 3.5X9,5 KFXS', description='null', varuGrupp='8031', prisBrutenForp='21', antal='1', prisNormalForp='16', prisStorForp='null', katalogPrisExMoms='28.8', getKatalogPrisInkMoms='36', eanKod='7393401793781', momsKod='1'}]]
 
-[2019-06-11T20:27:04.088+0200] [glassfish 5.0] [INFO] [] [] [tid: _ThreadID=27 _ThreadName=Thread-8] [timeMillis: 1560277624088] [levelValue: 800] [[
   Part{artNr='79379', prisKod='1', benamning='GÄNGPRESS.17ST 3.5X13 KFXS', description='null', varuGrupp='8031', prisBrutenForp='21', antal='1', prisNormalForp='16', prisStorForp='null', katalogPrisExMoms='28.8', getKatalogPrisInkMoms='36', eanKod='7393401793798', momsKod='1'}]]
 
 [2019-06-11T20:27:04.088+0200] [glassfish 5.0] [INFO] [] [] [tid: _ThreadID=27 _ThreadName=Thread-8] [timeMillis: 1560277624088] [levelValue: 800] [[
