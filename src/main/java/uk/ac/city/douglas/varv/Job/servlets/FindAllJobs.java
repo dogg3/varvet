@@ -43,6 +43,7 @@ public class FindAllJobs extends HttpServlet {
             throws IOException, ServletException {
         response.setContentType("text/html");
         List<Job> jobs = vr.getAllJobs();
+
         request.setAttribute("jobs", jobs);
         ServletContext servletContext = getServletContext();
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/admin/job/index.jsp");

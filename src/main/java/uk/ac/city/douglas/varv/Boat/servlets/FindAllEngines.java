@@ -43,7 +43,6 @@ public class FindAllEngines extends HttpServlet {
             throws IOException, ServletException {
         response.setContentType("text/html");
 
-
         List<Engine> engines = dao.getAllEngines();
 
         ObjectMapper mapper = new ObjectMapper();

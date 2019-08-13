@@ -326,6 +326,7 @@
         allInput.each(function(index,value){
             var attr = $(value).attr('name');
             var placeholder = customer[attr];
+            console.log(value)
             $(value).attr("placeholder", placeholder);
 
         });

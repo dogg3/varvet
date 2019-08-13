@@ -39,7 +39,6 @@ public class FindAllCustomers extends HttpServlet {
 
     public void service(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-
         List<Customer> customers = vr.getAllCustomers();
         request.setAttribute("customers", customers);
         ServletContext servletContext = getServletContext();

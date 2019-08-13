@@ -24,7 +24,7 @@ import uk.ac.city.douglas.varv.Stock.domain.Inventory;
  *
  * @author douglaslandvik
  */
-@WebServlet(value = "/admin/inventory/index.html")
+@WebServlet(value = "/admin/inventory/index.jsp")
 public class FindAllInventory extends HttpServlet {
 
     private StockDAOInterface vr;

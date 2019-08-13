@@ -1,15 +1,17 @@
 <%@ page import="uk.ac.city.douglas.varv.Account.domain.Customer" %>
 <%@ page import="java.util.List" %>
-
+<%@ page import="java.lang.reflect.Method" %>
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="org.json.simple.JSONObject" %>
 <%@ page import="uk.ac.city.douglas.varv.Job.domain.Job" %>
 <%@ page import="uk.ac.city.douglas.varv.Boat.domain.Boat" %>
-
+<%@ page import="uk.ac.city.douglas.varv.Account.domain.Staff" %>
 <!doctype html>
-
 <html class="no-js" lang="en">
 
 <%@include file="../modules/head.jsp"%>
-<div>
+
+<body>
 
 <div id="preloader">
     <div class="loader"></div>
@@ -26,7 +28,7 @@
         <%@include file="../modules/header.jsp"%>
         <!-- header area end -->
         <!-- page title area start -->
-        <%@include file="../modules/titleArea.jsp"%>
+        <%@include file="../modules/offsetArea.jsp"%>
 
         <!-- page title area end -->
 
@@ -211,11 +213,11 @@
     <!-- main content area end -->
     <!-- footer area start-->
     <%@include file="../modules/footer.jsp"%>
-</div>
     <!-- footer area end-->
 <!-- page container area end -->
 <!-- offset area start -->
 <%@include file="../modules/offsetArea.jsp"%>
+<!-- offset area end -->
 <%@include file="../modules/loadScripts.jsp"%>
 
 

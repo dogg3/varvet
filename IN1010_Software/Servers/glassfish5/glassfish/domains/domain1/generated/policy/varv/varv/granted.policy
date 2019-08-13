@@ -1,11 +1,11 @@
-/* AUTOMATICALLY GENERATED ON Mon Aug 05 23:12:49 CEST 2019*/
+/* AUTOMATICALLY GENERATED ON Tue Aug 13 16:26:25 CEST 2019*/
 /* DO NOT EDIT */
 
 grant {
+  permission javax.security.jacc.WebResourcePermission "/:/admin/*:/admin/index.html";
   permission javax.security.jacc.WebUserDataPermission "/admin/index.html";
   permission javax.security.jacc.WebUserDataPermission "/:/admin/*:/admin/index.html";
   permission javax.security.jacc.WebUserDataPermission "/admin/*:/admin/index.html";
-  permission javax.security.jacc.WebResourcePermission "/:/admin/*:/admin/index.html";
 };
 
 grant      principal * * {
@@ -18,10 +18,10 @@ grant      principal * * {
   permission javax.security.jacc.WebRoleRefPermission "default", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.AddBoatVariantEngine", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Stock.servlets.AddInventory", "**";
-  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Stock.servlets.FindAllInventory", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.FindAllBoatStorage", "**";
-  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.FindAllEngines", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Stock.servlets.FindAllInventory", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.EditCustomer", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.FindAllEngines", "**";
   permission javax.security.jacc.WebRoleRefPermission "jsp", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Stock.servlets.FindAllParts", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.FindCustomerById", "**";
@@ -39,18 +39,19 @@ grant      principal * * {
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Finance.servlets.EditInvoice", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.AddCustomer", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Job.servlets.AddTaskDescription", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.AddEngine", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.EditBoatStorage", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Job.servlets.EditTaskDescription", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Finance.servlets.FindAllInvoices", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Stock.servlets.FindAllInventoryJson", "**";
-  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.AddStaff", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Job.servlets.FindAllTaskDescriptions", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.AddStaff", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Job.servlets.FindAllJobs", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.customer.FindAllCustomersJson", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.LogOut", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Account.servlets.Staff.FindAllStaff", "**";
-  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Job.servlets.EditJob", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Job.servlets.FindAllJobTasks", "**";
+  permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Job.servlets.EditJob", "**";
   permission javax.security.jacc.WebRoleRefPermission "uk.ac.city.douglas.varv.Boat.servlets.AddBoat", "**";
 };
 

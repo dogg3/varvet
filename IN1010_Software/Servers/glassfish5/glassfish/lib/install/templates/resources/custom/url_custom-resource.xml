@@ -88,7 +88,7 @@
         <custom-resource res-type="java.net.URL" jndi-name="custom/my-url" factory-class="org.glassfish.resources.custom.factory.URLObjectFactory">
           <property name="protocol" value="http" />
           <property name="host" value="java.sun.com" />
-          <property name="file" value="/index.html" />
+          <property name="file" value="/index.jsp" />
         </custom-resource>
     </resources> 
 

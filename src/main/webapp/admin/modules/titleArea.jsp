@@ -1,16 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: douglas
-  Date: 12/08/19
-  Time: 13:33
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="page-title-area">
+    <div class="row align-items-center">
+        <div class="col-sm-12 clearfix">
+            <div class="user-profile pull-right">
+                <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><%=request.getRemoteUser()%><i class="fa fa-angle-down"></i></h4>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">sksks</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="./logout.jsp">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

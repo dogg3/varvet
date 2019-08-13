@@ -28,6 +28,7 @@ public interface BoatDAOInterface {
     
     ///ENGINE
     public List<Engine> getAllEngines();
+
     public void addEngine(Engine engine);
     public boolean eraseEngineById(int id);
     public Engine findEngineById(int id);

@@ -6,8 +6,12 @@
 package uk.ac.city.douglas.varv.Boat.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import uk.ac.city.douglas.varv.Account.domain.Customer;
 
 import javax.persistence.*;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -36,6 +40,7 @@ public class Engine {
 
     public Engine() {
     }
+
 
     public int getEngineId() {
         return engineId;

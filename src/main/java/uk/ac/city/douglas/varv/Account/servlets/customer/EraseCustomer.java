@@ -42,7 +42,7 @@ public class EraseCustomer extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         vr.eraseCustomerById(id);
         String url = URLEncoder.encode("erased", "UTF-8");
-        response.sendRedirect("/admin/customer/index.html"+url);
+        response.sendRedirect("/admin/customer/index.jsp"+url);
     }
     
 

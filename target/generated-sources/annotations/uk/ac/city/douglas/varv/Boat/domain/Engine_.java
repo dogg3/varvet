@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import uk.ac.city.douglas.varv.Boat.domain.BoatVariantEngine;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-08-12T15:52:19")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-08-13T14:56:38")
 @StaticMetamodel(Engine.class)
 public class Engine_ { 
 

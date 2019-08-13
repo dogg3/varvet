@@ -221,7 +221,7 @@ elements.
 
 <!--
 The welcome-file element contains file name to use as a default
-welcome file, such as index.html
+welcome file, such as index.jsp
 -->
 
 <!ELEMENT welcome-file (#PCDATA)>

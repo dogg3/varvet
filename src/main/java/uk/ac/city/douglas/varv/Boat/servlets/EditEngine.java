@@ -5,10 +5,14 @@
  */
 package uk.ac.city.douglas.varv.Boat.servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URLEncoder;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -47,39 +51,26 @@ public class EditEngine extends HttpServlet {
 
     }
 
+
+
+
+
+
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("application/x-www-form-urlencoded");
-        request.setCharacterEncoding("UTF-8");
 
-
-        Engine engine = new Engine();
-        HashMap<String,String> engineData = new HashMap<>();
-        String json = request.getParameter("formData");
+     String json = null;
+        json = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         System.out.println(json);
-        JSONParser jsonParser = new JSONParser();
-        try {
-            JSONArray jsonArray = (JSONArray) jsonParser.parse(json);
+        HashMap<String,String> engineData = new HashMap<>();
 
-            for(Object obj: jsonArray){
-                JSONObject jsonObject = (JSONObject) obj;
-                String name = (String) jsonObject.get("name");
-                String value = (String) jsonObject.get("value");
-                engineData.put(name,value);
-                System.out.println("name is :" +name + " value is "+ value);
-            }
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
 
-        //edit the engine
-        vr.editBoatStorage(engineData);
-        //sending back the status message to the client
         JSONObject returnMessage = new JSONObject();
         returnMessage.put("status","success");
-        returnMessage.put("engine", engine.getEngineId());
         response.getWriter().print(returnMessage.toJSONString());
     }
 
 }
+
+
